@@ -188,21 +188,21 @@
 				<div class="collection-info slider color-{{ section.settings.color_scheme_slide }} text-left">
 					{%- if section.settings.show_collection_list and collections.size > 0 -%}
 						<div class="collection-list">
-							<unity-slider class="unity-slider">
+							<vrworld-slider class="vrworld-slider">
 								<template data-options>
 									{
 										"_autoheight": true,
 										"_fade": false
 									}
 								</template>
-								<div class="unity-slider-viewport">
-									<div class="unity-slider-container">
+								<div class="vrworld-slider-viewport">
+									<div class="vrworld-slider-container">
 										{%- if collection.handle == 'all' or template contains 'collection.all' -%}
 											{%- assign collections_to_display = collections -%}
 										{%- endif -%}
 
 										{%- for collection in collections_to_display -%}
-											<div class="list-item unity-slide">
+											<div class="list-item vrworld-slide">
 												<div class="product-card-list">
 													<div class="card-meta">
 														<div class="collection-count">
@@ -245,7 +245,7 @@
 										{%- endfor -%}
 									</div>
 								</div>
-							</unity-slider>
+							</vrworld-slider>
 						</div>
 					{%- endif -%}
 				</div>

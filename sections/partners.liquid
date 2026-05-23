@@ -16,7 +16,7 @@
 		justify-content: {{ section.settings.align }};
 	}
 
-	{{ section_id }} .unity-slider {
+	{{ section_id }} .vrworld-slider {
 		--slide-spacing: 0.8rem;
 	}
 
@@ -27,7 +27,7 @@
 	{% endif %}
 
 	@media (max-width: 991px) {
-		{{ section_id }} .unity-slider {
+		{{ section_id }} .vrworld-slider {
 			--slide-size: 93%;
 		}
 	}
@@ -38,7 +38,7 @@
 			padding-bottom: {{ section.settings.padding_bottom }}px;
 		}
 
-		{{ section_id }} .unity-slider {
+		{{ section_id }} .vrworld-slider {
 			--slide-size: calc( 100% / {{ column }});
 		}
 	}
@@ -60,7 +60,7 @@
 				</div>
 			{%- endif -%}
 
-			<unity-slider class="unity-slider">
+			<vrworld-slider class="vrworld-slider">
 				<template data-options>
 					{
 						{%- if section.settings.loop -%}
@@ -77,12 +77,12 @@
 					}
 				</template>
 
-				<div class="unity-slider-viewport">
-					<div class="unity-slider-container">
+				<div class="vrworld-slider-viewport">
+					<div class="vrworld-slider-container">
 						{%- for block in section.blocks -%}
 							{%- assign image = block.settings.image -%}
 
-							<div class="unity-slide"{% if request.design_mode %} data-id="{{ block.id }}" data-index="{{ forloop.index0 }}"{% endif %} {{ block.shopify_attributes }}>
+							<div class="vrworld-slide"{% if request.design_mode %} data-id="{{ block.id }}" data-index="{{ forloop.index0 }}"{% endif %} {{ block.shopify_attributes }}>
 								<div class="brand-item color-{{ section.settings.item_color_scheme }}">
 									{% if block.settings.img_link %}<a href="{{ block.settings.img_link }}" class="image-link" aria-label="Link"></a>{% endif %}
 
@@ -102,7 +102,7 @@
 						{%- endfor -%}
 					</div>
 				</div>
-			</unity-slider>
+			</vrworld-slider>
 		</div>
 	</div>
 </div>

@@ -2,7 +2,7 @@ document.addEventListener('DOMContentLoaded', () => {
 	const thumbnails = document.querySelectorAll('.main-sliders .media-preview');
 	const lightbox   = document.getElementById('lightbox');
 	const closeBtn   = document.getElementById('close');
-	const sliderEl   = lightbox?.querySelector('unity-slider');
+	const sliderEl   = lightbox?.querySelector('vrworld-slider');
 
 	if (!thumbnails.length || !lightbox || !closeBtn || !sliderEl) return;
 
@@ -23,7 +23,7 @@ document.addEventListener('DOMContentLoaded', () => {
 	};
 
 	const observer = new MutationObserver(() => {
-		const slides = sliderEl.querySelectorAll('.unity-slide');
+		const slides = sliderEl.querySelectorAll('.vrworld-slide');
 		if (slides.length) {
 			sliderReady = true;
 			observer.disconnect();
@@ -45,7 +45,7 @@ document.addEventListener('DOMContentLoaded', () => {
 				}
 			}
 
-			const slides = sliderEl.querySelectorAll('.unity-slide');
+			const slides = sliderEl.querySelectorAll('.vrworld-slide');
 			slides.forEach((s, i) => {
 				s.style.display = i === index ? '' : 'none';
 			});

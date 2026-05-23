@@ -19,7 +19,7 @@ class ImageSpotlightSection extends HTMLElement {
 
 					if (window.innerWidth <= 991) {
 						const dot = this.querySelector(
-							`.unity-dot[data-id="${id}"]`
+							`.vrworld-dot[data-id="${id}"]`
 						);
 						if (dot) dot.click();
 					}
@@ -28,7 +28,7 @@ class ImageSpotlightSection extends HTMLElement {
 		});
 
 		this.addEventListener('click', (e) => {
-			const dot = e.target.closest('.unity-dot');
+			const dot = e.target.closest('.vrworld-dot');
 			if (!dot) return;
 
 			e.stopPropagation();

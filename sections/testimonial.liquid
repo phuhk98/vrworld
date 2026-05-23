@@ -20,7 +20,7 @@
 		}
 
 		{% if section.blocks.size > 1 %}
-			{{ section_id }} .unity-slider {
+			{{ section_id }} .vrworld-slider {
 				--slide-spacing: 6.4rem;
 				--slide-size: 59.3%;
 			}
@@ -47,33 +47,33 @@
 				{%- endif -%}
 
 				{% if section.blocks.size > 1 %}
-					<div class="unity-arrows">
-						<button class="unity-button unity-button-prev" title ="{{ 'general.unity.prev' | t }}-testi" aria-label="{{ 'general.unity.prev' | t }}-testi" id="{{ 'general.unity.prev' | t }}-testi" aria-labelledby="{{ 'general.unity.prev' | t }}-testi" disabled >
+					<div class="vrworld-arrows">
+						<button class="vrworld-button vrworld-button-prev" title ="{{ 'general.vrworld.prev' | t }}-testi" aria-label="{{ 'general.vrworld.prev' | t }}-testi" id="{{ 'general.vrworld.prev' | t }}-testi" aria-labelledby="{{ 'general.vrworld.prev' | t }}-testi" disabled >
 							{%- render 'icon', code: 'chevron-left' -%}
 						</button>
 
-						<button class="unity-button unity-button-next" title ="{{ 'general.unity.next' | t }}-testi" aria-label="{{ 'general.unity.next' | t }}-testi" id="{{ 'general.unity.next' | t }}-testi" aria-labelledby="{{ 'general.unity.next' | t }}-testi" disabled >
+						<button class="vrworld-button vrworld-button-next" title ="{{ 'general.vrworld.next' | t }}-testi" aria-label="{{ 'general.vrworld.next' | t }}-testi" id="{{ 'general.vrworld.next' | t }}-testi" aria-labelledby="{{ 'general.vrworld.next' | t }}-testi" disabled >
 							{%- render 'icon', code: 'chevron-right' -%}
 						</button>
 					</div>
 				{% endif %}
 			</div>
 
-			<unity-slider class="unity-slider">
+			<vrworld-slider class="vrworld-slider">
 				<template data-options>
 					{
 						"align": "start",
 						"_autoheight": false,
 						"_fade": false,
-						"_prevBtn": "{{ section_id }} .unity-button-prev",
-						"_nextBtn": "{{ section_id }} .unity-button-next"
+						"_prevBtn": "{{ section_id }} .vrworld-button-prev",
+						"_nextBtn": "{{ section_id }} .vrworld-button-next"
 					}
 				</template>
 
-				<div class="unity-slider-viewport">
-					<div class="unity-slider-container">
+				<div class="vrworld-slider-viewport">
+					<div class="vrworld-slider-container">
 						{%- for block in section.blocks -%}
-							<div class="unity-slide" data-id="{{ block.id }}" {{ block.shopify_attributes }} data-{{ block.id }}{% if request.design_mode %} data-index="{{ forloop.index0 }}"{% endif %}>
+							<div class="vrworld-slide" data-id="{{ block.id }}" {{ block.shopify_attributes }} data-{{ block.id }}{% if request.design_mode %} data-index="{{ forloop.index0 }}"{% endif %}>
 								<div class="slide-content">
 									{%- liquid
 										assign star_reviews    = block.settings.star_reviews
@@ -203,7 +203,7 @@
 						{%- endfor -%}
 					</div>
 				</div>
-			</unity-slider>
+			</vrworld-slider>
 		</div>
 	</div>
 </div>

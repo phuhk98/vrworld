@@ -2114,7 +2114,7 @@
 				},
 				"transparent_custom": {
 					"label": "Custom page",
-					"info": "Pick a menu containing items linked to the pages you want to apply the transparent header. [Learn more](https://boostifythemes.com/docs/unity-shopify/advanced-settings/transparent-header/)"
+					"info": "Pick a menu containing items linked to the pages you want to apply the transparent header. [Learn more](https://boostifythemes.com/docs/vrworld-shopify/advanced-settings/transparent-header/)"
 				}
 			},
 			"blocks": {

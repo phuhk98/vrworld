@@ -4,30 +4,30 @@
 <div class="main-product-section product-gallery">
 	{%- if product.media.size > 1 -%}
 		<div class="product-main-slide">
-			<unity-slider class="unity-slider">
+			<vrworld-slider class="vrworld-slider">
 				<template data-options>
 					{
 						"loop": false,
 						"duration": 25,
 						"_autoheight": true,
 						"_fade": true,
-						"_prevBtn": ".unity-button-prev",
-						"_nextBtn": ".unity-button-next"
+						"_prevBtn": ".vrworld-button-prev",
+						"_nextBtn": ".vrworld-button-next"
 					}
 				</template>
 
 				<template data-thumbs-options>
 					{
 						"loop": false,
-						"_prevBtn": ".unity-button-prev",
-						"_nextBtn": ".unity-button-next"
+						"_prevBtn": ".vrworld-button-prev",
+						"_nextBtn": ".vrworld-button-next"
 					}
 				</template>
 
-				<div class="unity-slider-viewport main-sliders">
-					<div class="unity-slider-container">
+				<div class="vrworld-slider-viewport main-sliders">
+					<div class="vrworld-slider-container">
 						{%- for media in product.media -%}
-							<div class="main-item unity-slide" data-media-id="{{ media.id }}" data-id="{{ section.id }}-{{ media.id }}" data-{{ media.media_type | escape }}>
+							<div class="main-item vrworld-slide" data-media-id="{{ media.id }}" data-id="{{ section.id }}-{{ media.id }}" data-{{ media.media_type | escape }}>
 								{%- render 'product-media', media: media, position: forloop.index, loop: section.settings.video_looping, role: 'main', index: forloop.index -%}
 							</div>
 						{%- endfor -%}
@@ -35,26 +35,26 @@
 				</div>
 
 				<div class="algin-center-thumbs-slider">
-					<div class="unity-thumbs-slider-viewport">
-						<div class="unity-thumbs-slider-container">
+					<div class="vrworld-thumbs-slider-viewport">
+						<div class="vrworld-thumbs-slider-container">
 							{%- for media in product.media -%}
-								<div class="unity-thumbs-slide{% if forloop.first %} unity-thumbs-slide-selected{% endif %}" data-media-id="{{ media.id }}" data-id="{{ section.id }}-{{ media.id }}" data-{{ media.media_type | escape }}>
+								<div class="vrworld-thumbs-slide{% if forloop.first %} vrworld-thumbs-slide-selected{% endif %}" data-media-id="{{ media.id }}" data-id="{{ section.id }}-{{ media.id }}" data-{{ media.media_type | escape }}>
 									{%- render 'product-media', media: media, position: forloop.index, loop: section.settings.video_looping, role: 'thumb', index: forloop.index -%}
 								</div>
 							{%- endfor -%}
 						</div>
 					</div>
-					<div class="unity-arrows">
-						<button class="unity-button unity-button-prev unity-thumb-prev" title ="{{ 'general.unity.prev' | t }}-main-prd" aria-label="{{ 'general.unity.prev' | t }}-main-prd" id="{{ 'general.unity.prev' | t }}-main-prd" aria-labelledby="{{ 'general.unity.prev' | t }}-main-prd" disabled>
+					<div class="vrworld-arrows">
+						<button class="vrworld-button vrworld-button-prev vrworld-thumb-prev" title ="{{ 'general.vrworld.prev' | t }}-main-prd" aria-label="{{ 'general.vrworld.prev' | t }}-main-prd" id="{{ 'general.vrworld.prev' | t }}-main-prd" aria-labelledby="{{ 'general.vrworld.prev' | t }}-main-prd" disabled>
 							{%- render 'icon', code: 'arrow-up' -%}
 						</button>
 
-						<button class="unity-button unity-button-next unity-thumb-next" title ="{{ 'general.unity.next' | t }}-main-prd" aria-label="{{ 'general.unity.next' | t }}-main-prd" id="{{ 'general.unity.next' | t }}-main-prd" aria-labelledby="{{ 'general.unity.next' | t }}-main-prd" disabled>
+						<button class="vrworld-button vrworld-button-next vrworld-thumb-next" title ="{{ 'general.vrworld.next' | t }}-main-prd" aria-label="{{ 'general.vrworld.next' | t }}-main-prd" id="{{ 'general.vrworld.next' | t }}-main-prd" aria-labelledby="{{ 'general.vrworld.next' | t }}-main-prd" disabled>
 							{%- render 'icon', code: 'arrow-up' -%}
 						</button>
 					</div>
 				</div>
-			</unity-slider>
+			</vrworld-slider>
 		</div>
 	{%- else -%}
 		{% render 'product-media', media: product.media[0], image_only: true position: 0, loop: false, modal_id: 0, role: 'main' %}

@@ -8,45 +8,49 @@
 		font-family: var(--subheading-font-family);
 		margin-bottom: 0.8rem;
 
-		@media (max-width: 991px) {
+		@media (max-width:991px) {
 			margin-bottom: 0.4rem;
 		}
+
 	}
 
 	.heading {
 		margin: 0;
 		line-height: 1;
 
-		@media (max-width: 991px) {
+		@media (max-width:991px) {
 			line-height: 5.2rem;
 		}
+
 	}
 
 	.year {
 		color: rgb(var(--subheading-color));
 
-		@media (max-width: 991px) {
+		@media (max-width:991px) {
 			font-size: 3.2rem;
 			line-height: 4rem;
 		}
+
 	}
 
-	.unity-slider {
-		.unity-slider-container {
+	.vrworld-slider {
+		.vrworld-slider-container {
 			align-items: unset;
 			height: unset !important;
 		}
 
-		.unity-slider-viewport {
+		.vrworld-slider-viewport {
 			overflow: visible;
 		}
+
 	}
 
 	.timeline-wrapper {
 		margin: 4.6rem auto 0;
 		transition: opacity 0.2s;
 
-		@media (max-width: 991px) {
+		@media (max-width:991px) {
 			margin: 4rem auto 0;
 		}
 
@@ -66,9 +70,10 @@
 			margin: 0 5.2rem;
 			overflow: hidden;
 
-			@media (max-width: 991px) {
+			@media (max-width:991px) {
 				display: none;
 			}
+
 		}
 
 		.events {
@@ -123,9 +128,7 @@
 					transform: rotate(45deg);
 					border: 0.2rem solid rgb(var(--text-color));
 					background-color: rgb(var(--background-color));
-					transition:
-						background-color 0.3s,
-						border-color 0.3s;
+					transition: background-color 0.3s, border-color 0.3s;
 				}
 
 				&.selected {
@@ -135,8 +138,11 @@
 						border: 0.2rem solid rgb(var(--text-color));
 						background-color: rgb(var(--text-color));
 					}
+
 				}
+
 			}
+
 		}
 
 		.filling-line {
@@ -159,7 +165,7 @@
 			margin: 4rem 0 3.3rem;
 			overflow: hidden;
 
-			@media (max-width: 991px) {
+			@media (max-width:991px) {
 				margin: 4rem 0 2.3rem;
 			}
 
@@ -167,7 +173,7 @@
 				flex: 0 0 83.5%;
 				display: flex;
 
-				@media (max-width: 767px) {
+				@media (max-width:767px) {
 					flex: 0 0 100%;
 					flex-direction: column;
 				}
@@ -177,7 +183,7 @@
 					border-radius: 0 0.8rem 0.8rem 0;
 					width: 100%;
 
-					@media (max-width: 991px) {
+					@media (max-width:991px) {
 						border-radius: 0 0 0.8rem 0.8rem;
 					}
 
@@ -189,29 +195,33 @@
 					.heading {
 						margin-bottom: 2.4rem;
 
-						@media (max-width: 991px) {
+						@media (max-width:991px) {
 							margin-bottom: 1.6rem;
 						}
+
 					}
 
 					.year {
 						margin-bottom: 1.6rem;
 					}
 
-					@media (max-width: 767px) {
+					@media (max-width:767px) {
 						padding: 2.4rem;
 					}
 
 					& > * {
 						margin: 0;
 					}
+
 				}
 
 				&.selected {
 					display: flex;
 					position: relative;
 				}
+
 			}
+
 		}
 
 		.image-timeline {
@@ -220,7 +230,7 @@
 			aspect-ratio: 1/1;
 			border-radius: 0.8rem 0 0 0.8rem;
 
-			@media (max-width: 991px) {
+			@media (max-width:991px) {
 				border-radius: 0.8rem 0.8rem 0 0;
 				aspect-ratio: 1/0.79;
 			}
@@ -229,11 +239,14 @@
 			img {
 				border-radius: 0.8rem 0 0 0.8rem;
 
-				@media (max-width: 991px) {
+				@media (max-width:991px) {
 					border-radius: 0.8rem 0.8rem 0 0;
 				}
+
 			}
+
 		}
+
 	}
 
 	.cd-timeline-navigation,
@@ -251,7 +264,9 @@
 				&[disabled] {
 					opacity: 0.18;
 				}
+
 			}
+
 		}
 
 		.controls {
@@ -272,32 +287,38 @@
 			white-space: nowrap;
 			color: rgb(var(--button-bg-color));
 			background: rgb(var(--gradient-background));
+
 			&:hover {
 				background: rgb(var(--button-bg-color));
 				color: rgb(var(--button-text-color));
 				border-color: rgb(var(--button-bg-color));
 			}
-			&.unity-button-prev {
+
+			&.vrworld-button-prev {
 				left: 0;
 			}
 
-			&.unity-button-next {
+			&.vrworld-button-next {
 				right: 0;
 			}
 
 			&:disabled {
 				opacity: 0.18;
 			}
-			@media (max-width: 991px) {
+
+			@media (max-width:991px) {
 				position: relative;
 				transform: unset;
 			}
+
 		}
-		@media (max-width: 991px) {
+
+		@media (max-width:991px) {
 			display: flex;
 			gap: 0.8rem;
 			justify-content: center;
 		}
+
 		a {
 			&::after {
 				content: '';
@@ -309,7 +330,9 @@
 				bottom: auto;
 				right: auto;
 			}
+
 		}
+
 	}
 
 	.no-touch {
@@ -318,7 +341,11 @@
 				&:hover {
 					border-color: #0099ff;
 				}
+
 			}
+
 		}
+
 	}
+
 }

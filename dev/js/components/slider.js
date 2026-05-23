@@ -8,15 +8,15 @@ class btyUnitySlider extends HTMLElement {
 		this.thumbSlider        = null;
 		this.options            = this.querySelector('[data-options]');
 		this.thumbOptions       = this.querySelector('[data-thumbs-options]');
-		this.viewport           = this.querySelector('.unity-slider-viewport');
-		this.thumbsViewport     = this.querySelector('.unity-thumbs-slider-viewport');
+		this.viewport           = this.querySelector('.vrworld-slider-viewport');
+		this.thumbsViewport     = this.querySelector('.vrworld-thumbs-slider-viewport');
 		this.isVariantScrolling = false;
 
 		this.init();
 
-		if (!window.__unitySliderInstances) window.__unitySliderInstances = new Map();
+		if (!window.__vrworldSliderInstances) window.__vrworldSliderInstances = new Map();
 		const sectionId = this.closest('[id^="shopify-section-"]')?.id;
-		if (sectionId) window.__unitySliderInstances.set(sectionId, this);
+		if (sectionId) window.__vrworldSliderInstances.set(sectionId, this);
 
 		this._onSectionEvent = (event) => {
 			const currentSectionId = this.closest('[id^="shopify-section-"]')?.id;
@@ -41,7 +41,7 @@ class btyUnitySlider extends HTMLElement {
 			if (this.slider?.destroy) this.slider.destroy();
 			if (this.thumbSlider?.destroy) this.thumbSlider.destroy();
 		} catch (err) {
-			console.warn('[unity-slider] cleanup error:', err);
+			console.warn('[vrworld-slider] cleanup error:', err);
 		}
 		this.slider      = null;
 		this.thumbSlider = null;
@@ -111,10 +111,10 @@ class btyUnitySlider extends HTMLElement {
 		const addDotHandle = () => {
 			dotsNode.innerHTML = bsSlider
 				.scrollSnapList()
-				.map((_, i) => `<button class="unity-dot" type="button" data-id="${i + 1}"></button>`)
+				.map((_, i) => `<button class="vrworld-dot" type="button" data-id="${i + 1}"></button>`)
 				.join('');
 
-			dotNodes = dotsNode.querySelectorAll( '.unity-dot' );
+			dotNodes = dotsNode.querySelectorAll( '.vrworld-dot' );
 
 			if (!dotsNode.querySelector('.pagination-current')) {
 				const span = document.createElement('span');
@@ -346,8 +346,8 @@ class btyUnitySlider extends HTMLElement {
 		if (!this.thumbSlider?.slideNodes) return;
 
 		const slidesThumbs = this.thumbSlider.slideNodes();
-		const thumbPrev    = this.querySelector('.unity-thumb-prev');
-		const thumbNext    = this.querySelector('.unity-thumb-next');
+		const thumbPrev    = this.querySelector('.vrworld-thumb-prev');
+		const thumbNext    = this.querySelector('.vrworld-thumb-next');
 
 		if (slidesThumbs.length < 4 && thumbPrev && thumbNext) {
 			thumbPrev.style.display = 'none';
@@ -369,7 +369,7 @@ class btyUnitySlider extends HTMLElement {
 			slides.forEach((s, i) => s.classList.toggle('selected', i === selectedIndex));
 			thumbs.forEach((t, i) => {
 				t.classList.toggle('selected', i === selectedIndex);
-				t.classList.toggle('unity-thumbs-slide-selected', i === selectedIndex);
+				t.classList.toggle('vrworld-thumbs-slide-selected', i === selectedIndex);
 			});
 
 			try {
@@ -387,7 +387,7 @@ class btyUnitySlider extends HTMLElement {
 		this.slider?.on?.('select', updateSelectedClass);
 
 		const fixThumbFocus = () => {
-			const thumbs = this.thumbsViewport.querySelectorAll('.unity-thumbs-slide');
+			const thumbs = this.thumbsViewport.querySelectorAll('.vrworld-thumbs-slide');
 			thumbs.forEach((thumb, index) => {
 				const button = thumb.querySelector('button');
 				const isClone = thumb.hasAttribute('data-embla-clone');
@@ -439,7 +439,7 @@ class btyUnitySlider extends HTMLElement {
 			this.slider.scrollTo(index, true);
 			this.thumbSlider?.scrollTo(index, true);
 		} catch (err) {
-			console.warn('[unity-slider] scrollToVariantImage error:', err);
+			console.warn('[vrworld-slider] scrollToVariantImage error:', err);
 		}
 
 		setTimeout(() => {
@@ -450,4 +450,4 @@ class btyUnitySlider extends HTMLElement {
 	}
 }
 
-customElements.define('unity-slider', btyUnitySlider);
+customElements.define('vrworld-slider', btyUnitySlider);

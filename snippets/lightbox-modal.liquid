@@ -5,7 +5,7 @@
 		</span>
 
 		{% comment %} Slider product {% endcomment %}
-		<unity-slider class="unity-slider">
+		<vrworld-slider class="vrworld-slider">
 			<template data-options>
 				{
 					"loop": false,
@@ -13,30 +13,30 @@
 					"_autoplay": {{ section.settings.delay | times: 1000 }},
 					"_autoheight": true,
 					"_fade": true,
-					"_prevBtn": "{{ section_id }} .unity-button-prev",
-					"_nextBtn": "{{ section_id }} .unity-button-next"
+					"_prevBtn": "{{ section_id }} .vrworld-button-prev",
+					"_nextBtn": "{{ section_id }} .vrworld-button-next"
 				}
 			</template>
 
-			<div class="unity-slider-viewport">
-				<div class="unity-slider-container">
+			<div class="vrworld-slider-viewport">
+				<div class="vrworld-slider-container">
 					{%- for media in product.media -%}
-						<div class="main-item unity-slide" data-id="{{ section.id }}-{{ media.id }}" data-{{ media.media_type | escape }}>
+						<div class="main-item vrworld-slide" data-id="{{ section.id }}-{{ media.id }}" data-{{ media.media_type | escape }}>
 							{%- render 'product-media', media: media, position: forloop.index, loop: section.settings.video_looping, role: 'main', index: forloop.index -%}
 						</div>
 					{%- endfor -%}
 				</div>
 
-				<div class="unity-arrows">
-					<button class="unity-button unity-button-prev" title ="{{ 'general.unity.prev' | t }}-light" aria-label="{{ 'general.unity.prev' | t }}-light" id="{{ 'general.unity.prev' | t }}-light" aria-labelledby="{{ 'general.unity.prev' | t }}-light" disabled>
+				<div class="vrworld-arrows">
+					<button class="vrworld-button vrworld-button-prev" title ="{{ 'general.vrworld.prev' | t }}-light" aria-label="{{ 'general.vrworld.prev' | t }}-light" id="{{ 'general.vrworld.prev' | t }}-light" aria-labelledby="{{ 'general.vrworld.prev' | t }}-light" disabled>
 						{%- render 'icon', code: 'arrow-left' -%}
 					</button>
 
-					<button class="unity-button unity-button-next" title ="{{ 'general.unity.next' | t }}-light" aria-label="{{ 'general.unity.next' | t }}-light" id="{{ 'general.unity.next' | t }}-light" aria-labelledby="{{ 'general.unity.next' | t }}-light" disabled>
+					<button class="vrworld-button vrworld-button-next" title ="{{ 'general.vrworld.next' | t }}-light" aria-label="{{ 'general.vrworld.next' | t }}-light" id="{{ 'general.vrworld.next' | t }}-light" aria-labelledby="{{ 'general.vrworld.next' | t }}-light" disabled>
 						{%- render 'icon', code: 'arrow-right' -%}
 					</button>
 				</div>
 			</div>
-		</unity-slider>
+		</vrworld-slider>
 	</div>
 </div>

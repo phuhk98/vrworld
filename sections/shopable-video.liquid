@@ -64,7 +64,7 @@
 	</div>
 
 	<div class="shopable-wrapper{% if animation %} scroll-trigger{% endif %}">
-		<unity-slider class="unity-slider">
+		<vrworld-slider class="vrworld-slider">
 			<template data-options>
 				{
 					"align": "center",
@@ -72,14 +72,14 @@
 					"containScroll": "false",
 					"_autoheight": true,
 					"_fade": false,
-					"_prevBtn": "{{ section_id }} .unity-button-prev",
-					"_nextBtn": "{{ section_id }} .unity-button-next",
-					"_dotsNode": "{{ section_id }} .unity-dots"
+					"_prevBtn": "{{ section_id }} .vrworld-button-prev",
+					"_nextBtn": "{{ section_id }} .vrworld-button-next",
+					"_dotsNode": "{{ section_id }} .vrworld-dots"
 				}
 			</template>
 
-			<div class="unity-slider-viewport">
-				<div class="unity-slider-container">
+			<div class="vrworld-slider-viewport">
+				<div class="vrworld-slider-container">
 					{%- for block in section.blocks -%}
 						{%- liquid
 							assign image          = block.settings.image
@@ -88,7 +88,7 @@
 							assign featured_image = product.featured_media
 						-%}
 
-						<div class="unity-slide" data-{{ block.id }} {{ block.shopify_attributes }} data-index="{{ forloop.index0 }}">
+						<div class="vrworld-slide" data-{{ block.id }} {{ block.shopify_attributes }} data-index="{{ forloop.index0 }}">
 							<div class="card-wrapper">
 								<div class="card-media">
 									{%- if video != blank -%}
@@ -191,12 +191,12 @@
 			</div>
 
 			{%- if show_arrows -%}
-				<div class="unity-arrows">
-					<button class="unity-button unity-button-prev" title ="{{ 'general.unity.prev' | t }}-recent" aria-label="{{ 'general.unity.prev' | t }}-recent" id="{{ 'general.unity.prev' | t }}-recent" aria-labelledby="{{ 'general.unity.prev' | t }}-recent" disabled>
+				<div class="vrworld-arrows">
+					<button class="vrworld-button vrworld-button-prev" title ="{{ 'general.vrworld.prev' | t }}-recent" aria-label="{{ 'general.vrworld.prev' | t }}-recent" id="{{ 'general.vrworld.prev' | t }}-recent" aria-labelledby="{{ 'general.vrworld.prev' | t }}-recent" disabled>
 						{%- render 'icon', code: 'chevron-left' -%}
 					</button>
 
-					<button class="unity-button unity-button-next" title ="{{ 'general.unity.next' | t }}-recent" aria-label="{{ 'general.unity.next' | t }}-recent" id="{{ 'general.unity.next' | t }}-recent" aria-labelledby="{{ 'general.unity.next' | t }}-recent" disabled>
+					<button class="vrworld-button vrworld-button-next" title ="{{ 'general.vrworld.next' | t }}-recent" aria-label="{{ 'general.vrworld.next' | t }}-recent" id="{{ 'general.vrworld.next' | t }}-recent" aria-labelledby="{{ 'general.vrworld.next' | t }}-recent" disabled>
 						{%- render 'icon', code: 'chevron-right' -%}
 					</button>
 				</div>
@@ -204,11 +204,11 @@
 
 			{%- if show_dots -%}
 				<div class="align-dots-center">
-					<div class="unity-dots">
+					<div class="vrworld-dots">
 					</div>
 				</div>
 			{%- endif -%}
-		</unity-slider>
+		</vrworld-slider>
 	</div>
 </div>
 

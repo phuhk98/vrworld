@@ -9,7 +9,7 @@
  */
 {
 	"current": {
-		"logo_image": "shopify://shop_images/unity-logo.svg",
+		"logo_image": "shopify://shop_images/vrworld-logo.svg",
 		"body_font": "inter_n5",
 		"heading_font": "poppins_n7",
 		"third_font": "source_code_pro_n7",
@@ -56,7 +56,7 @@
 				"settings": {
 					"color_scheme": "scheme-3",
 					"transparent_header": true,
-					"overlay_logo": "shopify://shop_images/light-unity-logo.svg",
+					"overlay_logo": "shopify://shop_images/light-vrworld-logo.svg",
 					"separator_line": true
 				}
 			},

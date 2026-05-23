@@ -19,14 +19,7 @@
 		-%}
 	</head>
 
-	<body class="template-{{ template }}{{ account_details }}{% if settings.cursor_second %} has-sencond-cursor{% endif %}">
-		{% if settings.cursor_second %}
-			<cursor-effect>
-				<div class="cursor-dot"></div>
-				<div class="cursor-ring"></div>
-			</cursor-effect>
-		{% endif %}
-
+	<body class="template-{{ template }}{{ account_details }}">
 		<a class="skip-to-content-link sr-only primary-button" href="#main-content">
 			{{- 'accessibility.skip_to_text' | t -}}
 		</a>

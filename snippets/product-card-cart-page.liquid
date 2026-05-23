@@ -106,12 +106,12 @@
 	{%- form 'product', product, class: 'form-add-to-cart', novalidate: 'novalidate', data-type: 'add-to-cart-form', id: nil -%}
 		<input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}">
 		{%- if product.available -%}
-			<button type="submit" name="add" class="button primary-button add-to-cart-button" title ="{{ 'general.unity.prev' | t }}" aria-label="{{ 'general.unity.prev' | t }}" id="{{ 'general.unity.prev' | t }}" aria-labelledby="{{ 'general.unity.prev' | t }}">
+			<button type="submit" name="add" class="button primary-button add-to-cart-button" title ="{{ 'general.vrworld.prev' | t }}" aria-label="{{ 'general.vrworld.prev' | t }}" id="{{ 'general.vrworld.prev' | t }}" aria-labelledby="{{ 'general.vrworld.prev' | t }}">
 				{%- render 'icon', code: 'product-add-to-cart' -%}
 				{{- 'products.product.add_to_cart' | t -}}
 			</button>
 		{%- else -%}
-			<button type="submit" name="add" class="primary-button add-to-cart-button" title ="{{ 'general.unity.prev' | t }}" aria-label="{{ 'general.unity.prev' | t }}" id="{{ 'general.unity.prev' | t }}" aria-labelledby="{{ 'general.unity.prev' | t }}" disabled>
+			<button type="submit" name="add" class="primary-button add-to-cart-button" title ="{{ 'general.vrworld.prev' | t }}" aria-label="{{ 'general.vrworld.prev' | t }}" id="{{ 'general.vrworld.prev' | t }}" aria-labelledby="{{ 'general.vrworld.prev' | t }}" disabled>
 				{%- render 'icon', code: 'product-add-to-cart' -%}
 				{{- 'products.product.sold_out' | t -}}
 			</button>

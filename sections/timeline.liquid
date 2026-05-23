@@ -43,7 +43,7 @@
 		<div class="timeline-wrapper">
 			<div class="events-content">
 				<div class="product-main-slide">
-					<unity-slider class="unity-slider">
+					<vrworld-slider class="vrworld-slider">
 						<template data-options>
 							{
 								"align": "start",
@@ -51,13 +51,13 @@
 								"_autoheight": true,
 								"draggable": false,
 								"containScroll": false,
-								"_prevBtn": "{{ section_id }} .unity-button-prev",
-								"_nextBtn": "{{ section_id }} .unity-button-next"
+								"_prevBtn": "{{ section_id }} .vrworld-button-prev",
+								"_nextBtn": "{{ section_id }} .vrworld-button-next"
 							}
 						</template>
 
-						<div class="unity-slider-viewport main-sliders">
-							<div class="unity-slider-container">
+						<div class="vrworld-slider-viewport main-sliders">
+							<div class="vrworld-slider-container">
 								{%- for block in section.blocks -%}
 									{%- liquid
 										assign image             = block.settings.image
@@ -66,7 +66,7 @@
 										assign description       = block.settings.description
 										assign color_scheme_item = block.settings.color_scheme_item
 									-%}
-									<li data-date="{{ block.settings.year}}" data-block-id="{{ block.id }}" class="unity-slide item{% if forloop.index == 1 %} selected{% endif %}">
+									<li data-date="{{ block.settings.year}}" data-block-id="{{ block.id }}" class="vrworld-slide item{% if forloop.index == 1 %} selected{% endif %}">
 										<div class="image-timeline color-{{ color_scheme_item }}">
 											<div class="{% if image == blank %}adapt-svg-placeholder{% endif %}{% if settings.image_lazy and image %} lazy-image{% endif %}">
 												{%- liquid
@@ -96,7 +96,7 @@
 								{%- endfor -%}
 							</div>
 						</div>
-					</unity-slider>
+					</vrworld-slider>
 				</div>
 			</div>
 
@@ -117,8 +117,8 @@
 				</div>
 
 				<div class="cd-timeline-pagination">
-					<button class="controls unity-button-prev prev-mobile" title ="{{ 'general.unity.prev' | t }}-time" aria-label="{{ 'general.unity.prev' | t }}-time" id="{{ 'general.unity.prev' | t }}-time" aria-labelledby="{{ 'general.unity.prev' | t }}-time" disabled>{%- render 'icon', code: 'chevron-left' -%}</button>
-					<button class="controls unity-button-next next-mobile" title ="{{ 'general.unity.next' | t }}-time" aria-label="{{ 'general.unity.next' | t }}-time" id="{{ 'general.unity.next' | t }}-time" aria-labelledby="{{ 'general.unity.next' | t }}-time" disabled>{%- render 'icon', code: 'chevron-right' -%}</button>
+					<button class="controls vrworld-button-prev prev-mobile" title ="{{ 'general.vrworld.prev' | t }}-time" aria-label="{{ 'general.vrworld.prev' | t }}-time" id="{{ 'general.vrworld.prev' | t }}-time" aria-labelledby="{{ 'general.vrworld.prev' | t }}-time" disabled>{%- render 'icon', code: 'chevron-left' -%}</button>
+					<button class="controls vrworld-button-next next-mobile" title ="{{ 'general.vrworld.next' | t }}-time" aria-label="{{ 'general.vrworld.next' | t }}-time" id="{{ 'general.vrworld.next' | t }}-time" aria-labelledby="{{ 'general.vrworld.next' | t }}-time" disabled>{%- render 'icon', code: 'chevron-right' -%}</button>
 				</div>
 			</div>
 		</div>

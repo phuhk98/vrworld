@@ -3,7 +3,7 @@ function setupThumbProgress(section) {
 
 	let getEmbla = (el) => {
 		if (el.slider) return el.slider;
-		let map = window.__unitySliderInstances;
+		let map = window.__vrworldSliderInstances;
 		if (map instanceof Map) {
 			let id = el.closest('[id^="shopify-section-"]')?.id;
 			let inst = id ? map.get(id) : null;
@@ -24,11 +24,11 @@ function setupThumbProgress(section) {
 		});
 	};
 
-	// Get the currently active thumb index based on .unity-thumbs-slide-selected
+	// Get the currently active thumb index based on .vrworld-thumbs-slide-selected
 	let activeIdxFromDOM = (sliderEl, thumbs) => {
-		let slide = sliderEl.querySelector('.unity-thumbs-slide-selected');
+		let slide = sliderEl.querySelector('.vrworld-thumbs-slide-selected');
 		if (!slide) return 0;
-		let btn = slide.querySelector('.unity-thumb-number');
+		let btn = slide.querySelector('.vrworld-thumb-number');
 		let i = thumbs.indexOf(btn);
 		return i >= 0 ? i : 0;
 	};
@@ -41,41 +41,41 @@ function setupThumbProgress(section) {
 		arc.style.setProperty('--deg', (r * 360) + 'deg');
 	};
 
-	// Fallback manual advance if no embla: just move the .unity-thumbs-slide-selected class
+	// Fallback manual advance if no embla: just move the .vrworld-thumbs-slide-selected class
 	let fallbackAdvanceSelectedThumb = (sliderEl, thumbs) => {
 		let cur = activeIdxFromDOM(sliderEl, thumbs);
 		let next = cur + 1;
 		if (next >= thumbs.length) next = 0;
 
 		// remove current selected class from all slides
-		sliderEl.querySelectorAll('.unity-thumbs-slide-selected').forEach((n) => {
-			n.classList.remove('unity-thumbs-slide-selected');
+		sliderEl.querySelectorAll('.vrworld-thumbs-slide-selected').forEach((n) => {
+			n.classList.remove('vrworld-thumbs-slide-selected');
 		});
 
 		// add selected class to the next thumb's wrapper
 		let targetThumb = thumbs[next];
 		if (!targetThumb) return;
-		let wrap = targetThumb.closest('.unity-thumbs-slide');
+		let wrap = targetThumb.closest('.vrworld-thumbs-slide');
 		if (wrap) {
-			wrap.classList.add('unity-thumbs-slide-selected');
+			wrap.classList.add('vrworld-thumbs-slide-selected');
 		}
 	};
 
 	let root = section || document;
 
 	// scope to slideshow-section only
-	let sliders = root.querySelectorAll('.slideshow-section unity-slider');
+	let sliders = root.querySelectorAll('.slideshow-section vrworld-slider');
 
 	sliders.forEach((sliderEl) => {
 		if (sliderEl.__thumbProgressInit) return;
 		sliderEl.__thumbProgressInit = true;
 
 		let embla    = getEmbla(sliderEl);
-		let viewport = sliderEl.querySelector('.unity-slider-viewport');
-		let wrap     = sliderEl.querySelector('.unity-thumbs-slider-container')
+		let viewport = sliderEl.querySelector('.vrworld-slider-viewport');
+		let wrap     = sliderEl.querySelector('.vrworld-thumbs-slider-container')
 		             || sliderEl.querySelector('.thumb-slider')
 		             || sliderEl;
-		let thumbs   = $$(sliderEl, '.unity-thumb-number');
+		let thumbs   = $$(sliderEl, '.vrworld-thumb-number');
 
 		// autoplay duration (ms)
 		let autoplayMs = Number(sliderEl.options?._autoplay) || 5000;
@@ -134,7 +134,7 @@ function setupThumbProgress(section) {
 			});
 		}
 
-		// MutationObserver fallback if theme updates .unity-thumbs-slide-selected manually
+		// MutationObserver fallback if theme updates .vrworld-thumbs-slide-selected manually
 		if (wrap) {
 			let mo = new MutationObserver(() => {
 				setTimeout(restart, 0);
@@ -150,7 +150,7 @@ function setupThumbProgress(section) {
 
 		// Manual thumb click should also restart timer
 		sliderEl.addEventListener('click', (e) => {
-			if (e.target.closest('.unity-thumb-number')) {
+			if (e.target.closest('.vrworld-thumb-number')) {
 				setTimeout(restart, 0);
 			}
 		});

@@ -23,7 +23,7 @@
 			padding-bottom: {{ section.settings.padding_bottom }}px;
 		}
 
-		{{ section_id }} .unity-slider {
+		{{ section_id }} .vrworld-slider {
 			--slide-size: calc(100% / {{ column }});
 		}
 	}
@@ -34,7 +34,7 @@
 
 	@media (max-width: 991px) {
 		{% if section.settings.columns_mobile == '2' %}
-			{{ section_id }} .unity-slider {
+			{{ section_id }} .vrworld-slider {
 				--slide-size: calc(93% / 2);
 			}
 		{% endif %}
@@ -61,21 +61,21 @@
 		{%- endif -%}
 
 		<div class="blog-posts-content{% if animation %} scroll-trigger{% endif %}">
-			<unity-slider class="unity-slider">
+			<vrworld-slider class="vrworld-slider">
 				<template data-options>
 					{
 						"align": "start",
 						"_autoheight": true,
 						"_fade": false,
-						"_prevBtn": "{{ section_id }} .unity-button-prev",
-						"_nextBtn": "{{ section_id }} .unity-button-next"
+						"_prevBtn": "{{ section_id }} .vrworld-button-prev",
+						"_nextBtn": "{{ section_id }} .vrworld-button-next"
 					}
 				</template>
 
-				<div class="unity-slider-viewport">
-					<div class="unity-slider-container">
+				<div class="vrworld-slider-viewport">
+					<div class="vrworld-slider-container">
 						{%- for article in blog.articles limit: total -%}
-							<div class="unity-slide {{ section.settings.card_layout }}-item" data-{{ forloop.index0 }} {% if request.design_mode %} data-index="{{ forloop.index0 }}"{% endif %}>
+							<div class="vrworld-slide {{ section.settings.card_layout }}-item" data-{{ forloop.index0 }} {% if request.design_mode %} data-index="{{ forloop.index0 }}"{% endif %}>
 								<div class="border-large color-{{ section.settings.post_color_scheme }}">
 									<article class="article-card{% if animation %} scroll-trigger{% endif %}">
 										<div class="article-media-wrap">
@@ -180,7 +180,7 @@
 							</div>
 						{%- else -%}
 							{%- for i in (1..total) -%}
-								<div class="unity-slide {{ section.settings.card_layout }}-item" data-{{ forloop.index0 }}>
+								<div class="vrworld-slide {{ section.settings.card_layout }}-item" data-{{ forloop.index0 }}>
 									<article class="article-card border-large color-{{ section.settings.post_color_scheme }}">
 										<div class="article-media-wrap">
 											<div class="article-image adapt-media">
@@ -226,7 +226,7 @@
 						{%- endfor -%}
 					</div>
 				</div>
-			</unity-slider>
+			</vrworld-slider>
 
 			{%- if section.settings.button_text != blank -%}
 				<a class="button primary-button view-all-btn" href="{{ section.settings.blog.url | default: '#' }}" aria-label="{{- 'general.text.link' | t -}}">

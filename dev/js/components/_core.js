@@ -2950,7 +2950,7 @@ function btyProductTabs(doc = document, event = {}) {
 			index  = el.getAttribute('data-index'),
 			tab    = wrap.querySelector('.tab-content[data-index="' + index + '"]'),
 			slide  = wrap.querySelector('.product-main-slide:nth-child(' + index + ')'), // slide tương ứng
-			arrows = wrap.querySelector('.unity-arrows[data-index="' + index + '"]');
+			arrows = wrap.querySelector('.vrworld-arrows[data-index="' + index + '"]');
 
 		if (!tab) return;
 
@@ -2967,7 +2967,7 @@ function btyProductTabs(doc = document, event = {}) {
 			let navActived    = wrap.querySelector('.tab-head.active'),
 				tabActived    = wrap.querySelector('.tab-content.active'),
 				slideActived  = wrap.querySelector('.product-main-slide.active'),
-				arrowsActived = wrap.querySelector('.unity-arrows.active');
+				arrowsActived = wrap.querySelector('.vrworld-arrows.active');
 
 			// Remove active
 			if (navActived) navActived.classList.remove('active');

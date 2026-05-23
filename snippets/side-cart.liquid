@@ -203,33 +203,33 @@
 										</h6>
 									{%- endif -%}
 
-									<div class="unity-arrows">
-										<button class="unity-button unity-button-prev" title ="{{ 'general.unity.prev' | t }}-side" aria-label="{{ 'general.unity.prev' | t }}-side" id="{{ 'general.unity.prev' | t }}-side" aria-labelledby="{{ 'general.unity.prev' | t }}-side" disabled>
+									<div class="vrworld-arrows">
+										<button class="vrworld-button vrworld-button-prev" title ="{{ 'general.vrworld.prev' | t }}-side" aria-label="{{ 'general.vrworld.prev' | t }}-side" id="{{ 'general.vrworld.prev' | t }}-side" aria-labelledby="{{ 'general.vrworld.prev' | t }}-side" disabled>
 											{%- render 'icon', code: 'chevron-left' -%}
 										</button>
 
-										<button class="unity-button unity-button-next" title ="{{ 'general.unity.next' | t }}-side" aria-label="{{ 'general.unity.next' | t }}-side" id="{{ 'general.unity.next' | t }}-side" aria-labelledby="{{ 'general.unity.next' | t }}-side" disabled>
+										<button class="vrworld-button vrworld-button-next" title ="{{ 'general.vrworld.next' | t }}-side" aria-label="{{ 'general.vrworld.next' | t }}-side" id="{{ 'general.vrworld.next' | t }}-side" aria-labelledby="{{ 'general.vrworld.next' | t }}-side" disabled>
 											{%- render 'icon', code: 'chevron-right' -%}
 										</button>
 									</div>
 								</div>
 
-								<unity-slider class="unity-slider">
+								<vrworld-slider class="vrworld-slider">
 									<template data-options>
 										{
 											"align": "start",
 											"_autoheight": true,
 											"_fade": false,
-											"_prevBtn": ".side-cart .unity-button-prev",
-											"_nextBtn": ".side-cart .unity-button-next"
+											"_prevBtn": ".side-cart .vrworld-button-prev",
+											"_nextBtn": ".side-cart .vrworld-button-next"
 										}
 									</template>
 
-									<div class="unity-slider-viewport">
-										<div class="unity-slider-container">
+									<div class="vrworld-slider-viewport">
+										<div class="vrworld-slider-container">
 											{%- if settings.card_product_recommendations != blank -%}
 												{%- for product in settings.card_product_recommendations limit: settings.cart_recommendations_limit -%}
-													<div class="unity-slide">
+													<div class="vrworld-slide">
 														<div class="product-card">
 															{%- liquid
 																assign featured_image = product.selected_or_first_available_variant.featured_image | default: product.featured_media
@@ -272,11 +272,11 @@
 																<input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}">
 
 																{%- if product.available -%}
-																	<button type="submit" name="add" class="button primary-button add-to-cart-button" title ="{{ 'general.unity.prev' | t }}-s" aria-label="{{ 'general.unity.prev' | t }}sd" id="{{ 'general.unity.prev' | t }}{{ forloop.index }}" aria-labelledby="{{ 'general.unity.prev' | t }}sdce">
+																	<button type="submit" name="add" class="button primary-button add-to-cart-button" title ="{{ 'general.vrworld.prev' | t }}-s" aria-label="{{ 'general.vrworld.prev' | t }}sd" id="{{ 'general.vrworld.prev' | t }}{{ forloop.index }}" aria-labelledby="{{ 'general.vrworld.prev' | t }}sdce">
 																		{{- 'sections.testimonial.add' | t -}}
 																	</button>
 																{%- else -%}
-																	<button type="submit" name="add" class="button primary-button add-to-cart-button" title ="{{ 'general.unity.prev' | t }}-add" aria-label="{{ 'general.unity.prev' | t }}-add" id="{{ 'general.unity.prev' | t }}-add" aria-labelledby="{{ 'general.unity.prev' | t }}-add" disabled>
+																	<button type="submit" name="add" class="button primary-button add-to-cart-button" title ="{{ 'general.vrworld.prev' | t }}-add" aria-label="{{ 'general.vrworld.prev' | t }}-add" id="{{ 'general.vrworld.prev' | t }}-add" aria-labelledby="{{ 'general.vrworld.prev' | t }}-add" disabled>
 																		{{- 'products.product.sold_out' | t -}}
 																	</button>
 																{%- endif -%}
@@ -291,7 +291,7 @@
 												{%- endfor -%}
 											{%- else -%}
 												{%- for product in recommendations.products limit: settings.cart_recommendations_limit -%}
-													<div class="unity-slide">
+													<div class="vrworld-slide">
 														<div class="product-card">
 															{%- liquid
 																assign featured_image = product.selected_or_first_available_variant.featured_image | default: product.featured_media
@@ -334,11 +334,11 @@
 																<input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}">
 
 																{%- if product.available -%}
-																	<button type="submit" name="add" class="button primary-button add-to-cart-button" title ="{{ 'general.unity.prev' | t }}" aria-label="{{ 'general.unity.prev' | t }}" id="{{ 'general.unity.prev' | t }}" aria-labelledby="{{ 'general.unity.prev' | t }}">
+																	<button type="submit" name="add" class="button primary-button add-to-cart-button" title ="{{ 'general.vrworld.prev' | t }}" aria-label="{{ 'general.vrworld.prev' | t }}" id="{{ 'general.vrworld.prev' | t }}" aria-labelledby="{{ 'general.vrworld.prev' | t }}">
 																		{{- 'sections.testimonial.add' | t -}}
 																	</button>
 																{%- else -%}
-																	<button type="submit" name="add" class="button primary-button add-to-cart-button" title ="{{ 'general.unity.prev' | t }}" aria-label="{{ 'general.unity.prev' | t }}" id="{{ 'general.unity.prev' | t }}" aria-labelledby="{{ 'general.unity.prev' | t }}" disabled>
+																	<button type="submit" name="add" class="button primary-button add-to-cart-button" title ="{{ 'general.vrworld.prev' | t }}" aria-label="{{ 'general.vrworld.prev' | t }}" id="{{ 'general.vrworld.prev' | t }}" aria-labelledby="{{ 'general.vrworld.prev' | t }}" disabled>
 																		{{- 'products.product.sold_out' | t -}}
 																	</button>
 																{%- endif -%}
@@ -354,7 +354,7 @@
 											{%- endif -%}
 										</div>
 									</div>
-								</unity-slider>
+								</vrworld-slider>
 							{%- endif -%}
 						</div>
 					</div>

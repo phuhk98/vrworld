@@ -1,10 +1,10 @@
 [
 	{
 		"name": "theme_info",
-		"theme_name": "Unity",
-		"theme_version": "1.0.3",
-		"theme_author": "BoostifyThemes",
-		"theme_documentation_url": "https:\/\/boostifythemes.com\/docs\/unity",
+		"theme_name": "Vrworld",
+		"theme_version": "1.0.0",
+		"theme_author": "19Themes",
+		"theme_documentation_url": "https:\/\/boostifythemes.com\/docs\/vrworld",
 		"theme_support_url": "https:\/\/boostifythemes.com\/contact"
 	},
 	{
@@ -40,12 +40,6 @@
 				"id": "image_lazy",
 				"label": "t:settings_schema.general.settings.image_lazy.label",
 				"default": true
-			},
-			{
-				"type": "checkbox",
-				"id": "cursor_second",
-				"label": "t:settings_schema.general.settings.cursor_second.label",
-				"default": false
 			},
 			{
 				"type": "checkbox",
@@ -223,7 +217,7 @@
 			{
 				"type": "font_picker",
 				"id": "body_font",
-				"default": "inter_n5",
+				"default": "lato_n5",
 				"label": "t:settings_schema.typography.settings.body_font.label",
 				"info": "t:settings_schema.typography.settings.body_font.info"
 			},
@@ -244,7 +238,7 @@
 			{
 				"type": "font_picker",
 				"id": "heading_font",
-				"default": "poppins_n7",
+				"default": "eurostile_next_n7",
 				"label": "t:settings_schema.typography.settings.heading_font.label",
 				"info": "t:settings_schema.typography.settings.heading_font.info"
 			},
@@ -265,7 +259,7 @@
 			{
 				"type": "font_picker",
 				"id": "third_font",
-				"default": "source_code_pro_n7",
+				"default": "eurostile_next_n7",
 				"label": "t:settings_schema.typography.settings.third_font.label",
 				"info": "t:settings_schema.typography.settings.third_font.info"
 			},

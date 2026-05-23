@@ -28,7 +28,7 @@
 	}
 
 	{%- if height != 'auto' -%}
-		{{ section_id }} .theme-slider.height-{{ height }} .unity-slide {
+		{{ section_id }} .theme-slider.height-{{ height }} .vrworld-slide {
 			height: {{ height_value }};
 		}
 	{%- endif -%}
@@ -43,7 +43,7 @@
 			}
 		}
 
-		{{ section_id }} .unity-slide[data-{{ block.id }}] .slider-image:before {
+		{{ section_id }} .vrworld-slide[data-{{ block.id }}] .slider-image:before {
 			content: '';
 			background: linear-gradient(to bottom,{%- if overlay_opacity == 100 -%}rgb(0,0,0){%- else -%}rgba(0,0,0,0.{{ overlay_opacity }}){%- endif -%},{%- if overlay_opacity == 100 -%}rgb(0,0,0){%- else -%}rgba(0,0,0,0.{{ overlay_opacity }}){%- endif -%});
 		}
@@ -57,16 +57,16 @@
 <div class="section-wrapper color-{{ section.settings.color_scheme }}">
 	<div class="{% if full %}stretch-section{% else %}container{% endif %}">
 		<div class="theme-slider height-{{ height }}">
-			<unity-slider class="unity-slider">
+			<vrworld-slider class="vrworld-slider">
 				<template data-options>
 					{
 						"loop": true,
 						"_autoplay": {{ 5 | times: 1000 }},
 						"_autoheight": true,
 						"_fade": false,
-						"_prevBtn": "{{ section_id }} .unity-button-prev",
-						"_nextBtn": "{{ section_id }} .unity-button-next",
-						"_dotsNode": "{{ section_id }} .unity-dots"
+						"_prevBtn": "{{ section_id }} .vrworld-button-prev",
+						"_nextBtn": "{{ section_id }} .vrworld-button-next",
+						"_dotsNode": "{{ section_id }} .vrworld-dots"
 					}
 				</template>
 
@@ -77,10 +77,10 @@
 					}
 				</template>
 
-				<div class="unity-slider-viewport">
-					<div class="unity-slider-container">
+				<div class="vrworld-slider-viewport">
+					<div class="vrworld-slider-container">
 						{%- for block in section.blocks -%}
-							<div class="unity-slide no-content{% if animation and forloop.index == 1 %} scroll-trigger{% endif %}" data-id="{{ block.id }}" data-{{ block.id }} {{ block.shopify_attributes }} {% if request.design_mode %} data-index="{{ forloop.index0 }}"{% endif %}>
+							<div class="vrworld-slide no-content{% if animation and forloop.index == 1 %} scroll-trigger{% endif %}" data-id="{{ block.id }}" data-{{ block.id }} {{ block.shopify_attributes }} {% if request.design_mode %} data-index="{{ forloop.index0 }}"{% endif %}>
 								{%- case block.type -%}
 									{%- when '@app' -%}
 										{%- render block -%}
@@ -157,11 +157,11 @@
 
 				<div class="slider-pagination{% if full %} container{% endif %}">
 					<div class="thumb-slider">
-						<div class="unity-thumbs-slider-viewport" tabindex="-1">
-							<div class="unity-thumbs-slider-container">
+						<div class="vrworld-thumbs-slider-viewport" tabindex="-1">
+							<div class="vrworld-thumbs-slider-container">
 								{%- for block in section.blocks -%}
-									<div class="unity-thumbs-slide unity-thumbs-slide-selected" {{ block.shopify_attributes }}>
-										<button class="unity-thumb-number">
+									<div class="vrworld-thumbs-slide vrworld-thumbs-slide-selected" {{ block.shopify_attributes }}>
+										<button class="vrworld-thumb-number">
 											<span class="progress-arc" aria-hidden="true"></span>
 											<span class="thumb-number">{{ forloop.index }}</span>
 										</button>
@@ -171,7 +171,7 @@
 						</div>
 					</div>
 				</div>
-			</unity-slider>
+			</vrworld-slider>
 		</div>
 	</div>
 </div>

@@ -6,7 +6,7 @@
 		gap: 1rem;
 	}
 
-	.unity-slider {
+	.vrworld-slider {
 		--slide-spacing: var(--grid-mobile-vertical);
 		--slide-size: 93%;
 	}
@@ -24,14 +24,14 @@
 
 	}
 
-	.unity-arrows {
+	.vrworld-arrows {
 		position: relative;
 		display: inline-flex;
 		align-items: center;
 		gap: 0.8rem;
 
-		.unity-button-prev,
-		.unity-button-next {
+		.vrworld-button-prev,
+		.vrworld-button-next {
 			position: static;
 			transform: none;
 			color: rgba(var(--text-color));
@@ -82,9 +82,11 @@
 
 	}
 
-	@media (min-width: 992px) {
-		.unity-slider {
+	@media (min-width:992px) {
+		.vrworld-slider {
 			--slide-spacing: var(--grid-vertical);
 		}
+
 	}
+
 }

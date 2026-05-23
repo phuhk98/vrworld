@@ -9,7 +9,9 @@
 		.quick-view-inner {
 			transform: translateY(0);
 		}
+
 	}
+
 }
 
 .quick-view {
@@ -42,7 +44,8 @@
 		left: 2.4rem;
 		justify-content: center;
 		flex-direction: column;
-		.unity-thumbs-slider-viewport {
+
+		.vrworld-thumbs-slider-viewport {
 			pointer-events: all;
 			margin-top: 0;
 			display: flex;
@@ -50,29 +53,37 @@
 			height: 31.23rem;
 			position: relative;
 			width: 100%;
-			.unity-thumbs-slider-container {
+
+			.vrworld-thumbs-slider-container {
 				flex-direction: column;
 				height: 100%;
 				top: 0;
 				gap: 0.8rem;
 				width: 100%;
-				.unity-thumbs-slide {
+
+				.vrworld-thumbs-slide {
 					flex: 0 0 calc(33.3% - 0.5rem);
+
 					&.selected {
 						.media-preview-wrap {
 							border-radius: 0.8rem;
 							border-color: rgb(var(--text-color));
 						}
+
 					}
+
 				}
 
 				.media-preview-wrap {
 					border-radius: 0.8rem;
 					border-color: rgb(var(--text-color), 0.2);
 				}
+
 			}
+
 		}
-		.unity-arrows {
+
+		.vrworld-arrows {
 			pointer-events: none;
 			position: absolute;
 			width: 9.5rem;
@@ -80,7 +91,8 @@
 			display: flex;
 			justify-content: space-between;
 			flex-direction: column;
-			.unity-button {
+
+			.vrworld-button {
 				width: 100%;
 				height: 3.2rem;
 				pointer-events: all;
@@ -90,18 +102,25 @@
 				transform: none;
 				border-radius: 0.8rem;
 				border: none;
+
 				&:hover {
 					color: rgb(var(--text-color));
 					background-color: #0000;
+
 					svg {
 						color: rgba(var(--text-color));
 					}
+
 				}
-				&.unity-button-next {
+
+				&.vrworld-button-next {
 					transform: rotate(180deg);
 				}
+
 			}
+
 		}
+
 	}
 
 	&.loading {
@@ -113,6 +132,7 @@
 			opacity: 0;
 			visibility: hidden;
 		}
+
 	}
 
 	.quick-view-inner {
@@ -122,33 +142,33 @@
 		margin-left: 1.5rem;
 		margin-right: 1.5rem;
 		border-radius: 0.6rem;
-		transition:
-			opacity 0.3s,
-			visibility 0.3s,
-			transform 0.3s;
+		transition: opacity 0.3s, visibility 0.3s, transform 0.3s;
 
-		@media (min-width: 1054px) {
+		@media (min-width:1054px) {
 			width: 1000px;
 			height: 70rem;
 			max-width: 80vw;
 			max-height: 90vh;
 		}
 
-		@media (max-width: 1053px) {
+		@media (max-width:1053px) {
 			margin: 15px;
 			height: calc(100% - 30px);
 			width: calc(100% - 30px);
 		}
 
-		@media (hover: hover) {
+		@media (hover:hover) {
 			&:hover {
 				.quick-view-close {
 					opacity: 1;
 					visibility: visible;
 					transform: translate(0, 0);
 				}
+
 			}
+
 		}
+
 	}
 
 	.quick-view-close {
@@ -176,11 +196,12 @@
 			height: 1rem;
 		}
 
-		@media (max-width: 991px) {
+		@media (max-width:991px) {
 			opacity: 1;
 			visibility: visible;
 			transform: translateY(0);
 		}
+
 	}
 
 	.quick-view-content {
@@ -190,9 +211,10 @@
 		height: 100%;
 		border-radius: 0.6rem;
 
-		@media (max-width: 991px) {
+		@media (max-width:991px) {
 			overflow: auto;
 		}
+
 	}
 
 	// Gallery
@@ -200,13 +222,14 @@
 		position: relative;
 		width: 100%;
 
-		@media (min-width: 992px) {
+		@media (min-width:992px) {
 			height: 100%;
 			width: 50%;
 
 			.swiper-wrapper {
 				display: flex;
 			}
+
 		}
 
 		.swiper {
@@ -226,6 +249,7 @@
 				width: 1.3rem;
 				height: 1.3rem;
 			}
+
 		}
 
 		.swiper-button-prev {
@@ -235,6 +259,7 @@
 		.swiper-button-next {
 			right: 2rem;
 		}
+
 	}
 
 	// Summary
@@ -243,7 +268,7 @@
 		overflow-y: auto;
 		margin-bottom: 0;
 
-		@media (min-width: 992px) {
+		@media (min-width:992px) {
 			padding: 5rem;
 			height: 100%;
 			width: 50%;
@@ -261,10 +286,11 @@
 			margin-top: 0;
 			margin-bottom: 2.4rem;
 
-			@media (min-width: 992px) {
+			@media (min-width:992px) {
 				font-size: 3.6rem;
 				line-height: 4rem;
 			}
+
 		}
 
 		.quantity {
@@ -273,6 +299,7 @@
 			.quantity-button {
 				width: 2.5rem;
 			}
+
 		}
 
 		.product-price-wrap {
@@ -301,6 +328,7 @@
 				min-width: 3.6rem;
 				min-height: 3.6rem;
 			}
+
 		}
 
 		.product-buy {
@@ -312,9 +340,11 @@
 			padding: 1.2rem 3.2rem;
 			font-weight: 700;
 			margin-bottom: 0;
+
 			.product-price {
 				font-size: 1.4rem;
 			}
+
 		}
 
 		[data-shopify='payment-button'] {
@@ -325,5 +355,7 @@
 			position: relative;
 			z-index: 5;
 		}
+
 	}
+
 }

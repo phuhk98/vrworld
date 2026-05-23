@@ -1,6 +1,6 @@
 const fs          = require( 'fs' );
 const archiver    = require( 'archiver' );
-const theme_name  = 'unity';
+const theme_name  = 'vrworld';
 let theme_version = false;
 
 try {

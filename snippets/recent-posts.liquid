@@ -8,35 +8,35 @@
 			<h2 class="heading">{{- recent_posts_heading -}}</h2>
 		{%- endif -%}
 
-		<div class="unity-arrows hidden-mobile">
-			<button class="unity-button unity-button-prev" title ="{{ 'general.unity.prev' | t }}-recently" aria-label="{{ 'general.unity.prev' | t }}-recently" id="{{ 'general.unity.prev' | t }}-recently" aria-labelledby="{{ 'general.unity.prev' | t }}-recently" disabled>
+		<div class="vrworld-arrows hidden-mobile">
+			<button class="vrworld-button vrworld-button-prev" title ="{{ 'general.vrworld.prev' | t }}-recently" aria-label="{{ 'general.vrworld.prev' | t }}-recently" id="{{ 'general.vrworld.prev' | t }}-recently" aria-labelledby="{{ 'general.vrworld.prev' | t }}-recently" disabled>
 				{%- render 'icon', code: 'chevron-left' -%}
 			</button>
 
-			<button class="unity-button unity-button-next" title ="{{ 'general.unity.next' | t }}-recently" aria-label="{{ 'general.unity.next' | t }}-recently" id="{{ 'general.unity.next' | t }}-recently" aria-labelledby="{{ 'general.unity.next' | t }}-recently" disabled>
+			<button class="vrworld-button vrworld-button-next" title ="{{ 'general.vrworld.next' | t }}-recently" aria-label="{{ 'general.vrworld.next' | t }}-recently" id="{{ 'general.vrworld.next' | t }}-recently" aria-labelledby="{{ 'general.vrworld.next' | t }}-recently" disabled>
 				{%- render 'icon', code: 'chevron-right' -%}
 			</button>
 		</div>
 	</div>
 
 	<div class="recent-posts-content">
-		<unity-slider class="unity-slider">
+		<vrworld-slider class="vrworld-slider">
 			<template data-options>
 				{
 					"align": "start",
 					"_autoheight": true,
 					"_fade": false,
-					"_prevBtn": "{{ section_id }} .recent-posts .unity-button-prev",
-					"_nextBtn": "{{ section_id }} .recent-posts .unity-button-next"
+					"_prevBtn": "{{ section_id }} .recent-posts .vrworld-button-prev",
+					"_nextBtn": "{{ section_id }} .recent-posts .vrworld-button-next"
 				}
 			</template>
 
-			<div class="unity-slider-viewport">
-				<div class="unity-slider-container">
+			<div class="vrworld-slider-viewport">
+				<div class="vrworld-slider-container">
 					{%- assign articleid = article.id -%}
 					{%- for article in blog.articles limit: total -%}
 						{% if article.id != articleid %}
-							<div class="unity-slide" data-id="{{ block.id }}" data-{{ forloop.index0 }} {% if request.design_mode %} data-index="{{ forloop.index0 }}"{% endif %} {{ block.shopify_attributes }}>
+							<div class="vrworld-slide" data-id="{{ block.id }}" data-{{ forloop.index0 }} {% if request.design_mode %} data-index="{{ forloop.index0 }}"{% endif %} {{ block.shopify_attributes }}>
 								<article class="article-card border-large color-{{ section.settings.recent_posts_color_scheme }}">
 									{%- liquid
 										assign article_image = article.image
@@ -109,6 +109,6 @@
 					{%- endfor -%}
 				</div>
 			</div>
-		</unity-slider>
+		</vrworld-slider>
 	</div>
 </div>

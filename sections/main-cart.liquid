@@ -23,12 +23,12 @@
 		padding-bottom: {{ section.settings.padding_bottom_mobile }}px;
 	}
 
-	{{ section_id }} .unity-slider{
+	{{ section_id }} .vrworld-slider{
 		--slide-size: 100%;
 		--slide-spacing: 1rem;
 	}
 	@media (min-width: 992px) {
-		{{ section_id }} .unity-slider{
+		{{ section_id }} .vrworld-slider{
 			--slide-size: calc(100% / 2);
 			--slide-spacing: 1rem;
 		}
@@ -305,19 +305,19 @@
 										{%- endif -%}
 
 										{%- if show_arrows -%}
-											<div class="unity-arrows">
-												<button class="unity-button unity-button-prev" title ="{{ 'general.unity.prev' | t }}-cart" aria-label="{{ 'general.unity.prev' | t }}-cart" id="{{ 'general.unity.prev' | t }}-cart" aria-labelledby="{{ 'general.unity.prev' | t }}-cart" disabled>
+											<div class="vrworld-arrows">
+												<button class="vrworld-button vrworld-button-prev" title ="{{ 'general.vrworld.prev' | t }}-cart" aria-label="{{ 'general.vrworld.prev' | t }}-cart" id="{{ 'general.vrworld.prev' | t }}-cart" aria-labelledby="{{ 'general.vrworld.prev' | t }}-cart" disabled>
 													{%- render 'icon', code: 'chevron-left' -%}
 												</button>
 
-												<button class="unity-button unity-button-next" title ="{{ 'general.unity.next' | t }}-cart" aria-label="{{ 'general.unity.next' | t }}-cart" id="{{ 'general.unity.next' | t }}-cart" aria-labelledby="{{ 'general.unity.next' | t }}-cart" disabled>
+												<button class="vrworld-button vrworld-button-next" title ="{{ 'general.vrworld.next' | t }}-cart" aria-label="{{ 'general.vrworld.next' | t }}-cart" id="{{ 'general.vrworld.next' | t }}-cart" aria-labelledby="{{ 'general.vrworld.next' | t }}-cart" disabled>
 													{%- render 'icon', code: 'chevron-right' -%}
 												</button>
 											</div>
 										{%- endif -%}
 									</div>
 
-									<unity-slider class="unity-slider">
+									<vrworld-slider class="vrworld-slider">
 										<template data-options>
 											{
 												{%- if section.settings.loop -%}
@@ -334,21 +334,21 @@
 												{%- comment -%} Attr options {%- endcomment -%}
 												"_autoheight": true,
 												"_fade": false,
-												"_prevBtn": "{{ section_id }} .unity-button-prev",
-												"_nextBtn": "{{ section_id }} .unity-button-next"
+												"_prevBtn": "{{ section_id }} .vrworld-button-prev",
+												"_nextBtn": "{{ section_id }} .vrworld-button-next"
 											}
 										</template>
 
-										<div class="unity-slider-viewport main-sliders">
-											<div class="unity-slider-container">
+										<div class="vrworld-slider-viewport main-sliders">
+											<div class="vrworld-slider-container">
 												{%- for product in search.results -%}
-													<div class="unity-slide{% if animation %} scroll-trigger{% endif %}">
+													<div class="vrworld-slide{% if animation %} scroll-trigger{% endif %}">
 														{%- render 'product-card-cart-page', product: product, index: forloop.index -%}
 													</div>
 												{%- endfor -%}
 											</div>
 										</div>
-									</unity-slider>
+									</vrworld-slider>
 								{%- endif -%}
 							</div>
 						{%- endif -%}

@@ -14,13 +14,13 @@ class LookbookSync extends HTMLElement {
 	}
 
 	bindEmbla() {
-		const unitySlider = this.querySelector('unity-slider');
-		if (!unitySlider || !unitySlider.thumbSlider) {
+		const vrworldSlider = this.querySelector('vrworld-slider');
+		if (!vrworldSlider || !vrworldSlider.thumbSlider) {
 			requestAnimationFrame(() => this.bindEmbla());
 			return;
 		}
 
-		this.thumbSlider = unitySlider.thumbSlider;
+		this.thumbSlider = vrworldSlider.thumbSlider;
 	}
 
 	onClick(e) {
@@ -51,11 +51,11 @@ class LookbookSync extends HTMLElement {
 	}
 
 	syncThumbs(index) {
-		const thumbs = this.querySelectorAll('.unity-thumbs-slide');
+		const thumbs = this.querySelectorAll('.vrworld-thumbs-slide');
 		thumbs.forEach((thumb) => {
 			const isMatch = Number(thumb.dataset.index) === index;
 			thumb.classList.toggle('selected', isMatch);
-			thumb.classList.toggle('unity-thumbs-slide-selected', isMatch);
+			thumb.classList.toggle('vrworld-thumbs-slide-selected', isMatch);
 		});
 	}
 }

@@ -574,26 +574,26 @@
 									<div class="complementary-content">
 										<div class="complementary-products ">
 											<div class="complementary-products-inner">
-												<unity-slider class="unity-slider" data-slider-id="slider-1">
+												<vrworld-slider class="vrworld-slider" data-slider-id="slider-1">
 													<template data-options>
 														{
 															"duration": 25,
 															"_autoheight": true,
 															"_fade": true,
-															"_prevBtn": ".unity-button-prev",
-															"_nextBtn": ".unity-button-next"
+															"_prevBtn": ".vrworld-button-prev",
+															"_nextBtn": ".vrworld-button-next"
 														}
 													</template>
 
-													<div class="unity-slider-viewport">
-														<div class="unity-slider-container">
+													<div class="vrworld-slider-viewport">
+														<div class="vrworld-slider-container">
 															{%- for product in recommendations.products limit: limit -%}
-																<div class="unity-slide" data-id="{{ recommendations.products.id }}">
+																<div class="vrworld-slide" data-id="{{ recommendations.products.id }}">
 																	{%- render 'product-card-complementary', product: product, index: forloop.index -%}
 																</div>
 															{%- else -%}
 																{%- for i in (1..4) -%}
-																	<div class="unity-slide">
+																	<div class="vrworld-slide">
 																		{%- render 'product-card-placeholder', index: forloop.index -%}
 																	</div>
 																{%- endfor -%}
@@ -601,17 +601,17 @@
 														</div>
 													</div>
 													<div class="control-banner-product-slider arrow-small">
-														<div class="unity-arrows" data-slider-id="slider-1">
-															<button class="unity-button complementary-content unity-button-prev" title ="{{ 'general.unity.prev' | t }}-smr" aria-label="{{ 'general.unity.prev' | t }}-smr" id="{{ 'general.unity.prev' | t }}-smr" aria-labelledby="{{ 'general.unity.prev' | t }}-smr">
+														<div class="vrworld-arrows" data-slider-id="slider-1">
+															<button class="vrworld-button complementary-content vrworld-button-prev" title ="{{ 'general.vrworld.prev' | t }}-smr" aria-label="{{ 'general.vrworld.prev' | t }}-smr" id="{{ 'general.vrworld.prev' | t }}-smr" aria-labelledby="{{ 'general.vrworld.prev' | t }}-smr">
 																{%- render 'icon', code: 'chevron-left' -%}
 															</button>
 
-															<button class="unity-button complementary-content unity-button-next" title ="{{ 'general.unity.next' | t }}-smr" aria-label="{{ 'general.unity.next' | t }}-smr" id="{{ 'general.unity.next' | t }}-smr" aria-labelledby="{{ 'general.unity.next' | t }}-smr">
+															<button class="vrworld-button complementary-content vrworld-button-next" title ="{{ 'general.vrworld.next' | t }}-smr" aria-label="{{ 'general.vrworld.next' | t }}-smr" id="{{ 'general.vrworld.next' | t }}-smr" aria-labelledby="{{ 'general.vrworld.next' | t }}-smr">
 																{%- render 'icon', code: 'chevron-right' -%}
 															</button>
 														</div>
 													</div>
-												</unity-slider>
+												</vrworld-slider>
 											</div>
 										</div>
 									</div>

@@ -15,7 +15,7 @@
 		padding-bottom: {{ section.settings.padding_bottom_mobile }}px;
 	}
 
-	{{ section_id }} .unity-slider {
+	{{ section_id }} .vrworld-slider {
 		--slide-size: 93%;
 	}
 
@@ -25,7 +25,7 @@
 			padding-bottom: {{ section.settings.padding_bottom }}px;
 		}
 
-		{{ section_id }} .unity-slider {
+		{{ section_id }} .vrworld-slider {
 			--slide-size: calc( 100% / {{ columns  }});
 			--slide-spacing: 0.8rem;
 		}
@@ -146,7 +146,7 @@
 					{%- for block in section.blocks -%}
 						{%- assign collection = block.settings.collection -%}
 							<div class="product-main-slide{% if forloop.index == 1 %} active{% endif %}">
-								<unity-slider class="unity-slider">
+								<vrworld-slider class="vrworld-slider">
 									<template data-options>
 										{
 											{%- if section.settings.loop -%}
@@ -161,31 +161,31 @@
 											"_autoheight": true,
 											"_fade": false,
 											"speed": 10,
-											"_prevBtn": "{{ section_id }} .unity-button-prev",
-											"_nextBtn": "{{ section_id }} .unity-button-next",
-											"_dotsNode": "{{ section_id }} .unity-dots"
+											"_prevBtn": "{{ section_id }} .vrworld-button-prev",
+											"_nextBtn": "{{ section_id }} .vrworld-button-next",
+											"_dotsNode": "{{ section_id }} .vrworld-dots"
 										}
 									</template>
 
-									<div class="unity-arrows {% if forloop.index == 1 %} active{% endif %}" data-index="{{ forloop.index }}">
-										<button class="unity-button unity-button-prev" title ="{{ 'general.unity.prev' | t }}-feature-clt" aria-label="{{ 'general.unity.prev' | t }}-feature-clt" id="{{ 'general.unity.prev' | t }}-feature-clt" aria-labelledby="{{ 'general.unity.prev' | t }}-feature-clt" disabled>
+									<div class="vrworld-arrows {% if forloop.index == 1 %} active{% endif %}" data-index="{{ forloop.index }}">
+										<button class="vrworld-button vrworld-button-prev" title ="{{ 'general.vrworld.prev' | t }}-feature-clt" aria-label="{{ 'general.vrworld.prev' | t }}-feature-clt" id="{{ 'general.vrworld.prev' | t }}-feature-clt" aria-labelledby="{{ 'general.vrworld.prev' | t }}-feature-clt" disabled>
 											{%- render 'icon', code: 'chevron-left' -%}
 										</button>
 
-										<button class="unity-button unity-button-next" title ="{{ 'general.unity.next' | t }}-feature-clt" aria-label="{{ 'general.unity.next' | t }}-feature-clt" id="{{ 'general.unity.next' | t }}-feature-clt" aria-labelledby="{{ 'general.unity.next' | t }}-feature-clt" disabled>
+										<button class="vrworld-button vrworld-button-next" title ="{{ 'general.vrworld.next' | t }}-feature-clt" aria-label="{{ 'general.vrworld.next' | t }}-feature-clt" id="{{ 'general.vrworld.next' | t }}-feature-clt" aria-labelledby="{{ 'general.vrworld.next' | t }}-feature-clt" disabled>
 											{%- render 'icon', code: 'chevron-right' -%}
 										</button>
 									</div>
 
-									<div class="unity-slider-viewport">
-										<div class="unity-slider-container tab-content{% if forloop.index == 1 %} active{% endif %}" data-id="{{ block.id }}" data-index="{{ forloop.index }}">
+									<div class="vrworld-slider-viewport">
+										<div class="vrworld-slider-container tab-content{% if forloop.index == 1 %} active{% endif %}" data-id="{{ block.id }}" data-index="{{ forloop.index }}">
 											{%- for product in collection.products limit: total -%}
-												<div class="unity-slide">
+												<div class="vrworld-slide">
 													{%- render 'product-card', product: product -%}
 												</div>
 											{%- else -%}
 												{%- for i in (1..total) -%}
-													<div class="unity-slide">
+													<div class="vrworld-slide">
 														{%- render 'product-card-placeholder', index: forloop.index -%}
 													</div>
 												{%- endfor -%}
@@ -195,11 +195,11 @@
 
 									{%- if section.settings.dots -%}
 									<div class="align-dots-center">
-										<div class="unity-dots{% if forloop.index == 1 %} active{% endif %}" data-index="{{ forloop.index }}">
+										<div class="vrworld-dots{% if forloop.index == 1 %} active{% endif %}" data-index="{{ forloop.index }}">
 										</div>
 									</div>
 									{%- endif -%}
-								</unity-slider>
+								</vrworld-slider>
 							</div>
 					{%- endfor -%}
 				</div>

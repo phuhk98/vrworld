@@ -30,7 +30,7 @@
 
 	{%- if height != 'auto' -%}
 		@media (min-width: 992px) {
-			{{ section_id }} .theme-slider.height-{{ height }} .unity-slide {
+			{{ section_id }} .theme-slider.height-{{ height }} .vrworld-slide {
 				height: {{ height_value }};
 			}
 		}
@@ -40,16 +40,16 @@
 <div class="section-wrapper slideshow-section color-{{ section.settings.color_scheme }}">
 	<div class="{% if full %}stretch-section{% else %}container{% endif %}">
 		<div class="theme-slider height-{{ height }} height-mobile-{{ height_mobile }}{% if animation %} scroll-trigger{% endif %}">
-			<unity-slider class="unity-slider">
+			<vrworld-slider class="vrworld-slider">
 				<template data-options>
 					{
 						"loop": true,
 						"_autoplay": {{ 5 | times: 1000 }},
 						"_autoheight": true,
 						"_fade": true,
-						"_prevBtn": "{{ section_id }} .unity-button-prev",
-						"_nextBtn": "{{ section_id }} .unity-button-next",
-						"_dotsNode": "{{ section_id }} .unity-dots"
+						"_prevBtn": "{{ section_id }} .vrworld-button-prev",
+						"_nextBtn": "{{ section_id }} .vrworld-button-next",
+						"_dotsNode": "{{ section_id }} .vrworld-dots"
 					}
 				</template>
 
@@ -60,10 +60,10 @@
 					}
 				</template>
 
-				<div class="unity-slider-viewport">
-					<div class="unity-slider-container">
+				<div class="vrworld-slider-viewport">
+					<div class="vrworld-slider-container">
 						{%- for block in section.blocks -%}
-							<div class="unity-slide" data-id="{{ block.id }}" data-{{ block.id }} {{ block.shopify_attributes }} {% if request.design_mode %} data-index="{{ forloop.index0 }}"{% endif %}>
+							<div class="vrworld-slide" data-id="{{ block.id }}" data-{{ block.id }} {{ block.shopify_attributes }} {% if request.design_mode %} data-index="{{ forloop.index0 }}"{% endif %}>
 								{%- case block.type -%}
 									{%- when '@app' -%}
 										{%- render block -%}
@@ -104,7 +104,7 @@
 													{%- render 'lazy-image', image: mobile_image, width: 1000, lazy: image_load -%}
 												</div>
 											{%- endif -%}
-												<div class="unity-slides" data-id="{{ block.id }}" {{ block.shopify_attributes }} data-{{ block.id }}{% if request.design_mode %} data-index="{{ forloop.index0 }}"{% endif %}>
+												<div class="vrworld-slides" data-id="{{ block.id }}" {{ block.shopify_attributes }} data-{{ block.id }}{% if request.design_mode %} data-index="{{ forloop.index0 }}"{% endif %}>
 													<div class="slide-content">
 														{%- liquid
 															assign star_reviews    = block.settings.star_reviews
@@ -265,11 +265,11 @@
 
 				<div class="slider-pagination">
 					<div class="thumb-slider">
-						<div class="unity-thumbs-slider-viewport" tabindex="-1">
-							<div class="unity-thumbs-slider-container">
+						<div class="vrworld-thumbs-slider-viewport" tabindex="-1">
+							<div class="vrworld-thumbs-slider-container">
 								{%- for block in section.blocks -%}
-									<div class="unity-thumbs-slide" {{ block.shopify_attributes }}>
-										<button class="unity-thumb-number">
+									<div class="vrworld-thumbs-slide" {{ block.shopify_attributes }}>
+										<button class="vrworld-thumb-number">
 											<span class="progress-arc" aria-hidden="true"></span>
 											<span class="thumb-number">{{ forloop.index }}</span>
 										</button>
@@ -279,7 +279,7 @@
 						</div>
 					</div>
 				</div>
-			</unity-slider>
+			</vrworld-slider>
 		</div>
 	</div>
 </div>

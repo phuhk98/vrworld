@@ -107,37 +107,37 @@
 						<h2 class="heading text-center rte {{ heading_size }}{% if animation %} scroll-trigger{% endif %}">{{- heading -}}</h2>
 					{%- endif -%}
 
-					<unity-slider class="unity-slider">
+					<vrworld-slider class="vrworld-slider">
 						<template data-options>
 							{
 								"loop": false,
 								"duration": 25,
 								"_autoheight": true,
 								"_fade": true,
-								"_prevBtn": "{{ section_id }} .unity-button-prev",
-								"_nextBtn": "{{ section_id }} .unity-button-next"
+								"_prevBtn": "{{ section_id }} .vrworld-button-prev",
+								"_nextBtn": "{{ section_id }} .vrworld-button-next"
 							}
 						</template>
 
 						<template data-thumbs-options>
 							{
 								"loop": false,
-								"_prevBtn": "{{ section_id }} .unity-button-prev",
-								"_nextBtn": "{{ section_id }} .unity-button-next"
+								"_prevBtn": "{{ section_id }} .vrworld-button-prev",
+								"_nextBtn": "{{ section_id }} .vrworld-button-next"
 							}
 						</template>
 
-						<div class="unity-slider-viewport" hidden>
-							<div class="unity-slider-container">
-								<div class="unity-slide"></div>
+						<div class="vrworld-slider-viewport" hidden>
+							<div class="vrworld-slider-container">
+								<div class="vrworld-slide"></div>
 							</div>
 						</div>
 
 						<div class="algin-center-thumbs-slider">
-							<div class="unity-thumbs-slider-viewport">
-								<div class="unity-thumbs-slider-container">
+							<div class="vrworld-thumbs-slider-viewport">
+								<div class="vrworld-thumbs-slider-container">
 									{%- for block in section.blocks -%}
-										<div class="unity-thumbs-slide{% if forloop.first %} unity-thumbs-slide-selected{% endif %} product-card-wrapper{% if animation %} scroll-trigger{% endif %}" data-index="{{ forloop.index }}" data-{{ block.id }}="{{ block.shopify_attributes }}" >
+										<div class="vrworld-thumbs-slide{% if forloop.first %} vrworld-thumbs-slide-selected{% endif %} product-card-wrapper{% if animation %} scroll-trigger{% endif %}" data-index="{{ forloop.index }}" data-{{ block.id }}="{{ block.shopify_attributes }}" >
 											{%- liquid
 												assign product = block.settings.product
 
@@ -152,7 +152,7 @@
 								</div>
 							</div>
 						</div>
-					</unity-slider>
+					</vrworld-slider>
 
 					<form method="post" action="{{ routes.cart_add_url }}" accept-charset="UTF-8" class="form-add-to-cart add-multiple-products" enctype="multipart/form-data" novalidate="novalidate" data-type="add-to-cart-form">
 						{%- for block in section.blocks -%}

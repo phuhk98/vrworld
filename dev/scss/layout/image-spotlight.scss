@@ -11,27 +11,31 @@
 				img {
 					object-fit: cover;
 				}
+
 			}
+
 		}
+
 	}
 
 	.scrolling-wrapper {
 		.scrolling {
 			display: none;
 		}
+
 	}
 
-	.unity-slider {
-		.unity-dots {
+	.vrworld-slider {
+		.vrworld-dots {
 			display: flex;
 		}
 
-		.unity-slide {
+		.vrworld-slide {
 			padding-left: 2.4rem;
 			padding-bottom: 2rem;
 		}
 
-		.unity-slider-container {
+		.vrworld-slider-container {
 			margin-left: 0;
 		}
 
@@ -39,9 +43,10 @@
 			background: rgb(var(--background-color));
 			padding-bottom: 2rem;
 		}
+
 	}
 
-	@media (min-width: 992px) {
+	@media (min-width:992px) {
 		.lookbook {
 			display: flex;
 		}
@@ -50,17 +55,20 @@
 			.product-wrapper {
 				order: -1;
 			}
+
 		}
 
 		.image-wrapper {
 			flex-grow: 1;
 		}
+
 	}
 
-	@media (min-width: 1600px) {
+	@media (min-width:1600px) {
 		.image .placeholder-svg {
 			max-height: 66rem;
 		}
+
 	}
 
 	.stretch-section {
@@ -68,7 +76,9 @@
 			.image {
 				max-width: 100%;
 			}
+
 		}
+
 	}
 
 	.image-wrapper {
@@ -83,7 +93,9 @@
 			img {
 				object-fit: cover;
 			}
+
 		}
+
 	}
 
 	.product-wrapper {
@@ -94,7 +106,7 @@
 		width: min(45.2rem, 100%);
 		padding: 4rem 2.8rem;
 
-		@media (min-width: 1200px) {
+		@media (min-width:1200px) {
 			padding: 8rem 6rem 7rem;
 		}
 
@@ -109,6 +121,7 @@
 			float: left;
 			margin-top: 2.4rem;
 		}
+
 	}
 
 	.product-card {
@@ -123,11 +136,12 @@
 			flex-shrink: 0;
 			margin-right: 2.4rem;
 
-			@media (max-width: 767px) {
+			@media (max-width:767px) {
 				width: 10rem;
 				height: 10rem;
 				margin-right: 2rem;
 			}
+
 		}
 
 		.product-card-content {
@@ -141,17 +155,19 @@
 				&:first-child {
 					margin-top: 0;
 				}
+
 			}
+
 		}
 
 		.product-title {
 			line-height: 1.5;
 
-			@media (max-width: 991px) {
+			@media (max-width:991px) {
 				line-height: normal;
 			}
 
-			@media (max-width: 545px) {
+			@media (max-width:545px) {
 				display: inline-grid;
 
 				a {
@@ -159,12 +175,15 @@
 					overflow: hidden;
 					text-overflow: ellipsis;
 				}
+
 			}
+
 		}
 
 		.form-add-to-cart {
 			display: none;
 		}
+
 	}
 
 	.add-multiple-products {
@@ -175,6 +194,7 @@
 		.add-to-cart-button {
 			width: 100%;
 		}
+
 	}
 
 	.item {
@@ -204,9 +224,10 @@
 				visibility: visible;
 				pointer-events: auto;
 			}
+
 		}
 
-		@media (max-width: 991px) {
+		@media (max-width:991px) {
 			width: 2.1rem;
 			height: 2.1rem;
 		}
@@ -215,6 +236,7 @@
 			&:after {
 				background-color: rgba(255, 255, 255, 0.4);
 			}
+
 		}
 
 		.dot {
@@ -244,10 +266,9 @@
 			position: absolute;
 			animation: scale 2s ease infinite;
 			animation-delay: var(--item-delay);
-			transition:
-				opacity 0.3s,
-				visibility 0.3s;
+			transition: opacity 0.3s, visibility 0.3s;
 		}
+
 	}
 
 	.product-target {
@@ -258,19 +279,22 @@
 		right: 0;
 		z-index: 10;
 
-		@media (hover: hover) {
+		@media (hover:hover) {
 			pointer-events: none;
 		}
 
-		@media (hover: none) {
+		@media (hover:none) {
 			&.active {
 				+ .item-inner {
 					opacity: 1;
 					visibility: visible;
 					pointer-events: auto;
 				}
+
 			}
+
 		}
+
 	}
 
 	.item-inner {
@@ -283,11 +307,11 @@
 		transform: scale(1) translateY(-50%);
 		padding-top: 0;
 
-		@media (max-width: 991px) {
+		@media (max-width:991px) {
 			display: none;
 		}
 
-		@media (hover: hover) {
+		@media (hover:hover) {
 			pointer-events: none;
 
 			&:hover {
@@ -295,12 +319,15 @@
 					img {
 						transform: scale(1.05);
 					}
+
 				}
 
 				.product-title {
 					text-decoration: underline;
 				}
+
 			}
+
 		}
 
 		.product-link {
@@ -317,8 +344,11 @@
 				+ .regular-price {
 					margin-left: 0.3em;
 				}
+
 			}
+
 		}
+
 	}
 
 	.item-summary {
@@ -330,7 +360,7 @@
 		padding: 2.4rem;
 		border-radius: 0.8rem;
 
-		@media (max-width: 991px) {
+		@media (max-width:991px) {
 			box-shadow: none;
 		}
 
@@ -366,6 +396,7 @@
 				transition: transform 0.3s;
 				height: 100%;
 			}
+
 		}
 
 		.summary-inner {
@@ -381,7 +412,9 @@
 			.product-price {
 				white-space: nowrap;
 			}
+
 		}
+
 	}
 
 	.swiper-controls {
@@ -408,6 +441,7 @@
 				border-radius: 0.4rem;
 				background-color: rgba(var(--text-color), 0.5);
 			}
+
 		}
 
 		.swiper-button-prev,
@@ -421,11 +455,13 @@
 			svg {
 				width: 1.6rem;
 			}
+
 		}
 
 		.swiper-button-prev {
 			margin-right: 0.8rem;
 		}
+
 	}
 
 	.discount-item {
@@ -462,13 +498,16 @@
 			svg {
 				margin-right: 1rem;
 			}
+
 		}
+
 	}
 
 	.message {
 		&:not(.hidden) {
 			margin-bottom: 1rem;
 		}
+
 	}
 
 	.box-countdown {
@@ -508,6 +547,7 @@
 					top: 0;
 					left: -0.9rem;
 				}
+
 			}
 
 			.time-number,
@@ -524,6 +564,9 @@
 				margin-left: 0.2rem;
 				text-transform: lowercase;
 			}
+
 		}
+
 	}
+
 }

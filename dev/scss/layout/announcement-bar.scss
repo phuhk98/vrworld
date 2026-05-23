@@ -17,13 +17,14 @@
 	* {
 		font-size: 14px;
 
-		@media (max-width: 1300px) {
+		@media (max-width:1300px) {
 			font-size: 13px;
 		}
 
-		@media (max-width: 991px) {
+		@media (max-width:991px) {
 			font-size: 12px;
 		}
+
 	}
 
 	.title {
@@ -36,7 +37,7 @@
 		margin: 0;
 		align-items: center;
 
-		@media (max-width: 991px) {
+		@media (max-width:991px) {
 			display: none;
 		}
 
@@ -52,15 +53,17 @@
 			.tooltip {
 				display: none;
 			}
+
 		}
+
 	}
 
-	.unity-slider {
+	.vrworld-slider {
 		display: flex;
 		align-items: center;
 
-		.unity-arrows {
-			.unity-button {
+		.vrworld-arrows {
+			.vrworld-button {
 				width: 4rem;
 				height: 4rem;
 				position: relative;
@@ -75,22 +78,26 @@
 					svg {
 						color: rgba(var(--text-color));
 					}
+
 				}
 
 				svg {
 					width: 1.2rem;
 					height: 1.2rem;
 				}
+
 			}
 
-			.unity-button-prev {
+			.vrworld-button-prev {
 				left: 0;
 			}
 
-			.unity-button-next {
+			.vrworld-button-next {
 				right: 0;
 			}
+
 		}
+
 	}
 
 	.message-box {
@@ -99,19 +106,21 @@
 		justify-content: center;
 		gap: 1.2rem;
 
-		@media (max-width: 991px) {
+		@media (max-width:991px) {
 			gap: 0.5rem;
 			align-items: center;
 		}
+
 	}
 
 	.localization-selector-wrapper {
 		justify-content: flex-end;
 		display: flex;
 
-		@media (max-width: 991px) {
+		@media (max-width:991px) {
 			display: none;
 		}
+
 	}
 
 	.icon-image {
@@ -122,13 +131,14 @@
 			max-height: 1.6rem;
 			margin-top: -0.3rem;
 		}
+
 	}
 
 	.bottom-border {
 		border-bottom: 0.1rem solid rgba(var(--text-color), 0.12);
 	}
 
-	@media (min-width: 992px) {
+	@media (min-width:992px) {
 		.announcement-bar-inner {
 			display: grid;
 			grid-template-columns: repeat(3, 1fr);
@@ -142,14 +152,18 @@
 			.announcement-bar-content {
 				grid-area: slider;
 
-				.unity-slider-viewport {
+				.vrworld-slider-viewport {
 					margin: 0 2rem;
 				}
+
 			}
 
 			.localization-selector-wrapper {
 				grid-area: language_country;
 			}
+
 		}
+
 	}
+
 }

@@ -599,13 +599,13 @@ class LookbookSync extends HTMLElement {
 	}
 
 	bindEmbla() {
-		const unitySlider = this.querySelector('unity-slider');
-		if (!unitySlider || !unitySlider.thumbSlider) {
+		const vrworldSlider = this.querySelector('vrworld-slider');
+		if (!vrworldSlider || !vrworldSlider.thumbSlider) {
 			requestAnimationFrame(() => this.bindEmbla());
 			return;
 		}
 
-		this.thumbSlider = unitySlider.thumbSlider;
+		this.thumbSlider = vrworldSlider.thumbSlider;
 	}
 
 	onClick(e) {
@@ -636,11 +636,11 @@ class LookbookSync extends HTMLElement {
 	}
 
 	syncThumbs(index) {
-		const thumbs = this.querySelectorAll('.unity-thumbs-slide');
+		const thumbs = this.querySelectorAll('.vrworld-thumbs-slide');
 		thumbs.forEach((thumb) => {
 			const isMatch = Number(thumb.dataset.index) === index;
 			thumb.classList.toggle('selected', isMatch);
-			thumb.classList.toggle('unity-thumbs-slide-selected', isMatch);
+			thumb.classList.toggle('vrworld-thumbs-slide-selected', isMatch);
 		});
 	}
 }
@@ -1552,7 +1552,7 @@ class ImageSpotlightSection extends HTMLElement {
 
 					if (window.innerWidth <= 991) {
 						const dot = this.querySelector(
-							`.unity-dot[data-id="${id}"]`
+							`.vrworld-dot[data-id="${id}"]`
 						);
 						if (dot) dot.click();
 					}
@@ -1561,7 +1561,7 @@ class ImageSpotlightSection extends HTMLElement {
 		});
 
 		this.addEventListener('click', (e) => {
-			const dot = e.target.closest('.unity-dot');
+			const dot = e.target.closest('.vrworld-dot');
 			if (!dot) return;
 
 			e.stopPropagation();
@@ -1865,7 +1865,7 @@ function setupThumbProgress(section) {
 
 	let getEmbla = (el) => {
 		if (el.slider) return el.slider;
-		let map = window.__unitySliderInstances;
+		let map = window.__vrworldSliderInstances;
 		if (map instanceof Map) {
 			let id = el.closest('[id^="shopify-section-"]')?.id;
 			let inst = id ? map.get(id) : null;
@@ -1886,11 +1886,11 @@ function setupThumbProgress(section) {
 		});
 	};
 
-	// Get the currently active thumb index based on .unity-thumbs-slide-selected
+	// Get the currently active thumb index based on .vrworld-thumbs-slide-selected
 	let activeIdxFromDOM = (sliderEl, thumbs) => {
-		let slide = sliderEl.querySelector('.unity-thumbs-slide-selected');
+		let slide = sliderEl.querySelector('.vrworld-thumbs-slide-selected');
 		if (!slide) return 0;
-		let btn = slide.querySelector('.unity-thumb-number');
+		let btn = slide.querySelector('.vrworld-thumb-number');
 		let i = thumbs.indexOf(btn);
 		return i >= 0 ? i : 0;
 	};
@@ -1903,41 +1903,41 @@ function setupThumbProgress(section) {
 		arc.style.setProperty('--deg', (r * 360) + 'deg');
 	};
 
-	// Fallback manual advance if no embla: just move the .unity-thumbs-slide-selected class
+	// Fallback manual advance if no embla: just move the .vrworld-thumbs-slide-selected class
 	let fallbackAdvanceSelectedThumb = (sliderEl, thumbs) => {
 		let cur = activeIdxFromDOM(sliderEl, thumbs);
 		let next = cur + 1;
 		if (next >= thumbs.length) next = 0;
 
 		// remove current selected class from all slides
-		sliderEl.querySelectorAll('.unity-thumbs-slide-selected').forEach((n) => {
-			n.classList.remove('unity-thumbs-slide-selected');
+		sliderEl.querySelectorAll('.vrworld-thumbs-slide-selected').forEach((n) => {
+			n.classList.remove('vrworld-thumbs-slide-selected');
 		});
 
 		// add selected class to the next thumb's wrapper
 		let targetThumb = thumbs[next];
 		if (!targetThumb) return;
-		let wrap = targetThumb.closest('.unity-thumbs-slide');
+		let wrap = targetThumb.closest('.vrworld-thumbs-slide');
 		if (wrap) {
-			wrap.classList.add('unity-thumbs-slide-selected');
+			wrap.classList.add('vrworld-thumbs-slide-selected');
 		}
 	};
 
 	let root = section || document;
 
 	// scope to slideshow-section only
-	let sliders = root.querySelectorAll('.slideshow-section unity-slider');
+	let sliders = root.querySelectorAll('.slideshow-section vrworld-slider');
 
 	sliders.forEach((sliderEl) => {
 		if (sliderEl.__thumbProgressInit) return;
 		sliderEl.__thumbProgressInit = true;
 
 		let embla    = getEmbla(sliderEl);
-		let viewport = sliderEl.querySelector('.unity-slider-viewport');
-		let wrap     = sliderEl.querySelector('.unity-thumbs-slider-container')
+		let viewport = sliderEl.querySelector('.vrworld-slider-viewport');
+		let wrap     = sliderEl.querySelector('.vrworld-thumbs-slider-container')
 		             || sliderEl.querySelector('.thumb-slider')
 		             || sliderEl;
-		let thumbs   = $$(sliderEl, '.unity-thumb-number');
+		let thumbs   = $$(sliderEl, '.vrworld-thumb-number');
 
 		// autoplay duration (ms)
 		let autoplayMs = Number(sliderEl.options?._autoplay) || 5000;
@@ -1996,7 +1996,7 @@ function setupThumbProgress(section) {
 			});
 		}
 
-		// MutationObserver fallback if theme updates .unity-thumbs-slide-selected manually
+		// MutationObserver fallback if theme updates .vrworld-thumbs-slide-selected manually
 		if (wrap) {
 			let mo = new MutationObserver(() => {
 				setTimeout(restart, 0);
@@ -2012,7 +2012,7 @@ function setupThumbProgress(section) {
 
 		// Manual thumb click should also restart timer
 		sliderEl.addEventListener('click', (e) => {
-			if (e.target.closest('.unity-thumb-number')) {
+			if (e.target.closest('.vrworld-thumb-number')) {
 				setTimeout(restart, 0);
 			}
 		});
@@ -2353,15 +2353,15 @@ class btyUnitySlider extends HTMLElement {
 		this.thumbSlider        = null;
 		this.options            = this.querySelector('[data-options]');
 		this.thumbOptions       = this.querySelector('[data-thumbs-options]');
-		this.viewport           = this.querySelector('.unity-slider-viewport');
-		this.thumbsViewport     = this.querySelector('.unity-thumbs-slider-viewport');
+		this.viewport           = this.querySelector('.vrworld-slider-viewport');
+		this.thumbsViewport     = this.querySelector('.vrworld-thumbs-slider-viewport');
 		this.isVariantScrolling = false;
 
 		this.init();
 
-		if (!window.__unitySliderInstances) window.__unitySliderInstances = new Map();
+		if (!window.__vrworldSliderInstances) window.__vrworldSliderInstances = new Map();
 		const sectionId = this.closest('[id^="shopify-section-"]')?.id;
-		if (sectionId) window.__unitySliderInstances.set(sectionId, this);
+		if (sectionId) window.__vrworldSliderInstances.set(sectionId, this);
 
 		this._onSectionEvent = (event) => {
 			const currentSectionId = this.closest('[id^="shopify-section-"]')?.id;
@@ -2386,7 +2386,7 @@ class btyUnitySlider extends HTMLElement {
 			if (this.slider?.destroy) this.slider.destroy();
 			if (this.thumbSlider?.destroy) this.thumbSlider.destroy();
 		} catch (err) {
-			console.warn('[unity-slider] cleanup error:', err);
+			console.warn('[vrworld-slider] cleanup error:', err);
 		}
 		this.slider      = null;
 		this.thumbSlider = null;
@@ -2456,10 +2456,10 @@ class btyUnitySlider extends HTMLElement {
 		const addDotHandle = () => {
 			dotsNode.innerHTML = bsSlider
 				.scrollSnapList()
-				.map((_, i) => `<button class="unity-dot" type="button" data-id="${i + 1}"></button>`)
+				.map((_, i) => `<button class="vrworld-dot" type="button" data-id="${i + 1}"></button>`)
 				.join('');
 
-			dotNodes = dotsNode.querySelectorAll( '.unity-dot' );
+			dotNodes = dotsNode.querySelectorAll( '.vrworld-dot' );
 
 			if (!dotsNode.querySelector('.pagination-current')) {
 				const span = document.createElement('span');
@@ -2691,8 +2691,8 @@ class btyUnitySlider extends HTMLElement {
 		if (!this.thumbSlider?.slideNodes) return;
 
 		const slidesThumbs = this.thumbSlider.slideNodes();
-		const thumbPrev    = this.querySelector('.unity-thumb-prev');
-		const thumbNext    = this.querySelector('.unity-thumb-next');
+		const thumbPrev    = this.querySelector('.vrworld-thumb-prev');
+		const thumbNext    = this.querySelector('.vrworld-thumb-next');
 
 		if (slidesThumbs.length < 4 && thumbPrev && thumbNext) {
 			thumbPrev.style.display = 'none';
@@ -2714,7 +2714,7 @@ class btyUnitySlider extends HTMLElement {
 			slides.forEach((s, i) => s.classList.toggle('selected', i === selectedIndex));
 			thumbs.forEach((t, i) => {
 				t.classList.toggle('selected', i === selectedIndex);
-				t.classList.toggle('unity-thumbs-slide-selected', i === selectedIndex);
+				t.classList.toggle('vrworld-thumbs-slide-selected', i === selectedIndex);
 			});
 
 			try {
@@ -2732,7 +2732,7 @@ class btyUnitySlider extends HTMLElement {
 		this.slider?.on?.('select', updateSelectedClass);
 
 		const fixThumbFocus = () => {
-			const thumbs = this.thumbsViewport.querySelectorAll('.unity-thumbs-slide');
+			const thumbs = this.thumbsViewport.querySelectorAll('.vrworld-thumbs-slide');
 			thumbs.forEach((thumb, index) => {
 				const button = thumb.querySelector('button');
 				const isClone = thumb.hasAttribute('data-embla-clone');
@@ -2784,7 +2784,7 @@ class btyUnitySlider extends HTMLElement {
 			this.slider.scrollTo(index, true);
 			this.thumbSlider?.scrollTo(index, true);
 		} catch (err) {
-			console.warn('[unity-slider] scrollToVariantImage error:', err);
+			console.warn('[vrworld-slider] scrollToVariantImage error:', err);
 		}
 
 		setTimeout(() => {
@@ -2795,7 +2795,7 @@ class btyUnitySlider extends HTMLElement {
 	}
 }
 
-customElements.define('unity-slider', btyUnitySlider);
+customElements.define('vrworld-slider', btyUnitySlider);
 class BtyTimeline extends HTMLElement {
 	constructor() {
 		super();
@@ -2895,14 +2895,14 @@ class BtyTimeline extends HTMLElement {
 				const sectionId = section?.id;
 				if (!sectionId) return;
 
-				const unitySliderInstance = window.__unitySliderInstances?.get(sectionId);
-				if (!unitySliderInstance || !unitySliderInstance.slider) return;
+				const vrworldSliderInstance = window.__vrworldSliderInstances?.get(sectionId);
+				if (!vrworldSliderInstance || !vrworldSliderInstance.slider) return;
 
-				const slides     = Array.from(section.querySelectorAll('.unity-slide'));
+				const slides     = Array.from(section.querySelectorAll('.vrworld-slide'));
 				const slideIndex = slides.findIndex(el => el.dataset.blockId === blockId);
 
 				if (slideIndex !== -1) {
-					unitySliderInstance.slider.scrollTo(slideIndex);
+					vrworldSliderInstance.slider.scrollTo(slideIndex);
 				}
 			}
 		});
@@ -2910,12 +2910,12 @@ class BtyTimeline extends HTMLElement {
 		// 👇 Thêm đoạn này để đồng bộ ngược lại
 		const section = this.closest('[id^="shopify-section-"]');
 		const sectionId = section?.id;
-		const unitySliderInstance = window.__unitySliderInstances?.get(sectionId);
+		const vrworldSliderInstance = window.__vrworldSliderInstances?.get(sectionId);
 
-		if (unitySliderInstance?.slider) {
-			unitySliderInstance.slider.on('select', () => {
-				const index = unitySliderInstance.slider.selectedScrollSnap();
-				const slides = Array.from(section.querySelectorAll('.unity-slide'));
+		if (vrworldSliderInstance?.slider) {
+			vrworldSliderInstance.slider.on('select', () => {
+				const index = vrworldSliderInstance.slider.selectedScrollSnap();
+				const slides = Array.from(section.querySelectorAll('.vrworld-slide'));
 				const activeSlide = slides[index];
 				if (!activeSlide) return;
 
@@ -5995,7 +5995,7 @@ function btyProductTabs(doc = document, event = {}) {
 			index  = el.getAttribute('data-index'),
 			tab    = wrap.querySelector('.tab-content[data-index="' + index + '"]'),
 			slide  = wrap.querySelector('.product-main-slide:nth-child(' + index + ')'), // slide tương ứng
-			arrows = wrap.querySelector('.unity-arrows[data-index="' + index + '"]');
+			arrows = wrap.querySelector('.vrworld-arrows[data-index="' + index + '"]');
 
 		if (!tab) return;
 
@@ -6012,7 +6012,7 @@ function btyProductTabs(doc = document, event = {}) {
 			let navActived    = wrap.querySelector('.tab-head.active'),
 				tabActived    = wrap.querySelector('.tab-content.active'),
 				slideActived  = wrap.querySelector('.product-main-slide.active'),
-				arrowsActived = wrap.querySelector('.unity-arrows.active');
+				arrowsActived = wrap.querySelector('.vrworld-arrows.active');
 
 			// Remove active
 			if (navActived) navActived.classList.remove('active');

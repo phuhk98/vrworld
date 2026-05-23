@@ -3,18 +3,21 @@
 		.scrolling {
 			display: none;
 		}
+
 	}
 
-	.unity-slider {
+	.vrworld-slider {
 		margin-bottom: 4rem;
 
-		.unity-thumbs-slide {
+		.vrworld-thumbs-slide {
 			opacity: 0.5 !important;
 
 			&.selected {
 				opacity: 1 !important;
 			}
+
 		}
+
 	}
 
 	.item {
@@ -44,9 +47,10 @@
 				visibility: visible;
 				pointer-events: auto;
 			}
+
 		}
 
-		@media (max-width: 991px) {
+		@media (max-width:991px) {
 			width: 2.1rem;
 			height: 2.1rem;
 		}
@@ -55,6 +59,7 @@
 			&:after {
 				background-color: rgba(255, 255, 255, 0.4);
 			}
+
 		}
 
 		.dot {
@@ -84,13 +89,12 @@
 			position: absolute;
 			animation: scale 2s ease infinite;
 			animation-delay: var(--item-delay);
-			transition:
-				opacity 0.3s,
-				visibility 0.3s;
+			transition: opacity 0.3s, visibility 0.3s;
 		}
+
 	}
 
-	.unity-slider .unity-thumbs-slider-container {
+	.vrworld-slider .vrworld-thumbs-slider-container {
 		flex-direction: column;
 		gap: 0.8rem;
 		height: 37rem;
@@ -102,7 +106,7 @@
 		margin-right: auto;
 	}
 
-	@media (min-width: 992px) {
+	@media (min-width:992px) {
 		.lookbook {
 			display: flex;
 		}
@@ -111,11 +115,13 @@
 			.product-wrapper {
 				order: -1;
 			}
+
 		}
 
 		.image-wrapper {
 			width: 50%;
 		}
+
 	}
 
 	.placeholder-svg {
@@ -133,11 +139,13 @@
 			.image {
 				height: 100%;
 			}
+
 		}
 
-		@media (max-width: 991px) {
+		@media (max-width:991px) {
 			margin-bottom: 0;
 		}
+
 	}
 
 	.product-wrapper {
@@ -147,12 +155,12 @@
 		width: 50%;
 		margin: 0 auto;
 
-		@media (min-width: 992px) {
+		@media (min-width:992px) {
 			padding-left: 5.8rem;
 			padding-right: 5.8rem;
 		}
 
-		@media (max-width: 991px) {
+		@media (max-width:991px) {
 			width: 100%;
 			padding-left: 0;
 			padding-right: 0;
@@ -162,10 +170,12 @@
 			margin-top: 0;
 			margin-bottom: 5.3rem;
 
-			@media (max-width: 991px) {
+			@media (max-width:991px) {
 				margin-bottom: 2.3rem;
 			}
+
 		}
+
 	}
 
 	.product-card {
@@ -184,10 +194,11 @@
 			padding: 1.6rem;
 			border-radius: 0.8rem;
 
-			@media (max-width: 767px) {
+			@media (max-width:767px) {
 				width: 100%;
 				margin-right: 0;
 			}
+
 		}
 
 		.product-card-content {
@@ -203,7 +214,9 @@
 				&:first-child {
 					margin-top: 0;
 				}
+
 			}
+
 		}
 
 		.product-title {
@@ -211,11 +224,11 @@
 			margin-top: 0.8rem;
 			margin-bottom: 0.4rem;
 
-			@media (max-width: 991px) {
+			@media (max-width:991px) {
 				line-height: normal;
 			}
 
-			@media (max-width: 545px) {
+			@media (max-width:545px) {
 				display: inline-grid;
 
 				a {
@@ -223,12 +236,15 @@
 					overflow: hidden;
 					text-overflow: ellipsis;
 				}
+
 			}
+
 		}
 
 		.form-add-to-cart {
 			display: none;
 		}
+
 	}
 
 	.add-multiple-products {
@@ -239,6 +255,7 @@
 		.add-to-cart-button {
 			margin: auto;
 		}
+
 	}
 
 	.product-target {
@@ -249,11 +266,11 @@
 		right: 0;
 		z-index: 10;
 
-		@media (hover: hover) {
+		@media (hover:hover) {
 			pointer-events: none;
 		}
 
-		@media (hover: none) {
+		@media (hover:none) {
 			&.active {
 				+ .item-inner {
 					transform: scale(1);
@@ -261,8 +278,11 @@
 					visibility: visible;
 					pointer-events: auto;
 				}
+
 			}
+
 		}
+
 	}
 
 	.item-inner {
@@ -273,16 +293,14 @@
 		opacity: 0;
 		visibility: hidden;
 		transform: scale(0.9);
-		transition:
-			transform 0.3s,
-			opacity 0.3s;
+		transition: transform 0.3s, opacity 0.3s;
 		padding-top: 2rem;
 
-		@media (max-width: 991px) {
+		@media (max-width:991px) {
 			display: none;
 		}
 
-		@media (hover: hover) {
+		@media (hover:hover) {
 			pointer-events: none;
 
 			&:hover {
@@ -290,12 +308,15 @@
 					img {
 						transform: scale(1.05);
 					}
+
 				}
 
 				.product-title {
 					text-decoration: underline;
 				}
+
 			}
+
 		}
 
 		.product-link {
@@ -311,8 +332,11 @@
 				+ .regular-price {
 					margin-left: 0.3em;
 				}
+
 			}
+
 		}
+
 	}
 
 	.item-summary {
@@ -342,6 +366,7 @@
 				transition: transform 0.3s;
 				height: 100%;
 			}
+
 		}
 
 		.summary-inner {
@@ -358,7 +383,9 @@
 			.product-price {
 				white-space: nowrap;
 			}
+
 		}
+
 	}
 
 	.swiper-controls {
@@ -384,6 +411,7 @@
 				border-radius: 0.4rem;
 				background-color: rgba(var(--text-color), 0.5);
 			}
+
 		}
 
 		.swiper-button-prev,
@@ -395,10 +423,13 @@
 			svg {
 				width: 1.6rem;
 			}
+
 		}
 
 		.swiper-button-prev {
 			margin-right: 0;
 		}
+
 	}
+
 }

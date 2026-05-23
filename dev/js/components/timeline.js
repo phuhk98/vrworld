@@ -97,14 +97,14 @@ class BtyTimeline extends HTMLElement {
 				const sectionId = section?.id;
 				if (!sectionId) return;
 
-				const unitySliderInstance = window.__unitySliderInstances?.get(sectionId);
-				if (!unitySliderInstance || !unitySliderInstance.slider) return;
+				const vrworldSliderInstance = window.__vrworldSliderInstances?.get(sectionId);
+				if (!vrworldSliderInstance || !vrworldSliderInstance.slider) return;
 
-				const slides     = Array.from(section.querySelectorAll('.unity-slide'));
+				const slides     = Array.from(section.querySelectorAll('.vrworld-slide'));
 				const slideIndex = slides.findIndex(el => el.dataset.blockId === blockId);
 
 				if (slideIndex !== -1) {
-					unitySliderInstance.slider.scrollTo(slideIndex);
+					vrworldSliderInstance.slider.scrollTo(slideIndex);
 				}
 			}
 		});
@@ -112,12 +112,12 @@ class BtyTimeline extends HTMLElement {
 		// 👇 Thêm đoạn này để đồng bộ ngược lại
 		const section = this.closest('[id^="shopify-section-"]');
 		const sectionId = section?.id;
-		const unitySliderInstance = window.__unitySliderInstances?.get(sectionId);
+		const vrworldSliderInstance = window.__vrworldSliderInstances?.get(sectionId);
 
-		if (unitySliderInstance?.slider) {
-			unitySliderInstance.slider.on('select', () => {
-				const index = unitySliderInstance.slider.selectedScrollSnap();
-				const slides = Array.from(section.querySelectorAll('.unity-slide'));
+		if (vrworldSliderInstance?.slider) {
+			vrworldSliderInstance.slider.on('select', () => {
+				const index = vrworldSliderInstance.slider.selectedScrollSnap();
+				const slides = Array.from(section.querySelectorAll('.vrworld-slide'));
 				const activeSlide = slides[index];
 				if (!activeSlide) return;
 

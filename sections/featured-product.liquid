@@ -111,28 +111,28 @@
 										{%- if product.media.size > 1 -%}
 											{% comment %} Group image {% endcomment %}
 											<div class="product-main-slide">
-												<unity-slider class="unity-slider">
+												<vrworld-slider class="vrworld-slider">
 													<template data-options>
 														{
 															"duration": 25,
 															"_autoheight": true,
 															"_fade": true,
-															"_prevBtn": "{{ section_id }} .unity-button-prev",
-															"_nextBtn": "{{ section_id }} .unity-button-next"
+															"_prevBtn": "{{ section_id }} .vrworld-button-prev",
+															"_nextBtn": "{{ section_id }} .vrworld-button-next"
 														}
 													</template>
 
 													<template data-thumbs-options>
 														{
-															"_prevBtn": "{{ section_id }} .unity-button-prev",
-															"_nextBtn": "{{ section_id }} .unity-button-next"
+															"_prevBtn": "{{ section_id }} .vrworld-button-prev",
+															"_nextBtn": "{{ section_id }} .vrworld-button-next"
 														}
 													</template>
 
-													<div class="unity-slider-viewport main-sliders">
-														<div class="unity-slider-container">
+													<div class="vrworld-slider-viewport main-sliders">
+														<div class="vrworld-slider-container">
 															{%- for media in product.media -%}
-																<div class="main-item unity-slide" data-id="{{ section.id }}-{{ media.id }}" data-{{ media.media_type | escape }}>
+																<div class="main-item vrworld-slide" data-id="{{ section.id }}-{{ media.id }}" data-{{ media.media_type | escape }}>
 																	{%- render 'product-media', media: media, position: forloop.index, loop: section.settings.video_looping, role: 'main', index: forloop.index -%}
 																</div>
 															{%- endfor -%}
@@ -140,26 +140,26 @@
 													</div>
 
 													<div class="algin-center-thumbs-slider">
-														<div class="unity-thumbs-slider-viewport">
-															<div class="unity-thumbs-slider-container">
+														<div class="vrworld-thumbs-slider-viewport">
+															<div class="vrworld-thumbs-slider-container">
 																{%- for media in product.media -%}
-																	<div class="unity-thumbs-slide unity-thumbs-slide-selected" data-id="{{ section.id }}-{{ media.id }}" data-{{ media.media_type | escape }}>
+																	<div class="vrworld-thumbs-slide vrworld-thumbs-slide-selected" data-id="{{ section.id }}-{{ media.id }}" data-{{ media.media_type | escape }}>
 																		{%- render 'product-media', media: media, position: forloop.index, loop: section.settings.video_looping, role: 'thumb', index: forloop.index -%}
 																	</div>
 																{%- endfor -%}
 															</div>
 														</div>
-														<div class="unity-arrows">
-															<button class="unity-button unity-button-prev unity-thumb-prev" title ="{{ 'general.unity.prev' | t }}-feature-prd" aria-label="{{ 'general.unity.prev' | t }}-feature-prd" id="{{ 'general.unity.prev' | t }}-feature-prd" aria-labelledby="{{ 'general.unity.prev' | t }}-feature-prd" disabled>
+														<div class="vrworld-arrows">
+															<button class="vrworld-button vrworld-button-prev vrworld-thumb-prev" title ="{{ 'general.vrworld.prev' | t }}-feature-prd" aria-label="{{ 'general.vrworld.prev' | t }}-feature-prd" id="{{ 'general.vrworld.prev' | t }}-feature-prd" aria-labelledby="{{ 'general.vrworld.prev' | t }}-feature-prd" disabled>
 																{%- render 'icon', code: 'arrow-up' -%}
 															</button>
 
-															<button class="unity-button unity-button-next unity-thumb-next" title ="{{ 'general.unity.next' | t }}-feature-prd" aria-label="{{ 'general.unity.next' | t }}-feature-prd" id="{{ 'general.unity.next' | t }}-feature-prd" aria-labelledby="{{ 'general.unity.next' | t }}-feature-prd" disabled>
+															<button class="vrworld-button vrworld-button-next vrworld-thumb-next" title ="{{ 'general.vrworld.next' | t }}-feature-prd" aria-label="{{ 'general.vrworld.next' | t }}-feature-prd" id="{{ 'general.vrworld.next' | t }}-feature-prd" aria-labelledby="{{ 'general.vrworld.next' | t }}-feature-prd" disabled>
 																{%- render 'icon', code: 'arrow-up' -%}
 															</button>
 														</div>
 													</div>
-												</unity-slider>
+												</vrworld-slider>
 											</div>
 										{%- else -%}
 											<div class="main-item" data-{{ product.media[0].media_type | escape }}>
@@ -183,28 +183,28 @@
 						<div class="product-media-box">
 							<div class="product-media-inner">
 								<div class="product-main-slide">
-									<unity-slider class="unity-slider">
+									<vrworld-slider class="vrworld-slider">
 										<template data-options>
 											{
 												"duration": 25,
 												"_autoheight": true,
 												"_fade": true,
-												"_prevBtn": "{{ section_id }} .unity-button-prev",
-												"_nextBtn": "{{ section_id }} .unity-button-next"
+												"_prevBtn": "{{ section_id }} .vrworld-button-prev",
+												"_nextBtn": "{{ section_id }} .vrworld-button-next"
 											}
 										</template>
 
 										<template data-thumbs-options>
 											{
-												"_prevBtn": "{{ section_id }} .unity-button-prev",
-												"_nextBtn": "{{ section_id }} .unity-button-next"
+												"_prevBtn": "{{ section_id }} .vrworld-button-prev",
+												"_nextBtn": "{{ section_id }} .vrworld-button-next"
 											}
 										</template>
 
-										<div class="unity-slider-viewport main-sliders">
-											<div class="unity-slider-container">
+										<div class="vrworld-slider-viewport main-sliders">
+											<div class="vrworld-slider-container">
 												{%- for i in (1..3) -%}
-													<div class="gallery-item unity-slide" data-id="{{ section.id }}-{{ product.media[0].id }}" data-{{ product.media[0].media_type | escape }}>
+													<div class="gallery-item vrworld-slide" data-id="{{ section.id }}-{{ product.media[0].id }}" data-{{ product.media[0].media_type | escape }}>
 														{%- render 'product-media', media: product.media[0], position: 0, loop: false, modal_id: section.id, role: 'main' -%}
 													</div>
 												{%- endfor -%}
@@ -212,17 +212,17 @@
 										</div>
 
 										<div class="algin-center-thumbs-slider">
-											<div class="unity-thumbs-slider-viewport">
-												<div class="unity-thumbs-slider-container">
+											<div class="vrworld-thumbs-slider-viewport">
+												<div class="vrworld-thumbs-slider-container">
 													{%- for i in (1..3) -%}
-														<div class="thumbs-item unity-thumbs-slide" data-id="{{ section.id }}-{{ product.media[0].id }}" data-{{ product.media[0].media_type | escape }}>
+														<div class="thumbs-item vrworld-thumbs-slide" data-id="{{ section.id }}-{{ product.media[0].id }}" data-{{ product.media[0].media_type | escape }}>
 															{%- render 'product-media', media: product.media[0], position: 0, loop: false, modal_id: section.id, role: 'main' -%}
 														</div>
 													{%- endfor -%}
 												</div>
 											</div>
 										</div>
-									</unity-slider>
+									</vrworld-slider>
 								</div>
 							</div>
 

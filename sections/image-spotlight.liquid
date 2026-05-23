@@ -76,18 +76,18 @@
 				</div>
 			</div>
 
-			<unity-slider class="unity-slider">
+			<vrworld-slider class="vrworld-slider">
 				<template data-options>
 					{
 						"align": "start",
 						"_autoheight": true,
 						"_fade": false,
-						"_dotsNode": "{{ section_id }} .unity-dots"
+						"_dotsNode": "{{ section_id }} .vrworld-dots"
 					}
 				</template>
 
-				<div class="unity-slider-viewport">
-					<div class="unity-slider-container">
+				<div class="vrworld-slider-viewport">
+					<div class="vrworld-slider-container">
 						{%- if section.blocks.size > 0 -%}
 							{%- for block in section.blocks -%}
 								{%- liquid
@@ -98,7 +98,7 @@
 									assign contrast      = block.settings.color | color_contrast: '#101835'
 								-%}
 
-								<div class="unity-slide item-summary hidden-desktop">
+								<div class="vrworld-slide item-summary hidden-desktop">
 									{% if heading != blank %}
 										<div class="heading {{ heading_size }}">{{ heading }}</div>
 									{% endif %}
@@ -113,10 +113,10 @@
 				</div>
 
 				<div class="align-dots-center hidden-desktop">
-					<div class="unity-dots">
+					<div class="vrworld-dots">
 					</div>
 				</div>
-			</unity-slider>
+			</vrworld-slider>
 		</div>
 	</div>
 </image-spotlight-section>

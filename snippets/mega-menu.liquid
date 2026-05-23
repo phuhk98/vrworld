@@ -96,12 +96,12 @@
 										</div>
 
 										{%- for collection in data_products -%}
-											<div class="unity-arrows hidden-tablet hidden-mobile{% if forloop.index == 1 %} active{% endif %}" data-id="{{ block.id }}" data-index="{{ forloop.index }}" {{ block.shopify_attributes }}>
-												<button class="unity-button unity-button-prev" title ="{{ 'general.unity.prev' | t }}-mega" aria-label="{{ 'general.unity.prev' | t }}-mega" id="{{ 'general.unity.prev' | t }}-mega" aria-labelledby="{{ 'general.unity.prev' | t }}-mega" data-id="{{ collection.id }}" data-index="{{ forloop.index }}" aria-label="{{- 'general.text.button' | t -}}">
+											<div class="vrworld-arrows hidden-tablet hidden-mobile{% if forloop.index == 1 %} active{% endif %}" data-id="{{ block.id }}" data-index="{{ forloop.index }}" {{ block.shopify_attributes }}>
+												<button class="vrworld-button vrworld-button-prev" title ="{{ 'general.vrworld.prev' | t }}-mega" aria-label="{{ 'general.vrworld.prev' | t }}-mega" id="{{ 'general.vrworld.prev' | t }}-mega" aria-labelledby="{{ 'general.vrworld.prev' | t }}-mega" data-id="{{ collection.id }}" data-index="{{ forloop.index }}" aria-label="{{- 'general.text.button' | t -}}">
 													{%- render 'icon', code: 'caretLeft' -%}
 												</button>
 
-												<button class="unity-button unity-button-next" title ="{{ 'general.unity.next' | t }}-mega" aria-label="{{ 'general.unity.next' | t }}-mega" id="{{ 'general.unity.next' | t }}-mega" aria-labelledby="{{ 'general.unity.next' | t }}-mega" data-id="{{ collection.id }}" data-index="{{ forloop.index }}" aria-label="{{- 'general.text.button' | t -}}">
+												<button class="vrworld-button vrworld-button-next" title ="{{ 'general.vrworld.next' | t }}-mega" aria-label="{{ 'general.vrworld.next' | t }}-mega" id="{{ 'general.vrworld.next' | t }}-mega" aria-labelledby="{{ 'general.vrworld.next' | t }}-mega" data-id="{{ collection.id }}" data-index="{{ forloop.index }}" aria-label="{{- 'general.text.button' | t -}}">
 													{%- render 'icon', code: 'caretRight' -%}
 												</button>
 											</div>
@@ -112,27 +112,27 @@
 										{%- for collection in data_products -%}
 											<div class="tab-content{% if forloop.index == 1 %} active{% endif %}" data-id="{{ block.id }}" data-index="{{ forloop.index }}">
 												<div class="tab-content-desktop hidden-tablet hidden-mobile">
-													<unity-slider class="unity-slider">
+													<vrworld-slider class="vrworld-slider">
 														<template data-options>
 															{
 																"align": "start",
 																"_autoheight": true,
 																"_fade": false,
-																"_prevBtn": "{{ arrow_id }} .site-navigation [data-id='{{ collection.id }}'].unity-button-prev",
-																"_nextBtn": "{{ arrow_id }} .site-navigation [data-id='{{ collection.id }}'].unity-button-next"
+																"_prevBtn": "{{ arrow_id }} .site-navigation [data-id='{{ collection.id }}'].vrworld-button-prev",
+																"_nextBtn": "{{ arrow_id }} .site-navigation [data-id='{{ collection.id }}'].vrworld-button-next"
 															}
 														</template>
 
-														<div class="unity-slider-viewport">
-															<div class="unity-slider-container">
+														<div class="vrworld-slider-viewport">
+															<div class="vrworld-slider-container">
 																{%- for product in collection.products -%}
-																	<div class="unity-slide"{% if request.design_mode %} data-id="{{ block.id }}" data-index="{{ forloop.index0 }}"{% endif %} {{ block.shopify_attributes }}>
+																	<div class="vrworld-slide"{% if request.design_mode %} data-id="{{ block.id }}" data-index="{{ forloop.index0 }}"{% endif %} {{ block.shopify_attributes }}>
 																			{%- render 'product-card', product: product -%}
 																	</div>
 																{%- endfor -%}
 															</div>
 														</div>
-													</unity-slider>
+													</vrworld-slider>
 												</div>
 
 												<div class="tab-content-mobile">
