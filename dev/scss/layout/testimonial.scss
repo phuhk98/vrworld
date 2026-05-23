@@ -1,0 +1,219 @@
+.testimonial-section {
+	overflow: hidden;
+
+	.testi-head {
+		margin: 0;
+		line-height: 5.2rem;
+	}
+
+	.testi-body {
+		margin-bottom: 2rem;
+		font-size: 2rem;
+	}
+
+	.title-wrapper {
+		display: flex;
+		justify-content: flex-end;
+		align-items: flex-end;
+		margin-bottom: 4rem;
+		gap: 2.4rem;
+
+		&.has-title {
+			justify-content: space-between;
+		}
+	}
+
+	// Star
+	.review-testimonial {
+		margin-bottom: 2rem;
+	}
+
+	// Author
+	.testi-author {
+		display: flex;
+		gap: 1.6rem;
+		align-items: center;
+
+		.testi-author-image {
+			min-width: 6rem;
+			max-width: 6rem;
+
+			img {
+				border-radius: 5rem;
+			}
+		}
+
+		.author-name {
+			display: flex;
+			flex-wrap: wrap;
+			row-gap: 0.4rem;
+			column-gap: 0.8rem;
+			font-size: 1.6rem;
+		}
+
+		.testi-author-verified {
+			padding: 0.2rem 0.6rem;
+			color: #198252;
+			background-color: #d7f4e1;
+			font-size: 1.2rem;
+		}
+
+		.testi-author-comment {
+			font-size: 1.4rem;
+			margin-top: 0.4rem;
+
+			svg {
+				margin-right: 0.55rem;
+			}
+		}
+	}
+
+	.product-card {
+		display: inline-flex;
+		align-items: center;
+		text-align: left;
+		width: fit-content;
+		margin-bottom: 4rem;
+		padding: 1.6rem;
+		gap: 1.6rem;
+		justify-content: space-between;
+		border-radius: 0.8rem;
+		container-type: unset;
+
+		.product-media-wrap {
+			position: relative;
+			width: 8.4rem;
+			aspect-ratio: 1 / 1;
+			flex-shrink: 0;
+			border-radius: 0;
+		}
+
+		.product-card-content {
+			display: flex;
+			flex-wrap: wrap;
+			align-items: center;
+			gap: 1.6rem;
+			padding: 0;
+
+			* {
+				margin: unset;
+			}
+		}
+
+		.form-add-to-cart {
+			position: relative;
+			top: 0;
+			left: 0;
+			visibility: visible;
+			opacity: 1;
+			width: unset;
+			container-type: unset;
+
+			.add-to-cart-button {
+				color: rgb(var(--button-text-color));
+				background: rgb(var(--button-bg-color));
+				@media (min-width: 992px) {
+					height: 4rem;
+					max-height: 4rem;
+					min-height: 4rem;				}
+
+				svg {
+					margin-right: 0;
+				}
+			}
+		}
+
+		.product-title {
+			* {
+				font-size: 1.6rem;
+			}
+		}
+
+		.product-price {
+			font-size: 1.4rem;
+		}
+	}
+
+	.unity-arrows {
+		display: flex;
+		gap: 0.8rem;
+
+		.unity-button {
+			border-radius: 4rem;
+			border: 0.2rem solid rgba(var(--text-color));
+			width: 5.2rem;
+			height: 5.2rem;
+			z-index: 1;
+			background-color: transparent;
+
+			svg {
+				color: rgba(var(--text-color));
+				width: 1rem;
+				height: 1.7rem;
+			}
+
+			@media (hover:hover) {
+				&:hover {
+					color: rgb(var(--background-color));
+					background-color: rgb(var(--text-color));
+
+					svg {
+						color: rgb(var(--background-color));
+					}
+				}
+			}
+		}
+	}
+
+	@media (max-width: 991px) {
+		.title-wrapper {
+			flex-direction: column;
+			align-items: flex-start;
+		}
+
+		.product-card {
+			margin-bottom: 2.4rem;
+
+			.product-card-content-wrapper {
+				row-gap: 0.8rem;
+			}
+
+			.form-add-to-cart {
+				.add-to-cart-button {
+					font-size: inherit;
+				}
+			}
+		}
+	}
+
+	@media (min-width: 992px) {
+		.title-wrapper {
+			margin-bottom: 6rem;
+		}
+
+		.testi-head {
+			line-height: 6rem;
+		}
+
+		.testi-body {
+			margin-bottom: 3.2rem;
+			font-size: 2.4rem;
+		}
+
+		.review-testimonial {
+			margin-bottom: 3.2rem;
+		}
+
+		.unity-slider-viewport {
+			overflow: visible;
+		}
+	}
+
+	.unity-slide {
+		opacity: 0.6;
+
+		&.is-snapped {
+			opacity: 1;
+		}
+	}
+}

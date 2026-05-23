@@ -1,0 +1,136 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "breadcrumb": {
+      "type": "breadcrumb",
+      "name": "t:sections.breadcrumb.presets.name",
+      "settings": {
+        "full": false,
+        "overlay": 50,
+        "separator_line": true,
+        "color_scheme": "scheme-106a43b8-bc5e-46c1-897e-d3e6e2640b74",
+        "show_title": false,
+        "show_scrolling": false,
+        "font_scale": 100,
+        "description": "",
+        "description_position": "below",
+        "right_description": false,
+        "padding_top": 16,
+        "padding_bottom": 16,
+        "padding_top_mobile": 16,
+        "padding_bottom_mobile": 16
+      }
+    },
+    "scrolling_promotion": {
+      "type": "scrolling-promotion",
+      "blocks": {
+        "text-1": {
+          "type": "text",
+          "settings": {
+            "text": "COLLECTIONS",
+            "icon": false
+          }
+        },
+        "text-2": {
+          "type": "image",
+          "settings": {
+            "url": "",
+            "icon": false
+          }
+        },
+        "text-3": {
+          "type": "text",
+          "settings": {
+            "text": "COLLECTIONS",
+            "icon": false
+          }
+        },
+        "text-4": {
+          "type": "image",
+          "settings": {
+            "url": "",
+            "icon": false
+          }
+        }
+      },
+      "block_order": [
+        "text-1",
+        "text-2",
+        "text-3",
+        "text-4"
+      ],
+      "name": "t:sections.scrolling-promotion.name",
+      "settings": {
+        "color_scheme": "scheme-106a43b8-bc5e-46c1-897e-d3e6e2640b74",
+        "full": true,
+        "hover_pause": true,
+        "direction": "rtl",
+        "time": 40,
+        "space": 80,
+        "scale": 400,
+        "mobile_text_scale": 100,
+        "image_scale": 80,
+        "product_color_scheme": "",
+        "padding_top": 50,
+        "padding_bottom": 50,
+        "padding_top_mobile": 20,
+        "padding_bottom_mobile": 20
+      }
+    },
+    "main": {
+      "type": "main-list-collection",
+      "settings": {
+        "color_scheme": "",
+        "rows": 2,
+        "columns": "4",
+        "columns_mobile": "1",
+        "sort": "products_high",
+        "image_ratio": "rectangle",
+        "padding_top": 80,
+        "padding_bottom": 80,
+        "padding_top_mobile": 60,
+        "padding_bottom_mobile": 60
+      }
+    },
+    "image_banner": {
+      "type": "image-banner",
+      "name": "t:sections.image-banner.name",
+      "settings": {
+        "color_scheme": "",
+        "image": "shopify://shop_images/imageBanner_1.jpg",
+        "height": "medium",
+        "height_mobile": "medium",
+        "overlay": 60,
+        "has_bgcolor": true,
+        "position_x": "start",
+        "position_y": "center",
+        "text_align": "left",
+        "mobile_text_align": "left",
+        "sub_heading_text": "",
+        "heading_text": "<p>Boosting your immune <br/>system every day</p>",
+        "heading_size": "h2",
+        "text": "<p>We know first hand that well-being affects everything, from your <br/>energy and outlook to your ability to show up in relationships. This is <br/>your life. Make it a lively one.</p>",
+        "button_label": "SHOP NOW",
+        "button_link": "shopify://collections/all",
+        "padding_top": 40,
+        "padding_bottom": 40,
+        "padding_top_mobile": 20,
+        "padding_bottom_mobile": 20
+      }
+    }
+  },
+  "order": [
+    "breadcrumb",
+    "scrolling_promotion",
+    "main",
+    "image_banner"
+  ]
+}

@@ -1,0 +1,274 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+	"sections": {
+		"breadcrumb": {
+			"type": "breadcrumb",
+			"settings": {
+				"full": false,
+				"background_image": "shopify://shop_images/pageHeading.png",
+				"overlay": 70,
+				"separator_line": true,
+				"color_scheme": "scheme-3",
+				"show_title": true,
+				"show_scrolling": true,
+				"font_scale": 530,
+				"description": "With a focus on transparency, sustainability, and personalized customer care, we’re here to help you achieve your wellness goals.",
+				"description_position": "below",
+				"right_description": true,
+				"padding_top": 16,
+				"padding_bottom": 16,
+				"padding_top_mobile": 16,
+				"padding_bottom_mobile": 16
+			}
+		},
+		"multirow": {
+			"type": "multirow",
+			"blocks": {
+				"row-1": {
+					"type": "row",
+					"settings": {
+						"image": "shopify://shop_images/column-1-1.png",
+						"caption": "",
+						"heading": "High-quality supplements",
+						"description": "<p>We’re committed to providing only the highest quality supplements. Each product is carefully sourced and rigorously tested to ensure you receive effective and reliable health solutions that meet the highest industry standards.</p>",
+						"button_label": "",
+						"button_link": ""
+					}
+				},
+				"row-2": {
+					"type": "row",
+					"settings": {
+						"image": "shopify://shop_images/Rectangle_4_2.png",
+						"caption": "",
+						"heading": "Natural ingredients",
+						"description": "<p>We believe in the power of nature. That’s why our supplements are made from pure, natural ingredients, free from artificial additives and fillers. We offer products that are as close to nature as possible, supporting your health with the best that nature has to offer.</p>",
+						"button_label": "",
+						"button_link": ""
+					}
+				},
+				"row-3": {
+					"type": "row",
+					"settings": {
+						"image": "shopify://shop_images/Rectangle_4_1.png",
+						"caption": "",
+						"heading": "Personalized health consultations",
+						"description": "<p>At Unity, we provide personalized in-store health consultations, allowing customers to receive tailored advice and recommendations based on their individual health goals, making their shopping experience more meaningful and informed.</p>",
+						"button_label": "",
+						"button_link": ""
+					}
+				}
+			},
+			"block_order": [
+				"row-1",
+				"row-2",
+				"row-3"
+			],
+			"name": "t:sections.multirow.name",
+			"settings": {
+				"full": false,
+				"color_scheme": "",
+				"content_color_scheme": "",
+				"image_height": "medium",
+				"desktop_image_width": "medium",
+				"image_layout": "alternate-right",
+				"desktop_content_position": "center",
+				"desktop_alignment": "left",
+				"heading_size": "h4",
+				"button_style": "primary",
+				"mobile_alignment": "left",
+				"padding_top": 80,
+				"padding_bottom": 80,
+				"padding_top_mobile": 60,
+				"padding_bottom_mobile": 60
+			}
+		},
+		"video_background": {
+			"type": "video-background",
+			"name": "t:sections.video-banner.presets.name",
+			"settings": {
+				"full": true,
+				"color_scheme": "scheme-3",
+				"source": "native",
+				"url": "https://www.youtube.com/watch?v=_9VUPq3SxOc",
+				"native_url": "shopify://files/videos/945fc3a3315640a18d6a8f825f4a210e.mp4",
+				"overlay": 50,
+				"height": "450px",
+				"mobile_height": "400px",
+				"vertical_align": "middle",
+				"horizontal_align": "center",
+				"text_align": "center",
+				"sub_heading_text": "<p>( NEW ARRIVAL )</p>",
+				"heading_text": "Vitality in every capsules",
+				"heading_size": "h2",
+				"description": "<p>Elevating health standards, one vitamin at a time.</p>",
+				"button_text": "SHOP VIMATIN & COLLAGEN",
+				"button_link": "shopify://collections/vitamins-collagens",
+				"padding_top": 10,
+				"padding_bottom": 10,
+				"padding_top_mobile": 0,
+				"padding_bottom_mobile": 0
+			}
+		},
+		"timeline": {
+			"type": "timeline",
+			"blocks": {
+				"item-1": {
+					"type": "item",
+					"settings": {
+						"color_scheme_item": "scheme-1",
+						"image": "shopify://shop_images/Frame_569_d177e476-ff8c-417d-905b-e5330893edb7.png",
+						"heading_item": "The new era of Unity",
+						"year": 2010,
+						"description": "<p>Founded with a vision of promoting natural health, the store offers a curated selection of vitamins, minerals and herbal supplements by Benjamin Williams. Its goal is to educate the community on the importance of preventative care and holistic wellness.</p>"
+					}
+				},
+				"item-2": {
+					"type": "item",
+					"settings": {
+						"color_scheme_item": "scheme-1",
+						"image": "shopify://shop_images/Frame_569_32e980a1-600e-4d61-8557-e3135c29d062.png",
+						"heading_item": "Expansion of product range",
+						"year": 2012,
+						"description": "<p>Due to growing customer demand, Unity expands its product range to include organic beauty products, probiotics, and personalized vitamin packs. The store also starts sourcing from local herbalists, adding unique, hand-blended tinctures to its offerings.</p>"
+					}
+				},
+				"item-3": {
+					"type": "item",
+					"settings": {
+						"color_scheme_item": "scheme-1",
+						"image": "shopify://shop_images/Frame_569_cb8492c7-a23b-4939-bfdb-ae28d4d95f45.png",
+						"heading_item": "Launch of online store",
+						"year": 2015,
+						"description": "<p>Responding to the rise of e-commerce, Unity launches its online store, making its products available nationwide. This move boosts sales significantly and establishes the brand’s online presence, catering to a wider audience beyond the local community.</p>"
+					}
+				},
+				"item-4": {
+					"type": "item",
+					"settings": {
+						"color_scheme_item": "scheme-1",
+						"image": "shopify://shop_images/Frame_569_003a542d-4a0d-4783-b5a1-90f10f6ff776.png",
+						"heading_item": "Opening of a second location",
+						"year": 2019,
+						"description": "<p>After nearly a decade of growth, Unity opens a second location in a neighboring town, doubling its footprint. The new location reflects the same ethos, with a modern design and an expanded inventory, including new lines of sports nutrition and vegan supplements.</p>"
+					}
+				},
+				"item-5": {
+					"type": "item",
+					"settings": {
+						"color_scheme_item": "scheme-1",
+						"image": "shopify://shop_images/Frame_569_32e980a1-600e-4d61-8557-e3135c29d062.png",
+						"heading_item": "Launch of private label supplements",
+						"year": 2022,
+						"description": "<p>We introduce our own line of private-label vitamins and supplements, developed in partnership with top manufacturers. These products are formulated with organic, non-GMO ingredients and offer a higher degree of quality control. This marks a major step in building brand identity and customer loyalty.</p>"
+					}
+				},
+				"item-6": {
+					"type": "item",
+					"settings": {
+						"color_scheme_item": "scheme-1",
+						"image": "shopify://shop_images/Frame_569_17094592-9e8d-4c0b-823e-db6b14f878f4.png",
+						"heading_item": "Community events and workshops",
+						"year": 2023,
+						"description": "<p>Unity begins hosting monthly in-person workshops and wellness events, from yoga classes to seminars on natural remedies for stress and anxiety. The events foster a deeper connection with the local community and help position the store as a hub for health and wellness education.</p>"
+					}
+				}
+			},
+			"block_order": [
+				"item-1",
+				"item-2",
+				"item-3",
+				"item-4",
+				"item-5",
+				"item-6"
+			],
+			"name": "t:sections.timeline.name",
+			"settings": {
+				"full": false,
+				"color_scheme": "scheme-2",
+				"sub_heading": "( OUR JOURNEY )",
+				"heading": "History of Unity",
+				"heading_size": "h3",
+				"padding_top": 80,
+				"padding_bottom": 80,
+				"padding_top_mobile": 60,
+				"padding_bottom_mobile": 60
+			}
+		},
+		"multicolumn": {
+			"type": "multicolumn",
+			"blocks": {
+				"item-1": {
+					"type": "item",
+					"settings": {
+						"column_img": "shopify://shop_images/truck_2e9de7a4-2b8e-40c7-9551-92b7fb51125e.svg",
+						"text": "Free Shipping",
+						"description": "<p>Fast, reliable delivery is part of the deal — so we’ve scrapped them entirely. That’s right: every order ships free, every day, with no minimum spend and no fine print.</p>",
+						"button_label": "",
+						"button_url": ""
+					}
+				},
+				"item-2": {
+					"type": "item",
+					"settings": {
+						"column_img": "shopify://shop_images/lock.svg",
+						"text": "Secure Payments",
+						"description": "<p>Your security is our top priority. All transactions on our website are processed using industry-standard encryption to protect your personal information.</p>",
+						"button_label": "",
+						"button_url": ""
+					}
+				},
+				"item-3": {
+					"type": "item",
+					"settings": {
+						"column_img": "shopify://shop_images/user.svg",
+						"text": "Dedicated Support",
+						"description": "<p>We’re more than just a brand — we’re your partner from start to finish. Whether you have questions, need help choosing a product, or simply want to check on delivery.</p>",
+						"button_label": "",
+						"button_url": ""
+					}
+				}
+			},
+			"block_order": [
+				"item-1",
+				"item-2",
+				"item-3"
+			],
+			"name": "t:sections.multicolumn.name",
+			"settings": {
+				"full": false,
+				"color_scheme": "",
+				"caption": "",
+				"heading_text": "",
+				"heading_size": "h3",
+				"button_label": "",
+				"button_link": "",
+				"columns_color_scheme": "scheme-1",
+				"align": "center",
+				"image_width": "adapt",
+				"image_ratio": "adapt",
+				"columns": 3,
+				"columns_mobile": "1",
+				"mobile_swipe": false,
+				"padding_top": 80,
+				"padding_bottom": 80,
+				"padding_top_mobile": 60,
+				"padding_bottom_mobile": 60
+			}
+		}
+	},
+	"order": [
+		"breadcrumb",
+		"multirow",
+		"video_background",
+		"timeline",
+		"multicolumn"
+	]
+}

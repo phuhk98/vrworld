@@ -1,0 +1,135 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+	"sections": {
+		"main": {
+			"type": "main-page",
+			"disabled": true,
+			"settings": {
+				"full": false,
+				"padding_top": 60,
+				"padding_bottom": 35,
+				"padding_top_mobile": 20,
+				"padding_bottom_mobile": 20
+			}
+		},
+		"breadcrumb": {
+			"type": "breadcrumb",
+			"name": "t:sections.breadcrumb.presets.name",
+			"settings": {
+				"full": false,
+				"overlay": 50,
+				"separator_line": true,
+				"color_scheme": "scheme-2",
+				"show_title": false,
+				"show_scrolling": false,
+				"font_scale": 100,
+				"description": "",
+				"description_position": "below",
+				"right_description": false,
+				"padding_top": 16,
+				"padding_bottom": 16,
+				"padding_top_mobile": 16,
+				"padding_bottom_mobile": 16
+			}
+		},
+		"location_grid": {
+			"type": "location-grid",
+			"blocks": {
+				"item-1": {
+					"type": "item",
+					"settings": {
+						"image_map": "shopify://shop_images/CleanShot_2024-09-24_at_16.24.04_2x_4b57b22e-a8fa-414c-8f30-562d89f241c3.png",
+						"content_left": "<p><strong>Boulevard</strong></p><p>[ADDRESS]</p><p>155 WillowbrookBoulevard, New Jersey</p><p><a href=\"https://maps.app.goo.gl/hreKFoWH3USgu9bD9\" target=\"_blank\" title=\"https://maps.app.goo.gl/hreKFoWH3USgu9bD9\">Get direction</a></p>",
+						"content_right": "<p>[PHONE]</p><p>+1 (606) 598-5782</p><p>[EMAIL]</p><p>store.name@unity.com</p>"
+					}
+				},
+				"item-2": {
+					"type": "item",
+					"settings": {
+						"image_map": "shopify://shop_images/CleanShot_2024-09-26_at_11.08.07_1.png",
+						"content_left": "<p><strong>Manhattan Ave</strong></p><p>[ADDRESS]</p><p>670 Manhattan Ave, Brooklyn, United States</p><p><a href=\"https://maps.app.goo.gl/k93RyVwjnN3zZCb86\" target=\"_blank\" title=\"https://maps.app.goo.gl/k93RyVwjnN3zZCb86\">Get direction</a></p>",
+						"content_right": "<p>[PHONE]</p><p>+1 (606) 598-5782</p><p>[EMAIL]</p><p>store.name@unity.com</p>"
+					}
+				},
+				"item-3": {
+					"type": "item",
+					"settings": {
+						"image_map": "shopify://shop_images/1a05b60192e27bcb9ff2c1444d78a37973201c47.png",
+						"content_left": "<p><strong>Lexington Ave</strong></p><p>[ADDRESS]</p><p>155 WillowbrookBoulevard, New Jersey</p><p><a href=\"https://maps.app.goo.gl/977peEigfURMoLGj9\" target=\"_blank\" title=\"https://maps.app.goo.gl/977peEigfURMoLGj9\">Get direction</a></p>",
+						"content_right": "<p>[PHONE]</p><p>+1 (606) 598-5782</p><p>[EMAIL]</p><p>store.name@unity.com</p>"
+					}
+				},
+				"item-4": {
+					"type": "item",
+					"settings": {
+						"image_map": "shopify://shop_images/1a05b60192e27bcb9ff2c1444d78a37973201c47.png",
+						"content_left": "<p><strong>Avenue A</strong></p><p>[ADDRESS]</p><p>192-208 Avenue A, New York, NY 10009, USA</p><p><a href=\"https://maps.app.goo.gl/YxA58pCwHTYeoe617\" target=\"_blank\" title=\"https://maps.app.goo.gl/YxA58pCwHTYeoe617\">Get direction</a></p>",
+						"content_right": "<p>[PHONE]</p><p>+1 (606) 598-5782</p><p>[EMAIL]</p><p>store.name@unity.com</p>"
+					}
+				},
+				"item-5": {
+					"type": "item",
+					"settings": {
+						"image_map": "shopify://shop_images/bd128e3cf57abe645d7595d283cc493b12119979.png",
+						"content_left": "<p><strong>Hudson Yard</strong></p><p>[ADDRESS]</p><p>20 W 34th St., New York, NY 10001, United States</p><p><a href=\"https://maps.app.goo.gl/kR9pJMKUrSSKHZAJ9\" target=\"_blank\" title=\"https://maps.app.goo.gl/kR9pJMKUrSSKHZAJ9\">Get direction</a></p>",
+						"content_right": "<p>[PHONE]</p><p>+1 (606) 598-5782</p><p>[EMAIL]</p><p>store.name@unity.com</p>"
+					}
+				},
+				"item-6": {
+					"type": "item",
+					"settings": {
+						"image_map": "shopify://shop_images/CleanShot_2024-09-26_at_11.08.07_1.png",
+						"content_left": "<p><strong>Lomotron</strong></p><p>[ADDRESS]</p><p>34th St., New York, NY, United States</p><p><a href=\"https://maps.app.goo.gl/pBB19yfgq7ZXArTD7\" target=\"_blank\" title=\"https://maps.app.goo.gl/pBB19yfgq7ZXArTD7\">Get direction</a></p>",
+						"content_right": "<p>[PHONE]</p><p>+1 (606) 598-5782</p><p>[EMAIL]</p><p>store.name@unity.com</p>"
+					}
+				},
+				"item-7": {
+					"type": "item",
+					"settings": {
+						"image_map": "shopify://shop_images/CleanShot_2024-09-26_at_11.08.07_1.png",
+						"content_left": "<p><strong>Norman Ave</strong></p><p>[ADDRESS]</p><p>89-75 Norman Ave, Brooklyn, NY 11222, USA</p><p><a href=\"https://maps.app.goo.gl/UCWbq7NvkJJgdmQ97\" target=\"_blank\" title=\"https://maps.app.goo.gl/UCWbq7NvkJJgdmQ97\">Get direction</a></p>",
+						"content_right": "<p>[PHONE]</p><p>+1 (606) 598-5782</p><p>[EMAIL]</p><p>store.name@unity.com</p>"
+					}
+				}
+			},
+			"block_order": [
+				"item-1",
+				"item-2",
+				"item-3",
+				"item-4",
+				"item-5",
+				"item-6",
+				"item-7"
+			],
+			"name": "t:sections.location_grid.name",
+			"settings": {
+				"full": false,
+				"color_scheme": "",
+				"caption": "( OUR LOCATION )",
+				"heading_text": "<p>FIND THE NEAREST </p><p>UNITY STORE</p>",
+				"heading_size": "h2",
+				"columns_color_scheme": "",
+				"align": "left",
+				"columns": 3,
+				"mobile_layout": "list",
+				"padding_top": 80,
+				"padding_bottom": 80,
+				"padding_top_mobile": 60,
+				"padding_bottom_mobile": 60
+			}
+		}
+	},
+	"order": [
+		"main",
+		"breadcrumb",
+		"location_grid"
+	]
+}

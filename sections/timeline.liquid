@@ -1,0 +1,322 @@
+{%- liquid
+	assign section_id   = '#shopify-section-' | append: section.id
+	assign full         = section.settings.full
+	assign sub_heading  = section.settings.sub_heading
+	assign heading      = section.settings.heading
+	assign heading_size = section.settings.heading_size
+	assign animation    = settings.section_animation
+-%}
+
+<style>
+	{{ section_id }} .section-wrapper {
+		padding-top: {{ section.settings.padding_top_mobile }}px;
+		padding-bottom: {{ section.settings.padding_bottom_mobile }}px;
+	}
+
+	@media (min-width: 992px) {
+		{{ section_id }} .collapsible-wrap {
+			width: {{ section.settings.width }}%;
+			margin: 0 auto;
+		}
+
+		{{ section_id }} .section-wrapper {
+			padding-top: {{ section.settings.padding_top }}px;
+			padding-bottom: {{ section.settings.padding_bottom }}px;
+		}
+	}
+</style>
+
+<div class="section-wrapper color-{{ section.settings.color_scheme }}">
+	<timeline-carousel class="{% if full %}stretch-section stretch-padding{% else %} container{% endif %}{% if animation %} scroll-trigger{% endif %}">
+		{%- if sub_heading != blank -%}
+			<div class="sub-heading">
+				{{ sub_heading }}
+			</div>
+		{%- endif -%}
+
+		{%- if heading != blank -%}
+			<div class="heading {{ heading_size }}">
+				{{ heading }}
+			</div>
+		{%- endif -%}
+
+		<div class="timeline-wrapper">
+			<div class="events-content">
+				<div class="product-main-slide">
+					<unity-slider class="unity-slider">
+						<template data-options>
+							{
+								"align": "start",
+								"duration": 25,
+								"_autoheight": true,
+								"draggable": false,
+								"containScroll": false,
+								"_prevBtn": "{{ section_id }} .unity-button-prev",
+								"_nextBtn": "{{ section_id }} .unity-button-next"
+							}
+						</template>
+
+						<div class="unity-slider-viewport main-sliders">
+							<div class="unity-slider-container">
+								{%- for block in section.blocks -%}
+									{%- liquid
+										assign image             = block.settings.image
+										assign heading_item      = block.settings.heading_item
+										assign year              = block.settings.year
+										assign description       = block.settings.description
+										assign color_scheme_item = block.settings.color_scheme_item
+									-%}
+									<li data-date="{{ block.settings.year}}" data-block-id="{{ block.id }}" class="unity-slide item{% if forloop.index == 1 %} selected{% endif %}">
+										<div class="image-timeline color-{{ color_scheme_item }}">
+											<div class="{% if image == blank %}adapt-svg-placeholder{% endif %}{% if settings.image_lazy and image %} lazy-image{% endif %}">
+												{%- liquid
+													if image != blank
+														render 'lazy-image', image: image, width: 900
+													else
+														render 'icon', code: 'placeholder'
+													endif
+												-%}
+											</div>
+										</div>
+
+										<div class="info-timeline color-{{ color_scheme_item }}">
+											{%- if heading_item != blank -%}
+												<div class="heading {{ heading_size }}">{{ block.settings.heading_item}}</div>
+											{%- endif -%}
+
+											{%- if year != blank -%}
+												<div class="year h6">{{ block.settings.year}}</div>
+											{%- endif -%}
+
+											{%- if description != blank -%}
+												<div class="description">{{ block.settings.description}}</div>
+											{%- endif -%}
+										</div>
+									</li>
+								{%- endfor -%}
+							</div>
+						</div>
+					</unity-slider>
+				</div>
+			</div>
+
+			<div class="timeline">
+				<div class="events-wrapper">
+					<div class="events">
+						<span class="first-liner"></span>
+
+						{%- for block in section.blocks -%}
+							<div class="item-year">
+								<a href="#0" data-block-id="{{ block.id }}" data-date="{{ block.settings.year}}" class="sub-heading{% if forloop.index == 1 %} selected{% endif %}" {{ block.shopify_attributes }}>{{ block.settings.year}}</a>
+							</div>
+						{%- endfor -%}
+
+						<span class="last-liner"></span>
+						<span class="filling-line" aria-hidden="true"></span>
+					</div>
+				</div>
+
+				<div class="cd-timeline-pagination">
+					<button class="controls unity-button-prev prev-mobile" title ="{{ 'general.unity.prev' | t }}-time" aria-label="{{ 'general.unity.prev' | t }}-time" id="{{ 'general.unity.prev' | t }}-time" aria-labelledby="{{ 'general.unity.prev' | t }}-time" disabled>{%- render 'icon', code: 'chevron-left' -%}</button>
+					<button class="controls unity-button-next next-mobile" title ="{{ 'general.unity.next' | t }}-time" aria-label="{{ 'general.unity.next' | t }}-time" id="{{ 'general.unity.next' | t }}-time" aria-labelledby="{{ 'general.unity.next' | t }}-time" disabled>{%- render 'icon', code: 'chevron-right' -%}</button>
+				</div>
+			</div>
+		</div>
+	</timeline-carousel>
+</div>
+
+{% schema %}
+{
+	"name": "t:sections.timeline.name",
+	"tag": "section",
+	"class": "timeline-section",
+	"disabled_on": {
+		"groups": ["header", "footer"]
+	},
+	"settings": [
+		{
+			"type": "checkbox",
+			"id": "full",
+			"default": false,
+			"label": "t:general.layout.full.label"
+		},
+		{
+			"type": "color_scheme",
+			"id": "color_scheme",
+			"label": "t:settings_schema.colors.label",
+			"default": "scheme-1"
+		},
+		{
+			"type": "text",
+			"id": "sub_heading",
+			"default": "( sub heading )",
+			"label": "t:general.typography.sub_heading.label"
+		},
+		{
+			"type": "text",
+			"id": "heading",
+			"default": "Heading",
+			"label": "t:general.typography.heading.label"
+		},
+		{
+			"type": "select",
+			"id": "heading_size",
+			"options": [
+				{
+					"value": "h5",
+					"label": "t:general.typography.heading_size.option_1.label"
+				},
+				{
+					"value": "h4",
+					"label": "t:general.typography.heading_size.option_2.label"
+				},
+				{
+					"value": "h3",
+					"label": "t:general.typography.heading_size.option_3.label"
+				}
+			],
+			"default": "h4",
+			"label": "t:general.typography.heading_size.label"
+		},
+		{
+			"type": "header",
+			"content": "t:general.padding.header_padding.content"
+		},
+		{
+			"type": "range",
+			"id": "padding_top",
+			"min": 0,
+			"max": 100,
+			"step": 1,
+			"default": 50,
+			"unit": "px",
+			"label": "t:general.padding.top.label"
+		},
+		{
+			"type": "range",
+			"id": "padding_bottom",
+			"min": 0,
+			"max": 100,
+			"step": 1,
+			"default": 50,
+			"unit": "px",
+			"label": "t:general.padding.bottom.label"
+		},
+		{
+			"type": "paragraph",
+			"content": "t:general.padding.paragraph_mobile.content"
+		},
+		{
+			"type": "range",
+			"id": "padding_top_mobile",
+			"min": 0,
+			"max": 100,
+			"step": 1,
+			"default": 20,
+			"unit": "px",
+			"label": "t:general.padding.top.label"
+		},
+		{
+			"type": "range",
+			"id": "padding_bottom_mobile",
+			"min": 0,
+			"max": 100,
+			"step": 1,
+			"default": 20,
+			"unit": "px",
+			"label": "t:general.padding.bottom.label"
+		}
+	],
+	"blocks": [
+		{
+			"type": "item",
+			"name": "t:sections.timeline.blocks.tab.name",
+			"settings": [
+				{
+					"type": "color_scheme",
+					"id": "color_scheme_item",
+					"label": "t:settings_schema.colors.label",
+					"default": "scheme-2"
+				},
+				{
+					"type": "image_picker",
+					"id": "image",
+					"label": "t:general.image.label"
+				},
+				{
+					"type": "text",
+					"id": "heading_item",
+					"label": "t:general.typography.heading.label",
+					"default": "Heading"
+				},
+				{
+					"type": "number",
+					"id": "year",
+					"label": "t:sections.timeline.blocks.tab.settings.year.label"
+				},
+				{
+					"type": "richtext",
+					"id": "description",
+					"label": "t:sections.timeline.blocks.tab.settings.description.label",
+					"default": "<p>Pair text with an image to focus on your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.</p>"
+				}
+			]
+		}
+	],
+	"presets": [
+		{
+			"name": "t:sections.timeline.name",
+			"blocks": [
+				{
+					"type": "item",
+					"settings": {
+						"heading_item": "Heading",
+						"year": 1978,
+						"description": "<p>Pair text with an image to focus on your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.</p>"
+					}
+				},
+				{
+					"type": "item",
+					"settings": {
+						"heading_item": "Heading",
+						"year": 2000,
+						"description": "<p>Pair text with an image to focus on your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.</p>"
+					}
+				},
+				{
+					"type": "item",
+					"settings": {
+						"heading_item": "Heading",
+						"year": 2003,
+						"description": "<p>Pair text with an image to focus on your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.</p>"
+					}
+				},
+				{
+					"type": "item",
+					"settings": {
+						"heading_item": "Heading",
+						"year": 2016,
+						"description": "<p>Pair text with an image to focus on your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.</p>"
+					}
+				},
+				{
+					"type": "item",
+					"settings": {
+						"heading_item": "Heading",
+						"year": 2024,
+						"description": "<p>Pair text with an image to focus on your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.</p>"
+					}
+				},
+				{
+					"type": "item",
+					"settings": {
+						"heading_item": "Heading",
+						"year": 2025,
+						"description": "<p>Pair text with an image to focus on your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.</p>"
+					}
+				}
+			]
+		}
+	]
+}
+{% endschema %}

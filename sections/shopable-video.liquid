@@ -1,0 +1,404 @@
+{%- liquid
+	assign section_id   = '#shopify-section-' | append: section.id
+	assign caption      = section.settings.caption
+	assign heading      = section.settings.heading_text
+	assign heading_size = section.settings.heading_size
+	assign text         = section.settings.text
+	assign column       = section.settings.column
+	assign column_gap   = section.settings.column_gap
+	assign show_arrows  = section.settings.show_arrows
+	assign show_dots    = section.settings.show_dots
+	assign animation    = settings.section_animation
+-%}
+
+<style>
+	{{ section_id }} .section-wrapper {
+		padding-top: {{ section.settings.padding_top_mobile }}px;
+		padding-bottom: {{ section.settings.padding_bottom_mobile }}px;
+		--aspect-ratio: 1 / 1.48;
+	}
+
+	{{ section_id }} .grid-items {
+		--grid-column: {{ column }};
+		--grid-column-gap: {{ column_gap }}px;
+	}
+
+	{{ section_id }} .swiper:not(.swiper-initialized) .swiper-slide {
+		margin-right: {{ column_gap }}px;
+	}
+
+	{{ section_id }} .swiper-slide {
+		width: 80%;
+	}
+
+	@media (min-width: 992px) {
+		{{ section_id }} .section-wrapper {
+			padding-top: {{ section.settings.padding_top }}px;
+			padding-bottom: {{ section.settings.padding_bottom }}px;
+		}
+
+		{{ section_id }} .swiper:not(.swiper-initialized) .swiper-slide {
+			width: calc( ( 100% - {{ column | minus: 1 | times: column_gap }}px ) / {{ column }} );
+			margin-right: {{ column_gap }}px;
+		}
+	}
+</style>
+
+<div class="section-wrapper color-{{ section.settings.color_scheme }}">
+	<div class="container">
+		{%- if caption != blank or heading != blank or text != blank -%}
+			<div class="title-wrapper text-{{ section.settings.text_align }} text-{{ section.settings.mobile_align }}-mobile{% if animation %} scroll-trigger{% endif %}">
+				{%- if caption != blank -%}
+					<div class="caption sub-heading rte">{{- caption -}}</div>
+				{%- endif -%}
+
+				{%- if heading != blank -%}
+					<div class="heading rte {{ heading_size }}">{{- heading -}}</div>
+				{%- endif -%}
+
+				{%- if text != blank -%}
+					<div class="description rte">{{- text -}}</div>
+				{%- endif -%}
+			</div>
+		{%- endif -%}
+	</div>
+
+	<div class="shopable-wrapper{% if animation %} scroll-trigger{% endif %}">
+		<unity-slider class="unity-slider">
+			<template data-options>
+				{
+					"align": "center",
+					"loop": "true",
+					"containScroll": "false",
+					"_autoheight": true,
+					"_fade": false,
+					"_prevBtn": "{{ section_id }} .unity-button-prev",
+					"_nextBtn": "{{ section_id }} .unity-button-next",
+					"_dotsNode": "{{ section_id }} .unity-dots"
+				}
+			</template>
+
+			<div class="unity-slider-viewport">
+				<div class="unity-slider-container">
+					{%- for block in section.blocks -%}
+						{%- liquid
+							assign image          = block.settings.image
+							assign video          = block.settings.video
+							assign product        = block.settings.product
+							assign featured_image = product.featured_media
+						-%}
+
+						<div class="unity-slide" data-{{ block.id }} {{ block.shopify_attributes }} data-index="{{ forloop.index0 }}">
+							<div class="card-wrapper">
+								<div class="card-media">
+									{%- if video != blank -%}
+										<div class="card-video">
+											<video playsinline autoplay loop muted preload="none" poster="{{ video.preview_image.src | image_url: width: '540x' }}">
+												<source data-src="{{ video.sources[1].url | default: video.sources[0].url }}" type="video/mp4">
+												{{ video.preview_image.src | image_url: width: 540 | image_tag: width: 540, loading: 'lazy', alt: product.title }}
+											</video>
+										</div>
+									{%- elsif image != blank -%}
+										<div class="card-image{% if settings.image_lazy %} lazy-image{% endif %}">
+											{%- render 'lazy-image', image: image, width: 500 -%}
+										</div>
+									{%- else -%}
+										{%- render 'icon', code: 'placeholder' -%}
+									{%- endif -%}
+								</div>
+
+								<div class="product-wrapper">
+									<div class="product-image">
+										{%- if product != blank -%}
+											<a href="{{ product.url }}" class="product-image-link" aria-label="{{ product.title }}">
+										{%- endif -%}
+
+										{%- liquid
+											if featured_image != blank
+												echo featured_image | image_url: width: 300 | image_tag
+											else
+												render 'icon', code: 'placeholder'
+											endif
+										-%}
+
+										{%- if product != blank -%}
+											</a>
+										{%- endif -%}
+									</div>
+
+									<div class="product-info">
+										<div class="product-vendor sub-heading">
+											<span class="sr-only">{{- 'accessibility.vendor' | t -}}</span>
+											{%- if product != blank -%}
+												{{ product.vendor | link_to_vendor: class: "product-vendor-link" }}
+											{%- else -%}
+												<span class="info-name">{{ 'products.product.vendor' | t }}</span>
+											{%- endif -%}
+										</div>
+
+										<h3 class="product-title">
+											{%- if product != blank -%}
+												<a href="{{ product.url }}" class="product-title-link">
+													{{ product.title }}
+												</a>
+											{%- else -%}
+												{{ 'onboarding.products.title' | t }}
+											{%- endif -%}
+										</h3>
+
+										{%- if product != blank -%}
+											{%- render 'price', product: product -%}
+										{%- else -%}
+											<div class="product-price">
+												{{- 'products.product.price_default' | t -}}
+											</div>
+										{%- endif -%}
+									</div>
+
+									{%- if product != blank -%}
+										<div class="add-cart">
+											{%- form 'product', product, class: 'form-add-to-cart', novalidate: 'novalidate', data-type: 'add-to-cart-form', id: nil -%}
+												<input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}">
+
+												{%- if product.available -%}
+													{%- if product.available and product.has_only_default_variant -%}
+														<button type="submit" name="add" class="button primary-button add-to-cart-button" aria-label="testimonial-{{ 'general.text.button' | t }}" aria-labelledby="testimonial-{{ 'general.text.button' | t }}">
+															{{- 'products.product.add' | t -}}
+														</button>
+													{%- else -%}
+														<a href="{{ product.url }}" aria-label="{{- 'general.text.link' | t -}}" class="primary-button add-to-cart-button">
+															{%- render 'icon', code: 'eye' -%}
+														</a>
+													{%- endif -%}
+												{%- else -%}
+													<button type="submit" name="add" class="button primary-button add-to-cart-button" disabled>
+														{{- 'products.product.add' | t -}}
+													</button>
+												{%- endif -%}
+
+												{% comment %} Product variant data {% endcomment %}
+												<script data-product-variants>
+													{{ product.variants | json }}
+												</script>
+											{%- endform -%}
+										</div>
+									{%- endif -%}
+								</div>
+							</div>
+						</div>
+					{%- endfor -%}
+				</div>
+			</div>
+
+			{%- if show_arrows -%}
+				<div class="unity-arrows">
+					<button class="unity-button unity-button-prev" title ="{{ 'general.unity.prev' | t }}-recent" aria-label="{{ 'general.unity.prev' | t }}-recent" id="{{ 'general.unity.prev' | t }}-recent" aria-labelledby="{{ 'general.unity.prev' | t }}-recent" disabled>
+						{%- render 'icon', code: 'chevron-left' -%}
+					</button>
+
+					<button class="unity-button unity-button-next" title ="{{ 'general.unity.next' | t }}-recent" aria-label="{{ 'general.unity.next' | t }}-recent" id="{{ 'general.unity.next' | t }}-recent" aria-labelledby="{{ 'general.unity.next' | t }}-recent" disabled>
+						{%- render 'icon', code: 'chevron-right' -%}
+					</button>
+				</div>
+			{%- endif -%}
+
+			{%- if show_dots -%}
+				<div class="align-dots-center">
+					<div class="unity-dots">
+					</div>
+				</div>
+			{%- endif -%}
+		</unity-slider>
+	</div>
+</div>
+
+{% schema %}
+{
+	"name": "t:sections.shopable-video.name",
+	"tag": "section",
+	"class": "shopable-video-section",
+	"disabled_on": {
+		"groups": ["header", "footer"]
+	},
+	"settings": [
+		{
+			"type": "color_scheme",
+			"id": "color_scheme",
+			"label": "t:settings_schema.colors.label",
+			"default": "scheme-1"
+		},
+		{
+			"type": "header",
+			"content": "t:general.typography.heading.label"
+		},
+		{
+			"type": "inline_richtext",
+			"id": "caption",
+			"default": "Caption",
+			"label": "t:general.typography.caption.label"
+		},
+		{
+			"type": "inline_richtext",
+			"id": "heading_text",
+			"default": "Heading",
+			"label": "t:general.typography.heading.label"
+		},
+		{
+			"type": "select",
+			"id": "heading_size",
+			"options": [
+				{
+					"value": "h4",
+					"label": "t:general.typography.heading_size.option_1.label"
+				},
+				{
+					"value": "h3",
+					"label": "t:general.typography.heading_size.option_2.label"
+				},
+				{
+					"value": "h2",
+					"label": "t:general.typography.heading_size.option_3.label"
+				}
+			],
+			"default": "h3",
+			"label": "t:general.typography.heading_size.label"
+		},
+		{
+			"type": "richtext",
+			"id": "text",
+			"default": "<p>Click and shop directly from the video</p>",
+			"label": "t:general.typography.description.label"
+		},
+		{
+
+			"type": "select",
+			"id": "text_align",
+			"options": [
+				{
+					"value": "left",
+					"label": "t:general.layout.alignment.option_1.label"
+				},
+				{
+					"value": "center",
+					"label": "t:general.layout.alignment.option_2.label"
+				},
+				{
+					"value": "right",
+					"label": "t:general.layout.alignment.option_3.label"
+				}
+			],
+			"default": "center",
+			"label": "t:general.layout.alignment.label"
+		},
+		{
+			"type": "header",
+			"content": "t:general.slider.options.label"
+		},
+		{
+			"type": "checkbox",
+			"id": "show_arrows",
+			"default": true,
+			"label": "t:general.slider.show_arrows.label"
+		},
+		{
+			"type": "checkbox",
+			"id": "show_dots",
+			"default": false,
+			"label": "t:general.slider.show_dots.label"
+		},
+		{
+			"type": "header",
+			"content": "t:general.padding.header_padding.content"
+		},
+		{
+			"type": "range",
+			"id": "padding_top",
+			"min": 0,
+			"max": 100,
+			"step": 1,
+			"default": 50,
+			"unit": "px",
+			"label": "t:general.padding.top.label"
+		},
+		{
+			"type": "range",
+			"id": "padding_bottom",
+			"min": 0,
+			"max": 100,
+			"step": 1,
+			"default": 50,
+			"unit": "px",
+			"label": "t:general.padding.bottom.label"
+		},
+		{
+			"type": "paragraph",
+			"content": "t:general.padding.paragraph_mobile.content"
+		},
+		{
+			"type": "range",
+			"id": "padding_top_mobile",
+			"min": 0,
+			"max": 100,
+			"step": 1,
+			"default": 20,
+			"unit": "px",
+			"label": "t:general.padding.top.label"
+		},
+		{
+			"type": "range",
+			"id": "padding_bottom_mobile",
+			"min": 0,
+			"max": 100,
+			"step": 1,
+			"default": 20,
+			"unit": "px",
+			"label": "t:general.padding.bottom.label"
+		}
+	],
+	"blocks": [
+		{
+			"type": "item",
+			"name": "t:sections.shopable-video.blocks.item.name",
+			"settings": [
+				{
+					"type": "image_picker",
+					"id": "image",
+					"label": "t:general.image.label"
+				},
+				{
+					"type": "video",
+					"id": "video",
+					"label": "t:sections.video.name"
+				},
+				{
+					"type": "product",
+					"id": "product",
+					"label": "t:settings_schema.product.name"
+				}
+			]
+		}
+	],
+	"presets": [
+		{
+			"name": "t:sections.shopable-video.name",
+			"blocks": [
+				{
+					"type": "item"
+				},
+				{
+					"type": "item"
+				},
+				{
+					"type": "item"
+				},
+				{
+					"type": "item"
+				},
+				{
+					"type": "item"
+				}
+			]
+		}
+	]
+}
+{% endschema %}

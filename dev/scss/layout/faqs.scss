@@ -1,0 +1,172 @@
+.faqs-section {
+	.faqs-top {
+		&:empty {
+			display: none;
+		}
+
+		* {
+			margin: 0;
+		}
+	}
+
+	.heading {
+		margin: 0;
+		margin-bottom: 2.4rem;
+	}
+
+	.faqs-summary {
+		display: flex;
+		align-items: center;
+		cursor: pointer;
+		padding: 2rem 0;
+		line-height: normal;
+
+		* {
+			margin: 0;
+		}
+	}
+
+	.faqs-wrap-content-title {
+		margin-bottom: 4rem;
+	}
+
+	.faqs-category {
+		margin: 0;
+		margin-bottom: 1.6rem;
+
+		&:not(:first-child) {
+			margin-top: 4rem;
+		}
+	}
+
+	.faqs-title {
+		width: 100%;
+		font-size: 1.8rem;
+		padding-right: 2.25rem;
+	}
+
+	.faqs-content {
+		padding-bottom: 1.2rem;
+		line-height: normal;
+		padding-right: 4.75rem;
+
+		* {
+			margin-top: 0;
+		}
+
+		&:empty {
+			display: none;
+		}
+	}
+
+	&.has-accordion-style {
+		.accordion-caret {
+			span {
+				border: unset;
+				height: auto;
+				border-radius: 0;
+				justify-content: flex-end;
+
+				svg {
+					width: 1.25rem;
+					height: 1.25rem;
+				}
+			}
+		}
+	}
+
+	.has-contact {
+		display: flex;
+		gap: 6.4rem;
+		justify-content: center;
+
+		.faqs-wrap-content {
+			width: 60%;
+
+			details {
+				&:last-child {
+					border-color: transparent;
+				}
+			}
+		}
+
+		.faqs-contact {
+			height: fit-content;
+			border-radius: 0.8rem;
+			padding: 4rem;
+			width: 40%;
+
+			.description {
+				margin-bottom: 4rem;
+
+				* {
+					margin: 0;
+				}
+			}
+
+			.field-form {
+				margin-bottom: 1.6rem;
+
+				input,
+				textarea {
+					border-radius: 0.8rem;
+					box-shadow: 0 0 0 0.1rem rgba(var(--text-color), 0.1);
+					&:focus {
+						outline: 0.1rem solid;
+						padding: 1.6rem 2rem;
+					}
+				}
+
+				textarea {
+					min-height: 12rem;
+				}
+
+				label {
+					color: #999999;
+				}
+			}
+		}
+
+		.button {
+			text-transform: uppercase;
+			justify-content: center;
+		}
+	}
+
+	// Responsive
+	@media (max-width: 991px) {
+		.faqs-top,
+		.heading {
+			margin-bottom: 1.6rem;
+		}
+
+		.faqs-summary {
+			padding: 1.6rem 0;
+		}
+
+		.has-contact {
+			flex-direction: column;
+			gap: 2rem;
+
+			.faqs-wrap-content,
+			.faqs-contact {
+				width: 100%;
+			}
+
+			.faqs-wrap-content {
+				padding-right: 0;
+			}
+			.faqs-contact {
+				padding: 2.4rem;
+
+				.description {
+					margin-bottom: 2.4rem;
+				}
+			}
+
+			.button {
+				width: 100%;
+			}
+		}
+	}
+}

@@ -1,0 +1,545 @@
+.customer-open {
+	overflow: hidden;
+	padding-right: var(--scrollbar-width, 0);
+	.customer-wraper {
+		opacity: 1;
+		visibility: visible;
+		pointer-events: auto;
+
+		.customer {
+			transform: translateY(0);
+
+			.field {
+				input {
+					visibility: visible;
+				}
+			}
+		}
+	}
+}
+
+.customer-wraper {
+	position: fixed;
+	left: 0;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	opacity: 0;
+	visibility: hidden;
+	pointer-events: none;
+	z-index: 100;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	background-color: rgba(var(--overlay-color), 0.5);
+	transition-duration: 0.3s;
+
+	.customer {
+		overflow: hidden;
+		background-color: rgb(var(--background-color));
+		transform: translateY(1rem);
+		border-radius: 0.8rem;
+		transition:
+			opacity 0.3s,
+			visibility 0.3s,
+			transform 0.3s;
+		width: 95%;
+		height: auto;
+		padding: 3rem;
+
+		@media (min-width: 992px) {
+			width: 1024px;
+			max-width: 80vw;
+			padding: 3rem 5rem 5rem 5rem;
+		}
+
+		.field {
+			input {
+				visibility: hidden;
+			}
+		}
+
+		.title {
+			margin-top: 0;
+			font-size: 3rem;
+			margin-bottom: 3rem;
+
+			&#recover {
+				margin-bottom: 1rem;
+			}
+		}
+
+		.guest-title {
+			margin-top: 4rem;
+			margin-bottom: 2rem;
+		}
+	}
+
+	.customer-inner {
+		position: relative;
+		display: flex;
+		flex-direction: column;
+		height: 100%;
+
+		@media (max-width: 991px) {
+			overflow-x: auto;
+			padding: 0.2rem;
+		}
+	}
+
+	.medium-button {
+		font-size: 1.4rem;
+		padding-top: 1.2rem;
+		padding-bottom: 1.2rem;
+	}
+
+	.close-button {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		border-radius: 5rem;
+		border: .1rem solid rgba(var(--text-color));
+		width: 3rem;
+		height: 3rem;
+		position: absolute;
+		right: 2.4rem;
+		top: 2.4rem;
+		cursor: pointer;
+		color: rgb(var(--text-color));
+		background-color: rgb(var(--background-color));
+
+		@media (hover: hover) {
+			&:hover {
+				background-color: rgb(var(--text-color));
+				color: rgb(var(--background-color));
+			}
+		}
+
+		svg {
+			width: 1rem;
+			height: 1rem;
+			min-width: 1rem;
+		}
+	}
+}
+
+.customer {
+	margin: 6rem auto 9rem;
+
+	&:not(.account):not(.order) {
+		max-width: 55rem;
+	}
+
+	@media (max-width: 768px) {
+		max-width: 100%;
+	}
+
+	ul,
+	ol {
+		list-style: none;
+		margin: 0;
+		padding: 0;
+	}
+
+	a {
+		text-decoration: underline;
+		text-underline-offset: 0.3rem;
+		text-decoration-thickness: 0.1rem;
+
+		@media (hover: hover) {
+			&:hover {
+				text-decoration-thickness: 0.2rem;
+			}
+		}
+	}
+
+	table {
+		width: 100%;
+		table-layout: auto;
+
+		thead,
+		tbody,
+		tfoot {
+			th,
+			td {
+				padding: 2.4rem 1.5rem;
+
+				&:last-child {
+					text-align: right;
+				}
+			}
+		}
+
+		thead {
+			th {
+				font-weight: 400;
+				text-transform: uppercase;
+			}
+		}
+
+		tbody {
+			td {
+				vertical-align: top;
+			}
+		}
+
+		@media (max-width: 768px) {
+			border: none;
+			border-bottom: 1px solid #ddd;
+
+			tr {
+				display: flex;
+				flex-direction: column;
+				justify-content: flex-start;
+				width: 100%;
+				border-top: 1px solid #ddd;
+
+				td {
+					display: flex;
+					text-align: right;
+					border: none;
+					padding-left: 0;
+					padding-right: 0;
+
+					&:before {
+						content: attr(data-label);
+						font-size: 1.4rem;
+						padding-right: 2rem;
+						text-transform: uppercase;
+						flex-grow: 1;
+						text-align: left;
+					}
+				}
+			}
+		}
+	}
+
+	// Login - register template
+	.login {
+		.forgot-password {
+			margin-left: 0;
+			margin-right: 0;
+			margin-top: 1rem;
+		}
+	}
+
+	// For guest
+	.guest-title {
+		margin-top: 4rem;
+	}
+
+	#customer_login_guest {
+		.button {
+			margin-top: 0;
+		}
+	}
+
+	form {
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+		margin-top: 4rem;
+
+		p {
+			color: rgb(var(--text-color), .4);
+		}
+	}
+
+	.title {
+		margin-bottom: 2.4rem;
+	}
+
+	.field {
+		position: relative;
+		width: 100%;
+
+		&:not(:last-child) {
+			margin: 0 0 0.8rem 0;
+		}
+
+		input {
+			height: 5.2rem;
+			padding: 1.4rem 2rem;
+			border-radius: 0.8rem;
+			background-color: rgb(var(--text-color), 0.04);
+			box-shadow: unset;
+
+			&:-webkit-autofill,
+			&:focus,
+			&:not(:placeholder-shown) {
+				padding: 2.2rem 2rem 0.8rem;
+
+				~ label {
+					font-size: 1rem;
+					letter-spacing: 0.04rem;
+					top: 0.3rem;
+				}
+			}
+		}
+
+		label {
+			font-size: 1.6rem;
+			left: 2rem;
+			margin-bottom: 0;
+			pointer-events: none;
+			position: absolute;
+			transition:
+				top 0.2s ease,
+				font-size 0.2s ease;
+			letter-spacing: 0.1rem;
+			line-height: 1.5;
+			color: rgb(var(--text-color), .4);
+		}
+	}
+
+	.select {
+		margin-top: 1.5rem;
+		width: 100%;
+
+		select {
+			height: 4.5rem;
+			width: 100%;
+			box-shadow: 0 0 0 0.1rem rgba(18, 18, 18, 0.55);
+			transition: box-shadow 0.2s ease;
+			font-size: 1.5rem;
+			padding: 1.5rem;
+			border: 0;
+		}
+	}
+
+	.button.primary-button:not(.sr-only):not(.visually-hidden):not(.add-to-cart-button.loading) {
+		font-family: var(--subheading-font-family);
+	}
+
+	.button {
+		margin: 2.4rem auto;
+		width: 100%;
+		justify-content: center;
+		font-size: 1.4rem;
+	}
+
+	@media (min-width: 992px) {
+		.field {
+			max-width: 40.8rem;
+		}
+
+		.button {
+			max-width: 40.8rem;
+		}
+	}
+
+	#recover {
+		display: none;
+		scroll-margin-top: 20rem;
+
+		+ #recover-container {
+			display: none;
+		}
+
+		&:target {
+			display: block;
+
+			+ #recover-container {
+				display: block;
+			}
+
+			~ {
+				#login {
+					display: none;
+
+					+ #login-container {
+						display: none;
+					}
+				}
+			}
+		}
+	}
+
+	// Account template + View order
+	.template-account &,
+	.template-order & {
+		.account-header {
+			margin-bottom: 5rem;
+
+			.login-url {
+				display: inline-flex;
+				align-items: center;
+
+				svg {
+					margin-right: 1rem;
+				}
+			}
+		}
+
+		.account-container {
+			display: flex;
+			justify-content: space-between;
+			flex-wrap: wrap;
+		}
+
+		.account-order {
+			flex-grow: 1;
+			padding-right: 4rem;
+
+			@media (max-width: 768px) {
+				width: 100%;
+				padding-right: 0;
+			}
+		}
+	}
+
+	// Address template
+	.template-addresses & {
+		.address-form-field {
+			display: flex;
+			flex-wrap: wrap;
+			justify-content: space-between;
+			text-align: left;
+		}
+
+		.field-customer-name {
+			@media (min-width: 768px) {
+				width: calc((100% - 2rem) / 2);
+			}
+		}
+
+		.data-address-wrapper {
+			text-align: center;
+
+			.address-add-new {
+				&[aria-expanded='true'] {
+					+ #add-address {
+						display: block;
+					}
+				}
+			}
+
+			#add-address {
+				display: none;
+				text-align: left;
+			}
+
+			#address-new-heading {
+				font-size: 2.5rem;
+			}
+
+			.new-label-style {
+				display: block;
+				font-size: 1.4rem;
+				margin-bottom: 0.6rem;
+			}
+		}
+
+		.set-default-label {
+			margin-top: 2rem;
+
+			[type='checkbox'] {
+				vertical-align: -1px;
+			}
+		}
+
+		[data-address] {
+			margin-top: 4rem;
+
+			[aria-expanded] {
+				margin-top: 3rem;
+			}
+
+			[aria-expanded='false'] {
+				~ div[id] {
+					display: none;
+				}
+			}
+
+			[aria-expanded='true'] {
+				~ div[id] {
+					display: block;
+				}
+			}
+		}
+
+		.address-list {
+			margin-top: 4rem;
+			text-align: center;
+
+			[id^='edit-address-'] {
+				margin-top: 3rem;
+			}
+
+			.title {
+				font-size: 2.4rem;
+			}
+		}
+
+		.buttons-wrap {
+			width: 100%;
+		}
+	}
+
+	// Active account
+	.template-activate_account & {
+		.buttons-wrap {
+			margin-top: 4rem;
+		}
+	}
+
+	// View order
+	.template-order & {
+		table {
+			thead,
+			tbody,
+			tfoot {
+				th,
+				td {
+					border: none;
+				}
+			}
+
+			tbody {
+				border-top: 1px solid #ccc;
+			}
+
+			tfoot {
+				border-top: 1px solid #ccc;
+
+				tr {
+					&:first-child {
+						padding-top: 2rem;
+					}
+
+					&:last-child {
+						padding-bottom: 2rem;
+					}
+				}
+
+				td {
+					padding-top: 1rem;
+					padding-bottom: 1rem;
+				}
+			}
+		}
+
+		.account-details {
+			strong {
+				font-weight: 400;
+			}
+		}
+	}
+
+	.discounts {
+		list-style: none;
+		padding: 0;
+		margin: 1rem 0;
+
+		.discounts-discount {
+			display: flex;
+			align-items: center;
+		}
+
+		svg {
+			width: 1.4rem;
+			margin-right: 1rem;
+		}
+	}
+}

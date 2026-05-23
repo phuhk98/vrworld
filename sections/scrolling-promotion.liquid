@@ -1,0 +1,412 @@
+{%- liquid
+	assign section_id        = '#shopify-section-' | append: section.id
+	assign full              = section.settings.full
+	assign space             = section.settings.space
+	assign scale             = section.settings.scale | divided_by: 100.0
+	assign mobile_text_scale = section.settings.mobile_text_scale | divided_by: 100.0
+	assign image_scale       = section.settings.image_scale | divided_by: 100.0
+	assign hover_pause       = section.settings.hover_pause
+-%}
+
+<style>
+	{{ section_id }} .section-wrapper {
+		padding-top: {{ section.settings.padding_top_mobile }}px;
+		padding-bottom: {{ section.settings.padding_bottom_mobile }}px;
+	}
+
+	{{ section_id }} .scrolling-content {
+		{%- if section.settings.icon != 'none' -%}
+			margin-right: {{ space }}px;
+		{%- else -%}
+			margin: 0 {{ space }}px;
+		{%- endif -%}
+	}
+
+	{{ section_id }} .scrolling {
+		--scrolling-time: {{ section.settings.time }}s;
+		--scrolling-scale: {{ mobile_text_scale }};
+		--scrolling-direction: {% if section.settings.direction == 'ltr' %}reverse{% else %}normal{% endif %};
+	}
+
+	{{ section_id }} .scrolling-content .scrolling-icon {
+		margin-right: {{ space }}px;
+	}
+
+	{{ section_id }} .scrolling-image {
+		--scrolling-image-scale: {{ image_scale }};
+	}
+
+	@media (min-width: 992px) {
+		{{ section_id }} .section-wrapper {
+			padding-top: {{ section.settings.padding_top }}px;
+			padding-bottom: {{ section.settings.padding_bottom }}px;
+		}
+
+		{{ section_id }} .scrolling {
+			--scrolling-scale: {{ scale }};
+		}
+	}
+</style>
+
+<div class="section-wrapper color-{{ section.settings.color_scheme }}">
+	<div class="{% if full %}stretch-section stretch-padding{% else %}container{% endif %}">
+		<scrolling-promotion-section class="scrolling{% if hover_pause %} hover-pause{% endif %}">
+			<div class="scrolling-wrapper scrolling-animation">
+				{%- for block in section.blocks -%}
+					<div class="scrolling-content" data-{{ block.id }} data-index="{{ forloop.index }}">
+						{%- if block.settings.icon -%}
+							<span class="scrolling-icon">{%- render 'icon', code: 'ellipse' -%}</span>
+						{%- endif -%}
+
+						{%- case block.type -%}
+							{%- when 'text' -%}
+								<div class="scrolling-promotion h1 rte" {{ block.shopify_attributes }}>
+									{%- liquid
+										if block.settings.text != blank
+											echo block.settings.text
+										endif
+									-%}
+								</div>
+
+							{%- when 'product' -%}
+							{%- if block.settings.product != blank -%}
+								<div class="product-card color-{{ section.settings.product_color_scheme }}" {{ block.shopify_attributes }}>
+									{%- liquid
+										assign product        = block.settings.product
+										assign featured_image = product.featured_media
+									-%}
+
+									{% comment %} Media {% endcomment %}
+									{%- if featured_image != blank -%}
+										<div class="product-media-wrap">
+											<a href="{{ product.url | split: '?' | first }}" class="product-image{% if settings.image_lazy and featured_image %} lazy-image{% endif %}" arial-label="{{ product.title }}">
+												{%- liquid
+													assign image_load = 'eager'
+
+													render 'lazy-image', image: featured_image, width: 740, class: 'product-first-image', lazy: image_load
+												-%}
+											</a>
+										</div>
+									{%- endif -%}
+
+									<div class="product-card-content">
+										<div class="left-card-content">
+											{% comment %} Heading {% endcomment %}
+											<h2 class="product-title link-underline-transparent">
+												<a href="{{ product.url | split: '?' | first }}" aria-label="{{- 'general.text.link' | t -}}">{{- product.title | escape -}}</a>
+											</h2>
+
+											{%- render 'price', product: product -%}
+										</div>
+
+										<div class="right-card-content">
+											{%- form 'product', product, class: 'form-add-to-cart', novalidate: 'novalidate', data-type: 'add-to-cart-form', id: nil -%}
+												<input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}">
+
+												{%- if product.available -%}
+													{%- if product.available and product.has_only_default_variant -%}
+														<button type="submit" name="add" class="button primary-button add-to-cart-button" aria-label="scrolling-{{ 'products.product.add_to_cart' | t }}">
+															{%- render 'icon', code: 'product-add-to-cart' -%}
+														</button>
+													{%- else -%}
+														<a href="{{ product.url }}" aria-label="{{- 'general.text.link' | t -}}" class="primary-button add-to-cart-button">
+															{%- render 'icon', code: 'eye' -%}
+														</a>
+													{%- endif -%}
+												{%- else -%}
+													<button type="submit" name="add" class="button primary-button add-to-cart-button" disabled>
+														{{- 'products.product.sold_out' | t -}}
+													</button>
+												{%- endif -%}
+
+												{% comment %} Product variant data {% endcomment %}
+												<script data-product-variants>
+													{{ product.variants | json }}
+												</script>
+											{%- endform -%}
+										</div>
+									</div>
+								</div>
+							{%- else -%}
+								<div class="product-card text-left" {{ block.shopify_attributes }}>
+									<div class="product-media-wrap card-item" tabindex="-1">
+										{{- 'product-1' | placeholder_svg_tag: 'placeholder-svg' -}}
+									</div>
+
+									<div class="product-card-content">
+										<div class="left-card-content">
+											<h2 class="product-title card-item h6">
+												<span>{{- 'onboarding.products.title' | t -}}</span>
+											</h2>
+
+											{% render 'price', product: false, price_class: 'card-item' %}
+										</div>
+									</div>
+								</div>
+							{%- endif -%}
+							{%- when 'image' -%}
+								{%- liquid
+									assign image = block.settings.image
+									assign ratio = image.aspect_ratio
+									assign url   = block.settings.url
+									assign tag   = 'div'
+
+									if url != blank
+										assign tag = 'a'
+									endif
+
+									if ratio < 1
+										assign height = 200 | times: image_scale | times: ratio | ceil
+									else
+										assign height = 174 | times: image_scale | times: ratio | ceil
+									endif
+								-%}
+
+								<div class="scrolling-image" style="--aspect-ratio: {% if image != blank %}{{ ratio | round: 2 }}{% else %}1{% endif %};" {{ block.shopify_attributes }}>
+									<{{ tag }} class="image{% if settings.image_lazy and image != blank %} lazy-image{% endif %}"{% if url != blank %} href="{{ url }}"{% endif %}>
+										{%- liquid
+											if image != blank
+												render 'lazy-image', image: image, height: height
+											else
+												render 'icon', code: 'placeholder'
+											endif
+										-%}
+									</{{ tag }}>
+								</div>
+						{%- endcase -%}
+					</div>
+				{%- endfor -%}
+			</div>
+		</scrolling-promotion-section>
+	</div>
+</div>
+
+{% schema %}
+{
+	"name": "t:sections.scrolling-promotion.name",
+	"tag": "section",
+	"class": "scrolling-promotion-section",
+	"disabled_on": {
+		"groups": ["header", "footer"]
+	},
+	"settings": [
+		{
+			"type": "color_scheme",
+			"id": "color_scheme",
+			"label": "t:settings_schema.colors.label",
+			"default": "scheme-1"
+		},
+		{
+			"type": "checkbox",
+			"id": "full",
+			"default": true,
+			"label": "t:general.layout.full.label"
+		},
+		{
+			"type": "checkbox",
+			"id": "hover_pause",
+			"default": true,
+			"label": "t:general.slider.hover_pause.label"
+		},
+		{
+			"type": "select",
+			"id": "direction",
+			"options": [
+				{
+					"value": "ltr",
+					"label": "t:sections.scrolling-promotion.settings.direction.option_1.label"
+				},
+				{
+					"value": "rtl",
+					"label": "t:sections.scrolling-promotion.settings.direction.option_2.label"
+				}
+			],
+			"default": "rtl",
+			"label": "t:sections.scrolling-promotion.settings.direction.label"
+		},
+		{
+			"type": "range",
+			"id": "time",
+			"min": 1,
+			"max": 50,
+			"step": 1,
+			"default": 20,
+			"unit": "s",
+			"label": "t:sections.scrolling-promotion.settings.speed.label"
+		},
+		{
+			"type": "range",
+			"id": "space",
+			"min": 10,
+			"max": 100,
+			"step": 1,
+			"default": 50,
+			"unit": "px",
+			"label": "t:general.dimensions.space.label"
+		},
+		{
+			"type": "range",
+			"id": "scale",
+			"min": 50,
+			"max": 400,
+			"step": 5,
+			"default": 100,
+			"unit": "%",
+			"label": "t:sections.scrolling-promotion.settings.scale.label"
+		},
+		{
+			"type": "range",
+			"id": "mobile_text_scale",
+			"min": 50,
+			"max": 400,
+			"step": 5,
+			"default": 100,
+			"unit": "%",
+			"label": "t:sections.scrolling-promotion.settings.mobile_text_scale.label"
+		},
+		{
+			"type": "range",
+			"id": "image_scale",
+			"min": 50,
+			"max": 150,
+			"step": 5,
+			"default": 100,
+			"unit": "%",
+			"label": "t:sections.scrolling-promotion.settings.image_scale.label"
+		},
+		{
+			"type": "header",
+			"content": "t:sections.featured-product.settings.product.label"
+		},
+		{
+			"type": "color_scheme",
+			"id": "product_color_scheme",
+			"label": "t:settings_schema.colors.label",
+			"default": "scheme-2"
+		},
+		{
+			"type": "header",
+			"content": "t:general.padding.header_padding.content"
+		},
+		{
+			"type": "range",
+			"id": "padding_top",
+			"min": 0,
+			"max": 100,
+			"step": 1,
+			"default": 50,
+			"unit": "px",
+			"label": "t:general.padding.top.label"
+		},
+		{
+			"type": "range",
+			"id": "padding_bottom",
+			"min": 0,
+			"max": 100,
+			"step": 1,
+			"default": 50,
+			"unit": "px",
+			"label": "t:general.padding.bottom.label"
+		},
+		{
+			"type": "paragraph",
+			"content": "t:general.padding.paragraph_mobile.content"
+		},
+		{
+			"type": "range",
+			"id": "padding_top_mobile",
+			"min": 0,
+			"max": 100,
+			"step": 1,
+			"default": 20,
+			"unit": "px",
+			"label": "t:general.padding.top.label"
+		},
+		{
+			"type": "range",
+			"id": "padding_bottom_mobile",
+			"min": 0,
+			"max": 100,
+			"step": 1,
+			"default": 20,
+			"unit": "px",
+			"label": "t:general.padding.bottom.label"
+		}
+	],
+	"blocks": [
+		{
+			"type": "product",
+			"name": "t:sections.featured-product.settings.product.label",
+			"settings": [
+				{
+					"type": "product",
+					"id": "product",
+					"label": "t:sections.featured-product.settings.product.label"
+				},
+				{
+					"type": "checkbox",
+					"id": "icon",
+					"default": false,
+					"label": "t:sections.scrolling-promotion.settings.icon.label"
+				}
+			]
+		},
+		{
+			"type": "text",
+			"name": "t:general.typography.text.label",
+			"settings": [
+				{
+					"type": "inline_richtext",
+					"id": "text",
+					"default": "Welcome to our store",
+					"label": "t:general.typography.text.label"
+				},
+				{
+					"type": "checkbox",
+					"id": "icon",
+					"default": false,
+					"label": "t:sections.scrolling-promotion.settings.icon.label"
+				}
+			]
+		},
+		{
+			"type": "image",
+			"name": "t:general.image.label",
+			"settings": [
+				{
+					"type": "image_picker",
+					"id": "image",
+					"label": "t:general.image.label"
+				},
+				{
+					"type": "url",
+					"id": "url",
+					"label": "t:general.typography.link.label"
+				},
+				{
+					"type": "checkbox",
+					"id": "icon",
+					"default": false,
+					"label": "t:sections.scrolling-promotion.settings.icon.label"
+				}
+			]
+		}
+	],
+	"presets": [
+		{
+			"name": "t:sections.scrolling-promotion.name",
+			"blocks": [
+				{
+					"type": "text"
+				},
+				{
+					"type": "text"
+				},
+				{
+					"type": "text"
+				}
+			]
+		}
+	]
+}
+{% endschema %}

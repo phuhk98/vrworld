@@ -1,0 +1,227 @@
+{%- liquid
+	assign section_id             = '#shopify-section-' | append: section.id
+	assign sub_heading            = section.settings.sub_heading_text
+	assign description            = section.settings.description
+	assign collections_to_display = section.settings.collection_list
+	assign animation              = settings.section_animation
+-%}
+
+<style>
+	{{ section_id }} .section-wrapper .collection-info{
+		padding-top: {{ section.settings.padding_top_mobile }}px;
+		padding-bottom: {{ section.settings.padding_bottom_mobile }}px;
+	}
+
+	@media (min-width: 992px) {
+		{{ section_id }} .section-wrapper .collection-info{
+			padding-top: {{ section.settings.padding_top }}px;
+			padding-bottom: {{ section.settings.padding_bottom }}px;
+		}
+	}
+</style>
+<div class="section-wrapper">
+	<div class="collection-info color-{{ section.settings.color_scheme }}">
+		<div class="heading-info container{% if animation %} scroll-trigger{% endif %}">
+			<div class="left-info">
+			</div>
+
+			<div class="right-info">
+				{%- if sub_heading != blank -%}
+					<div class="sub-heading badge-heading text-left rte">{{- sub_heading -}}</div>
+				{%- endif -%}
+
+				{%- if description != blank -%}
+					<div class="description text-left h6 rte scroll-trigger">{{ description }}</div>
+				{%- endif -%}
+			</div>
+		</div>
+
+		<div class="slider-info container text-left{% if animation %} scroll-trigger{% endif %}">
+			{%- if collections.size > 0 -%}
+				<div class="collection-list">
+					<unity-slider class="unity-slider">
+						<template data-options>
+							{
+								"dragFree": true,
+								"_autoheight": true,
+								"_fade": false
+							}
+						</template>
+						<div class="unity-slider-viewport">
+							<div class="unity-slider-container">
+								{%- if collections_to_display.size > 0 -%}
+									{%- if collection.handle == 'all' or template contains 'collection.all' -%}
+										{%- assign collections_to_display = collections -%}
+									{%- endif -%}
+
+									{%- for collection in collections_to_display -%}
+										<div class="list-item unity-slide">
+											<div class="product-card-list color-{{ section.settings.color_scheme_info }}">
+												<div class="card-meta">
+													<div class="collection-count">
+														( {% liquid
+															assign counts = collection.all_products_count
+															echo 'sections.collection_list.count_collection' | t: count: counts
+														%} )
+													</div>
+													<div class="card-title h4">
+														<a href="{{ collection.url }}" class="card-url" title="{{ collection.url }}">
+															{{- collection.title -}}
+														</a>
+													</div>
+												</div>
+
+												<div class="rectangle-media">
+													<a class="card-media" href="{{ collection.url }}" title="{{ collection.url }}">
+														<span class="card-media-wrapper{% if settings.image_lazy %} lazy-image{% endif %}">
+															{%- liquid
+																assign collection_image = collection.image
+
+																if collection_image == blank and collection.products_count > 0
+																	assign first_product = collection.products.first
+																	if first_product.featured_image != blank
+																		assign collection_image = first_product.featured_image
+																	endif
+																endif
+
+																if collection_image != blank
+																	render 'lazy-image', image: collection_image, width: 768
+																else
+																	render 'icon', code: 'placeholder'
+																endif
+															-%}
+														</span>
+													</a>
+												</div>
+											</div>
+										</div>
+									{%- endfor -%}
+								{%- else -%}
+									{%- for i in (1..4) -%}
+										<div class="list-item unity-slide is-placeholder">
+											<div class="product-card-list color-{{ section.settings.color_scheme_info }}">
+												<div class="card-meta">
+													<div class="collection-count">
+														{{ 'sections.collection_list.no_item' | t }}
+													</div>
+													<div class="card-title h4">
+														<span class="placeholder-text">
+															{{ 'sections.collection_list.collection' | t }}
+														</span>
+													</div>
+												</div>
+
+												<div class="rectangle-media">
+													<span class="card-media">
+														<span class="card-media-wrapper">
+															{%- render 'icon', code: 'placeholder' -%}
+														</span>
+													</span>
+												</div>
+											</div>
+										</div>
+									{%- endfor -%}
+								{%- endif -%}
+							</div>
+						</div>
+					</unity-slider>
+				</div>
+			{%- endif -%}
+		</div>
+	</div>
+</div>
+
+{% schema %}
+{
+	"name": "t:sections.collection-with-slide.name",
+	"class": "collection-with-slide-section",
+	"settings": [
+		{
+			"type": "color_scheme",
+			"id": "color_scheme",
+			"label": "t:settings_schema.colors.label",
+			"default": "scheme-1"
+		},
+		{
+			"type": "header",
+			"content": "t:general.typography.content.label"
+		},
+		{
+			"type": "text",
+			"id": "sub_heading_text",
+			"default": "Sub heading",
+			"label": "t:general.typography.sub_heading.label"
+		},
+		{
+			"type": "inline_richtext",
+			"id": "description",
+			"default": "Description",
+			"label": "t:general.typography.heading.label"
+		},
+		{
+			"type": "color_scheme",
+			"id": "color_scheme_info",
+			"label": "t:settings_schema.colors.label",
+			"default": "scheme-2"
+		},
+		{
+			"type": "collection_list",
+			"id": "collection_list",
+			"label": "t:sections.main-collection.settings.collection_list.label"
+		},
+		{
+			"type": "header",
+			"content": "t:general.padding.header_padding.content"
+		},
+		{
+			"type": "range",
+			"id": "padding_top",
+			"min": 0,
+			"max": 100,
+			"step": 1,
+			"default": 80,
+			"unit": "px",
+			"label": "t:general.padding.top.label"
+		},
+		{
+			"type": "range",
+			"id": "padding_bottom",
+			"min": 0,
+			"max": 100,
+			"step": 1,
+			"default": 80,
+			"unit": "px",
+			"label": "t:general.padding.bottom.label"
+		},
+		{
+			"type": "paragraph",
+			"content": "t:general.padding.paragraph_mobile.content"
+		},
+		{
+			"type": "range",
+			"id": "padding_top_mobile",
+			"min": 0,
+			"max": 100,
+			"step": 1,
+			"default": 60,
+			"unit": "px",
+			"label": "t:general.padding.top.label"
+		},
+		{
+			"type": "range",
+			"id": "padding_bottom_mobile",
+			"min": 0,
+			"max": 100,
+			"step": 1,
+			"default": 60,
+			"unit": "px",
+			"label": "t:general.padding.bottom.label"
+		}
+	],
+	"presets": [
+		{
+			"name": "t:sections.collection-with-slide.name"
+		}
+	]
+}
+{% endschema %}

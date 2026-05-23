@@ -1,0 +1,711 @@
+{%- liquid
+	assign section_id     = '#shopify-section-' | append: section.id
+	assign animation      = settings.section_animation
+	assign full           = section.settings.full
+	assign content_width  = section.settings.content_width
+	assign featured_image = section.settings.show_featured_image
+	assign height         = section.settings.height
+
+	case height
+		when 'small'
+			assign height_value = '400px'
+		when 'medium'
+			assign height_value = '570px'
+		when 'large'
+			assign height_value = '700px'
+	endcase
+-%}
+
+<style>
+	{{ section_id }} .section-wrapper {
+		padding-top: {{ section.settings.padding_top_mobile }}px;
+		padding-bottom: {{ section.settings.padding_bottom_mobile }}px;
+	}
+
+	{%- if height != 'auto' -%}
+			{{ section_id }} .cover-image.height-{{ height }} img {
+				height: {{ height_value }};
+			}
+	{%- endif -%}
+
+	{{ section_id }} blockquote:before {
+		mask-image: url('data:image/svg+xml,{%- render 'icon', code: 'quote' -%}');
+	}
+
+	@media (min-width: 1024px) {
+		{{ section_id }} .blog-main-content,
+		{{ section_id }} .blog-title-inner {
+			max-width: {{ content_width }}%;
+			margin: 0 auto;
+		}
+	}
+
+	@media (min-width: 992px) {
+		{{ section_id }} .section-wrapper {
+			padding-top: {{ section.settings.padding_top }}px;
+			padding-bottom: {{ section.settings.padding_bottom }}px;
+		}
+	}
+</style>
+
+{{- 'blog-single.css' | asset_url | stylesheet_tag -}}
+
+<div class="section-wrapper color-{{ section.settings.color_scheme }}">
+	{%- if featured_image and article.image != blank -%}
+		<article-image class="cover-image height-{{ height }} color-{{ section.settings.featured_color_scheme }}{% if animation %} scroll-trigger{% endif %}">
+			<div class="post-image-inner{% if settings.image_lazy and article.image %} lazy-image{% endif %}">
+				{%- render 'lazy-image', image: article.image, width: 1920, lazy: 'eager' -%}
+			</div>
+
+			<div class="blog-title">
+				<div class="{% if full %}stretch-section stretch-padding{% else %}container{% endif %}">
+					<div class="blog-title-inner">
+						{%- for block in section.blocks -%}
+							{%- case block.type -%}
+								{%- when 'meta' -%}
+									<div class="post-meta text-{{ block.settings.align }}{% if animation %} scroll-trigger{% endif %}">
+
+										{%- if block.settings.show_blog -%}
+											<span class="meta-item meta-blog border-small">
+												<a href="{{ blog.url }}" aria-label="{{- 'general.text.link' | t -}}">
+													{{- blog.title | escape -}}
+												</a>
+											</span>
+
+											<span class="separator">/</span>
+										{%- endif -%}
+
+										{%- if block.settings.show_date -%}
+											<span class="meta-item">
+												{{- article.published_at | time_tag: format: 'short_month_day_year' -}}
+											</span>
+
+											<span class="separator">/</span>
+										{%- endif -%}
+
+										{%- if blog.comments_enabled? and block.settings.show_comment -%}
+											<span class="meta-item">
+												<a href="#{% if article.comments_count > 0 %}{{ section.id | append: '-comment-list' }}{% else %}{{ section.id | append: '-comment-form' }}{% endif %}" aria-label="{{- 'general.text.link' | t -}}">
+													{{- 'blogs.article.comments' | t: count: article.comments_count -}}
+												</a>
+											</span>
+
+											<span class="separator">/</span>
+										{%- endif -%}
+
+										{%- if block.settings.show_author -%}
+											<span class="meta-item">
+												{%- if article.user.image != nil -%}
+													<span class="article-avatar">
+														{%- liquid
+															if article.user.image != nil
+																echo article.user.image | image_url: width: 80 | image_tag: width: 40, height: 40
+															endif
+														-%}
+													</span>
+												{%- endif -%}
+
+												{{- article.author -}}
+											</span>
+										{%- endif -%}
+									</div>
+
+								{%- when 'title' -%}
+									<h1 class="post-title text-{{ block.settings.align }}{% if animation %} scroll-trigger{% endif %}">{{- article.title -}}</h1>
+							{%- endcase -%}
+						{%- endfor -%}
+					</div>
+				</div>
+			</div>
+		</article-image>
+	{%- endif -%}
+
+	<div class="{% if full %}stretch-section stretch-padding{% else %}container{% endif %}">
+		<div class="blog-wrapper">
+			<div class="blog-main-content">
+				<div class="blog-content">
+					<div class="container-inner">
+						{%- for block in section.blocks -%}
+							{%- case block.type -%}
+								{%- when '@app' -%}
+									{%- render block -%}
+
+								{%- when 'title' -%}
+									<h1 class="post-title text-{{ block.settings.align }}{% if animation %} scroll-trigger{% endif %}">{{- article.title -}}</h1>
+
+								{%- when 'meta' -%}
+									<div class="post-meta rte text-{{ block.settings.align }}{% if animation %} scroll-trigger{% endif %}">
+										{%- if block.settings.show_blog -%}
+											<span class="meta-item">
+												<a href="{{ blog.url }}" aria-label="{{- 'general.text.link' | t -}}">
+													{{- blog.title | escape -}}
+												</a>
+											</span>
+
+											<span class="separator">/</span>
+										{%- endif -%}
+
+										{%- if block.settings.show_date -%}
+											<span class="meta-item">
+												{{- article.published_at | time_tag: format: 'short_month_day_year' -}}
+											</span>
+
+											<span class="separator">/</span>
+										{%- endif -%}
+
+										{%- if blog.comments_enabled? and block.settings.show_comment -%}
+											<span class="meta-item">
+												<a href="#{% if article.comments_count > 0 %}{{ section.id | append: '-comment-list' }}{% else %}{{ section.id | append: '-comment-form' }}{% endif %}" aria-label="{{- 'general.text.link' | t -}}">
+													{{- 'blogs.article.comments' | t: count: article.comments_count -}}
+												</a>
+											</span>
+
+											<span class="separator">/</span>
+										{%- endif -%}
+
+										{%- if block.settings.show_author -%}
+											<span class="meta-item">
+												{%- if article.user.image != nil -%}
+													<span class="article-avatar">
+														{%- liquid
+															if article.user.image != nil
+																echo article.user.image | image_url: width: 80 | image_tag: width: 40, height: 40
+															endif
+														-%}
+													</span>
+												{%- endif -%}
+
+												{{- article.author -}}
+											</span>
+										{%- endif -%}
+									</div>
+
+								{%- when 'share' -%}
+									<div class="post-social-share flex-justify-{% if block.settings.align == "left" %}start{% elsif block.settings.align == "right" %}end{% else %}center{% endif %}{% if animation %} scroll-trigger{% endif %}">
+										<span class="share-label">{{ 'blogs.article.share' | t }} :</span>
+
+										<ul class="social-media-list horizontal-{{ block.settings.align }}" role="list">
+											<li>
+												<a href="//facebook.com/sharer/sharer.php?u={{ article.url }}" class="icon" target="_blank" rel="noopener" aria-label="{{ 'general.social.links.facebook' | t }}">
+													{%- render 'icon', code: 'facebook' -%}
+													<span class="tooltip tooltip-top">{{- 'general.social.links.facebook' | t -}}</span>
+												</a>
+											</li>
+
+											<li>
+												<a href="//twitter.com/intent/tweet?text={{ article.title }}" class="icon" target="_blank" rel="noopener" aria-label="{{ 'general.social.links.twitter' | t }}">
+													{%- render 'icon', code: 'twitter' -%}
+													<span class="tooltip tooltip-top">{{- 'general.social.links.twitter' | t -}}</span>
+												</a>
+											</li>
+
+											<li>
+												<a href="//pinterest.com/pin/create/button/?url={{ article.url }}&media={{ article.image | image_url: width: 1024 }}" class="icon" target="_blank" rel="noopener" aria-label="{{ 'general.social.links.pinterest' | t }}">
+													{%- render 'icon', code: 'pinterest' -%}
+													<span class="tooltip tooltip-top">{{- 'general.social.links.pinterest' | t -}}</span>
+												</a>
+											</li>
+
+											<li>
+												<a href="mailto:info@example.com?&subject=&cc=&bcc=&body={{ article.url }}%0A{{ article.title }}" class="icon" target="_blank" rel="noopener" aria-label="{{ 'general.social.links.email' | t }}">
+													{%- render 'icon', code: 'link-icon-sumary' -%}
+													<span class="tooltip tooltip-top">{{- 'general.social.links.email' | t -}}</span>
+												</a>
+											</li>
+										</ul>
+									</div>
+
+								{%- when 'image' -%}
+									{%- if article.image != blank -%}
+										<div class="post-image adapt-media{% if animation %} scroll-trigger{% endif %}">
+											<div class="post-image-inner{% if settings.image_lazy %} lazy-image{% endif %}">
+												{%- render 'lazy-image', image: article.image, width: 1024, lazy: 'eager' -%}
+											</div>
+										</div>
+									{%- endif -%}
+
+								{%- when 'content' -%}
+									<div class="post-content rte{% if animation %} scroll-trigger{% endif %}">
+										{{- article.content -}}
+									</div>
+
+									{%- if block.settings.show_tags or block.settings.show_social -%}
+										<div class="post-content-footer{% if animation %} scroll-trigger{% endif %}">
+											{%- if article.tags.first -%}
+												<div class="post-tags">
+													{%- liquid
+														for tag in article.tags
+															echo tag | link_to_add_tag: tag
+														endfor
+													-%}
+												</div>
+											{%- endif -%}
+
+											{%- if block.settings.show_social -%}
+												<div class="social-share">
+													<span class="share-label">{{ 'blogs.article.share' | t }} :</span>
+
+													<ul class="social-media-list{% if animation %} scroll-trigger{% endif %}" role="list">
+														<li>
+															<a href="//facebook.com/sharer/sharer.php?u={{ article.url }}" class="icon" target="_blank" rel="noopener" aria-label="{{ 'general.social.links.facebook' | t }}">
+																{%- render 'icon', code: 'facebook' -%}
+																<span class="tooltip tooltip-top">{{- 'general.social.links.facebook' | t -}}</span>
+															</a>
+														</li>
+
+														<li>
+															<a href="//twitter.com/intent/tweet?text={{ article.title }}" class="icon" target="_blank" rel="noopener" aria-label="{{ 'general.social.links.twitter' | t }}">
+																{%- render 'icon', code: 'twitter' -%}
+																<span class="tooltip tooltip-top">{{- 'general.social.links.twitter' | t -}}</span>
+															</a>
+														</li>
+
+														<li>
+															<a href="//pinterest.com/pin/create/button/?url={{ article.url }}&media={{ article.image | image_url: width: 1024 }}" class="icon" target="_blank" rel="noopener" aria-label="{{ 'general.social.links.pinterest' | t }}">
+																{%- render 'icon', code: 'pinterest' -%}
+																<span class="tooltip tooltip-top">{{- 'general.social.links.pinterest' | t -}}</span>
+															</a>
+														</li>
+
+														<li>
+															<a href="mailto:info@example.com?&subject=&cc=&bcc=&body={{ article.url }}%0A{{ article.title }}" class="icon" target="_blank" rel="noopener" aria-label="{{ 'general.social.links.email' | t }}">
+																{%- render 'icon', code: 'link-icon-sumary' -%}
+																<span class="tooltip tooltip-top">{{- 'general.social.links.email' | t -}}</span>
+															</a>
+														</li>
+													</ul>
+												</div>
+											{%- endif -%}
+										</div>
+									{%- endif -%}
+
+								{%- when 'navigation' -%}
+									{% if blog.previous_article != nil or blog.next_article != nil %}
+										<div class="post-navigation{% if blog.next_article != nil and blog.previous_article == nil %} has-next-post-only{% endif %}">
+											{% if blog.previous_article != nil %}
+												<div class="nav prev-post{% if animation %} scroll-trigger{% endif %}">
+													<div class="nav-inner">
+														<span class="nav-label">{{- 'sections.posts.prev' | t -}}</span>
+
+														<h3 class="nav-heading">
+															<a class="link-underline-transparent" href="{{ blog.previous_article.url }}" aria-label="{{- 'general.text.link' | t -}}">
+																{{- blog.previous_article.title -}}
+															</a>
+														</h3>
+													</div>
+												</div>
+											{% endif %}
+
+											{% if blog.next_article != nil %}
+												<div class="nav next-post{% if animation %} scroll-trigger{% endif %}">
+													<div class="nav-inner">
+														<span class="nav-label">{{- 'sections.posts.next' | t -}}</span>
+
+														<h3 class="nav-heading">
+															<a class="link-underline-transparent" href="{{ blog.next_article.url }}" aria-label="{{- 'general.text.link' | t -}}">
+																{{- blog.next_article.title -}}
+															</a>
+														</h3>
+													</div>
+												</div>
+											{% endif %}
+										</div>
+									{% endif %}
+							{%- endcase -%}
+						{%- endfor -%}
+					</div>
+				</div>
+
+				{% comment %} Comments {% endcomment %}
+				{%- if blog.comments_enabled? -%}
+					<div class="blog-comments">
+						<div class="container-inner">
+							{% comment %} Comment list {% endcomment %}
+							{%- if article.comments_count > 0 -%}
+								<div class="comment-list" id="{{ section.id | append: '-comment-list' }}">
+									<h3 class="comment-heading h5{% if animation %} scroll-trigger{% endif %}">{{- 'blogs.article.comment' | t: count: article.comments_count -}}</h3>
+
+									{%- paginate article.comments by 10 -%}
+										{%- for comment in article.comments -%}
+											<div class="article-comment{% if animation %} scroll-trigger{% endif %}">
+												<div class="comment-content">
+													{{- comment.content -}}
+												</div>
+
+												<div class="comment-info">
+													<span class="comment-author">{{- comment.author -}}</span>
+													<span class="comment-date">{{- comment.created_at | time_tag: format: 'short_month_day_year' -}}</span>
+												</div>
+											</div>
+										{%- endfor -%}
+
+										{%- render 'pagination', paginate: paginate -%}
+									{%- endpaginate -%}
+								</div>
+							{%- endif -%}
+
+							{% comment %} Comment form {% endcomment %}
+							{%- if blog.comments_enabled? -%}
+								<div class="comment-form" id="{{ section.id | append: '-comment-form' }}">
+									<h3 class="comment-form-heading h2{% if animation %} scroll-trigger{% endif %}">{{- 'templates.form.leave_a_comment' | t -}}</h3>
+
+									{%- form 'new_comment', article, id: nil, class: 'article-comment-form' -%}
+										{%- if form.posted_successfully? -%}
+											<p class="message success-message" tabindex="-1" autofocus>
+												{{- 'templates.form.comment_success' | t -}}
+											</p>
+										{%- elsif form.errors -%}
+											<p class="message error-message">
+												{{- 'templates.form.error_heading' | t -}}
+											</p>
+
+											<ul class="error-list" role="list">
+												<li>
+													<a href="#form-field-email-error" aria-label="{{- 'general.text.link' | t -}}" class="link">
+														{{ form.errors.translated_fields['email'] | capitalize }} {{ form.errors.messages['email'] }}
+													</a>
+												</li>
+											</ul>
+										{%- endif -%}
+
+										<div class="form-fields">
+											{% comment %} Name {% endcomment %}
+											<div class="field-item field{% if animation %} scroll-trigger{% endif %}">
+												<input id="{{ section_id }}-name" autocomplete="name" type="text" name="comment[author]" value="{{ form.author | default: customer.name | escape }}" placeholder="{{ 'templates.form.name' | t }}" required>
+
+												<label for="{{ section_id }}-name">{{ 'templates.form.name' | t }}</label>
+											</div>
+
+											{% comment %} Email {% endcomment %}
+											<div class="field-item field{% if animation %} scroll-trigger{% endif %}">
+												<input id="{{ section_id }}-email" autocomplete="email" type="email" name="comment[email]" value="{{ form.email | default: customer.email | escape }}" {% if form.errors contains 'email' %} aria-invalid="true" aria-describedby="form-field-email-error" {% endif %} placeholder="{{ 'templates.form.email' | t }}" required>
+
+												<label for="{{ section_id }}-email">{{ 'templates.form.email' | t }}</label>
+											</div>
+
+											{%- if form.errors contains 'email' -%}
+												<small class="form-field-email-error" id="form-field-email-error">
+													<span class="sr-only">{{- 'accessibility.error' | t -}}</span>
+
+													<span class="message error-message">
+														{%- render 'icon', code: 'error' -%}
+														{{- form.errors.translated_fields['email'] | capitalize }} {{ form.errors.messages['email'] -}}
+													</span>
+												</small>
+											{%- endif -%}
+
+											{% comment %} Textarea {% endcomment %}
+											<div class="field-item field text-area{% if animation %} scroll-trigger{% endif %}">
+												<textarea name="comment[body]" placeholder="{{ 'templates.form.message' | t }}" required>
+													{{- form.body -}}
+												</textarea>
+
+												<label for="{{ section_id }}-email">{{ 'templates.form.comment_placeholder' | t }}</label>
+											</div>
+										</div>
+
+										{% comment %} Detection disclaimer {% endcomment %}
+										<div class="detection-disclaimer">
+											{{- 'templates.form.spam_detection' | t -}}
+											{{ 'shopify.online_store.spam_detection.disclaimer_html' | t }}
+										</div>
+
+										{% comment %} Submit {% endcomment %}
+										<button type="submit" class="button primary-button{% if animation %} scroll-trigger{% endif %}">
+											{{- 'templates.form.post_comment' | t -}}
+										</button>
+									{%- endform -%}
+								</div>
+							{%- endif -%}
+						</div>
+					</div>
+				{%- endif -%}
+
+				{% comment %} Related posts {% endcomment %}
+				{%- if section.settings.show_related_posts -%}
+					{%- render 'recent-posts' -%}
+				{%- endif -%}
+			</div>
+		</div>
+	</div>
+</div>
+
+{% schema %}
+{
+	"name": "t:sections.main-blog-post.name",
+	"tag": "section",
+	"class": "blog-single-section",
+	"enabled_on": {
+		"templates": ["article"]
+	},
+	"settings": [
+		{
+			"type": "color_scheme",
+			"id": "color_scheme",
+			"label": "t:settings_schema.colors.label",
+			"default": "scheme-1"
+		},
+		{
+			"type": "checkbox",
+			"id": "full",
+			"default": false,
+			"label": "t:general.layout.full.label"
+		},
+		{
+			"type": "range",
+			"id": "content_width",
+			"default": 100,
+			"min": 60,
+			"max": 100,
+			"step": 1,
+			"unit": "%",
+			"label": "t:general.dimensions.content_width.label"
+		},
+		{
+			"type": "header",
+			"content": "t:sections.main-blog-post.settings.show_featured_image.content"
+		},
+		{
+			"type": "checkbox",
+			"id": "show_featured_image",
+			"default": false,
+			"label": "t:sections.main-blog-post.settings.show_featured_image.label"
+		},
+		{
+			"type": "select",
+			"id": "height",
+			"default": "medium",
+			"options": [
+				{
+					"value": "auto",
+					"label": "t:sections.slider.settings.height.option_1.label"
+				},
+				{
+					"value": "small",
+					"label": "t:sections.slider.settings.height.option_2.label"
+				},
+				{
+					"value": "medium",
+					"label": "t:sections.slider.settings.height.option_3.label"
+				},
+				{
+					"value": "large",
+					"label": "t:sections.slider.settings.height.option_4.label"
+				}
+			],
+			"label": "t:general.dimensions.height.label"
+		},
+		{
+			"type": "color_scheme",
+			"id": "featured_color_scheme",
+			"label": "t:settings_schema.colors.label",
+			"default": "scheme-1"
+		},
+		{
+			"type": "header",
+			"content": "t:sections.main-blog-post.settings.related_posts.content"
+		},
+		{
+			"type": "checkbox",
+			"id": "show_related_posts",
+			"default": false,
+			"label": "t:sections.main-blog-post.settings.show_related_posts.label"
+		},
+		{
+			"type": "text",
+			"id": "recent_posts_heading",
+			"default": "Heading",
+			"label": "t:sections.main-blog-post.settings.related_posts_heading.label"
+		},
+		{
+			"type": "color_scheme",
+			"id": "recent_posts_color_scheme",
+			"label": "t:settings_schema.colors.label",
+			"default": "scheme-1"
+		},
+		{
+			"type": "header",
+			"content": "t:general.padding.header_padding.content"
+		},
+		{
+			"type": "range",
+			"id": "padding_top",
+			"min": 0,
+			"max": 100,
+			"step": 1,
+			"default": 50,
+			"unit": "px",
+			"label": "t:general.padding.top.label"
+		},
+		{
+			"type": "range",
+			"id": "padding_bottom",
+			"min": 0,
+			"max": 100,
+			"step": 1,
+			"default": 50,
+			"unit": "px",
+			"label": "t:general.padding.bottom.label"
+		},
+		{
+			"type": "paragraph",
+			"content": "t:general.padding.paragraph_mobile.content"
+		},
+		{
+			"type": "range",
+			"id": "padding_top_mobile",
+			"min": 0,
+			"max": 100,
+			"step": 1,
+			"default": 20,
+			"unit": "px",
+			"label": "t:general.padding.top.label"
+		},
+		{
+			"type": "range",
+			"id": "padding_bottom_mobile",
+			"min": 0,
+			"max": 100,
+			"step": 1,
+			"default": 20,
+			"unit": "px",
+			"label": "t:general.padding.bottom.label"
+		}
+	],
+	"blocks": [
+		{
+			"type": "title",
+			"name": "t:sections.main-blog-post.blocks.title.name",
+			"limit": 1,
+			"settings": [
+				{
+					"type": "select",
+					"id": "align",
+					"options": [
+						{
+							"value": "left",
+							"label": "t:general.layout.alignment.option_1.label"
+						},
+						{
+							"value": "center",
+							"label": "t:general.layout.alignment.option_2.label"
+						},
+						{
+							"value": "right",
+							"label": "t:general.layout.alignment.option_3.label"
+						}
+					],
+					"default": "center",
+					"label": "t:general.layout.alignment.label"
+				}
+			]
+		},
+		{
+			"type": "meta",
+			"name": "t:sections.main-blog-post.blocks.meta.name",
+			"limit": 1,
+			"settings": [
+				{
+					"type": "select",
+					"id": "align",
+					"options": [
+						{
+							"value": "left",
+							"label": "t:general.layout.alignment.option_1.label"
+						},
+						{
+							"value": "center",
+							"label": "t:general.layout.alignment.option_2.label"
+						},
+						{
+							"value": "right",
+							"label": "t:general.layout.alignment.option_3.label"
+						}
+					],
+					"default": "center",
+					"label": "t:general.layout.alignment.label"
+				},
+				{
+					"type": "checkbox",
+					"id": "show_blog",
+					"default": true,
+					"label": "t:sections.main-blog-post.blocks.meta.settings.show_blog.label"
+				},
+				{
+					"type": "checkbox",
+					"id": "show_date",
+					"default": true,
+					"label": "t:sections.main-blog-post.blocks.meta.settings.show_date.label"
+				},
+				{
+					"type": "checkbox",
+					"id": "show_comment",
+					"default": true,
+					"label": "t:sections.main-blog-post.blocks.meta.settings.show_comment.label"
+				},
+				{
+					"type": "checkbox",
+					"id": "show_author",
+					"default": false,
+					"label": "t:sections.main-blog-post.blocks.meta.settings.show_author.label"
+				}
+			]
+		},
+		{
+			"type": "content",
+			"name": "t:sections.main-blog-post.blocks.content.name",
+			"limit": 1,
+			"settings": [
+				{
+					"type": "checkbox",
+					"id": "show_tags",
+					"default": true,
+					"label": "t:sections.main-blog-post.blocks.content.settings.show_tags.label"
+				},
+				{
+					"type": "checkbox",
+					"id": "show_social",
+					"default": true,
+					"label": "t:sections.main-blog-post.blocks.content.settings.show_social.label"
+				}
+			]
+		},
+		{
+			"type": "image",
+			"name": "t:sections.main-blog-post.blocks.image.name",
+			"limit": 1,
+			"settings": [
+			]
+		},
+		{
+			"type": "navigation",
+			"name": "t:sections.main-blog-post.blocks.navigation.name",
+			"limit": 1,
+			"settings": [
+			]
+		},
+		{
+			"type": "@app"
+		}
+	],
+	"presets": [
+		{
+			"name": "t:sections.main-blog-post.presets.name",
+			"blocks": [
+				{
+					"type": "meta"
+				},
+				{
+					"type": "title"
+				},
+				{
+					"type": "image"
+				},
+				{
+					"type": "content"
+				}
+			]
+		}
+	]
+}
+{% endschema %}

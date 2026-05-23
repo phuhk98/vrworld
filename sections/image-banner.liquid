@@ -1,0 +1,353 @@
+{%- liquid
+	assign section_id   = '#shopify-section-' | append: section.id
+	assign animation    = settings.section_animation
+	assign heading      = section.settings.heading_text
+	assign heading_size = section.settings.heading_size
+	assign sub_heading  = section.settings.sub_heading_text
+	assign text         = section.settings.text
+	assign image        = section.settings.image
+	assign image_mobile = section.settings.mobile_image
+	assign overlay      = section.settings.overlay
+	assign height       = section.settings.height
+
+	case height
+		when 'small'
+			assign height_value = '400px'
+		when 'medium'
+			assign height_value = '650px'
+		when 'large'
+			assign height_value = '800px'
+	endcase
+-%}
+
+<style>
+	{%- if height == 'auto' -%}
+		{{ section_id }} .section-wrapper {
+			padding-top: 0;
+			padding-bottom: 0;
+		}
+	{%- endif -%}
+
+	{{ section_id }} .section-wrapper:before {
+		background: linear-gradient(to bottom,{%- if overlay == 100 -%}rgb(0,0,0){%- else -%}rgba(0,0,0,0.{{ overlay }}){%- endif -%},{%- if overlay == 100 -%}rgb(0,0,0){%- else -%}rgba(0,0,0,0.{{ overlay }}){%- endif -%});
+	}
+
+	{%- if height != 'auto' -%}
+		{{ section_id }} .height-{{ height }} {
+			min-height: {{ height_value }};
+		}
+	{%- endif -%}
+
+	@media (min-width: 992px) {
+		{%- if height != 'auto' -%}
+			{{ section_id }} .section-wrapper {
+				padding-top: {{ section.settings.padding_top }}px;
+				padding-bottom: {{ section.settings.padding_bottom }}px;
+			}
+		{%- endif -%}
+	}
+</style>
+
+<div class="section-wrapper  height-{{ height }} color-{{ section.settings.color_scheme }}">
+	<!-- <parallax-banner> -->
+		<div class="banner-image{% if image_mobile != blank %} hidden-tablet hidden-mobile{% endif %}{% if settings.image_lazy and image != blank %} lazy-image{% endif %}">
+			{%- liquid
+				if image != blank
+					render 'lazy-image', image: image, width: 1920
+				else
+					render 'icon', code: 'placeholder'
+				endif
+			-%}
+		</div>
+
+		{%- if image_mobile != blank -%}
+			<div class="banner-image hidden-desktop{% if settings.image_lazy %} lazy-image{% endif %}">
+				{%- render 'lazy-image', image: image_mobile, width: 991 -%}
+			</div>
+		{%- endif -%}
+
+		<div class="image-banner-wrapper height-{{ height }} flex-justify-{{ section.settings.position_y }} container">
+			<div class="image-banner-content flex-align-{{ section.settings.position_x }}">
+				<div class="image-banner-title{% if section.settings.has_bgcolor %} has-bgcolor{% endif %} text-{{ section.settings.text_align }} text-{{ section.settings.mobile_text_align }}-mobile">
+					{%- if sub_heading != blank -%}
+						<div class="sub-heading rte">{{- sub_heading -}}</div>
+					{%- endif -%}
+
+					{%- if heading != blank -%}
+						<div class="heading rte {{ heading_size }}">{{- heading -}}</div>
+					{%- endif -%}
+
+					{%- if text != blank -%}
+						<div class="description rte">{{- text -}}</div>
+					{%- endif -%}
+
+					{%- if section.settings.button_label != blank -%}
+						<a class="button primary-button{% if animation %} scroll-trigger{% endif %}" href="{{ section.settings.button_link | default: '#' }}" aria-label="{{- 'general.text.link' | t -}}">{{- section.settings.button_label -}}</a>
+					{%- endif -%}
+				</div>
+			</div>
+		</div>
+	<!-- </parallax-banner> -->
+</div>
+
+{% schema %}
+{
+	"name": "t:sections.image-banner.name",
+	"tag": "section",
+	"class": "image-banner-section",
+	"disabled_on": {
+		"groups": ["header", "footer"]
+	},
+	"settings": [
+		{
+			"type": "color_scheme",
+			"id": "color_scheme",
+			"label": "t:settings_schema.colors.label",
+			"default": "scheme-1"
+		},
+		{
+			"type": "image_picker",
+			"id": "image",
+			"label": "t:general.image.label"
+		},
+		{
+			"type": "image_picker",
+			"id": "mobile_image",
+			"label": "t:sections.image-banner.settings.mobile_image.label"
+		},
+		{
+			"type": "select",
+			"id": "height",
+			"default": "medium",
+			"options": [
+				{
+					"value": "auto",
+					"label": "t:sections.slider.settings.height.option_1.label"
+				},
+				{
+					"value": "small",
+					"label": "t:sections.slider.settings.height.option_2.label"
+				},
+				{
+					"value": "medium",
+					"label": "t:sections.slider.settings.height.option_3.label"
+				},
+				{
+					"value": "large",
+					"label": "t:sections.slider.settings.height.option_4.label"
+				}
+			],
+			"label": "t:general.dimensions.height.label"
+		},
+		{
+			"type": "range",
+			"id": "overlay",
+			"min": 0,
+			"max": 100,
+			"step": 1,
+			"default": 50,
+			"unit": "%",
+			"label": "t:general.image.overlay.label",
+			"info": "t:general.image.overlay.info"
+		},
+		{
+			"type": "header",
+			"content": "t:sections.image-banner.settings.header_content.content"
+		},
+		{
+			"type": "checkbox",
+			"id": "has_bgcolor",
+			"default": true,
+			"label": "t:sections.image-banner.settings.has_bgcolor.label"
+		},
+		{
+			"type": "select",
+			"id": "position_x",
+			"options": [
+				{
+					"value": "start",
+					"label": "t:sections.slider.blocks.slider.settings.position_x.options__1.label"
+				},
+				{
+					"value": "center",
+					"label": "t:sections.slider.blocks.slider.settings.position_x.options__2.label"
+				},
+				{
+					"value": "end",
+					"label": "t:sections.slider.blocks.slider.settings.position_x.options__3.label"
+				}
+			],
+			"default": "start",
+			"label": "t:sections.slider.blocks.slider.settings.position_x.label",
+			"info": "t:general.layout.alignment.mobile_center.label"
+		},
+		{
+			"type": "select",
+			"id": "position_y",
+			"options": [
+				{
+					"value": "start",
+					"label": "t:sections.slider.blocks.slider.settings.position_y.options__1.label"
+				},
+				{
+					"value": "center",
+					"label": "t:sections.slider.blocks.slider.settings.position_y.options__2.label"
+				},
+				{
+					"value": "end",
+					"label": "t:sections.slider.blocks.slider.settings.position_y.options__3.label"
+				}
+			],
+			"default": "center",
+			"label": "t:sections.slider.blocks.slider.settings.position_y.label",
+			"info": "t:general.layout.alignment.mobile_center.label"
+		},
+		{
+
+			"type": "select",
+			"id": "text_align",
+			"options": [
+				{
+					"value": "left",
+					"label": "t:general.layout.alignment.option_1.label"
+				},
+				{
+					"value": "center",
+					"label": "t:general.layout.alignment.option_2.label"
+				},
+				{
+					"value": "right",
+					"label": "t:general.layout.alignment.option_3.label"
+				}
+			],
+			"default": "left",
+			"label": "t:general.layout.alignment.label"
+		},
+		{
+			"type": "select",
+			"id": "mobile_text_align",
+			"options": [
+				{
+					"value": "left",
+					"label": "t:general.layout.mobile_alignment.option_1.label"
+				},
+				{
+					"value": "center",
+					"label": "t:general.layout.mobile_alignment.option_2.label"
+				},
+				{
+					"value": "right",
+					"label": "t:general.layout.mobile_alignment.option_3.label"
+				}
+			],
+			"default": "left",
+			"label": "t:general.layout.mobile_alignment.label"
+		},
+		{
+			"type": "inline_richtext",
+			"id": "sub_heading_text",
+			"label": "t:general.typography.caption.label"
+		},
+		{
+			"type": "richtext",
+			"id": "heading_text",
+			"default": "<p>Image banner</p>",
+			"label": "t:general.typography.heading.label"
+		},
+		{
+			"type": "select",
+			"id": "heading_size",
+			"options": [
+				{
+					"value": "h3",
+					"label": "t:general.typography.heading_size.option_1.label"
+				},
+				{
+					"value": "h2",
+					"label": "t:general.typography.heading_size.option_2.label"
+				},
+				{
+					"value": "h1",
+					"label": "t:general.typography.heading_size.option_3.label"
+				},
+				{
+					"value": "h0",
+					"label": "t:general.typography.heading_size.option_4.label"
+				}
+			],
+			"default": "h3",
+			"label": "t:general.typography.heading_size.label"
+		},
+		{
+			"type": "richtext",
+			"id": "text",
+			"default": "<p>Give customers details about the banner image or content on the template.</p>",
+			"label": "t:general.typography.description.label"
+		},
+		{
+			"type": "text",
+			"id": "button_label",
+			"default": "Button label",
+			"label": "t:general.typography.button_label.label"
+		},
+		{
+			"type": "url",
+			"id": "button_link",
+			"label": "t:general.typography.button_link.label"
+		},
+		{
+			"type": "header",
+			"content": "t:general.padding.header_padding.content"
+		},
+		{
+			"type": "range",
+			"id": "padding_top",
+			"min": 0,
+			"max": 100,
+			"step": 1,
+			"default": 40,
+			"unit": "px",
+			"label": "t:general.padding.top.label"
+		},
+		{
+			"type": "range",
+			"id": "padding_bottom",
+			"min": 0,
+			"max": 100,
+			"step": 1,
+			"default": 40,
+			"unit": "px",
+			"label": "t:general.padding.bottom.label"
+		},
+		{
+			"type": "paragraph",
+			"content": "t:general.padding.paragraph_mobile.content"
+		},
+		{
+			"type": "range",
+			"id": "padding_top_mobile",
+			"min": 0,
+			"max": 100,
+			"step": 1,
+			"default": 20,
+			"unit": "px",
+			"label": "t:general.padding.top.label"
+		},
+		{
+			"type": "range",
+			"id": "padding_bottom_mobile",
+			"min": 0,
+			"max": 100,
+			"step": 1,
+			"default": 20,
+			"unit": "px",
+			"label": "t:general.padding.bottom.label"
+		}
+	],
+	"presets": [
+		{
+			"name": "t:sections.image-banner.name"
+		}
+	]
+}
+{% endschema %}

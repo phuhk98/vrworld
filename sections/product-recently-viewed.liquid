@@ -1,0 +1,284 @@
+{%- liquid
+	assign section_id   = '#shopify-section-' | append: section.id
+	assign animation    = settings.section_animation
+	assign full         = section.settings.full
+	assign layout       = section.settings.layout
+	assign columns      = section.settings.columns
+	assign total        = section.settings.rows | times: columns
+	assign show_arrows  = section.settings.show_arrows
+	assign heading_size = section.settings.heading_size
+-%}
+
+<script src="{{ 'product-recently-viewed.js' | asset_url }}" defer="defer"></script>
+
+<style>
+	{{ section_id }}.has-products-recently .section-inner {
+		padding-top: {{ section.settings.padding_top_mobile }}px;
+		padding-bottom: {{ section.settings.padding_bottom_mobile }}px;
+	}
+
+	{{ section_id }} .unity-slider{
+		--slide-size: 93%;
+		--slide-spacing: 0.8rem;
+	}
+
+	@media (min-width: 992px) {
+		{{ section_id }}.has-products-recently .section-inner {
+			padding-top: {{ section.settings.padding_top }}px;
+			padding-bottom: {{ section.settings.padding_bottom }}px;
+		}
+
+		{{ section_id }} .unity-slider{
+			--slide-size: calc( 100% / {{ columns  }});
+			--slide-spacing: 0.8rem;
+		}
+	}
+</style>
+
+{%- if collections.all.products.size > 0 -%}
+	<div class="section-inner slider-layout color-{{ section.settings.color_scheme }}">
+		<div class="{% if full %}stretch-section stretch-padding{% else %}container{% endif %}">
+			<div class="product-recently-viewed" data-url="/search?section_id={{ section.id }}&type=product&q=">
+				{%- if search.performed and search.results.size > 0 -%}
+					<div class="wrapper-heading heading-wrapper{% if animation %} scroll-trigger{% endif %}">
+						{%- if section.settings.heading != blank -%}
+							<div class="collection-heading">
+								<h2 class="collection-heads title {{ heading_size }} rte">{{- section.settings.heading | escape -}}</h2>
+							</div>
+						{%- endif -%}
+					</div>
+
+					{%- if layout == 'slider' -%}
+						<unity-slider class="unity-slider">
+							<template data-options>
+								{
+									{%- if section.settings.loop -%}
+										"loop": true,
+									{%- endif -%}
+
+									{%- if section.settings.autoplay -%}
+										"_autoplay": {{ section.settings.delay | times: 1000 }},
+									{%- endif -%}
+
+									"align": "start",
+									"duration": 25,
+
+									{%- comment -%} Attr options {%- endcomment -%}
+									"_autoheight": true,
+									"_fade": false,
+									"_prevBtn": "{{ section_id }} .unity-button-prev",
+									"_nextBtn": "{{ section_id }} .unity-button-next"
+								}
+							</template>
+
+							{%- if show_arrows -%}
+								<div class="unity-arrows">
+									<button class="unity-button unity-button-prev" title ="{{ 'general.unity.prev' | t }}-recent" aria-label="{{ 'general.unity.prev' | t }}-recent" id="{{ 'general.unity.prev' | t }}-recent" aria-labelledby="{{ 'general.unity.prev' | t }}-recent" disabled>
+										{%- render 'icon', code: 'chevron-left' -%}
+									</button>
+
+									<button class="unity-button unity-button-next" title ="{{ 'general.unity.next' | t }}-recent" aria-label="{{ 'general.unity.next' | t }}-recent" id="{{ 'general.unity.next' | t }}-recent" aria-labelledby="{{ 'general.unity.next' | t }}-recent" disabled>
+										{%- render 'icon', code: 'chevron-right' -%}
+									</button>
+								</div>
+							{%- endif -%}
+
+							<div class="unity-slider-viewport main-sliders">
+								<div class="unity-slider-container">
+									{%- for product in search.results -%}
+										<div class="unity-slide{% if animation %} scroll-trigger{% endif %}">
+											{%- render 'product-card', product: product, index: forloop.index -%}
+										</div>
+									{%- endfor -%}
+								</div>
+							</div>
+						</unity-slider>
+					{%- else -%}
+						<div class="grid grid-{{ columns }} grid-tablet-3 grid-mobile-2">
+							{%- for product in search.results limit: total -%}
+								<div class="grid-item{% if animation %} scroll-trigger{% endif %}">
+									{%- render 'product-card', product: product, index: forloop.index -%}
+								</div>
+							{%- else -%}
+								{%- for i in (1..4) -%}
+									<div class="grid-item{% if animation %} scroll-trigger{% endif %}">
+										{%- render 'product-card-placeholder', index: forloop.index -%}
+									</div>
+								{%- endfor -%}
+							{%- endfor -%}
+						</div>
+					{%- endif -%}
+				{%- endif -%}
+			</div>
+		</div>
+	</div>
+{%- endif -%}
+
+{% schema %}
+{
+	"name": "t:sections.product-recently-viewed.name",
+	"tag": "section",
+	"class": "recently-viewed-section",
+	"limit": 1,
+	"disabled_on": {
+		"groups": ["header", "footer"]
+	},
+	"settings": [
+		{
+			"type": "paragraph",
+			"content": "t:sections.product-recently-viewed.settings.paragraph_1.content"
+		},
+		{
+			"type": "color_scheme",
+			"id": "color_scheme",
+			"label": "t:settings_schema.colors.label",
+			"default": "scheme-1"
+		},
+		{
+			"type": "checkbox",
+			"id": "full",
+			"default": false,
+			"label": "t:general.layout.full.label"
+		},
+		{
+			"type": "inline_richtext",
+			"id": "heading",
+			"default": "You may also like",
+			"label": "t:general.typography.heading.label"
+		},
+		{
+			"type": "select",
+			"id": "heading_size",
+			"options": [
+				{
+					"value": "h3",
+					"label": "t:general.typography.heading_size.option_1.label"
+				},
+				{
+					"value": "h2",
+					"label": "t:general.typography.heading_size.option_2.label"
+				},
+				{
+					"value": "h1",
+					"label": "t:general.typography.heading_size.option_3.label"
+				}
+			],
+			"default": "h2",
+			"label": "t:general.typography.heading_size.label"
+		},
+		{
+			"type": "select",
+			"id": "layout",
+			"options": [
+				{
+					"value": "grid",
+					"label": "t:sections.product-recommendations.settings.layout.options__1.label"
+				},
+				{
+					"value": "slider",
+					"label": "t:sections.product-recommendations.settings.layout.options__2.label"
+				}
+			],
+			"default": "slider",
+			"label": "t:sections.product-recommendations.settings.layout.label"
+		},
+		{
+			"type": "range",
+			"id": "rows",
+			"min": 1,
+			"max": 10,
+			"step": 1,
+			"default": 1,
+			"label": "t:sections.product-recently-viewed.settings.rows.label"
+		},
+		{
+			"type": "range",
+			"id": "columns",
+			"min": 1,
+			"max": 12,
+			"step": 1,
+			"default": 4,
+			"label": "t:sections.product-recently-viewed.settings.columns.label"
+		},
+		{
+			"type": "header",
+			"content": "t:general.slider.options.label"
+		},
+		{
+			"type": "checkbox",
+			"id": "show_arrows",
+			"default": true,
+			"label": "t:general.slider.show_arrows.label"
+		},
+		{
+			"type": "checkbox",
+			"id": "autoplay",
+			"default": false,
+			"label": "t:general.slider.autoplay.label"
+		},
+		{
+			"type": "range",
+			"id": "delay",
+			"min": 2,
+			"max": 20,
+			"step": 1,
+			"unit": "s",
+			"default": 2,
+			"label": "t:general.slider.delay.label"
+		},
+		{
+			"type": "header",
+			"content": "t:general.padding.header_padding.content"
+		},
+		{
+			"type": "range",
+			"id": "padding_top",
+			"min": 0,
+			"max": 100,
+			"step": 1,
+			"default": 50,
+			"unit": "px",
+			"label": "t:general.padding.top.label"
+		},
+		{
+			"type": "range",
+			"id": "padding_bottom",
+			"min": 0,
+			"max": 100,
+			"step": 1,
+			"default": 50,
+			"unit": "px",
+			"label": "t:general.padding.bottom.label"
+		},
+		{
+			"type": "paragraph",
+			"content": "t:general.padding.paragraph_mobile.content"
+		},
+		{
+			"type": "range",
+			"id": "padding_top_mobile",
+			"min": 0,
+			"max": 100,
+			"step": 1,
+			"default": 20,
+			"unit": "px",
+			"label": "t:general.padding.top.label"
+		},
+		{
+			"type": "range",
+			"id": "padding_bottom_mobile",
+			"min": 0,
+			"max": 100,
+			"step": 1,
+			"default": 20,
+			"unit": "px",
+			"label": "t:general.padding.bottom.label"
+		}
+	],
+	"presets": [
+		{
+			"name": "t:sections.product-recently-viewed.name"
+		}
+	]
+}
+{% endschema %}

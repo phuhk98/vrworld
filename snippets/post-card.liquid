@@ -1,0 +1,140 @@
+{%- liquid
+	assign animation = settings.section_animation
+-%}
+
+<article class="article-card{% if animation %} scroll-trigger{% endif %}">
+	<div class="article-media-wrap">
+		<div class="article-image border-large {% if in_search_results %}{{ settings.card_image_ratio }}{% else %}{{ section.settings.image_ratio }}{% endif %}-media{% unless article.image %} no-media{% endunless %}">
+			{%- if article.image -%}
+				<a href="{{ article.url }}" aria-label="{{- 'general.text.link' | t -}}" class="card-image image-overlay border-large{% if settings.image_lazy and article.image %} lazy-image{% endif %}">
+					{%- liquid
+						if article.image
+							render 'lazy-image', image: article.image, width: 740
+						endif
+					-%}
+
+					{% if in_search_results %}
+						<span class="badge">{{- 'blogs.article.blog' | t -}}</span>
+					{% endif %}
+				</a>
+			{%- endif -%}
+		</div>
+
+		{%- if section.settings.card_layout == 'standard' and section.settings.show_blog -%}
+			<a href="{{ blog.url }}" aria-label="{{- 'general.text.link' | t -}}" class="article-blog-link text-uppercase border-small">
+				{{- blog.title | escape -}}
+			</a>
+		{%- endif -%}
+	</div>
+
+	{%- if in_search_results -%}
+		{%- if article.image -%}
+			<h2 class="card-title h5">
+				<a href="{{ article.url }}" aria-label="{{- 'general.text.link' | t -}}">
+					{% if highlight %}{{ article.title | highlight: highlight }}{% else %}{{- article.title | escape -}}{% endif %}
+				</a>
+			</h2>
+		{%- endif -%}
+
+		<div class="card-info">
+			{% comment %} Blog {% endcomment %}
+			<span class="info-item">
+				<a href="{{ blog.url }}" aria-label="{{- 'general.text.link' | t -}}">
+					{{- blog.title | escape -}}
+				</a>
+			</span>
+
+			{%- render 'icon', code: 'eight-pointed-star' -%}
+
+			{% comment %} Date {% endcomment %}
+			<span class="info-item">
+				{{- article.published_at | time_tag: format: 'short_month_day_year' -}}
+			</span>
+
+			{%- render 'icon', code: 'eight-pointed-star' -%}
+
+			{% comment %} Comment {% endcomment %}
+			{%- if blog.comments_enabled? -%}
+				<a class="info-item" href="{{ article.comment_post_url }}" aria-label="{{- 'general.text.link' | t -}}">{{ 'blogs.article.comments' | t: count: article.comments_count }}</a>
+			{%- endif -%}
+		</div>
+	{%- else -%}
+		<div class="article-info-wrapper">
+			<div class="article-info">
+				{%- if section.settings.show_date or section.settings.show_comment and blog.comments_enabled? or section.settings.show_author -%}
+					<div class="article-meta text-uppercase">
+						{% comment %} Date {% endcomment %}
+						{%- if section.settings.show_date -%}
+							<span class="article-date mitem">
+								{{- article.published_at | time_tag: format: 'short_month_day_year' -}}
+							</span>
+
+							<span class="separator">/</span>
+						{%- endif -%}
+
+						{% comment %} Comment {% endcomment %}
+						{%- if section.settings.show_comment and blog.comments_enabled? -%}
+							<a class="article-comment mitem link-underline-transparent" href="{{ article.comment_post_url }}" aria-label="{{- 'general.text.link' | t -}}">{{ 'blogs.article.comments' | t: count: article.comments_count }}</a>
+
+							<span class="separator">/</span>
+						{%- endif -%}
+
+
+						{% comment %} Author {% endcomment %}
+						{%- if section.settings.show_author -%}
+							<div class="article-author mitem">
+								{{ article.author }}
+							</div>
+						{%- endif -%}
+					</div>
+				{%- endif -%}
+
+				{% comment %} Title {% endcomment %}
+				<h2 class="article-title h4">
+					<a href="{{ article.url }}" aria-label="{{- 'general.text.link' | t -}}" class="link-underline-transparent">
+						{{- article.title | escape  -}}
+					</a>
+				</h2>
+
+				{% comment %} Excerpt/Content  {% endcomment %}
+				{%- if section.settings.show_excerpt and article.excerpt_or_content.size > 0 -%}
+					<p class="article-excerpt">
+						{%- liquid
+							if article.excerpt_or_content.size > 0
+								echo article.excerpt_or_content | strip_html | truncatewords: 20
+							endif
+						-%}
+					</p>
+				{%- endif -%}
+			</div>
+
+			{% if section.settings.card_layout == 'overlay' %}
+				{%- if section.settings.show_blog or section.settings.show_read_more -%}
+					<div class="article-info-bottom{% unless section.settings.show_blog %} no-blog{% endunless %}">
+						{% comment %} Blog {% endcomment %}
+						{%- if section.settings.show_blog -%}
+							<a href="{{ blog.url }}" aria-label="{{- 'general.text.link' | t -}}" class="article-blog-link text-uppercase border-small">
+								{{- blog.title | escape -}}
+							</a>
+						{%- endif -%}
+
+						{% comment %} Read more {% endcomment %}
+						{%- if section.settings.show_read_more -%}
+							<a class="button readmore-btn" href="{{ article.url }}" aria-label="{{- 'general.text.link' | t -}}">
+								{%- render 'icon', code: 'arrow-circle-up-right' -%}
+								{%- render 'icon', code: 'arrow-circle-up-right' -%}
+							</a>
+						{%- endif -%}
+					</div>
+				{%- endif -%}
+			{% else %}
+				{% comment %} Read more {% endcomment %}
+				{%- if section.settings.show_read_more -%}
+					<a class="readmore-btn text-uppercase link-underline-transparent" href="{{ article.url }}" aria-label="{{- 'general.text.link' | t -}}">
+						{{- 'blogs.article.read_more' | t -}}
+					</a>
+				{%- endif -%}
+			{% endif %}
+		</div>
+	{%- endif -%}
+</article>

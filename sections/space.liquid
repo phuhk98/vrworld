@@ -1,0 +1,46 @@
+{%- liquid
+	assign section_id = '#shopify-section-' | append: section.id
+-%}
+
+<style>
+	{{ section_id }} .space {
+		height: {{ section.settings.height_mobile }}px;
+	}
+
+	@media (min-width: 992px) {
+		{{ section_id }} .space {
+			height: {{ section.settings.height }}px;
+		}
+	}
+</style>
+
+<div class="space"></div>
+{% schema %}
+{
+	"name": "t:sections.space.name",
+	"tag": "section",
+	"class": "space-section",
+	"disabled_on": {
+		"groups": ["header", "footer"]
+	},
+	"settings": [
+		{
+			"type": "number",
+			"id": "height",
+			"default": 100,
+			"label": "t:sections.space.settings.height.label"
+		},
+		{
+			"type": "number",
+			"id": "height_mobile",
+			"default": 50,
+			"label": "t:sections.space.settings.height_mobile.label"
+		}
+	],
+	"presets": [
+		{
+			"name": "t:sections.space.name"
+		}
+	]
+}
+{% endschema %}

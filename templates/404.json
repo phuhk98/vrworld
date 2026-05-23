@@ -1,0 +1,52 @@
+{
+	"sections": {
+		"main": {
+			"type": "main-404",
+			"blocks": {
+				"caption-0": {
+					"type": "caption",
+					"settings": {
+						"caption": "( 404 )"
+					}
+				},
+
+				"space-0": {
+					"type": "space",
+					"settings": {
+						"height": 8,
+						"height_mobile": 8
+					}
+				},
+				"content-0": {
+					"type": "content",
+					"settings": {
+						"content": "<h2>PAGE NOT FOUND</h2>"
+					}
+				},
+				"space-1": {
+					"type": "space",
+					"settings": {
+						"height": 24,
+						"height_mobile": 16
+					}
+				},
+				"content-1": {
+					"type": "content",
+					"settings": {
+						"content": "<p>We can’t find the page you’re looking for. You can either return<br/>to the previous page, visit our homepage or contact our team.</p>"
+					}
+				}
+			},
+			"block_order": [
+				"caption-0",
+				"space-0",
+				"content-0",
+				"space-1",
+				"content-1"
+			]
+		}
+	},
+	"order": [
+		"main"
+	]
+}

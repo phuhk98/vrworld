@@ -1,0 +1,72 @@
+{%- liquid
+	assign collection = collections.all.products
+
+	if section.settings.collection != blank and section.settings.collection.all_products_count > 0
+		assign collection = section.settings.collection.products
+	endif
+-%}
+
+<div class="quick-search" tabindex="-1" role="listbox">
+	<div class="quick-search-container">
+		<div class="form-wrapper">
+			<form class="search-form-header quick-search-form" action="{{ routes.search_url }}" method="get" role="search">
+				{%- render 'icon', code: 'search' -%}
+				<input class="search-input" type="search" name="q" id="{{ section.id }}-search" label="search" value="{{ search.terms | escape }}" placeholder="{{ 'general.search.placeholder' | t }}" role="combobox" aria-expanded="false" aria-owns="predictive-search-results" aria-controls="predictive-search-results" aria-haspopup="listbox" aria-autocomplete="list" autocorrect="off" autocomplete="off" autocapitalize="off" spellcheck="false" aria-activedescendant />
+				<label class="search-form-label hidden" for="{{ section.id }}-search">{{ 'general.search.label' | t }}</label>
+				<input type="hidden" name="options[prefix]" value="last">
+
+				<div class="align-view-all hidden">
+					<button class="button primary-button search-button" aria-label="{{ 'general.search.view_all_products' | t }}">
+						{{ 'general.search.view_all_results' | t }}
+					</button>
+				</div>
+			</form>
+
+			<button type="button" class="close-search-button">{%- render 'icon', code: 'close' -%}</button>
+
+			<predictive-search>
+				<div id="predictive-search" tabindex="-1"></div>
+
+				<div class="default-search">
+					{%- if section.settings.heading != blank -%}
+						<div class="search-head">
+							<h7 class="heading">{{- section.settings.heading | escape -}}</h7>
+						</div>
+					{%- endif -%}
+					<div class="show-product">
+						{%- for product in collection limit: 4 -%}
+							<div class="item">
+								{%- render 'product-card', product: product -%}
+							</div>
+						{%- endfor -%}
+					</div>
+				</div>
+
+				<button type="button" class="reset-button hidden">{{ 'general.search.clear' | t }}</button>
+			</predictive-search>
+		</div>
+	</div>
+
+</div>
+
+{% schema %}
+{
+	"name": "t:sections.quick-search-header.name",
+	"tag": "section",
+	"class": "quick-search-header-section",
+	"settings": [
+		{
+			"type": "text",
+			"id": "heading",
+			"default": "popular products",
+			"label": "t:general.typography.heading.label"
+		},
+		{
+			"type": "collection",
+			"id": "collection",
+			"label": "t:sections.quick-search-header.settings.collection.label",
+			"info": "t:sections.quick-search-header.settings.collection.info"
+		}
+	]
+}
+{% endschema %}

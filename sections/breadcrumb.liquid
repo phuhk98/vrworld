@@ -1,0 +1,340 @@
+{%- liquid
+	assign section_id           = '#shopify-section-' | append: section.id
+	assign animation            = settings.section_animation
+	assign show_title           = section.settings.show_title
+	assign description          = section.settings.description
+	assign full                 = section.settings.full
+	assign t                    = template | split: '.' | first
+	assign description_position = section.settings.description_position
+	assign background_image     = section.settings.background_image
+	assign overlay              = section.settings.overlay
+-%}
+
+<style>
+	{{ section_id }} .breadcrumb-inner {
+		padding-top: {{ section.settings.padding_top_mobile }}px;
+		padding-bottom: {{ section.settings.padding_bottom_mobile }}px;
+	}
+
+	@media (min-width: 992px) {
+		{{ section_id }} .breadcrumb-inner {
+			padding-top: {{ section.settings.padding_top }}px;
+			padding-bottom: {{ section.settings.padding_bottom }}px;
+		}
+
+		{{ section_id }} .section-wrapper {
+			--font-scale: {{ section.settings.font_scale | divided_by: 100.0 }};
+		}
+	}
+
+	@media (max-width: 991px) {
+		{{ section_id }} .section-wrapper {
+			--font-scale: {{ section.settings.font_scale | divided_by: 200.0 }};
+		}
+	}
+
+	{%- if background_image != blank -%}
+		{{ section_id }} .section-wrapper:before {
+			background: linear-gradient(to bottom,{%- if overlay == 100 -%}rgb(0,0,0){%- else -%}rgba(0,0,0,0.{{ overlay }}){%- endif -%},{%- if overlay == 100 -%}rgb(0,0,0){%- else -%}rgba(0,0,0,0.{{ overlay }}){%- endif -%});
+		}
+
+		{{ section_id }} .section-wrapper {
+			background-image: url({{ section.settings.background_image | image_url: width: 1920 }});
+			background-repeat: no-repeat;
+			background-size: cover;
+			background-position: center;
+		}
+	{%- endif -%}
+
+	{%- for scheme in settings.color_schemes -%}
+		{% if forloop.index == 1 %}{{ section_id }} .breadcrumb .breadcrumb-list li:after, {% endif %}{{ section_id }} .color-{{ scheme.id }} .breadcrumb .breadcrumb-list li:after {
+			content: "/";
+		}
+	{%- endfor -%}
+</style>
+
+<header-breadcrumb-overlay>
+	<div class="section-wrapper color-{{ section.settings.color_scheme }}{% if section.settings.separator_line %} border-bottom{% endif %}">
+		<div class="breadcrumb">
+			<nav class="breadcrumb-inner{% if animation %} scroll-trigger{% endif %}" aria-label="breadcrumb">
+				<div class="{% if full %}stretch-section stretch-padding{% else %}container{% endif %}">
+					<ul class="breadcrumb-list">
+						<li>
+							<a href="{{ routes.root_url }}" aria-label="{{- 'general.text.home' | t -}}">
+								{{- 'general.text.home' | t -}}
+							</a>
+						</li>
+
+						{%- case t -%}
+							{%- when 'page' -%}
+								<li aria-current="page">
+									{{- page.title -}}
+								</li>
+							{%- when 'product' -%}
+								{%- assign collect = product.collections.first -%}
+
+								{%- if collect -%}
+									<li>
+										{{- collect.title | link_to: collect.url -}}
+									</li>
+								{%- endif -%}
+
+								<li aria-current="page">
+									{{- product.title -}}
+								</li>
+							{%- when 'collection' -%}
+								{%- if collection.handle -%}
+									{%- if current_tags -%}
+										<li>
+											{{- collection.title | link_to: collection.url -}}
+										</li>
+
+										<li>
+											{%- capture tag_url -%}{{ collection.url }}/{{ current_tags | join: '+' }}{%- endcapture -%}
+											<a href="{{ tag_url }}" aria-current="page">{{- current_tags | join: ' + ' -}}</a>
+										</li>
+									{%- else -%}
+										<li>
+											<a href="{{ routes.collections_url }}" aria-current="page">{{- 'sections.collection_list.collection' | t -}}</a>
+										</li>
+
+										<li aria-current="page">
+											{{- collection.title -}}
+										</li>
+									{%- endif -%}
+								{%- endif -%}
+							{%- when 'cart' -%}
+								<li aria-current="page">
+									{{- 'templates.cart.cart' | t -}}
+								</li>
+							{%- when 'blog' -%}
+								{%- if current_tags -%}
+									<li>
+										{{- blog.title | link_to: blog.url -}}
+									</li>
+
+									<li aria-current="page">
+										{%- capture tag_url -%}{{ blog.url }}/tagged/{{ current_tags | join: '+' }}{%- endcapture -%}
+										{{- current_tags | join: ' + ' -}}
+									</li>
+								{%- else -%}
+									<li aria-current="page">
+										{{- blog.title -}}
+									</li>
+								{%- endif -%}
+							{%- when 'article' -%}
+								<li>
+									{{- blog.title | link_to: blog.url -}}
+								</li>
+
+								<li aria-current="page">
+									{{- article.title -}}
+								</li>
+							{%- else -%}
+								<li aria-current="page">
+									{{- page_title -}}
+								</li>
+						{%- endcase -%}
+					</ul>
+				</div>
+			</nav>
+
+			{%- if show_title or description != blank -%}
+				<div class="title-wrapper{% if description != blank and description_position == 'above' %} above-heading{% elsif description != blank and description_position == 'below' %} below-heading{% endif %}{% if section.settings.right_description %} right-description{% endif %}">
+					{% if description != blank and description_position == 'above' %}
+						<div class="description-item{% if full %} stretch-section stretch-padding{% else %} container{% endif %}">
+							<div class="description h3 rte">{{- description -}}</div>
+						</div>
+					{% endif %}
+
+					{%- if show_title -%}
+						{%- if section.settings.show_scrolling -%}
+							<scrolling-promotion-section class="scrolling{% if animation %} scroll-trigger{% endif %}">
+								<div class="scrolling-wrapper scrolling-animation">
+									<div class="scrolling-content">
+										<div class="scrolling-promotion h2">
+											{{- page_title -}}
+										</div>
+										{% if t == 'collection' and collection.image %}
+											<div class="collection-media-wrap adapt-media">
+												<div class="collection-image{% if settings.image_lazy and collection.image %} lazy-image{% endif %}">
+													{% render 'lazy-image', image: collection.image, class: 'image', width: collection.image.width %}
+												</div>
+											</div>
+										{% else %}
+											<span class="scrolling-icon">{%- render 'icon', code: 'ellipse' -%}</span>
+										{% endif %}
+									</div>
+								</div>
+							</scrolling-promotion-section>
+						{%- else -%}
+							<div class="{% if full %}stretch-section stretch-padding{% else %}container{% endif %}">
+								<h2 class="page-title{% if animation %} scroll-trigger{% endif %}">{{- page_title -}}</h2>
+							</div>
+						{%- endif -%}
+					{%- endif -%}
+
+					{% if description != blank and description_position == 'below' %}
+						<div class="description-item{% if full %} stretch-section stretch-padding{% else %} container{% endif %}">
+							<div class="description h3 rte">{{- description -}}</div>
+						</div>
+					{% endif %}
+				</div>
+			{%- endif -%}
+		</div>
+	</div>
+</header-breadcrumb-overlay>
+
+{% schema %}
+{
+	"name": "t:sections.breadcrumb.name",
+	"class": "breadcrumb-section",
+	"tag": "section",
+	"disabled_on": {
+		"groups": ["header", "footer"],
+		"templates": ["index"]
+	},
+	"settings": [
+		{
+			"type": "checkbox",
+			"id": "full",
+			"default": false,
+			"label": "t:sections.breadcrumb.settings.full.label"
+		},
+		{
+			"type": "image_picker",
+			"id": "background_image",
+			"label": "t:sections.breadcrumb.settings.background_image.label"
+		},
+		{
+			"type": "range",
+			"id": "overlay",
+			"min": 0,
+			"max": 100,
+			"step": 1,
+			"default": 50,
+			"unit": "%",
+			"label": "t:sections.slider.blocks.slider.settings.overlay_opacity.label",
+			"info": "t:sections.slider.blocks.slider.settings.overlay_opacity.info"
+		},
+		{
+			"type": "checkbox",
+			"id": "separator_line",
+			"default": false,
+			"label": "t:sections.breadcrumb.settings.separator_line.label"
+		},
+		{
+			"type": "color_scheme",
+			"id": "color_scheme",
+			"label": "t:settings_schema.colors.label",
+			"default": "scheme-1"
+		},
+		{
+			"type": "header",
+			"content": "t:sections.breadcrumb.settings.header_title.content"
+		},
+		{
+			"type": "checkbox",
+			"id": "show_title",
+			"default": false,
+			"label": "t:sections.breadcrumb.settings.show_title.label"
+		},
+		{
+			"type": "checkbox",
+			"id": "show_scrolling",
+			"default": false,
+			"label": "t:sections.breadcrumb.settings.show_scrolling.label"
+		},
+		{
+			"type": "range",
+			"id": "font_scale",
+			"default": 100,
+			"min": 50,
+			"max": 550,
+			"step": 5,
+			"unit": "%",
+			"label": "t:general.typography.font_size_scale.label"
+		},
+		{
+			"type": "inline_richtext",
+			"id": "description",
+			"label": "t:general.typography.description.label"
+		},
+		{
+			"type": "select",
+			"id": "description_position",
+			"options": [
+				{
+					"value": "above",
+					"label": "t:sections.breadcrumb.settings.description_position.option_1.label"
+				},
+				{
+					"value": "below",
+					"label": "t:sections.breadcrumb.settings.description_position.option_2.label"
+				}
+			],
+			"default": "below",
+			"label": "t:sections.breadcrumb.settings.description_position.label"
+		},
+		{
+			"type": "checkbox",
+			"id": "right_description",
+			"default": false,
+			"label": "t:sections.breadcrumb.settings.right_description.label"
+		},
+		{
+			"type": "header",
+			"content": "t:general.padding.header_padding.content"
+		},
+		{
+			"type": "range",
+			"id": "padding_top",
+			"min": 0,
+			"max": 100,
+			"step": 1,
+			"default": 20,
+			"unit": "px",
+			"label": "t:general.padding.top.label"
+		},
+		{
+			"type": "range",
+			"id": "padding_bottom",
+			"min": 0,
+			"max": 100,
+			"step": 1,
+			"default": 20,
+			"unit": "px",
+			"label": "t:general.padding.bottom.label"
+		},
+		{
+			"type": "paragraph",
+			"content": "t:general.padding.paragraph_mobile.content"
+		},
+		{
+			"type": "range",
+			"id": "padding_top_mobile",
+			"min": 0,
+			"max": 100,
+			"step": 1,
+			"default": 20,
+			"unit": "px",
+			"label": "t:general.padding.top.label"
+		},
+		{
+			"type": "range",
+			"id": "padding_bottom_mobile",
+			"min": 0,
+			"max": 100,
+			"step": 1,
+			"default": 20,
+			"unit": "px",
+			"label": "t:general.padding.bottom.label"
+		}
+	],
+	"presets": [
+		{
+			"name": "t:sections.breadcrumb.presets.name"
+		}
+	]
+}
+{% endschema %}

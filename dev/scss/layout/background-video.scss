@@ -1,0 +1,290 @@
+.video-background-section {
+	.stretch-section {
+		.content-wrap {
+			padding-left: 0;
+			padding-right: 0;
+		}
+	}
+
+	// Video height
+	.video-450px {
+		height: 292.5px;
+	}
+
+	.video-550px {
+		height: 357.5px;
+	}
+
+	.video-650px {
+		height: 422.5px;
+	}
+
+	.video-750px {
+		height: 487.5px;
+	}
+
+	.video-100vh {
+		height: 100vh;
+	}
+
+	@media (min-width: 991px) {
+		.video-450px {
+			height: 450px;
+		}
+
+		.video-550px {
+			height: 550px;
+		}
+
+		.video-650px {
+			height: 650px;
+		}
+
+		.video-750px {
+			height: 750px;
+		}
+	}
+
+	@media (max-width: 991px) {
+		.video-mobile-auto {
+			position: absolute;
+			top: 0;
+			left: 0;
+			right: 0;
+			bottom: 0;
+			height: auto;
+		}
+
+		.video-16-9.video-mobile-auto {
+			height: 100%;
+			padding-bottom: 0;
+		}
+
+		.video-mobile-250px {
+			.background-video-item {
+				position: relative;
+				height: 250px;
+				order: 1;
+			}
+		}
+
+		.video-mobile-300px {
+			.background-video-item {
+				position: relative;
+				height: 300px;
+				order: 1;
+			}
+		}
+
+		.video-mobile-400px {
+			.background-video-item {
+				position: relative;
+				height: 400px;
+				order: 1;
+			}
+		}
+
+		.video-mobile-500px {
+			.background-video-item {
+				position: relative;
+				height: 500px;
+				order: 1;
+			}
+		}
+
+		.video-mobile-100vh {
+			.background-video-item {
+				position: relative;
+				height: 90vh;
+				order: 1;
+			}
+		}
+	}
+
+	.section-inner {
+		position: relative;
+
+		@media (max-width: 991px) {
+			display: flex;
+			flex-direction: column;
+			height: auto;
+		}
+
+		&:before {
+			content: '';
+			position: absolute;
+			inset: 0;
+			z-index: 1;
+			background-color: transparent;
+		}
+	}
+
+	.content-wrap {
+		position: relative;
+		height: 100%;
+		padding: 5rem;
+
+		@media (max-width: 991px) {
+			padding: 0;
+			order: 2;
+			height: auto;
+		}
+	}
+
+	.container {
+		height: 100%;
+	}
+
+	.content {
+		position: relative;
+		width: 100%;
+		height: 100%;
+		z-index: 5;
+		display: flex;
+		flex-direction: column;
+		color: rgb(var(--text-color));
+
+		.inner-content {
+			max-width: 56.3rem;
+
+			@media (max-width: 991px) {
+				padding: 4rem 0;
+			}
+		}
+
+		.sub-heading {
+			margin-bottom: 0.8rem;
+
+			* {
+				font-family: var(--subheading-font-family);
+				color: rgb(var(--text-color));
+				font-size: 1.2rem;
+			}
+		}
+
+		.sub-heading,
+		.heading {
+			* {
+				margin: 0;
+			}
+		}
+
+		.description {
+			margin-bottom: 4rem;
+		}
+
+		.heading {
+			margin-top: 0;
+			line-height: 1;
+			margin-bottom: 2.3rem;
+		}
+
+		.button {
+			width: max-content;
+			background: rgb(var(--button-text-color));
+			color: rgb(var(--button-bg-color));
+			padding: 0 2.1rem;
+			font-size: 1.4rem;
+			font-weight: 700;
+			text-transform: inherit;
+		}
+
+		&.text-left {
+			.button {
+				margin: auto auto auto 0;
+
+				@media (max-width: 991px) {
+					margin: auto;
+				}
+			}
+		}
+
+		&.text-center {
+			.button {
+				margin: auto;
+
+				@media (max-width: 991px) {
+					margin: auto;
+				}
+			}
+		}
+
+		&.text-right {
+			.button {
+				margin: auto 0 auto auto;
+
+				@media (max-width: 991px) {
+					margin: auto;
+				}
+			}
+		}
+
+		p {
+			margin-bottom: 0;
+		}
+
+		@media (max-width: 991px) {
+			justify-content: center;
+			text-align: center;
+		}
+	}
+
+	.background-video-item {
+		position: absolute;
+		inset: 0;
+		width: 100%;
+		height: 100%;
+		overflow: hidden;
+		pointer-events: none;
+
+		@media (max-width: 991px) {
+			position: relative;
+			height: 26rem;
+		}
+
+		video {
+			width: 100%;
+			height: 100%;
+			pointer-events: none;
+
+			&[autoplay],
+			&[data-ready] {
+				~ .video-image-wrapper,
+				~ .play-video {
+					display: none;
+				}
+			}
+		}
+
+		iframe {
+			position: absolute;
+			max-width: none;
+			top: 0;
+			height: 100%;
+			width: 300%;
+			left: -100%;
+
+			@media (min-width: 1140px) {
+				left: auto;
+				top: -100%;
+				height: 300%;
+				width: 100%;
+			}
+
+			&[src] {
+				~ .video-image-wrapper,
+				~ .play-video {
+					display: none;
+				}
+			}
+		}
+
+		@media (hover: hover) {
+			&:hover {
+				.play-video {
+					transform: translate(-50%, -50%) scale(1);
+				}
+			}
+		}
+	}
+}

@@ -1,0 +1,417 @@
+{%- liquid
+	assign section_id   = '#shopify-section-' | append: section.id
+	assign animation    = settings.section_animation
+	assign full         = section.settings.full
+	assign heading      = section.settings.heading
+	assign heading_size = section.settings.heading_size
+	assign caption      = section.settings.caption
+-%}
+
+<style>
+	{{ section_id }} .section-wrapper {
+		padding-top: {{ section.settings.padding_top_mobile }}px;
+		padding-bottom: {{ section.settings.padding_bottom_mobile }}px;
+	}
+
+	@media (min-width: 992px) {
+		{{ section_id }} .section-wrapper {
+			padding-top: {{ section.settings.padding_top }}px;
+			padding-bottom: {{ section.settings.padding_bottom }}px;
+		}
+
+		{% if section.blocks.size > 1 %}
+			{{ section_id }} .unity-slider {
+				--slide-spacing: 6.4rem;
+				--slide-size: 59.3%;
+			}
+		{% endif %}
+	}
+</style>
+
+<div class="section-wrapper color-{{ section.settings.color_scheme }}">
+	<div class="{% if full %}stretch-section stretch-padding{% else %}container{% endif %}">
+		<div class="testimonial">
+			<div class="title-wrapper{% if caption != blank or heading != blank %} has-title{% endif %}{% if animation %} scroll-trigger{% endif %}">
+				{%- if caption != blank or heading != blank -%}
+					<div class="title-inner">
+						{%- if caption != blank -%}
+							<div class="sub-heading rte{% if animation %} scroll-trigger{% endif %}">{{- caption -}}</div>
+						{%- endif -%}
+
+						{%- if heading != blank -%}
+							<h2 class="testi-head {{ heading_size }} rte">
+								{{- heading -}}
+							</h2>
+						{%- endif -%}
+					</div>
+				{%- endif -%}
+
+				{% if section.blocks.size > 1 %}
+					<div class="unity-arrows">
+						<button class="unity-button unity-button-prev" title ="{{ 'general.unity.prev' | t }}-testi" aria-label="{{ 'general.unity.prev' | t }}-testi" id="{{ 'general.unity.prev' | t }}-testi" aria-labelledby="{{ 'general.unity.prev' | t }}-testi" disabled >
+							{%- render 'icon', code: 'chevron-left' -%}
+						</button>
+
+						<button class="unity-button unity-button-next" title ="{{ 'general.unity.next' | t }}-testi" aria-label="{{ 'general.unity.next' | t }}-testi" id="{{ 'general.unity.next' | t }}-testi" aria-labelledby="{{ 'general.unity.next' | t }}-testi" disabled >
+							{%- render 'icon', code: 'chevron-right' -%}
+						</button>
+					</div>
+				{% endif %}
+			</div>
+
+			<unity-slider class="unity-slider">
+				<template data-options>
+					{
+						"align": "start",
+						"_autoheight": false,
+						"_fade": false,
+						"_prevBtn": "{{ section_id }} .unity-button-prev",
+						"_nextBtn": "{{ section_id }} .unity-button-next"
+					}
+				</template>
+
+				<div class="unity-slider-viewport">
+					<div class="unity-slider-container">
+						{%- for block in section.blocks -%}
+							<div class="unity-slide" data-id="{{ block.id }}" {{ block.shopify_attributes }} data-{{ block.id }}{% if request.design_mode %} data-index="{{ forloop.index0 }}"{% endif %}>
+								<div class="slide-content">
+									{%- liquid
+										assign star_reviews    = block.settings.star_reviews
+										assign body_text       = block.settings.body_text
+										assign author_image    = block.settings.author_image
+										assign author_name     = block.settings.author_name
+										assign author_comment  = block.settings.author_comment
+										assign author_verified = block.settings.author_verified
+										assign product         = block.settings.product
+									-%}
+
+									{%- if product != blank -%}
+										<div class="product-card color-{{ block.settings.product_color_scheme }}">
+											{%- liquid
+												assign featured_image = product.selected_or_first_available_variant.featured_image | default: product.featured_media
+											-%}
+
+											{% comment %} Media {% endcomment %}
+											{%- if featured_image != blank -%}
+												<div class="product-media-wrap">
+													<a href="{{ product.url | split: '?' | first }}"{% if settings.image_lazy %} class="product-image lazy-image border-large"{% endif %} arial-label="{{ product.title }}">
+														{%- liquid
+															assign image_key = featured_image.src | handle
+
+															render 'lazy-image', image: featured_image, width: 200, height: 200, class: 'product-first-image', data-key: image_key
+														-%}
+													</a>
+												</div>
+											{%- endif -%}
+
+											<div class="product-card-content">
+												<div class="left-card-content">
+													{% comment %} Heading {% endcomment %}
+													<h2 class="product-title link-underline-transparent">
+														<a href="{{ product.url | split: '?' | first }}" aria-label="{{- 'general.text.link' | t -}}">{{- product.title | escape -}}</a>
+													</h2>
+
+													{%- render 'price', product: product -%}
+												</div>
+
+												<div class="right-card-content">
+													{%- form 'product', product, class: 'form-add-to-cart', novalidate: 'novalidate', data-type: 'add-to-cart-form', id: nil -%}
+														<input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}">
+
+														{%- if product.available -%}
+															{%- if product.available and product.has_only_default_variant -%}
+																<button type="submit" name="add" class="button primary-button add-to-cart-button" aria-label="testimonial-{{ 'general.text.button' | t }}" aria-labelledby="testimonial-{{ 'general.text.button' | t }}">
+																	{%- render 'icon', code: 'product-add-to-cart' -%}
+																</button>
+															{%- else -%}
+																<a href="{{ product.url }}" aria-label="{{- 'general.text.link' | t -}}" class="primary-button add-to-cart-button">
+																	{%- render 'icon', code: 'eye' -%}
+																</a>
+															{%- endif -%}
+														{%- else -%}
+															<button type="submit" name="add" class="button primary-button add-to-cart-button" disabled>
+																{{- 'products.product.sold_out' | t -}}
+															</button>
+														{%- endif -%}
+
+														{% comment %} Product variant data {% endcomment %}
+														<script data-product-variants>
+															{{ product.variants | json }}
+														</script>
+													{%- endform -%}
+												</div>
+											</div>
+										</div>
+									{%- endif -%}
+
+									{% unless star_reviews == '0' %}
+										<div class="review-testimonial">
+											{%- for i in (1..star_reviews) -%}
+												<span class="star">
+													{%- render 'icon', code: 'star' -%}
+												</span>
+											{%- endfor -%}
+										</div>
+									{% endunless %}
+
+									{%- if body_text != blank -%}
+										<div class="testi-body">
+											{{- body_text -}}
+										</div>
+									{%- endif -%}
+
+									{%- if author_image != blank or author_name != blank -%}
+										<div class="testi-author">
+											{%- if author_image != blank -%}
+												<div class="testi-author-image">
+													<div class="square-media">
+														<div class="image{% if settings.image_lazy and author_image %} lazy-image{% endif %}">
+															{% render 'lazy-image', image: author_image, width: 60 %}
+														</div>
+													</div>
+												</div>
+											{%- endif -%}
+
+											{%- if author_name != blank -%}
+												<div class="testi-author-name">
+													<div class="author-name">
+														{{- author_name -}}
+
+														{%- if author_verified -%}
+															<div class="testi-author-verified border-small">{{- 'sections.testimonial.author_verified' | t -}}</div>
+														{%- endif -%}
+													</div>
+
+													{%- if author_comment != blank -%}
+														<div class="testi-author-comment">
+															{%- render 'icon', code: 'checkmark-circle-filled' -%}{{- author_comment -}}
+														</div>
+													{%- endif -%}
+												</div>
+											{%- endif -%}
+										</div>
+									{%- endif -%}
+								</div>
+							</div>
+						{%- else -%}
+							{%- for i in (1..3) -%}
+								<div class="swiper-slide" data-id="{{ forloop.index }}">
+									<div class="testi-body">{{- 'onboarding.testimonial.body_text_html' | t -}}</div>
+									<div class="testi-footer">{{- 'onboarding.testimonial.footer_text_html' | t -}}</div>
+								</div>
+							{%- endfor -%}
+						{%- endfor -%}
+					</div>
+				</div>
+			</unity-slider>
+		</div>
+	</div>
+</div>
+
+{% schema %}
+{
+	"name": "t:sections.testimonial.name",
+	"tag": "section",
+	"class": "testimonial-section",
+	"disabled_on": {
+		"groups": ["header", "footer"]
+	},
+	"settings": [
+		{
+			"type": "color_scheme",
+			"id": "color_scheme",
+			"label": "t:settings_schema.colors.label",
+			"default": "scheme-1"
+		},
+		{
+			"type": "checkbox",
+			"id": "full",
+			"default": false,
+			"label": "t:general.layout.full.label"
+		},
+		{
+			"type": "inline_richtext",
+			"id": "caption",
+			"label": "t:general.typography.caption.label"
+		},
+		{
+			"type": "inline_richtext",
+			"id": "heading",
+			"default": "Heading testimonial",
+			"label": "t:general.typography.heading.label"
+		},
+		{
+			"type": "select",
+			"id": "heading_size",
+			"options": [
+				{
+					"value": "h4",
+					"label": "t:general.typography.heading_size.option_1.label"
+				},
+				{
+					"value": "h3",
+					"label": "t:general.typography.heading_size.option_2.label"
+				},
+				{
+					"value": "h2",
+					"label": "t:general.typography.heading_size.option_3.label"
+				}
+			],
+			"default": "h3",
+			"label": "t:general.typography.heading_size.label"
+		},
+		{
+			"type": "header",
+			"content": "t:general.padding.header_padding.content"
+		},
+		{
+			"type": "range",
+			"id": "padding_top",
+			"min": 0,
+			"max": 100,
+			"step": 1,
+			"default": 50,
+			"unit": "px",
+			"label": "t:general.padding.top.label"
+		},
+		{
+			"type": "range",
+			"id": "padding_bottom",
+			"min": 0,
+			"max": 100,
+			"step": 1,
+			"default": 50,
+			"unit": "px",
+			"label": "t:general.padding.bottom.label"
+		},
+		{
+			"type": "paragraph",
+			"content": "t:general.padding.paragraph_mobile.content"
+		},
+		{
+			"type": "range",
+			"id": "padding_top_mobile",
+			"min": 0,
+			"max": 100,
+			"step": 1,
+			"default": 20,
+			"unit": "px",
+			"label": "t:general.padding.top.label"
+		},
+		{
+			"type": "range",
+			"id": "padding_bottom_mobile",
+			"min": 0,
+			"max": 100,
+			"step": 1,
+			"default": 20,
+			"unit": "px",
+			"label": "t:general.padding.bottom.label"
+		}
+	],
+	"blocks": [
+		{
+			"type": "testimonial",
+			"name": "t:sections.testimonial.name",
+			"settings": [
+				{
+					"type": "select",
+					"id": "star_reviews",
+					"default": "5",
+					"label": "t:sections.testimonial.settings.star_reviews.label",
+					"options": [
+						{
+							"value": "5",
+							"label": "t:sections.testimonial.settings.star_reviews.star_5.label"
+						},
+						{
+							"value": "4",
+							"label": "t:sections.testimonial.settings.star_reviews.star_4.label"
+						},
+						{
+							"value": "3",
+							"label": "t:sections.testimonial.settings.star_reviews.star_3.label"
+						},
+						{
+							"value": "2",
+							"label": "t:sections.testimonial.settings.star_reviews.star_2.label"
+						},
+						{
+							"value": "1",
+							"label": "t:sections.testimonial.settings.star_reviews.star_1.label"
+						},
+						{
+							"value": "0",
+							"label": "t:sections.testimonial.settings.star_reviews.none.label"
+						}
+					]
+				},
+				{
+					"type": "inline_richtext",
+					"id": "body_text",
+					"default": "Add customer reviews and testimonials to showcase your store’s happy customers.",
+					"label": "t:general.typography.text.label"
+				},
+				{
+					"type": "header",
+					"content": "t:sections.testimonial.settings.author.label"
+				},
+				{
+					"type": "image_picker",
+					"id": "author_image",
+					"label": "t:sections.testimonial.settings.author_image.label",
+				},
+				{
+					"type": "inline_richtext",
+					"id": "author_name",
+					"default": "<b>Author's name</b>",
+					"label": "t:sections.testimonial.settings.author.label"
+				},
+				{
+					"type": "inline_richtext",
+					"id": "author_comment",
+					"default": "Author's comment",
+					"label": "t:sections.testimonial.settings.author_comment.label"
+				},
+				{
+					"type": "checkbox",
+					"id": "author_verified",
+					"default": true,
+					"label": "t:sections.testimonial.settings.author_verified.label"
+				},
+				{
+					"type": "header",
+					"content": "t:settings_schema.product-card.name"
+				},
+				{
+					"type": "product",
+					"id": "product",
+					"label": "t:settings_schema.product.name"
+				},
+				{
+					"type": "color_scheme",
+					"id": "product_color_scheme",
+					"label": "t:settings_schema.colors.label",
+					"default": "scheme-1"
+				}
+			]
+		}
+	],
+	"presets": [
+		{
+			"name": "t:sections.testimonial.name",
+			"blocks": [
+				{
+					"type": "testimonial"
+				},
+				{
+					"type": "testimonial"
+				},
+				{
+					"type": "testimonial"
+				}
+			]
+		}
+	]
+}
+{% endschema %}

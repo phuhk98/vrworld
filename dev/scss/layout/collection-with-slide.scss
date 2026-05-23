@@ -1,0 +1,86 @@
+.collection-with-slide-section {
+	overflow: hidden;
+
+	.unity-slider {
+		width: 100%;
+		--slide-spacing: 3.2rem;
+		--slide-size: 25%;
+
+		@media (max-width: 991px) {
+			--slide-spacing: 2rem;
+			--slide-size: 80.8%;
+		}
+
+		.unity-slider-viewport {
+			overflow: visible;
+		}
+	}
+
+	.heading-info {
+		display: flex;
+		gap: 3.2rem;
+		margin-bottom: 8rem;
+
+		@media (max-width: 991px) {
+			margin-bottom: 4rem;
+			gap: 0;
+		}
+	}
+
+	.left-info {
+		width: 50%;
+
+		@media (max-width: 991px) {
+			width: 0;
+		}
+	}
+
+	.right-info {
+		width: 50%;
+
+		@media (max-width: 991px) {
+			width: 100%;
+		}
+	}
+
+	.right-info .sub-heading {
+		margin-bottom: 2.4rem;
+	}
+
+	.right-info .description {
+		margin: 0;
+		font-family: var(--body-font-family);
+		font-weight: 500;
+		line-height: 1.5;
+	}
+
+	.product-card-list {
+		border-radius: 0.8rem;
+		overflow: hidden;
+	}
+
+	.card-meta {
+		padding: 2.4rem;
+		display: flex;
+		flex-direction: column;
+	}
+
+	.card-title {
+		margin-bottom: 0;
+		font-weight: 600;
+		margin-top: 0.2rem;
+
+		&:hover {
+			text-decoration: underline;
+		}
+	}
+
+	.list-item:hover img {
+		transform: scale(1.2);
+		transition: all 0.5s;
+	}
+
+	.list-item img {
+		transition: all 0.5s;
+	}
+}

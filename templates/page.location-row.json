@@ -1,0 +1,177 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+	"sections": {
+		"main": {
+			"type": "main-page",
+			"disabled": true,
+			"settings": {
+				"full": false,
+				"padding_top": 60,
+				"padding_bottom": 35,
+				"padding_top_mobile": 20,
+				"padding_bottom_mobile": 20
+			}
+		},
+		"breadcrumb": {
+			"type": "breadcrumb",
+			"name": "t:sections.breadcrumb.presets.name",
+			"settings": {
+				"full": false,
+				"overlay": 50,
+				"separator_line": true,
+				"color_scheme": "",
+				"show_title": false,
+				"show_scrolling": false,
+				"font_scale": 100,
+				"description": "",
+				"description_position": "below",
+				"right_description": false,
+				"padding_top": 16,
+				"padding_bottom": 16,
+				"padding_top_mobile": 16,
+				"padding_bottom_mobile": 16
+			}
+		},
+		"scrolling_promotion": {
+			"type": "scrolling-promotion",
+			"blocks": {
+				"text-1": {
+					"type": "text",
+					"settings": {
+						"text": "LOCATIONS",
+						"icon": true
+					}
+				},
+				"text-2": {
+					"type": "text",
+					"settings": {
+						"text": "LOCATIONS",
+						"icon": true
+					}
+				},
+				"text-3": {
+					"type": "text",
+					"settings": {
+						"text": "LOCATIONS",
+						"icon": true
+					}
+				}
+			},
+			"block_order": [
+				"text-1",
+				"text-2",
+				"text-3"
+			],
+			"name": "t:sections.scrolling-promotion.name",
+			"settings": {
+				"color_scheme": "",
+				"full": true,
+				"hover_pause": true,
+				"direction": "rtl",
+				"time": 35,
+				"space": 80,
+				"scale": 400,
+				"mobile_text_scale": 200,
+				"image_scale": 100,
+				"product_color_scheme": "",
+				"padding_top": 80,
+				"padding_bottom": 80,
+				"padding_top_mobile": 60,
+				"padding_bottom_mobile": 60
+			}
+		},
+		"scrolling_row_GWmeHC": {
+			"type": "scrolling-row",
+			"blocks": {
+				"row_UmAyCV": {
+					"type": "row",
+					"settings": {
+						"image": "shopify://shop_images/0d07f3e3dc2a078f786d0420da5ca8db7c186ce1.jpg",
+						"heading": "BOULEVARD",
+						"image_map": "shopify://shop_images/CleanShot_2024-09-24_at_16.24.04_2x_4b57b22e-a8fa-414c-8f30-562d89f241c3.png",
+						"content_left": "<p><strong>Boulevard</strong></p><p>[ADDRESS]</p><p>155 WillowbrookBoulevard, New Jersey</p><p><a href=\"https://maps.app.goo.gl/hreKFoWH3USgu9bD9\" target=\"_blank\" title=\"https://maps.app.goo.gl/hreKFoWH3USgu9bD9\">Get direction</a></p>",
+						"content_right": "<p>[PHONE]</p><p>+1 (606) 598-5782</p><p>[EMAIL]</p><p>store.name@unity.com</p>"
+					}
+				},
+				"row_JU7azA": {
+					"type": "row",
+					"settings": {
+						"image": "shopify://shop_images/ebb0d88231e36653e71da5f92bade31fbe22cc34.jpg",
+						"heading": "LEXINGTON",
+						"image_map": "shopify://shop_images/1a05b60192e27bcb9ff2c1444d78a37973201c47.png",
+						"content_left": "<p><strong>Lexington Ave</strong></p><p>[ADDRESS]</p><p>1091 Lexington Ave, New York, NY 10075, United States</p><p><a href=\"https://maps.app.goo.gl/p6BXuPdYhfpsRGGJA\" target=\"_blank\" title=\"https://maps.app.goo.gl/p6BXuPdYhfpsRGGJA\">Get direction</a></p>",
+						"content_right": "<p>[PHONE]</p><p>+1 (606) 598-5782</p><p>[EMAIL]</p><p>store.name@unity.com</p>"
+					}
+				},
+				"row_UTWFQG": {
+					"type": "row",
+					"settings": {
+						"image": "shopify://shop_images/0b113c6f73edb752b6ea7ea175c0bdc4c2dd57ee_83a924a2-4fe9-48c0-8cdb-7a2ca0f8bbf0.jpg",
+						"heading": "HUDSON",
+						"image_map": "shopify://shop_images/bd128e3cf57abe645d7595d283cc493b12119979.png",
+						"content_left": "<p><strong>Hudson Yard</strong></p><p>[ADDRESS]</p><p>20 W 34th St., New York, NY 10001, United States</p><p><a href=\"https://maps.app.goo.gl/pBB19yfgq7ZXArTD7\" target=\"_blank\" title=\"https://maps.app.goo.gl/pBB19yfgq7ZXArTD7\">Get direction</a></p>",
+						"content_right": "<p>[PHONE]</p><p>+1 (606) 598-5782</p><p>[EMAIL]</p><p>store.name@unity.com</p>"
+					}
+				},
+				"row_M9h6mr": {
+					"type": "row",
+					"settings": {
+						"image": "shopify://shop_images/gettyimages-1132823897-640x640.jpg",
+						"heading": "<strong>Norman </strong>",
+						"image_map": "shopify://shop_images/1a05b60192e27bcb9ff2c1444d78a37973201c47.png",
+						"content_left": "<p><strong>Norman Ave</strong></p><p>[ADDRESS]</p><p>89-75 Norman Ave, Brooklyn, NY 11222, USA</p><p><a href=\"https://maps.app.goo.gl/p6BXuPdYhfpsRGGJA\" target=\"_blank\" title=\"https://maps.app.goo.gl/p6BXuPdYhfpsRGGJA\">Get direction</a></p>",
+						"content_right": "<p>[PHONE]</p><p>+1 (606) 598-5782</p><p>[EMAIL]</p><p>store.name@unity.com</p>"
+					}
+				},
+				"row_7g9Rzj": {
+					"type": "row",
+					"settings": {
+						"image": "shopify://shop_images/2023-03-21.jpg",
+						"heading": "<strong>Lomotron</strong>",
+						"image_map": "shopify://shop_images/1a05b60192e27bcb9ff2c1444d78a37973201c47.png",
+						"content_left": "<p><strong>Lomotron</strong></p><p>[ADDRESS]</p><p>34th St., New York, NY, United States</p><p><a href=\"https://maps.app.goo.gl/p6BXuPdYhfpsRGGJA\" target=\"_blank\" title=\"https://maps.app.goo.gl/p6BXuPdYhfpsRGGJA\">Get direction</a></p>",
+						"content_right": "<p>[PHONE]</p><p>+1 (606) 598-5782</p><p>[EMAIL]</p><p>store.name@unity.com</p>"
+					}
+				}
+			},
+			"block_order": [
+				"row_UmAyCV",
+				"row_JU7azA",
+				"row_UTWFQG",
+				"row_M9h6mr",
+				"row_7g9Rzj"
+			],
+			"name": "t:sections.scrolling_row.name",
+			"settings": {
+				"color_scheme": "",
+				"caption": "",
+				"heading_text": "",
+				"heading_size": "h2",
+				"button_label": "",
+				"button_link": "",
+				"scale_heading": 185,
+				"image_layout": "alternate-left",
+				"desktop_alignment": "left",
+				"mobile_layout": "list",
+				"padding_top": 0,
+				"padding_bottom": 0,
+				"padding_top_mobile": 0,
+				"padding_bottom_mobile": 0
+			}
+		}
+	},
+	"order": [
+		"main",
+		"breadcrumb",
+		"scrolling_promotion",
+		"scrolling_row_GWmeHC"
+	]
+}

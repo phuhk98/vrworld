@@ -1,0 +1,39 @@
+.scrolling-wrapper {
+	.scrolling {
+		position: relative;
+		z-index: 2;
+		display: flex;
+		overflow: hidden;
+		width: 100%;
+	}
+
+	.scrolling-inner {
+		display: flex;
+		align-items: center;
+	}
+
+	.scrolling-animation {
+		animation: scrolling var(--scrolling-speed, 5s) infinite linear;
+	}
+
+	.scrolling-text {
+		display: flex;
+		align-items: center;
+		white-space: nowrap;
+		flex-shrink: 0;
+	}
+
+	.hover-pause {
+		&:hover {
+			.scrolling-animation {
+				animation-play-state: paused;
+			}
+		}
+	}
+
+	@keyframes scrolling {
+		to {
+			transform: translate(-100%);
+		}
+	}
+}

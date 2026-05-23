@@ -1,0 +1,468 @@
+{%- liquid
+	assign section_id           = '#shopify-section-' | append: section.id
+	assign animation            = settings.section_animation
+	assign image_one            = section.settings.image_one
+	assign image_two            = section.settings.image_two
+	assign image_three          = section.settings.image_three
+	assign image_four           = section.settings.image_four
+	assign heading_size         = section.settings.heading_size
+	assign image_five           = section.settings.image_five
+	assign heading              = section.settings.heading
+	assign sub_heading          = section.settings.sub_heading
+	assign desktop_height       = section.settings.height
+	assign overlay              = section.settings.overlay
+-%}
+
+<style>
+	{{ section_id }} .section-wrapper {
+		padding-top: {{ section.settings.padding_top_mobile }}px;
+		padding-bottom: {{ section.settings.padding_bottom_mobile }}px;
+	}
+	{{ section_id }} .section-wrapper:after {
+		background: linear-gradient(to bottom,{%- if overlay == 100 -%}rgb(0,0,0){%- else -%}rgba(0,0,0,0.{{ overlay }}){%- endif -%},{%- if overlay == 100 -%}rgb(0,0,0){%- else -%}rgba(0,0,0,0.{{ overlay }}){%- endif -%});
+	}
+	@media (min-width: 992px) {
+		{{ section_id }} {
+			height: {{ desktop_height }};
+		}
+
+		{{ section_id }} .section-wrapper {
+			padding-top: {{ section.settings.padding_top }}px;
+			padding-bottom: {{ section.settings.padding_bottom }}px;
+		}
+	}
+</style>
+
+<div class="section-wrapper color-{{ section.settings.color_scheme }}">
+	<div class="scrolled-images__main two-columns">
+		<marquee-vertical class="two-marquee marquee three-columns rte">
+			<div class="column-first scroll down marquee-wrapper marquee-animation even-blocks" >
+				<div class="item">
+					<div class="image{% if settings.image_lazy %} lazy-image{% endif %}">
+						{%- liquid
+							if image_one != blank
+								render 'lazy-image', image: image_one, width: 150
+							else
+								render 'icon', code: 'placeholder'
+							endif
+						-%}
+					</div>
+				</div>
+				<div class="item">
+					<div class="image{% if settings.image_lazy %} lazy-image{% endif %}">
+						{%- liquid
+							if image_two != blank
+								render 'lazy-image', image: image_two, width: 150
+							else
+								render 'icon', code: 'placeholder'
+							endif
+						-%}
+					</div>
+				</div>
+				<div class="item">
+					<div class="image{% if settings.image_lazy %} lazy-image{% endif %}">
+					{%- liquid
+						if image_three != blank
+							render 'lazy-image', image: image_three, width: 150
+						else
+							render 'icon', code: 'placeholder'
+						endif
+					-%}
+					</div>
+				</div>
+				<div class="item">
+					<div class="image{% if settings.image_lazy %} lazy-image{% endif %}">
+						{%- liquid
+							if image_four != blank
+								render 'lazy-image', image: image_four, width: 150
+							else
+								render 'icon', code: 'placeholder'
+							endif
+						-%}
+					</div>
+				</div>
+				<div class="item">
+					<div class="image{% if settings.image_lazy %} lazy-image{% endif %}">
+						{%- liquid
+							if image_five != blank
+								render 'lazy-image', image: image_five, width: 150
+							else
+								render 'icon', code: 'placeholder'
+							endif
+						-%}
+					</div>
+				</div>
+			</div>
+		</marquee-vertical>
+
+		<marquee-vertical class="two-marquee marquee rte">
+			<div class="column-second scroll up marquee-wrapper marquee-animation odd-blocks">
+				<div class="item">
+					<div class="image{% if settings.image_lazy %} lazy-image{% endif %}">
+						{%- liquid
+							if image_five != blank
+								render 'lazy-image', image: image_five, width: 150, alt:''
+							else
+								render 'icon', code: 'placeholder'
+							endif
+						-%}
+					</div>
+				</div>
+				<div class="item">
+					<div class="image{% if settings.image_lazy %} lazy-image{% endif %}">
+						{%- liquid
+							if image_four != blank
+								render 'lazy-image', image: image_four, width: 150, alt:''
+							else
+								render 'icon', code: 'placeholder'
+							endif
+						-%}
+					</div>
+				</div>
+				<div class="item">
+					<div class="image{% if settings.image_lazy %} lazy-image{% endif %}">
+					{%- liquid
+						if image_three != blank
+							render 'lazy-image', image: image_three, width: 150, alt:''
+						else
+							render 'icon', code: 'placeholder'
+						endif
+					-%}
+					</div>
+				</div>
+				<div class="item">
+					<div class="image{% if settings.image_lazy %} lazy-image{% endif %}">
+						{%- liquid
+							if image_two != blank
+								render 'lazy-image', image: image_two, width: 150, alt:''
+							else
+								render 'icon', code: 'placeholder'
+							endif
+						-%}
+					</div>
+				</div>
+				<div class="item">
+					<div class="image{% if settings.image_lazy %} lazy-image{% endif %}">
+						{%- liquid
+							if image_one != blank
+								render 'lazy-image', image: image_one, width: 150, alt:''
+							else
+								render 'icon', code: 'placeholder'
+							endif
+						-%}
+					</div>
+				</div>
+			</div>
+		</marquee-vertical>
+
+		<marquee-vertical class="two-marquee marquee three-columns rte">
+			<div class="column-third scroll down marquee-wrapper marquee-animation even-blocks">
+				<div class="item">
+					<div class="image{% if settings.image_lazy %} lazy-image{% endif %}">
+						{%- liquid
+							if image_one != blank
+								render 'lazy-image', image: image_one, width: 150, alt:''
+							else
+								render 'icon', code: 'placeholder'
+							endif
+						-%}
+					</div>
+				</div>
+				<div class="item">
+					<div class="image{% if settings.image_lazy %} lazy-image{% endif %}">
+						{%- liquid
+							if image_four != blank
+								render 'lazy-image', image: image_four, width: 150, alt:''
+							else
+								render 'icon', code: 'placeholder'
+							endif
+						-%}
+					</div>
+				</div>
+				<div class="item">
+					<div class="image{% if settings.image_lazy %} lazy-image{% endif %}">
+						{%- liquid
+							if image_two != blank
+								render 'lazy-image', image: image_two, width: 150, alt:''
+							else
+								render 'icon', code: 'placeholder'
+							endif
+						-%}
+					</div>
+				</div>
+				<div class="item">
+					<div class="image{% if settings.image_lazy %} lazy-image{% endif %}">
+						{%- liquid
+							if image_five != blank
+								render 'lazy-image', image: image_five, width: 150, alt:''
+							else
+								render 'icon', code: 'placeholder'
+							endif
+						-%}
+					</div>
+				</div>
+				<div class="item">
+					<div class="image{% if settings.image_lazy %} lazy-image{% endif %}">
+					{%- liquid
+						if image_three != blank
+							render 'lazy-image', image: image_three, width: 150, alt:''
+						else
+							render 'icon', code: 'placeholder'
+						endif
+					-%}
+					</div>
+				</div>
+			</div>
+		</marquee-vertical>
+	</div>
+
+	<div class="collection-list text-left flex-justify-{{ section.settings.summary_vertical_align }}{% if animation %} scroll-trigger{% endif %}">
+		{%- if sub_heading != blank or heading != blank -%}
+			<div class="container">
+				<div class="content heading-color">
+					{%- if sub_heading != blank -%}
+						<div class="sub-heading rte">{{- sub_heading -}}</div>
+					{%- endif -%}
+
+					<div class="heading rte">
+						{%- if heading != blank -%}
+							<h2 class="heading {{ heading_size }}">
+								{{ heading }}
+							</h2>
+						{%- endif -%}
+					</div>
+				</div>
+			</div>
+		{%- endif -%}
+
+		{%- for block in section.settings.collection_list -%}
+			<div class="item">
+				<a class="hover-item-text" href="{{ block.url }}" aria-label="{{- 'general.text.link' | t -}}">
+					<div class="container">
+						<h2 class="collection-name h2">
+							<div class="hover-item-text">
+								{{- block.title -}}
+
+								{%- render 'icon', code: 'arrow-circle-up-right' -%}
+							</div>
+						</h2>
+
+						{%- if block.featured_image != blank -%}
+							<div class="hover-item-image collectin-image">
+								{{- block.featured_image | image_url: width: 540 | image_tag: width: 220 -}}
+							</div>
+						{%- endif -%}
+					</div>
+				</a>
+			</div>
+		{%- else -%}
+			{%- for i in (1..3) -%}
+				<div class="item item-placeholder">
+					<div class="container">
+						<h2 class="collection-name">
+							<span class="hover-item-text">
+								{{- 'onboarding.collections.title' | t | append: ' #' | append: forloop.index -}}
+
+								{% render 'icon', code: 'arrows-up-left' %}
+							</span>
+						</h2>
+
+						<div class="hover-item-image collectin-image">
+							{{- 'image' | placeholder_svg_tag: 'placeholder-svg' -}}
+						</div>
+					</div>
+				</div>
+			{%- endfor -%}
+		{%- endfor -%}
+	</div>
+</div>
+
+{% schema %}
+{
+	"name": "t:sections.collection-list-hover.name",
+	"tag": "section",
+	"class": "collection-list-section",
+	"disabled_on": {
+		"groups": ["header", "footer"]
+	},
+	"settings": [
+		{
+			"type": "color_scheme",
+			"id": "color_scheme",
+			"label": "t:settings_schema.colors.label",
+			"default": "scheme-3"
+		},
+		{
+			"type": "select",
+			"id": "height",
+			"default": "750px",
+			"label": "t:general.image.desktop_height.label",
+			"options": [
+				{
+					"value": "450px",
+					"label": "t:general.image.desktop_height.options.option_2.label"
+				},
+				{
+					"value": "600px",
+					"label": "t:general.image.desktop_height.options.option_3.label"
+				},
+				{
+					"value": "750px",
+					"label": "t:general.image.desktop_height.options.option_4.label"
+				},
+				{
+					"value": "100vh",
+					"label": "t:general.image.desktop_height.options.option_5.label"
+				}
+			]
+		},
+		{
+			"type": "range",
+			"id": "overlay",
+			"min": 0,
+			"max": 100,
+			"step": 1,
+			"default": 50,
+			"unit": "%",
+			"label": "t:sections.slider.blocks.slider.settings.overlay_opacity.label",
+			"info": "t:sections.slider.blocks.slider.settings.overlay_opacity.info"
+		},
+		{
+			"type": "richtext",
+			"id": "sub_heading",
+			"default": "<p>sub heading</p>",
+			"label": "t:general.typography.sub_heading.label"
+		},
+		{
+			"type": "inline_richtext",
+			"id": "heading",
+			"default": "Shop by collections",
+			"label": "t:general.typography.heading.label"
+		},
+		{
+			"type": "select",
+			"id": "heading_size",
+			"options": [
+				{
+					"value": "h3",
+					"label": "t:general.typography.heading_size.option_1.label"
+				},
+				{
+					"value": "h2",
+					"label": "t:general.typography.heading_size.option_2.label"
+				},
+				{
+					"value": "h1",
+					"label": "t:general.typography.heading_size.option_3.label"
+				}
+			],
+			"default": "h2",
+			"label": "t:general.typography.heading_size.label"
+		},
+		{
+			"type": "collection_list",
+			"id": "collection_list",
+			"limit": 20,
+			"label": "t:sections.collection-list-hover.settings.collection.label"
+		},
+		{
+			"type": "select",
+			"id": "summary_vertical_align",
+			"options": [
+				{
+					"value": "start",
+					"label": "t:general.layout.vertical.option_1.label"
+				},
+				{
+					"value": "center",
+					"label": "t:general.layout.vertical.option_2.label"
+				},
+				{
+					"value": "end",
+					"label": "t:general.layout.vertical.option_3.label"
+				}
+			],
+			"default": "start",
+			"label": "t:general.layout.vertical.label"
+		},
+		{
+			"type": "image_picker",
+			"id": "image_one",
+			"label": "t:sections.collection-list.settings.image_one.label"
+		},
+		{
+			"type": "image_picker",
+			"id": "image_two",
+			"label": "t:sections.collection-list.settings.image_two.label"
+		},
+		{
+			"type": "image_picker",
+			"id": "image_three",
+			"label": "t:sections.collection-list.settings.image_three.label"
+		},
+		{
+			"type": "image_picker",
+			"id": "image_four",
+			"label": "t:sections.collection-list.settings.image_four.label"
+		},
+		{
+			"type": "image_picker",
+			"id": "image_five",
+			"label": "t:sections.collection-list.settings.image_five.label"
+		},
+		{
+			"type": "header",
+			"content": "t:general.padding.header_padding.content"
+		},
+		{
+			"type": "range",
+			"id": "padding_top",
+			"min": 0,
+			"max": 100,
+			"step": 2,
+			"default": 80,
+			"unit": "px",
+			"label": "t:general.padding.top.label"
+		},
+		{
+			"type": "range",
+			"id": "padding_bottom",
+			"min": 0,
+			"max": 100,
+			"step": 2,
+			"default": 80,
+			"unit": "px",
+			"label": "t:general.padding.bottom.label"
+		},
+		{
+			"type": "paragraph",
+			"content": "t:general.padding.paragraph_mobile.content"
+		},
+		{
+			"type": "range",
+			"id": "padding_top_mobile",
+			"min": 0,
+			"max": 100,
+			"step": 1,
+			"default": 60,
+			"unit": "px",
+			"label": "t:general.padding.top.label"
+		},
+		{
+			"type": "range",
+			"id": "padding_bottom_mobile",
+			"min": 0,
+			"max": 100,
+			"step": 1,
+			"default": 60,
+			"unit": "px",
+			"label": "t:general.padding.bottom.label"
+		}
+	],
+	"presets": [
+		{
+			"name": "t:sections.collection-list-hover.name"
+		}
+	]
+}
+{% endschema %}

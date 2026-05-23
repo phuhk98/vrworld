@@ -1,0 +1,59 @@
+@use 'general/base';
+
+// Form newsletter submit warning
+#main-content {
+	.shopify-challenge__container {
+		min-height: 50vh;
+		margin-top: 5rem;
+
+		.shopify-challenge__button {
+			margin-top: 2rem;
+			@extend .primary-button;
+		}
+	}
+}
+
+// 3D model button poster
+.shopify-section .shopify-model-viewer-ui .shopify-model-viewer-ui__button--poster {
+	border-radius: 50%;
+	width: 8rem;
+	height: 8rem;
+}
+
+.shopify-section .shopify-model-viewer-ui .shopify-model-viewer-ui__button--poster svg {
+	width: 8rem;
+	height: 8rem;
+}
+
+// Payment button border
+[data-shopify='payment-button'] .shopify-payment-button__button--branded [role='button'] {
+	border-radius: var(--button-radius);
+}
+
+#shopify-product-reviews .spr-summary .spr-summary-actions-newreview,
+#shopify-product-reviews .spr-form .spr-form-actions [type='submit'] {
+	border-radius: var(--button-radius);
+	color: rgb(var(--button-text-color));
+	background-color: rgb(var(--button-bg-color));
+	border: 0;
+}
+
+// Solid button
+#shopify-product-reviews .spr-summary .spr-summary-actions-newreview,
+#shopify-product-reviews .spr-form .spr-form-actions [type='submit'] {
+	@extend .primary-button;
+}
+
+// Outline button
+[data-shopify='payment-button'] .shopify-payment-button__button--unbranded {
+	@extend .primary-button;
+}
+
+// Shopify Buy now button
+[data-shopify='payment-button'] .shopify-payment-button__button--unbranded {
+	color: rgba(var(--background-color)) !important;
+
+	&:hover {
+		color: rgba(var(--text-color)) !important;
+	}
+}

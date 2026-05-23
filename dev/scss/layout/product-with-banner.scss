@@ -1,0 +1,75 @@
+.product-banner-section {
+	.product-card {
+		margin-bottom: 0;
+	}
+
+	.banner-wrap {
+		position: relative;
+		overflow: hidden;
+		height: 100%;
+
+		img {
+			transition: transform 0.3s ease;
+		}
+
+		@media (hover: hover) {
+			&:hover {
+				.placeholder-svg,
+				img {
+					transform: scale(1.08);
+				}
+			}
+		}
+	}
+
+	.banner-url {
+		position: absolute;
+		left: 0;
+		right: 0;
+		top: 0;
+		bottom: 0;
+		z-index: 5;
+	}
+
+	.title-wrapper {
+		border-bottom: 1px solid #f3f3f3;
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		padding-bottom: 1.7rem;
+
+		.title {
+			font-size: 3rem;
+			margin: 0;
+		}
+
+		.countdown-time-wrap {
+			justify-content: flex-start;
+			flex-grow: 1;
+			margin-left: 7.2rem;
+			margin-bottom: 0;
+		}
+
+		.link-title {
+			font-weight: 500;
+			display: inline-flex;
+			justify-content: center;
+			align-items: center;
+		}
+
+		.link-arrow {
+			width: 2.5rem;
+			height: 2.5rem;
+			border: 1px solid;
+			border-radius: 5rem;
+			display: inline-flex;
+			justify-content: center;
+			align-items: center;
+			margin-left: 0.9rem;
+
+			svg {
+				width: 1.2rem;
+			}
+		}
+	}
+}

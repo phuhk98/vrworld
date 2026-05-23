@@ -1,0 +1,152 @@
+.scrolling-promotion-section {
+	.scrolling {
+		display: flex;
+		overflow: hidden;
+		width: 100%;
+	}
+
+	.hover-pause {
+		@media (hover: hover) {
+			&:hover {
+				.scrolling-animation {
+					animation-play-state: paused;
+				}
+			}
+		}
+	}
+
+	.scrolling-wrapper {
+		display: flex;
+		align-items: center;
+		flex-shrink: 0;
+		line-height: normal;
+	}
+
+	.scrolling-animation {
+		animation: scrolling var(--scrolling-time, 10s) infinite linear;
+		animation-direction: var(--scrolling-direction);
+	}
+
+	.scrolling-content {
+		display: flex;
+		align-items: center;
+		white-space: nowrap;
+		flex-shrink: 0;
+	}
+
+	.scrolling-promotion {
+		--heading-font-scale: var(--scrolling-scale);
+		color: rgb(var(--text-color));
+		text-transform: uppercase;
+		margin: 0;
+		font-size: clamp(calc(var(--heading-font-scale) * 3.2rem), calc(28.51vw - 15.45rem), calc(var(--heading-font-scale) * 6.4rem));
+	}
+
+	.scrolling-icon {
+		svg {
+			height: calc(2rem * var(--scrolling-scale));
+			width: calc(2rem * var(--scrolling-scale));
+		}
+	}
+
+	.scrolling-image {
+		position: relative;
+		height: calc(17.4rem * var(--scrolling-image-scale) * var(--aspect-ratio));
+		width: calc(22.4rem * var(--scrolling-image-scale) * var(--aspect-ratio));
+
+		.image {
+			width: 100%;
+			height: 100%;
+		}
+
+		img,
+		svg {
+			object-fit: contain;
+			border-radius: 0.8rem;
+		}
+	}
+
+	.product-card {
+		display: flex;
+		margin: 0;
+		gap: 1.6rem;
+		padding: 1.6rem;
+		align-items: center;
+		border-radius: 0.8rem;
+		container-type: unset;
+
+		.product-media-wrap {
+			width: 15.8rem;
+			height: 15.8rem;
+			aspect-ratio: 1/1;
+
+			@media (max-width: 992px) {
+				width: 8.4rem;
+				height: 8.4rem;
+			}
+
+			img,
+			svg {
+				border-radius: 0.8rem;
+			}
+		}
+
+		.product-card-content {
+			display: flex;
+			flex-wrap: wrap;
+			align-items: center;
+			gap: 1.6rem;
+			padding: 0;
+
+			* {
+				margin: unset;
+			}
+		}
+
+		.product-title {
+			* {
+				font-size: 1.6rem;
+			}
+		}
+
+		.product-price {
+			font-size: 1.4rem;
+		}
+
+		.form-add-to-cart {
+			position: relative;
+			top: 0;
+			right: unset;
+			opacity: 1;
+			visibility: visible;
+			container-type: unset;
+
+			.add-to-cart-button {
+				color: rgb(var(--button-text-color));
+				background-color: rgb(var(--button-bg-color));
+
+				@media (min-width: 992px) {
+					height: 4rem;
+					max-height: 4rem;
+					min-height: 4rem;
+				}
+
+				svg {
+					margin-right: 0;
+				}
+			}
+		}
+
+		&:hover {
+			.form-add-to-cart {
+				text-align: left;
+			}
+		}
+	}
+
+	@keyframes scrolling {
+		to {
+			transform: translate(-100%);
+		}
+	}
+}

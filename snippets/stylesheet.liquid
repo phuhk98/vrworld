@@ -1,0 +1,145 @@
+{%- liquid
+	assign container       = 1336
+	assign body_font    = settings.body_font.family | append: ', ' | append: settings.body_font.fallback_families
+	assign heading_font = settings.heading_font.family | append: ', ' | append: settings.heading_font.fallback_families
+	assign third_font   = settings.third_font.family | append: ', ' | append: settings.third_font.fallback_families
+
+	if settings.screen_lg > 0
+		assign container = settings.screen_lg
+	endif
+-%}
+
+<style>
+	{%- liquid
+		echo settings.body_font | font_face: font_display: 'swap'
+		echo settings.heading_font | font_face: font_display: 'swap'
+	-%}
+
+	{%- for scheme in settings.color_schemes -%}
+		{%- liquid
+			assign scheme_classes = scheme_classes | append: ', .color-' | append: scheme.id
+			assign svg_color      = scheme.settings.text_color | replace: '#', '%23'
+		-%}
+
+		{% if forloop.index == 1 %}:root, {% endif %}.color-{{ scheme.id }} {
+			--gradient-background: {% if scheme.settings.background_gradient != empty %}{{ scheme.settings.background_gradient }}{% else %}{{ scheme.settings.background_color }}{% endif %};
+			--background-color: {{ scheme.settings.background_color.red }}, {{ scheme.settings.background_color.green }}, {{ scheme.settings.background_color.blue }};
+			--text-color: {{ scheme.settings.text_color.red }}, {{ scheme.settings.text_color.green }}, {{ scheme.settings.text_color.blue }};
+			--heading-color: {{ scheme.settings.heading_color.red }}, {{ scheme.settings.heading_color.green }}, {{ scheme.settings.heading_color.blue }};
+			--subheading-color: {{ scheme.settings.subheading_color.red }}, {{ scheme.settings.subheading_color.green }}, {{ scheme.settings.subheading_color.blue }};
+			--link-color: {{ scheme.settings.link_color.red }}, {{ scheme.settings.link_color.green }}, {{ scheme.settings.link_color.blue }};
+			--success-color: {{ scheme.settings.success_color.red }}, {{ scheme.settings.success_color.green }}, {{ scheme.settings.success_color.blue }};
+			--error-color: {{ scheme.settings.error_color.red }}, {{ scheme.settings.error_color.green }}, {{ scheme.settings.error_color.blue }};
+			--loading-color: {{ scheme.settings.loading_color.red }}, {{ scheme.settings.loading_color.green }}, {{ scheme.settings.loading_color.blue }};
+
+			--button-bg-color: {{ scheme.settings.button_bg_color.red }}, {{ scheme.settings.button_bg_color.green }}, {{ scheme.settings.button_bg_color.blue }};
+			--button-text-color: {{ scheme.settings.button_text_color.red }}, {{ scheme.settings.button_text_color.green }}, {{ scheme.settings.button_text_color.blue }};
+			--button-outline-color: {{ scheme.settings.button_outline_color.red }}, {{ scheme.settings.button_outline_color.green }}, {{ scheme.settings.button_outline_color.blue }};
+
+			--sale-label-color: {{ scheme.settings.sale_label.red }}, {{ scheme.settings.sale_label.green }}, {{ scheme.settings.sale_label.blue }};
+			--sale-price-color: {{ scheme.settings.sale_price.red }}, {{ scheme.settings.sale_price.green }}, {{ scheme.settings.sale_price.blue }};
+			--in-stock-color: {{ scheme.settings.in_stock.red }}, {{ scheme.settings.in_stock.green }}, {{ scheme.settings.in_stock.blue }};
+			--low-stock-color: {{ scheme.settings.low_stock.red }}, {{ scheme.settings.low_stock.green }}, {{ scheme.settings.low_stock.blue }};
+			--out-stock-color: {{ scheme.settings.out_stock.red }}, {{ scheme.settings.out_stock.green }}, {{ scheme.settings.out_stock.blue }};
+			--rating-star-color: {{ scheme.settings.rating_star.red }}, {{ scheme.settings.rating_star.green }}, {{ scheme.settings.rating_star.blue }};
+		}
+
+		{% if forloop.index == 1 %}select, {% endif %}.color-{{ scheme.id }} select {
+			background-image: url('data:image/svg+xml,{%- render 'icon', code: 'caretDown', color: svg_color -%}');
+		}
+
+		{% if forloop.index == 1 %}[type="checkbox"]:before, {% endif %}.color-{{ scheme.id }} [type="checkbox"]:before {
+			background-image: url('data:image/svg+xml,{%- render 'icon', code: 'check-w', color: svg_color -%}');
+		}
+
+		{% if forloop.index == 1 %}[type=checkbox]:checked:before, {% endif %}.color-{{ scheme.id }} [type=checkbox]:checked:before {
+			background-image: url("data:image/svg+xml,%3Csvg width='12' height='13' viewBox='0 0 12 13' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M10.7655 4.39028L4.76552 10.3903C4.73069 10.4251 4.68934 10.4528 4.64381 10.4717C4.59829 10.4905 4.54949 10.5003 4.50021 10.5003C4.45093 10.5003 4.40213 10.4905 4.35661 10.4717C4.31108 10.4528 4.26972 10.4251 4.2349 10.3903L1.6099 7.76528C1.53953 7.69491 1.5 7.59948 1.5 7.49996C1.5 7.40045 1.53953 7.30502 1.6099 7.23465C1.68026 7.16429 1.7757 7.12476 1.87521 7.12476C1.97472 7.12476 2.07016 7.16429 2.14052 7.23465L4.50021 9.59481L10.2349 3.85965C10.3053 3.78929 10.4007 3.74976 10.5002 3.74976C10.5997 3.74976 10.6952 3.78929 10.7655 3.85965C10.8359 3.93002 10.8754 4.02545 10.8754 4.12496C10.8754 4.22448 10.8359 4.31991 10.7655 4.39028Z' fill='white'/%3E%3C/svg%3E");
+		}
+
+		{% assign contrast = scheme.settings.background_color | color_contrast: '#222222' %}
+
+		{% if forloop.index == 1 %}.collection-menu-content, {% endif %}.color-{{ scheme.id }} .collection-menu-content {
+			{% if contrast > 4.5 %}
+				background-color: #ffffff;
+			{% else %}
+				background-color: rgba(var(--text-color), 0.1);
+			{% endif %}
+		}
+
+		{% if forloop.index == 1 %}.contact-section .map, {% endif %}.color-{{ scheme.id }} .contact-section .map {
+			{% if contrast > 4.5 %}
+				background-color: #ffffff;
+			{% else %}
+				background-color: rgba(var(--text-color), 0.1);
+			{% endif %}
+		}
+
+		{% if forloop.index == 1 %}.header-section .search-form-header input[type=search], {% endif %}.header-section header.color-{{ scheme.id }} .search-form-header input[type=search] {
+			{% if contrast > 4.5 %}
+				box-shadow: 0 0 0 0.1rem rgb(var(--text-color));
+			{% else %}
+				box-shadow: 0 0 0 0.1rem rgb(var(--background-color));
+			{% endif %}
+		}
+
+		{% if forloop.index == 1 %}.header-section .search-form-header input[type=search]:focus, {% endif %}.header-section header.color-{{ scheme.id }} .search-form-header input[type=search]:focus {
+			{% if contrast > 4.5 %}
+				box-shadow: 0 0 0 0.2rem rgb(var(--text-color));
+			{% else %}
+				box-shadow: 0 0 0 0.2rem rgb(var(--background-color));
+			{% endif %}
+		}
+	{% endfor %}
+
+	{{ scheme_classes | prepend: 'body' }} {
+		color: rgb(var(--text-color));
+		background: var(--gradient-background, rgb(var(--background-color)));
+	}
+
+	:root {
+		--overlay-color: 0, 0, 0;
+		--button-radius: {{ settings.button_radius }}px;
+		--button-border-opacity: {{ settings.button_border_opacity | divided_by: 100.0 }};
+		--button-border-width: {% if settings.button_border_opacity > 0 and settings.button_border > 0 %}{{ settings.button_border }}{% else %}0{% endif %}px;
+
+		--body-font-family: {{ body_font }};
+		--body-font-style: {{ settings.body_font.style }};
+		--body-font-weight: {{ settings.body_font.weight }};
+		--body-font-scale: {{ settings.body_font_scale | divided_by: 100.0 }};
+
+		--heading-font-family: {{ heading_font }};
+		--heading-font-style: {{ settings.heading_font.style }};
+		--heading-font-weight: {{ settings.heading_font.weight }};
+		--heading-font-scale: {{ settings.heading_font_scale | divided_by: 100.0 }};
+
+		--subheading-font-family: {{ third_font }};
+		--subheading-font-style: {{ settings.third_font.style }};
+		--subheading-font-weight: {{ settings.third_font.weight }};
+		--subheading-font-scale: {{ settings.third_font_scale | divided_by: 100.0 }};
+
+		--container: {{ container }}px;
+		--grid-horizontal: {{ settings.grid_horizontal }}px;
+		--grid-vertical: {{ settings.grid_vertical }}px;
+		--grid-mobile-horizontal: {{ settings.grid_horizontal | divided_by: 2 }}px;
+        --grid-mobile-vertical: {{ settings.grid_vertical | divided_by: 2 }}px;
+
+		--product-card-scrolling-speed: {{ settings.card_scrolling_speed }}s;
+		--product-card-space: {{ settings.card_padding }}px;
+
+		--duration-short: 100ms;
+		--duration-default: 300ms;
+		--duration-long: 500ms;
+
+		{% comment %} Tick {% endcomment %}
+		--tick-white: url("data:image/svg+xml, %3Csvg width='10' height='8' viewBox='0 0 10 8' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M8.33332 1.5L3.74999 6.08333L1.66666 4' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+		--tick-black: url("data:image/svg+xml, %3Csvg width='10' height='8' viewBox='0 0 10 8' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M8.33332 1.5L3.74999 6.08333L1.66666 4' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+
+		{% comment %} Checkbox {% endcomment %}
+		--checkbox-black: url("data:image/svg+xml,%3Csvg width='14' height='10' viewBox='0 0 14 10' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M12.3334 1L5.00008 8.33333L1.66675 5' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+		--checkbox-white: url("data:image/svg+xml,%3Csvg width='14' height='10' viewBox='0 0 14 10' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M12.3334 1L5.00008 8.33333L1.66675 5' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+	}
+
+	{%- liquid
+		render 'responsive'
+	-%}
+</style>

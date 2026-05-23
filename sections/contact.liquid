@@ -1,0 +1,379 @@
+{%- liquid
+	assign section_id   = '#shopify-section-' | append: section.id
+	assign full         = section.settings.full
+	assign animation    = settings.section_animation
+	assign sub_heading  = section.settings.sub_heading
+	assign heading      = section.settings.heading_text
+	assign heading_size = section.settings.heading_size
+	assign description  = section.settings.description
+-%}
+
+<style>
+	{{ section_id }} .section-wrapper {
+		padding-top: {{ section.settings.padding_top_mobile }}px;
+		padding-bottom: {{ section.settings.padding_bottom_mobile }}px;
+	}
+
+	@media (min-width: 992px) {
+		{{ section_id }} .section-wrapper {
+			padding-top: {{ section.settings.padding_top }}px;
+			padding-bottom: {{ section.settings.padding_bottom }}px;
+		}
+	}
+</style>
+
+<div class="section-wrapper color-{{ section.settings.color_scheme }}">
+	<div class="container-contact{% if full %} stretch-section stretch-padding{% else %} container{% endif %}">
+		<div class="contact-wrapper{% if section.settings.narrow_content %} flex-content{% endif %}">
+			{%- if sub_heading != blank or heading != blank or description != blank -%}
+				<div class="title-wrapper">
+					{%- if sub_heading != blank -%}
+						<div class="sub-heading rte{% if animation %} scroll-trigger{% endif %}">{{- sub_heading -}}</div>
+					{%- endif -%}
+
+					{%- if heading != blank -%}
+							<h2 class="heading {{ heading_size }} rte">{{- heading -}}</h2>
+					{%- endif -%}
+
+					{%- if description != blank -%}
+						<div class="description rte{% if animation %} scroll-trigger{% endif %}">{{- description -}}</div>
+					{%- endif -%}
+
+					{%- for block in section.blocks -%}
+						{%- case block.type -%}
+							{%- when 'contact-press' -%}
+								{%- if block.settings.text != blank -%}
+									<div class="text rte{% if animation %} scroll-trigger{% endif %}">{{- block.settings.text -}}</div>
+								{%- endif -%}
+						{%- endcase -%}
+					{%- endfor -%}
+				</div>
+			{%- endif -%}
+
+			<div class="form-wrapper{% if animation %} scroll-trigger{% endif %}">
+				{%- form 'contact', id: nil, class: 'contact-form' -%}
+					{%- if form.posted_successfully? -%}
+						<p class="message success-message" tabindex="-1" autofocus>
+							{%- liquid
+								render 'icon', code: 'success'
+								echo 'templates.form.contact_success' | t
+							-%}
+						</p>
+					{%- elsif form.errors -%}
+						<p class="message error-message">
+							{%- liquid
+								render 'icon', code: 'error'
+								echo 'templates.form.error_heading' | t
+							-%}
+						</p>
+
+						<ul class="error-list" role="list">
+							<li>
+								<a href="#form-field-email-error{{ section_id }}" aria-label="{{- 'general.text.link' | t -}}" class="link">
+									{{ form.errors.translated_fields['email'] | capitalize }} {{ form.errors.messages['email'] }}
+								</a>
+							</li>
+						</ul>
+					{%- endif -%}
+
+					<div class="form-fields">
+						<div class="group-form-fields">
+							{% comment %} Name {% endcomment %}
+							<div class="field-form field field-customer-name">
+								<input type="text" id="form-field-name-{{ section.id }}" name="contact[name]" value="{{ form.name }}" autocomplete="name" placeholder="{{ 'templates.form.name' | t }}" required>
+
+								<label for="form-field-name-{{ section.id }}">
+									{{ 'templates.form.name' | t }}
+								</label>
+							</div>
+
+							{% comment %} Email {% endcomment %}
+							<div class="field-form field">
+								<input autocomplete="email"
+									type="email"
+									id="form-field-email-{{ section.id }}"
+									placeholder="{{- 'templates.form.email' | t -}}"
+									name="contact[email]"
+									spellcheck="false"
+									autocapitalize="off"
+									value="{% if form.email %}{{ form.email }}{% elsif customer %}{{ customer.email }}{% endif %}"
+									aria-required="true"
+									{% if form.errors contains 'email' %}
+										aria-invalid="true"
+										aria-describedby="form-field-email-error{{ section_id }}"
+									{% endif %}
+									pattern="^([a-zA-Z0-9_\-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([a-zA-Z0-9\-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$"
+									required>
+
+								<label for="form-field-email-{{ section.id }}">
+									{{- 'templates.form.email' | t -}}
+								</label>
+							</div>
+
+							{%- if form.errors contains 'email' -%}
+								<small class="form-field-email-error" id="form-field-email-error{{ section_id }}">
+									<span class="sr-only">{{- 'accessibility.error' | t -}}</span>
+
+									<span class="message error-message">
+										{%- liquid
+											render 'icon', code: 'error'
+											echo form.errors.translated_fields['email'] | capitalize | append: ' ' | append: form.errors.messages['email']
+										 -%}
+									</span>
+								</small>
+							{%- endif -%}
+
+							{%- for block in section.blocks -%}
+								{%- case block.type -%}
+									{%- when 'custom-field' -%}
+										{%- liquid
+											assign field_type = block.settings.field_type
+											assign heading = block.settings.dropdown
+											assign values  = block.settings.values | split: ','
+										-%}
+										{%- if field_type == 'short-text' -%}
+											<div class="field-form field field-text">
+												<input type="text" id="form-field-text-{{ section.id }}" name="contact[body]" value="{{ form.text }}" autocomplete="text" placeholder="{{ block.settings.custom_label }}">
+
+												<label for="form-field-text-{{ section.id }}">
+													{{ block.settings.custom_label }}
+												</label>
+											</div>
+										{%- elsif field_type == 'long-text' -%}
+												<div class="field-form field textarea">
+													<textarea id="form-field-body-{{ section.id }}" name="contact[body]" placeholder="{{ block.settings.custom_label }}" required>
+														{{- form.body -}}
+													</textarea>
+
+													<label for="form-field-body-{{ section.id }}">
+														{{ block.settings.custom_label }}
+													</label>
+												</div>
+										{%- else -%}
+											<div class="field-form field" {{ block.shopify_attributes }}>
+												<select class="field-select" name="contact[{{ heading | escape }}]" required>
+													<option value="" disabled selected hidden>{{- heading -}}</option>
+
+													{%- for value in values -%}
+														<option value="{{ value | handle }}">{{- value -}}</option>
+													{%- endfor -%}
+												</select>
+											</div>
+										{%- endif -%}
+								{%- endcase -%}
+							{%- endfor -%}
+						</div>
+
+						{% comment %} Textarea {% endcomment %}
+						<div class="field-form field text-area">
+							<textarea id="form-field-body-{{ section.id }}" name="contact[body]" placeholder="{{- 'templates.form.message_placeholder' | t -}}" required>
+								{{- form.body -}}
+							</textarea>
+
+							<label for="form-field-body-{{ section.id }}">
+								{{- 'templates.form.message' | t -}}
+							</label>
+						</div>
+					</div>
+
+					{% comment %} Detection disclaimer {% endcomment %}
+						<div class="field-content">
+							{{- 'templates.form.spam_detection' | t -}}
+							{{ 'shopify.online_store.spam_detection.disclaimer_html' | t }}
+						</div>
+
+					{% comment %} Submit {% endcomment %}
+					<div class="field-button">
+						<button type="submit" class="button primary-button medium-button">
+							{{- 'templates.form.send' | t -}}
+						</button>
+					</div>
+				{%- endform -%}
+			</div>
+		</div>
+	</div>
+</div>
+
+
+{% schema %}
+{
+	"name": "t:sections.contact.name",
+	"tag": "section",
+	"class": "contact-section",
+	"disabled_on": {
+		"groups": ["header", "footer"]
+	},
+	"settings": [
+		{
+			"type": "checkbox",
+			"id": "full",
+			"default": false,
+			"label": "t:general.layout.full.label"
+		},
+		{
+			"type": "checkbox",
+			"id": "narrow_content",
+			"default": false,
+			"label": "t:sections.contact.settings.narrow_content.label"
+		},
+		{
+			"type": "color_scheme",
+			"id": "color_scheme",
+			"label": "t:settings_schema.colors.label",
+			"default": "scheme-1"
+		},
+		{
+			"type": "text",
+			"id": "sub_heading",
+			"label": "t:general.typography.sub_heading.label"
+		},
+		{
+			"type": "inline_richtext",
+			"id": "heading_text",
+			"default": "Drop us a line",
+			"label": "t:general.typography.heading.label"
+		},
+		{
+			"type": "select",
+			"id": "heading_size",
+			"options": [
+				{
+					"value": "h4",
+					"label": "t:general.typography.heading_size.option_1.label"
+				},
+				{
+					"value": "h3",
+					"label": "t:general.typography.heading_size.option_2.label"
+				},
+				{
+					"value": "h2",
+					"label": "t:general.typography.heading_size.option_3.label"
+				}
+			],
+			"default": "h3",
+			"label": "t:general.typography.heading_size.label"
+		},
+		{
+			"type": "richtext",
+			"id": "description",
+			"label": "t:general.typography.description.label"
+		},
+		{
+			"type": "header",
+			"content": "t:general.padding.header_padding.content"
+		},
+		{
+			"type": "range",
+			"id": "padding_top",
+			"min": 0,
+			"max": 100,
+			"step": 1,
+			"default": 50,
+			"unit": "px",
+			"label": "t:general.padding.top.label"
+		},
+		{
+			"type": "range",
+			"id": "padding_bottom",
+			"min": 0,
+			"max": 100,
+			"step": 1,
+			"default": 50,
+			"unit": "px",
+			"label": "t:general.padding.bottom.label"
+		},
+		{
+			"type": "paragraph",
+			"content": "t:general.padding.paragraph_mobile.content"
+		},
+		{
+			"type": "range",
+			"id": "padding_top_mobile",
+			"min": 0,
+			"max": 100,
+			"step": 1,
+			"default": 20,
+			"unit": "px",
+			"label": "t:general.padding.top.label"
+		},
+		{
+			"type": "range",
+			"id": "padding_bottom_mobile",
+			"min": 0,
+			"max": 100,
+			"step": 1,
+			"default": 60,
+			"unit": "px",
+			"label": "t:general.padding.bottom.label"
+		}
+	],
+	"blocks": [
+		{
+			"type": "custom-field",
+			"name": "t:sections.contact.blocks.custom-field.name",
+			"settings": [
+				{
+					"type": "select",
+					"id": "field_type",
+					"options": [
+						{
+							"value": "short-text",
+							"label": "t:sections.contact.blocks.custom-field.field_type.short-text.label"
+						},
+						{
+							"value": "long-text",
+							"label": "t:sections.contact.blocks.custom-field.field_type.long-text.label"
+						},
+						{
+							"value": "dropdown",
+							"label": "t:sections.contact.blocks.custom-field.field_type.dropdown.label"
+						}
+					],
+					"default": "short-text",
+					"label": "t:sections.contact.blocks.custom-field.field_type.label"
+				},
+				{
+					"type": "text",
+					"id": "custom_label",
+					"default": "Your label",
+					"label": "t:sections.contact.blocks.custom-field.custom_label.label"
+				},
+				{
+					"type": "header",
+					"content": "t:sections.contact.blocks.dropdown.name"
+				},
+				{
+					"type": "text",
+					"id": "dropdown",
+					"label": "t:general.typography.heading.label",
+					"default": "Select options"
+				},
+				{
+					"type": "text",
+					"id": "values",
+					"label": "t:sections.contact.blocks.dropdown.option.label",
+					"info": "t:sections.contact.blocks.dropdown.option.info",
+					"default": "Option 1, Option 2, Option 3"
+				}
+			]
+		},
+		{
+			"type": "contact-press",
+			"name": "t:sections.contact.blocks.contact-press.name",
+			"settings": [
+				{
+					"type": "richtext",
+					"id": "text",
+					"default": "<p><strong>Email:</strong> help@unity.com</p>",
+					"label": "t:general.typography.text.label"
+				},
+			]
+		}
+	],
+	"presets": [
+		{
+			"name": "t:sections.contact.name"
+		}
+	]
+}
+{% endschema %}

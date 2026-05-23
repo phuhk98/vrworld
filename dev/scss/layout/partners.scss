@@ -1,0 +1,81 @@
+	.partners-section {
+	.section-wrapper {
+		overflow: hidden;
+	}
+
+	.title-wrapper {
+		margin: 0 auto;
+		margin-bottom: 4rem;
+
+		* {
+			margin: 0;
+		}
+
+		.heading {
+			margin-bottom: 2.4rem;
+			line-height: 3.6rem;
+		}
+
+		.description {
+			p {
+				font-size: 1.6rem;
+			}
+		}
+	}
+
+	.unity-slider {
+		cursor: grab;
+
+		.unity-slider-viewport {
+			overflow: visible;
+		}
+	}
+
+	.brand-item {
+		height: 16rem;
+		border-radius: 0.8rem;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+	}
+
+	.image {
+		svg,
+		img {
+			max-height: 5.4rem;
+			object-fit: scale-down;
+		}
+	}
+
+	.image-link {
+		position: absolute;
+		top: 0;
+		bottom: 0;
+		left: 0;
+		right: 0;
+		z-index: 1;
+	}
+
+	.placeholder-svg,
+	img {
+		min-width: 10rem;
+	}
+
+	@media (max-width: 991px) {
+		br {
+			display: none;
+		}
+	}
+
+	@media (min-width: 992px) {
+		.title-wrapper {
+			margin-bottom: 6rem;
+			width: 85rem;
+			max-width: 100%;
+
+			.heading {
+				line-height: 4rem;
+			}
+		}
+	}
+}

@@ -1,0 +1,100 @@
+.email-signup-section {
+	.container {
+		height: 100%;
+	}
+
+	.email-signup-wrapper {
+		display: flex;
+		flex-direction: column;
+		height: 100%;
+
+		@media (max-width: 991px) {
+			justify-content: center;
+			padding-left: 24px;
+			padding-right: 24px;
+		}
+	}
+
+	.email-signup-content {
+		display: flex;
+		flex-direction: column;
+		z-index: 10;
+
+		@media (max-width: 991px) {
+			align-items: center;
+
+			br {
+				display: none;
+			}
+		}
+	}
+
+	.heading {
+		margin-bottom: 1.6rem;
+
+		* {
+			margin: 0;
+		}
+	}
+
+	.description{
+		margin-bottom: 4rem;
+	}
+
+	.primary-button {
+		display: inline-flex;
+	}
+
+	.field-button {
+		margin-top: 4rem;
+	}
+
+	.field-wrapper {
+		width: 100%;
+		max-width: 40.8rem;
+		position: relative;
+		display: flex;
+		background-color: rgb(var(--text-color), .16);
+		padding: 1.4rem 2rem;
+		height: 5.2rem;
+		align-items: center;
+		gap: 2rem;
+		color: rgb(var(--text-color));
+
+		@media (min-width: 992px) {
+			min-width: 40.8rem;
+		}
+
+		.field-input {
+			padding: 0;
+			box-shadow: none;
+			background-color: transparent;
+			width: 100%;
+
+			&::placeholder {
+				color: rgba(var(--text-color), 0.4);
+			}
+
+		}
+
+		[type='submit'] {
+			padding: 0;
+			background-color: transparent;
+			color: rgb(var(--text-color));
+
+			svg {
+				width: 1.6rem;
+				height: 1.6rem;
+			}
+		}
+
+	}
+
+	// Responsive
+
+	@media (min-width: 992px) {
+		.email-signup-form {
+			display: flex;
+		}
+	}
+}

@@ -1,0 +1,294 @@
+{%- liquid
+	assign section_id      = '#shopify-section-' | append: section.id
+	assign animation       = settings.section_animation
+	assign full            = section.settings.full
+	assign image           = section.settings.image
+	assign heading         = section.settings.heading
+	assign description     = section.settings.description
+	assign heading_size    = section.settings.heading_size
+-%}
+
+<style>
+	{{ section_id }}{
+		padding-top: {{ section.settings.padding_top_mobile }}px;
+		padding-bottom: {{ section.settings.padding_bottom_mobile }}px;
+	}
+
+	@media (min-width: 992px) {
+		{{ section_id }} .image {
+			padding-top: {{ section.settings.padding_top }}px;
+			padding-bottom: {{ section.settings.padding_bottom }}px;
+		}
+	}
+</style>
+
+<image-spotlight-section>
+	<div class="{% if full %}stretch-section stretch-padding{% else %}container{% endif %}">
+		<div class="lookbook color-{{ section.settings.color_scheme }}">
+			<div class="image-wrapper">
+				<div class="adapt-media{% if animation %} scroll-trigger{% endif %}">
+					<div class="image{% if settings.image_lazy and image %} lazy-image{% endif %}">
+						{%- liquid
+							if image != blank
+								render 'lazy-image', image: image, width: 1200
+							else
+								render 'icon', code: 'placeholder'
+							endif
+						-%}
+					</div>
+				</div>
+
+				<div class="item-wrapper">
+					{%- if section.blocks.size > 0 -%}
+						{%- for block in section.blocks -%}
+							{%- liquid
+								assign heading       = block.settings.heading
+								assign heading_size  = block.settings.heading_size
+								assign description   = block.settings.description
+								assign product_title = 'onboarding.products.title' | t
+								assign contrast      = block.settings.color | color_contrast: '#101835'
+							-%}
+
+							<div class="item{% if contrast < 4.5 %} dark{% endif %}" data-block-id="{{ block.id }}" data-id="{{ forloop.index }}" style="--item-color: {{ block.settings.color }}; --item-x: {{ block.settings.horizontal }}%; --item-y: {{ block.settings.vertical }}%; --item-delay: {{ forloop.index | times: 0.5 }}s" {{ block.shopify_attributes }}>
+
+								<div class="dot">
+									{%- render 'icon', code: 'plus' -%}
+								</div>
+
+								<span class="product-target" data-product-id="{{ product.id }}">
+									<span class="sr-only">{{- product_title -}}</span>
+								</span>
+
+								<div class="item-inner">
+									<div class="item-summary">
+										{% if heading != blank %}
+											<div class="heading {{ heading_size }}">{{ heading }}</div>
+										{% endif %}
+
+										{% if description != blank %}
+											<div class="description">{{ description }}</div>
+										{% endif %}
+									</div>
+								</div>
+							</div>
+						{%- endfor -%}
+					{%- endif -%}
+				</div>
+			</div>
+
+			<unity-slider class="unity-slider">
+				<template data-options>
+					{
+						"align": "start",
+						"_autoheight": true,
+						"_fade": false,
+						"_dotsNode": "{{ section_id }} .unity-dots"
+					}
+				</template>
+
+				<div class="unity-slider-viewport">
+					<div class="unity-slider-container">
+						{%- if section.blocks.size > 0 -%}
+							{%- for block in section.blocks -%}
+								{%- liquid
+									assign heading       = block.settings.heading
+									assign heading_size  = block.settings.heading_size
+									assign description   = block.settings.description
+									assign product_title = 'onboarding.products.title' | t
+									assign contrast      = block.settings.color | color_contrast: '#101835'
+								-%}
+
+								<div class="unity-slide item-summary hidden-desktop">
+									{% if heading != blank %}
+										<div class="heading {{ heading_size }}">{{ heading }}</div>
+									{% endif %}
+
+									{% if description != blank %}
+										<div class="description">{{ description }}</div>
+									{% endif %}
+								</div>
+							{%- endfor -%}
+						{%- endif -%}
+					</div>
+				</div>
+
+				<div class="align-dots-center hidden-desktop">
+					<div class="unity-dots">
+					</div>
+				</div>
+			</unity-slider>
+		</div>
+	</div>
+</image-spotlight-section>
+
+{% schema %}
+{
+	"name": "t:sections.image_spotlight.name",
+	"tag": "section",
+	"class": "image-spotlight-section",
+	"disabled_on": {
+		"groups": ["header", "footer"]
+	},
+	"settings": [
+		{
+			"type": "checkbox",
+			"id": "full",
+			"default": false,
+			"label": "t:general.layout.full.label"
+		},
+		{
+			"type": "color_scheme",
+			"id": "color_scheme",
+			"label": "t:settings_schema.colors.label",
+			"default": "scheme-1"
+		},
+		{
+			"type": "image_picker",
+			"id": "image",
+			"label": "t:general.image.label"
+		},
+		{
+			"type": "header",
+			"content": "t:general.padding.header_padding.content"
+		},
+		{
+			"type": "range",
+			"id": "padding_top",
+			"min": 0,
+			"max": 100,
+			"step": 1,
+			"default": 40,
+			"unit": "px",
+			"label": "t:general.padding.padding_top.label"
+		},
+		{
+			"type": "range",
+			"id": "padding_bottom",
+			"min": 0,
+			"max": 100,
+			"step": 1,
+			"default": 40,
+			"unit": "px",
+			"label": "t:general.padding.padding_bottom.label"
+		},
+		{
+			"type": "paragraph",
+			"content": "t:general.padding.paragraph_mobile.content"
+		},
+		{
+			"type": "range",
+			"id": "padding_top_mobile",
+			"min": 0,
+			"max": 100,
+			"step": 1,
+			"default": 20,
+			"unit": "px",
+			"label": "t:general.padding.padding_top.label"
+		},
+		{
+			"type": "range",
+			"id": "padding_bottom_mobile",
+			"min": 0,
+			"max": 100,
+			"step": 1,
+			"default": 20,
+			"unit": "px",
+			"label": "t:general.padding.padding_bottom.label"
+		}
+	],
+	"blocks": [
+		{
+			"type": "product",
+			"name": "t:sections.image_spotlight.blocks.product.name",
+			"settings": [
+				{
+					"type": "color",
+					"id": "color",
+					"default": "#FFFFFF",
+					"label": "t:sections.image_spotlight.settings.hotspot.label"
+				},
+				{
+					"type": "inline_richtext",
+					"id": "heading",
+					"default": "Heading",
+					"label": "t:general.typography.heading.label"
+				},
+				{
+					"type": "select",
+					"id": "heading_size",
+					"options": [
+						{
+							"value": "h5",
+							"label": "t:general.typography.heading_size.option_1.label"
+						},
+						{
+							"value": "h4",
+							"label": "t:general.typography.heading_size.option_2.label"
+						},
+						{
+							"value": "h3",
+							"label": "t:general.typography.heading_size.option_3.label"
+						}
+					],
+					"default": "h4",
+					"label": "t:general.typography.heading_size.label"
+				},
+				{
+					"type": "richtext",
+					"id": "description",
+					"default": "<p>Description</p>",
+					"label": "t:general.typography.description.label"
+				},
+				{
+					"type": "range",
+					"id": "horizontal",
+					"min": 5,
+					"max": 95,
+					"step": 1,
+					"default": 30,
+					"unit": "%",
+					"label": "t:sections.image_spotlight.blocks.product.settings.horizontal.label"
+				},
+				{
+					"type": "range",
+					"id": "vertical",
+					"min": 5,
+					"max": 95,
+					"step": 1,
+					"default": 50,
+					"unit": "%",
+					"label": "t:sections.image_spotlight.blocks.product.settings.vertical.label"
+				}
+			]
+		}
+	],
+	"presets": [
+		{
+			"name": "t:sections.image_spotlight.name",
+			"blocks": [
+				{
+					"type": "product",
+					"settings": {
+						"horizontal": 54,
+						"vertical": 26
+					}
+				},
+				{
+					"type": "product",
+					"settings": {
+						"horizontal": 25,
+						"vertical": 36
+					}
+				},
+				{
+					"type": "product",
+					"settings": {
+						"horizontal": 59,
+						"vertical": 71
+					}
+				}
+			]
+		}
+	]
+}
+{% endschema %}

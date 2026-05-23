@@ -1,0 +1,579 @@
+{%- liquid
+	assign section_id             = '#shopify-section-' | append: section.id
+	assign full                   = section.settings.full
+	assign layout                 = section.settings.layout
+	assign content_width          = section.settings.content_width
+	assign rows                   = section.settings.rows
+	assign layout_heading         = section.settings.layout_heading
+	assign columns                = section.settings.columns | times: 1
+	assign columns_mobile         = section.settings.columns_mobile | times: 1
+	assign total                  = rows | times: columns
+	assign show_filter            = section.settings.show_filter
+	assign show_sorting           = section.settings.show_sorting
+	assign collections_to_display = section.settings.collection_list
+	assign results                = collection
+	assign results_sort_by        = collection.sort_by | default: collection.default_sort_by
+	assign scale                  = section.settings.scale | divided_by: 100.0
+	assign scale_mobile           = section.settings.scale_mobile | divided_by: 100.0
+
+	if results.url
+		assign results_count = collection.products_count
+	else
+		assign results_count = search.results_count
+	endif
+-%}
+
+<style>
+	@media (min-width: 1024px) {
+		{{ section_id }} .collections {
+			max-width: {{ content_width }}%;
+			margin: 0 auto;
+		}
+	}
+
+	{%- if layout_heading == "carousel" -%}
+		{{ section_id }} .collection-info.slider .collection-list .product-card-list .card-meta{
+			background: {{ section.settings.bkg_card }};
+		}
+	{%- endif -%}
+
+	{{ section_id }} .section-wrapper {
+		--item-gap: 0.8rem 0.8rem;
+		--template-columns: repeat({{ columns_mobile }}, minmax(0, 1fr));
+		padding-top: {{ section.settings.padding_top_mobile }}px;
+		padding-bottom: {{ section.settings.padding_bottom_mobile }}px;
+	}
+
+	{{ section_id }} .scrolling,
+	{{ section_id }} .list .left-info {
+		--scrolling-scale: {{ scale_mobile }};
+	}
+
+	@media (min-width: 992px) {
+		{{ section_id }} .scrolling,
+		{{ section_id }} .list .left-info {
+			--scrolling-scale: {{ scale }};
+		}
+	}
+
+	@media (min-width: 992px) {
+		{{ section_id }} .section-wrapper {
+			--item-gap: 0.8rem 0.8rem;
+			--template-columns: repeat({{ columns }}, minmax(0, 1fr));
+			padding-top: {{ section.settings.padding_top }}px;
+			padding-bottom: {{ section.settings.padding_bottom }}px;
+		}
+	}
+</style>
+
+{{ 'filter.css' | asset_url | stylesheet_tag }}
+{{ 'nouislider.css' | asset_url | stylesheet_tag }}
+<script src="{{ 'nouislider.js' | asset_url }}" defer="defer"></script>
+<script src="{{ 'filter.js' | asset_url }}" defer="defer"></script>
+
+{% comment %} Sorting {% endcomment %}
+{%- capture filter_sorting -%}
+	{%- if show_sorting -%}
+		<label class="filter-sorting-label" for="collection_sort_by">{{- 'sections.collection_template.sort_by_label' | t -}}</label>
+		<select class="filter-sorting" id="collection_sort_by" name="sort_by" aria-label="{{- 'general.text.shop_order' | t -}}" data-noui>
+			{%- for option in results.sort_options -%}
+				<option value="{{ option.value }}" {% if option.value == results_sort_by %}selected{% endif %}>
+					{{ option.name | escape }}
+				</option>
+			{%- endfor -%}
+		</select>
+	{%- endif -%}
+{%- endcapture -%}
+
+<div class="section-wrapper">
+	{% comment %} Collection info {% endcomment %}
+	{%- if section.settings.show_heading or section.settings.show_collection_list or section.settings.show_description and collection.description != blank -%}
+		{%- if layout_heading == "list" -%}
+			<div class="collection-info list color-{{ section.settings.color_scheme_info }} text-left">
+				<div class="{% if full %}stretch-section stretch-padding{% else %}container{% endif %}">
+					<div class="left-info">
+						{%- if section.settings.show_heading -%}
+							<h1 class="title h2">
+								{%- liquid
+									if collection.handle == 'all'
+										echo 'sections.collection_template.title' | t
+									else
+										echo collection.title
+									endif
+								-%}
+							</h1>
+						{%- endif -%}
+					</div>
+
+					<div class="right-info">
+						{%- if collection.description != blank and section.settings.show_description -%}
+							<div class="description">{{ collection.description }}</div>
+						{%- endif -%}
+
+						{%- if section.settings.show_collection_list and collections.size > 0 -%}
+							<div class="collection-list">
+								{%- if collection.handle == 'all' or template contains 'collection.all' -%}
+									{%- assign collections_to_display = collections -%}
+								{%- endif -%}
+
+								{%- for collection in collections_to_display -%}
+									<div class="list-item">
+										<h2 class="card-title h3">
+											<a href="{{ collection.url }}" aria-label="{{- 'general.text.link' | t -}}" class="card-url">
+												{{- collection.title -}}
+											</a>
+										</h2>
+									</div>
+								{%- endfor -%}
+							</div>
+						{%- endif -%}
+					</div>
+				</div>
+			</div>
+		{%- else -%}
+			<div class="collection-info slider head color-{{ section.settings.color_scheme_info }} text-left {% if collection.description == blank %} no-content{% endif %}">
+				<div class="{% if full %}stretch-section stretch-padding{% else %}container{% endif %}">
+					<div class="left-info">
+					</div>
+
+					<div class="right-info">
+						{%- if collection.description != blank and section.settings.show_description -%}
+							<div class="description">{{ collection.description }}</div>
+						{%- endif -%}
+					</div>
+				</div>
+
+				<scrolling-promotion-section class="scrolling">
+					<div class="scrolling-wrapper scrolling-animation">
+						<div class="scrolling-content">
+							<div class="scrolling-icon">
+								{%- assign collection_image = collection.image -%}
+
+								{%- if collection_image == blank and collection.products_count > 0 -%}
+									{%- assign first_product = collection.products.first -%}
+									{%- if first_product.featured_image != blank -%}
+										{%- assign collection_image = first_product.featured_image -%}
+									{%- endif -%}
+								{%- endif -%}
+
+								{%- if collection_image != blank -%}
+									<a href="{{ collection.url }}" class="collection-image{% if settings.image_lazy %} lazy-image{% endif %}" aria-label="{{ collection.title }}">
+										{%- render 'lazy-image', image: collection_image, width: 740, class: 'collection-first-image', lazy: 'lazy' -%}
+									</a>
+								{%- else -%}
+									<div class="collection-image placeholder">
+										{{ 'collection-1' | placeholder_svg_tag: 'placeholder-svg' }}
+									</div>
+								{%- endif -%}
+							</div>
+
+							<div class="scrolling-promotion h1">
+								<h2 class="title h1">
+									<a class="card-url" href="{{ collection.url }}" aria-label="{{- 'general.text.link' | t -}}">
+										{%- liquid
+											if collection.handle == 'all'
+												echo 'sections.collection_template.title' | t
+											else
+												echo collection.title
+											endif
+										-%}
+									</a>
+								</h2>
+							</div>
+						</div>
+					</div>
+				</scrolling-promotion-section>
+			</div>
+			{%- if collections_to_display != blank -%}
+				<div class="collection-info slider color-{{ section.settings.color_scheme_slide }} text-left">
+					{%- if section.settings.show_collection_list and collections.size > 0 -%}
+						<div class="collection-list">
+							<unity-slider class="unity-slider">
+								<template data-options>
+									{
+										"_autoheight": true,
+										"_fade": false
+									}
+								</template>
+								<div class="unity-slider-viewport">
+									<div class="unity-slider-container">
+										{%- if collection.handle == 'all' or template contains 'collection.all' -%}
+											{%- assign collections_to_display = collections -%}
+										{%- endif -%}
+
+										{%- for collection in collections_to_display -%}
+											<div class="list-item unity-slide">
+												<div class="product-card-list">
+													<div class="card-meta">
+														<div class="collection-count">
+															( {% liquid
+																assign counts = collection.all_products_count
+																echo 'sections.collection_list.count_collection' | t: count: counts
+															%} )
+														</div>
+														<h2 class="card-title h3">
+															<a href="{{ collection.url }}" class="card-url" title="{{ collection.url }}">
+																{{- collection.title -}}
+															</a>
+														</h2>
+													</div>
+
+													<div class="rectangle-media">
+														<a class="card-media" href="{{ collection.url }}" title="{{ collection.url }}">
+															<span class="card-media-wrapper{% if settings.image_lazy %} lazy-image{% endif %}">
+																{%- liquid
+																	assign collection_image = collection.image
+
+																	if collection_image == blank and collection.products_count > 0
+																		assign first_product = collection.products.first
+																		if first_product.featured_image != blank
+																			assign collection_image = first_product.featured_image
+																		endif
+																	endif
+
+																	if collection_image != blank
+																		render 'lazy-image', image: collection_image, width: 768
+																	else
+																		render 'icon', code: 'placeholder'
+																	endif
+																-%}
+															</span>
+														</a>
+													</div>
+												</div>
+											</div>
+										{%- endfor -%}
+									</div>
+								</div>
+							</unity-slider>
+						</div>
+					{%- endif -%}
+				</div>
+			{%- endif -%}
+		{%- endif -%}
+	{%- endif -%}
+
+	<div class="has-product-filters filters-{{ layout }}{% if layout == 'left' or layout == 'right' %} filters-sidebar{% endif %}{% unless show_filter %} hide-filter{% endunless  %}" data-id="{{ section.id }}">
+		<div class="collections content {% if results_count == 0 %} hidden-sidebar{% endif %}{% if section.settings.infinite_scroll %} infinite-scroll{% endif %}{% if section.settings.show_collection_list and collections.size > 0 %} has-collection-list{% endif %}" data-type="collection">
+			{%- paginate collection.products by total -%}
+				{% comment %} Products filter {% endcomment %}
+				<div class="layout-collection color-{{ section.settings.color_scheme }}">
+					<div class="action-layout {% if full %}stretch-section stretch-padding{% else %}container{% endif %} {{ layout }}">
+						{% comment %} Toolbar {% endcomment %}
+						<div class="toolbar">
+							<div class="show-filter" tabindex="0">
+								<input type="checkbox" value="show-filter" name="show" id="show-filter" aria-expanded="true" checked>
+								<label class="show" for="show-filter">{{ 'onboarding.collections.show' | t }}</label>
+							</div>
+							<div class="toolbar-inner">
+								{%- if show_sorting -%}
+									<div class="item-toolbar-left">
+										<div class="layer-last-header">
+											{{- filter_sorting -}}
+										</div>
+									</div>
+								{%- endif -%}
+
+								<div class="item-toolbar-right">
+									<div class="change-column-product">
+										{% for column in (2..4) %}
+											{%- assign icon = "grid-"| append: column -%}
+											<button class="item grid-{{ column }}{% if columns == column %} active{% endif %}" data-column="{{ column }}" aria-label="grid-{{ column }}-{{ 'general.text.button' | t }}nlt" id="grid-{{ column }}-{{ 'general.text.button' | t }}nlt" aria-labelledby="grid-{{ column }}-{{ 'general.text.button' | t }}">
+												{%- render 'icon', code: icon -%}
+											</button>
+										{% endfor %}
+									</div>
+
+									{%- if section.settings.show_results_count -%}
+										<span class="results-count">
+											{%- liquid
+												if results.url
+												if paginate and paginate.items > paginate.page_size
+													assign from_count = paginate.current_offset | plus: 1
+													assign to_count   = paginate.page_size | times: paginate.current_page
+
+													if paginate.items < to_count
+														assign to_count = paginate.items
+													endif
+
+													echo 'sections.collection_template.collection_product_from_to_count_html' | t: from: from_count, to: to_count, count: paginate.items
+												else
+													echo 'sections.collection_template.collection_product_count_simple' | t: count: results_count
+												endif
+
+												else
+													echo 'templates.search.results_with_count' | t: count: results_count
+												endif
+											-%}
+										</span>
+									{%- endif -%}
+								</div>
+							</div>
+						</div>
+
+						{%- comment -%} Filter {%- endcomment -%}
+						{%- render 'filter', results: collection, ssettings: section.settings, paginate: paginate -%}
+					</div>
+				</div>
+			{%- endpaginate -%}
+		</div>
+	</div>
+</div>
+
+{% schema %}
+{
+	"name": "t:sections.main-collection.name",
+	"class": "collection-page-section",
+	"settings": [
+		{
+			"type": "color_scheme",
+			"id": "color_scheme",
+			"label": "t:settings_schema.colors.label",
+			"default": "scheme-1"
+		},
+		{
+			"type": "select",
+			"id": "layout",
+			"options": [
+				{
+					"value": "left",
+					"label": "t:sections.main-collection.settings.layout.option_2.label"
+				},
+				{
+					"value": "right",
+					"label": "t:sections.main-collection.settings.layout.option_3.label"
+				}
+			],
+			"default": "left",
+			"label": "t:sections.main-collection.settings.layout.label",
+			"info": "t:sections.main-collection.settings.layout.info"
+		},
+		{
+			"type": "checkbox",
+			"id": "show_filter",
+			"default": true,
+			"label": "t:sections.main-collection.settings.show_filter.label"
+		},
+		{
+			"type": "checkbox",
+			"id": "infinite_scroll",
+			"default": false,
+			"label": "t:sections.main-collection.settings.infinite_scroll.label"
+		},
+		{
+			"type": "checkbox",
+			"id": "full",
+			"default": false,
+			"label": "t:general.layout.full.label"
+		},
+		{
+			"type": "range",
+			"id": "content_width",
+			"default": 100,
+			"min": 60,
+			"max": 100,
+			"step": 1,
+			"unit": "%",
+			"label": "t:general.dimensions.content_width.label"
+		},
+		{
+			"type": "range",
+			"id": "rows",
+			"default": 2,
+			"min": 1,
+			"max": 20,
+			"step": 1,
+			"label": "t:sections.main-collection.settings.rows.label"
+		},
+		{
+			"type": "select",
+			"id": "columns",
+			"default": "4",
+			"options": [
+				{
+					"value": "2",
+					"label": "2"
+				},
+				{
+					"value": "3",
+					"label": "3"
+				},
+				{
+					"value": "4",
+					"label": "4"
+				}
+			],
+			"label": "t:general.layout.columns.label"
+		},
+		{
+			"type": "select",
+			"id": "columns_mobile",
+			"default": "2",
+			"options": [
+				{
+					"value": "1",
+					"label": "1"
+				},
+				{
+					"value": "2",
+					"label": "2"
+				}
+			],
+			"label": "t:general.layout.columns_mobile.label"
+		},
+		{
+			"type": "header",
+			"content": "t:sections.main-collection.settings.header_collection.content"
+		},
+		{
+			"type": "color_scheme",
+			"id": "color_scheme_info",
+			"label": "t:settings_schema.colors.label",
+			"default": "scheme-2"
+		},
+		{
+			"type": "select",
+			"id": "layout_heading",
+			"options": [
+				{
+					"value": "carousel",
+					"label": "t:sections.main-collection.settings.layout.option_6.label"
+				},
+				{
+					"value": "list",
+					"label": "t:sections.main-collection.settings.layout.option_5.label"
+				},
+			],
+			"default": "carousel",
+			"label": "t:sections.main-collection.settings.layout.label"
+		},
+		{
+			"type": "collection_list",
+			"id": "collection_list",
+			"label": "t:sections.main-collection.settings.collection_list.label"
+		},
+		{
+			"type": "color_scheme",
+			"id": "color_scheme_slide",
+			"label": "t:settings_schema.colors.label",
+			"default": "scheme-2",
+			"visible_if": "{{ section.settings.layout_heading == 'carousel' }}"
+		},
+		{
+			"type": "color",
+			"id": "bkg_card",
+			"label": "t:settings_schema.colors.name",
+			"default": "#FFFFFF",
+			"visible_if": "{{ section.settings.layout_heading == 'carousel' }}"
+		},
+		{
+			"type": "range",
+			"id": "scale",
+			"min": 50,
+			"max": 400,
+			"step": 5,
+			"default": 400,
+			"unit": "%",
+			"label": "t:sections.scrolling-promotion.settings.heading_scale.label"
+		},
+		{
+			"type": "range",
+			"id": "scale_mobile",
+			"min": 50,
+			"max": 400,
+			"step": 5,
+			"default": 200,
+			"unit": "%",
+			"label": "t:sections.scrolling-promotion.settings.heading_scale_mobile.label"
+		},
+		{
+			"type": "checkbox",
+			"id": "show_heading",
+			"default": true,
+			"label": "t:sections.main-collection.settings.show_heading.label"
+		},
+		{
+			"type": "checkbox",
+			"id": "show_description",
+			"default": true,
+			"label": "t:sections.main-collection.settings.show_description.label"
+		},
+		{
+			"type": "checkbox",
+			"id": "show_collection_list",
+			"default": true,
+			"label": "t:sections.main-collection.settings.show_collection_list.label"
+		},
+		{
+			"type": "header",
+			"content": "t:sections.main-collection.settings.header_filters.content"
+		},
+		{
+			"type": "checkbox",
+			"id": "show_sorting",
+			"default": true,
+			"label": "t:sections.main-collection.settings.show_sorting.label"
+		},
+		{
+			"type": "checkbox",
+			"id": "show_results_count",
+			"default": true,
+			"label": "t:sections.main-collection.settings.show_results_count.label"
+		},
+		{
+			"type": "checkbox",
+			"id": "show_filter_count",
+			"default": true,
+			"label": "t:sections.main-collection.settings.show_filter_count.label"
+		},
+		{
+			"type": "header",
+			"content": "t:general.padding.header_padding.content"
+		},
+		{
+			"type": "range",
+			"id": "padding_top",
+			"min": 0,
+			"max": 100,
+			"step": 1,
+			"default": 0,
+			"unit": "px",
+			"label": "t:general.padding.top.label"
+		},
+		{
+			"type": "range",
+			"id": "padding_bottom",
+			"min": 0,
+			"max": 100,
+			"step": 1,
+			"default": 80,
+			"unit": "px",
+			"label": "t:general.padding.bottom.label"
+		},
+		{
+			"type": "paragraph",
+			"content": "t:general.padding.paragraph_mobile.content"
+		},
+		{
+			"type": "range",
+			"id": "padding_top_mobile",
+			"min": 0,
+			"max": 100,
+			"step": 1,
+			"default": 0,
+			"unit": "px",
+			"label": "t:general.padding.top.label"
+		},
+		{
+			"type": "range",
+			"id": "padding_bottom_mobile",
+			"min": 0,
+			"max": 100,
+			"step": 1,
+			"default": 60,
+			"unit": "px",
+			"label": "t:general.padding.bottom.label"
+		}
+	]
+}
+{% endschema %}

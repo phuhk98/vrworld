@@ -1,0 +1,23 @@
+{
+	"devDependencies": {
+		"gulp": "^5.0.1",
+		"gulp-css-globbing": "^0.2.2",
+		"gulp-sass": "^6.0.1",
+		"gulp-terser": "^2.1.0",
+		"gulp-zip": "^6.1.0",
+		"sass": "^1.88.0"
+	},
+	"engines": {
+		"node": ">=0.8.0",
+		"npm": ">=1.1.0"
+	},
+	"dependencies": {
+		"archiver": "^7.0.1",
+		"gulp-cached": "^1.1.1",
+		"gulp-concat": "^2.6.1",
+		"npm": "^11.3.0"
+	},
+	"scripts": {
+		"zip": "node zip.js"
+	}
+}

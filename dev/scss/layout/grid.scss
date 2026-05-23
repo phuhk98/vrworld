@@ -1,0 +1,49 @@
+// Container styling
+.container {
+	max-width: 100%;
+	width: var(--container);
+	margin-right: auto;
+	margin-left: auto;
+	padding-left: calc(var(--grid-horizontal) / 2);
+	padding-right: calc(var(--grid-horizontal) / 2);
+}
+
+// Grid styling
+.grid {
+	display: grid;
+	gap: var(--grid-horizontal);
+}
+
+// Loop for grid sizes
+@for $i from 1 through 12 {
+	// For desktop
+	@media (min-width: 992px) {
+		.grid.grid-#{$i} {
+			grid-template-columns: repeat(#{$i}, minmax(0, 1fr));
+		}
+	}
+
+	// For tablet
+	@media (min-width: 768px) and (max-width: 991px) {
+		.grid.grid-tablet-#{$i} {
+			grid-template-columns: repeat(#{$i}, minmax(0, 1fr));
+		}
+	}
+
+	// For mobile
+	@media (max-width: 767px) {
+		.grid.grid-mobile-#{$i} {
+			grid-template-columns: repeat(#{$i}, minmax(0, 1fr));
+		}
+	}
+}
+
+// Grid Mobile Flow styling
+.grid-mobile-flow {
+	@media (max-width: 991px) {
+		overflow-x: auto;
+		gap: 2rem;
+		grid-auto-flow: column;
+		grid-auto-columns: minmax(27rem, 1fr);
+	}
+}

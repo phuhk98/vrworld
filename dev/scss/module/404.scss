@@ -1,0 +1,78 @@
+@use '../general/_mixins';
+
+.error-section {
+	.section-wrapper {
+		background-repeat: no-repeat;
+		background-position: center center;
+		background-size: cover;
+	}
+
+	.error-content-page {
+		min-height: 60vh;
+		display: flex;
+		align-items: center;
+		flex-direction: column;
+		justify-content: center;
+		text-align: center;
+	}
+
+	.logo {
+		font-size: 4rem;
+	}
+
+	.content {
+		* {
+			margin: 0;
+			line-height: normal;
+		}
+	}
+
+	.error-search-form {
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: center;
+		gap: 1rem;
+
+		.field-input,
+		.field-button {
+			border-radius: 5rem;
+			height: 5rem;
+		}
+
+		.field-input {
+			background-color: transparent;
+			max-width: 100%;
+			padding: 0 2rem;
+			border: 0;
+
+			@media (min-width: 992px) {
+				min-width: 46rem;
+			}
+
+			&:focus {
+				box-shadow: 0 0 0 0.2rem rgba(var(--text-color), 0.3);
+			}
+		}
+
+		.field-button {
+			font-weight: 600;
+			min-width: 10rem;
+			padding: 0 2rem;
+		}
+	}
+
+	.continue-shopping {
+		margin-top: 4rem;
+	}
+
+	@media (max-width: 991px) {
+		br {
+			display: none;
+		}
+
+		.continue-shopping {
+			width: 100%;
+			justify-content: center;
+		}
+	}
+}

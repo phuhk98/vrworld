@@ -1,0 +1,43 @@
+@keyframes slideIn {
+	from {
+		transform: translateY(2rem);
+		opacity: 0.01;
+	}
+	to {
+		transform: translateY(0);
+		opacity: 1;
+	}
+}
+
+.scroll-trigger {
+	opacity: 0.01;
+	transform: translateY(2rem);
+
+	&.scroll-trigger-design-mode {
+		transform: translateY(0);
+	}
+
+	&:not(.scroll-trigger-offscreen) {
+		animation: slideIn 500ms forwards;
+		animation-delay: calc(var(--animation-order, 0) * 75ms);
+	}
+
+	&.scroll-trigger-design-mode,
+	&:not(.scroll-trigger-offscreen).scroll-trigger-cancel {
+		opacity: 1;
+		animation: none;
+		transition: none;
+	}
+}
+
+// Hover image.
+@media (min-width: 1025px) {
+	.animated-border .media-gallery-item:hover .media-gallery-item-inner {
+		background: linear-gradient(90deg, #ff8038, #f09 30.43%, #002beb 68.23%, #db00ff);
+		z-index: 1;
+		position: relative;
+		animation: AnimateBorder 6s ease infinite;
+		background-size: 500% 500%;
+		padding: 5px;
+	}
+}

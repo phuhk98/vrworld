@@ -1,0 +1,90 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+	"sections": {
+		"breadcrumb": {
+			"type": "breadcrumb",
+			"name": "t:sections.breadcrumb.presets.name",
+			"settings": {
+			"full": false,
+			"overlay": 50,
+			"separator_line": true,
+			"color_scheme": "scheme-2",
+			"show_title": false,
+			"show_scrolling": false,
+			"font_scale": 100,
+			"description": "",
+			"description_position": "below",
+			"right_description": false,
+			"padding_top": 16,
+			"padding_bottom": 16,
+			"padding_top_mobile": 16,
+			"padding_bottom_mobile": 16
+		}
+	},
+	"collections": {
+		"type": "main-collection",
+		"settings": {
+			"color_scheme": "scheme-ba0a8324-5f15-4901-ab87-e6aea9f3a09c",
+			"layout": "left",
+			"infinite_scroll": false,
+			"full": false,
+			"content_width": 100,
+			"rows": 4,
+			"columns": "3",
+			"columns_mobile": "2",
+			"color_scheme_info": "",
+			"layout_heading": "list",
+			"collection_list": [
+				"vitamins-collagens",
+				"essential-supplements",
+				"herbal-supplements",
+				"digestive-support",
+				"hormone-support"
+			],
+			"show_heading": true,
+			"show_description": true,
+			"show_collection_list": true,
+			"show_sorting": true,
+			"show_results_count": true,
+			"show_filter_count": true,
+			"padding_top": 0,
+			"padding_bottom": 80,
+			"padding_top_mobile": 0,
+			"padding_bottom_mobile": 60
+		}
+	},
+	"product_recently_viewed": {
+		"type": "product-recently-viewed",
+		"name": "t:sections.product-recently-viewed.name",
+		"settings": {
+			"color_scheme": "",
+			"full": false,
+			"heading": "Recently viewed",
+			"heading_size": "h2",
+			"layout": "slider",
+			"rows": 1,
+			"columns": 4,
+			"show_arrows": true,
+			"autoplay": false,
+			"delay": 3,
+			"padding_top": 0,
+			"padding_bottom": 20,
+			"padding_top_mobile": 0,
+			"padding_bottom_mobile": 20
+		}
+	}
+	},
+	"order": [
+		"breadcrumb",
+		"collections",
+		"product_recently_viewed"
+	]
+}

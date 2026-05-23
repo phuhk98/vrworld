@@ -1,0 +1,679 @@
+{%- liquid
+	assign section_id    = '#shopify-section-' | append: section.id
+	assign full          = section.settings.full
+	assign height        = section.settings.height
+	assign height_mobile = section.settings.height_mobile
+	assign animation     = settings.section_animation
+
+	case height
+		when 'small'
+			assign height_value = '450px'
+		when 'medium'
+			assign height_value = '620px'
+		when 'large'
+			assign height_value = '700px'
+	endcase
+-%}
+
+<style>
+	{{ section_id }} .section-wrapper {
+		padding-top: {{ section.settings.padding_top_mobile }}px;
+		padding-bottom: {{ section.settings.padding_bottom_mobile }}px;
+	}
+
+	@media (min-width: 992px) {
+		{{ section_id }} .section-wrapper {
+			padding-top: {{ section.settings.padding_top }}px;
+			padding-bottom: {{ section.settings.padding_bottom }}px;
+		}
+	}
+
+	{%- if height != 'auto' -%}
+		@media (min-width: 992px) {
+			{{ section_id }} .theme-slider.height-{{ height }} .unity-slide {
+				height: {{ height_value }};
+			}
+		}
+	{%- endif -%}
+</style>
+
+<div class="section-wrapper slideshow-section color-{{ section.settings.color_scheme }}">
+	<div class="{% if full %}stretch-section{% else %}container{% endif %}">
+		<div class="theme-slider height-{{ height }} height-mobile-{{ height_mobile }}{% if animation %} scroll-trigger{% endif %}">
+			<unity-slider class="unity-slider">
+				<template data-options>
+					{
+						"loop": true,
+						"_autoplay": {{ 5 | times: 1000 }},
+						"_autoheight": true,
+						"_fade": true,
+						"_prevBtn": "{{ section_id }} .unity-button-prev",
+						"_nextBtn": "{{ section_id }} .unity-button-next",
+						"_dotsNode": "{{ section_id }} .unity-dots"
+					}
+				</template>
+
+				<template data-thumbs-options>
+					{
+						"loop": true,
+						"containScroll": "keepSnaps"
+					}
+				</template>
+
+				<div class="unity-slider-viewport">
+					<div class="unity-slider-container">
+						{%- for block in section.blocks -%}
+							<div class="unity-slide" data-id="{{ block.id }}" data-{{ block.id }} {{ block.shopify_attributes }} {% if request.design_mode %} data-index="{{ forloop.index0 }}"{% endif %}>
+								{%- case block.type -%}
+									{%- when '@app' -%}
+										{%- render block -%}
+									{%- when 'slide' -%}
+										{%- liquid
+											assign slide_image  = block.settings.image
+											assign mobile_image = block.settings.mobile_image
+											assign image_load   = 'eager'
+											assign caption      = block.settings.caption
+											assign heading      = block.settings.heading
+											assign text         = block.settings.text
+											assign button       = block.settings.button
+
+											if forloop.index > 1
+												assign image_load = 'lazy'
+											endif
+										-%}
+
+										{%- if block.settings.button != blank and block.settings.link != blank -%}
+											<a class="button button-whole-slide slide-element-inner hidden" href="{{ block.settings.link }}" aria-label="{{- 'general.text.link' | t -}}">
+												<span class="sr-only">{{- block.settings.button -}}</span>
+											</a>
+										{%- endif -%}
+
+										<div class="slider-image color-{{ section.settings.content_color_scheme }}">
+											<div class="image{% if mobile_image != blank %} hidden-tablet hidden-mobile{% endif %}{% if settings.image_lazy and slide_image %} lazy-image{% endif %}">
+												{%- liquid
+													if slide_image != blank
+														render 'lazy-image', image: slide_image, width: 1920, lazy: image_load
+													else
+														echo 'lifestyle-1' | placeholder_svg_tag: 'placeholder-svg'
+													endif
+												-%}
+											</div>
+
+											{%- if mobile_image != blank -%}
+												<div class="hidden-desktop{% if settings.image_lazy and mobile_image %} lazy-image{% endif %}">
+													{%- render 'lazy-image', image: mobile_image, width: 1000, lazy: image_load -%}
+												</div>
+											{%- endif -%}
+												<div class="unity-slides" data-id="{{ block.id }}" {{ block.shopify_attributes }} data-{{ block.id }}{% if request.design_mode %} data-index="{{ forloop.index0 }}"{% endif %}>
+													<div class="slide-content">
+														{%- liquid
+															assign star_reviews    = block.settings.star_reviews
+															assign body_text       = block.settings.body_text
+															assign author_image    = block.settings.author_image
+															assign author_name     = block.settings.author_name
+															assign author_comment  = block.settings.author_comment
+															assign author_verified = block.settings.author_verified
+															assign product         = block.settings.product
+														-%}
+														{% unless star_reviews == '0' %}
+															<div class="review-testimonial">
+																{%- for i in (1..star_reviews) -%}
+																	<span class="star">
+																		{%- render 'icon', code: 'star' -%}
+																	</span>
+																{%- endfor -%}
+															</div>
+														{% endunless %}
+
+														{%- if body_text != blank -%}
+															<div class="testi-body">
+																{{- body_text -}}
+															</div>
+														{%- endif -%}
+
+														{%- if author_image != blank or author_name != blank -%}
+															<div class="testi-author">
+																{%- if author_image != blank -%}
+																	<div class="testi-author-image">
+																		<div class="adapt-media">
+																			<div class="image{% if settings.image_lazy and author_image %} lazy-image{% endif %}">
+																				{% render 'lazy-image', image: author_image, width: 60 %}
+																			</div>
+																		</div>
+																	</div>
+																{%- endif -%}
+
+																{%- if author_name != blank -%}
+																	<div class="testi-author-name">
+																		<div class="author-name">
+																			{{- author_name -}}
+
+																			{%- if author_verified -%}
+																				<div class="testi-author-verified border-small">{{- 'sections.testimonial.author_verified' | t -}}</div>
+																			{%- endif -%}
+																		</div>
+
+																		{%- if author_comment != blank -%}
+																			<div class="testi-author-comment">
+																				{%- render 'icon', code: 'checkmark-circle-filled' -%}{{- author_comment -}}
+																			</div>
+																		{%- endif -%}
+																	</div>
+																{%- endif -%}
+															</div>
+														{%- endif -%}
+													</div>
+												</div>
+
+												{%- if product != blank -%}
+													<div class="product-card">
+														{%- liquid
+															assign featured_image = product.selected_or_first_available_variant.featured_image | default: product.featured_media
+														-%}
+
+														{% comment %} Media {% endcomment %}
+														{%- if featured_image != blank -%}
+															<div class="product-media-wrap">
+																<a href="{{ product.url | split: '?' | first }}"{% if settings.image_lazy %} class="product-image lazy-image border-large"{% endif %} arial-label="{{ product.title }}">
+																	{%- liquid
+																		assign image_key = featured_image.src | handle
+
+																		render 'lazy-image', image: featured_image, width: 200, height: 200, class: 'product-first-image', data-key: image_key
+																	-%}
+																</a>
+															</div>
+														{%- endif -%}
+
+														<div class="product-card-content">
+															<div class="left-card-content">
+																{% comment %} Heading {% endcomment %}
+																<h2 class="product-title link-underline-transparent">
+																	<a href="{{ product.url | split: '?' | first }}" aria-label="{{- 'general.text.link' | t -}}">{{- product.title | escape -}}</a>
+																</h2>
+
+																{%- render 'price', product: product -%}
+															</div>
+
+															<div class="right-card-content">
+																{%- form 'product', product, class: 'form-add-to-cart', novalidate: 'novalidate', data-type: 'add-to-cart-form', id: nil -%}
+																	<input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}">
+
+																	{%- if product.available -%}
+																		{%- if product.available and product.has_only_default_variant -%}
+																			<button type="submit" name="add" class="button primary-button add-to-cart-button" aria-label="testimonial-{{ 'general.text.button' | t }}" aria-labelledby="testimonial-{{ 'general.text.button' | t }}">
+																				{%- render 'icon', code: 'product-add-to-cart' -%}
+																			</button>
+																		{%- else -%}
+																			<a href="{{ product.url }}" aria-label="{{- 'general.text.link' | t -}}" class="primary-button add-to-cart-button">
+																				{%- render 'icon', code: 'eye' -%}
+																			</a>
+																		{%- endif -%}
+																	{%- else -%}
+																		<button type="submit" name="add" class="button primary-button add-to-cart-button" disabled>
+																			{{- 'products.product.sold_out' | t -}}
+																		</button>
+																	{%- endif -%}
+
+																	{% comment %} Product variant data {% endcomment %}
+																	<script data-product-variants>
+																		{{ product.variants | json }}
+																	</script>
+																{%- endform -%}
+															</div>
+														</div>
+													</div>
+
+												{%- endif -%}
+										</div>
+
+										<div class="slider-content flex-justify-{{ block.settings.position_y }} container">
+											<div class="slider-content-inner flex-align-{{ block.settings.position_x }}">
+												<div class="content-wrap text-{{ block.settings.text_align }} text-{{ block.settings.mobile_text_align }}-mobile">
+													{%- if caption != blank -%}
+														<div class="slider-element slider-caption sub-heading">
+															<div class="slide-element-inner rte">{{- caption -}}</div>
+														</div>
+													{%- endif -%}
+
+													{%- if heading != blank -%}
+														<div class="slider-element slider-heading">
+															<h2 class="slide-element-inner rte {{ block.settings.heading_size }}">{{- heading -}}</h2>
+														</div>
+													{%- endif -%}
+
+													{%- if text != blank -%}
+														<div class="slider-element slider-description">
+															<div class="slide-element-inner rte">{{- text -}}</div>
+														</div>
+													{%- endif -%}
+
+													{%- if button != blank -%}
+													    <div class="slider-element slider-button">
+															<a class="button {{ block.settings.button_style }}-button slide-element-inner" href="{{ block.settings.link | default: '#' }}" aria-label="{{- 'general.text.link' | t -}}" tabindex="0" >
+																{{- button | escape -}}
+															</a>
+														</div>
+													{%- endif -%}
+												</div>
+											</div>
+										</div>
+								{%- endcase -%}
+							</div>
+						{%- endfor -%}
+					</div>
+				</div>
+
+				<div class="slider-pagination">
+					<div class="thumb-slider">
+						<div class="unity-thumbs-slider-viewport" tabindex="-1">
+							<div class="unity-thumbs-slider-container">
+								{%- for block in section.blocks -%}
+									<div class="unity-thumbs-slide" {{ block.shopify_attributes }}>
+										<button class="unity-thumb-number">
+											<span class="progress-arc" aria-hidden="true"></span>
+											<span class="thumb-number">{{ forloop.index }}</span>
+										</button>
+									</div>
+								{%- endfor -%}
+							</div>
+						</div>
+					</div>
+				</div>
+			</unity-slider>
+		</div>
+	</div>
+</div>
+
+{% schema %}
+{
+	"name": "t:sections.testimonial-with-carousel.name",
+	"tag": "section",
+	"class": "testimonial-with-carousel-section",
+	"disabled_on": {
+		"groups": ["header", "footer"]
+	},
+	"settings": [
+		{
+			"type": "color_scheme",
+			"id": "color_scheme",
+			"label": "t:settings_schema.colors.label",
+			"default": "scheme-1"
+		},
+		{
+			"type": "checkbox",
+			"id": "full",
+			"default": true,
+			"label": "t:general.layout.full.label"
+		},
+		{
+			"type": "select",
+			"id": "height",
+			"default": "medium",
+			"options": [
+				{
+					"value": "small",
+					"label": "t:sections.slider.settings.height.option_2.label"
+				},
+				{
+					"value": "medium",
+					"label": "t:sections.slider.settings.height.option_3.label"
+				},
+				{
+					"value": "large",
+					"label": "t:sections.slider.settings.height.option_4.label"
+				}
+			],
+			"label": "t:general.dimensions.height.label"
+		},
+		{
+			"type": "header",
+			"content": "t:sections.testimonial-with-carousel.settings.content_settings.label"
+		},
+		{
+			"type": "color_scheme",
+			"id": "content_color_scheme",
+			"label": "t:settings_schema.colors.label",
+			"default": "scheme-2"
+		},
+		{
+			"type": "header",
+			"content": "t:general.padding.header_padding.content"
+		},
+		{
+			"type": "range",
+			"id": "padding_top",
+			"min": 0,
+			"max": 100,
+			"step": 1,
+			"default": 0,
+			"unit": "px",
+			"label": "t:general.padding.top.label"
+		},
+		{
+			"type": "range",
+			"id": "padding_bottom",
+			"min": 0,
+			"max": 100,
+			"step": 1,
+			"default": 0,
+			"unit": "px",
+			"label": "t:general.padding.bottom.label"
+		},
+		{
+			"type": "paragraph",
+			"content": "t:general.padding.paragraph_mobile.content"
+		},
+		{
+			"type": "range",
+			"id": "padding_top_mobile",
+			"min": 0,
+			"max": 100,
+			"step": 1,
+			"default": 0,
+			"unit": "px",
+			"label": "t:general.padding.top.label"
+		},
+		{
+			"type": "range",
+			"id": "padding_bottom_mobile",
+			"min": 0,
+			"max": 100,
+			"step": 1,
+			"default": 0,
+			"unit": "px",
+			"label": "t:general.padding.bottom.label"
+		}
+	],
+	"blocks": [
+		{
+			"type": "@app"
+		},
+		{
+			"type": "slide",
+			"name": "t:sections.slider.blocks.slider.name",
+			"limit": 5,
+			"settings": [
+				{
+					"type": "image_picker",
+					"id": "image",
+					"label": "t:sections.slider.blocks.slider.settings.image.label"
+				},
+				{
+					"type": "image_picker",
+					"id": "mobile_image",
+					"label": "t:sections.slider.blocks.slider.settings.mobile_image.label"
+				},
+				{
+					"type": "header",
+					"content": "t:general.typography.text.label"
+				},
+				{
+					"type": "inline_richtext",
+					"id": "caption",
+					"default": "Image caption",
+					"label": "t:general.typography.caption.label"
+				},
+				{
+					"type": "inline_richtext",
+					"id": "heading",
+					"default": "Image slide",
+					"label": "t:general.typography.heading.label"
+				},
+				{
+					"type": "select",
+					"id": "heading_size",
+					"options": [
+						{
+							"value": "h3",
+							"label": "t:general.typography.heading_size.option_1.label"
+						},
+						{
+							"value": "h2",
+							"label": "t:general.typography.heading_size.option_2.label"
+						},
+						{
+							"value": "h1",
+							"label": "t:general.typography.heading_size.option_3.label"
+						}
+					],
+					"default": "h2",
+					"label": "t:general.typography.heading_size.label"
+				},
+				{
+					"type": "richtext",
+					"id": "text",
+					"default": "<p>Tell your brand's story through images</p>",
+					"label": "t:general.typography.description.label"
+				},
+				{
+					"type": "text",
+					"id": "button",
+					"default": "Button label",
+					"label": "t:general.typography.button_label.label"
+				},
+				{
+					"type": "url",
+					"id": "link",
+					"label": "t:general.typography.button_link.label"
+				},
+				{
+					"type": "select",
+					"id": "button_style",
+					"options": [
+						{
+							"value": "primary",
+							"label": "t:general.typography.style.option_1.label"
+						},
+						{
+							"value": "secondary",
+							"label": "t:general.typography.style.option_2.label"
+						}
+					],
+					"default": "primary",
+					"label": "t:general.typography.style.label"
+				},
+				{
+					"type": "select",
+					"id": "star_reviews",
+					"default": "5",
+					"label": "t:sections.testimonial.settings.star_reviews.label",
+					"options": [
+						{
+							"value": "5",
+							"label": "t:sections.testimonial.settings.star_reviews.star_5.label"
+						},
+						{
+							"value": "4",
+							"label": "t:sections.testimonial.settings.star_reviews.star_4.label"
+						},
+						{
+							"value": "3",
+							"label": "t:sections.testimonial.settings.star_reviews.star_3.label"
+						},
+						{
+							"value": "2",
+							"label": "t:sections.testimonial.settings.star_reviews.star_2.label"
+						},
+						{
+							"value": "1",
+							"label": "t:sections.testimonial.settings.star_reviews.star_1.label"
+						},
+						{
+							"value": "0",
+							"label": "t:sections.testimonial.settings.star_reviews.none.label"
+						}
+					]
+				},
+				{
+					"type": "inline_richtext",
+					"id": "body_text",
+					"default": "Add customer reviews and testimonials to showcase your store’s happy customers.",
+					"label": "t:general.typography.text.label"
+				},
+				{
+					"type": "header",
+					"content": "t:sections.testimonial.settings.author.label"
+				},
+				{
+					"type": "image_picker",
+					"id": "author_image",
+					"label": "t:sections.testimonial.settings.author_image.label",
+				},
+				{
+					"type": "inline_richtext",
+					"id": "author_name",
+					"default": "<b>Author's name</b>",
+					"label": "t:sections.testimonial.settings.author.label"
+				},
+				{
+					"type": "inline_richtext",
+					"id": "author_comment",
+					"default": "Author's comment",
+					"label": "t:sections.testimonial.settings.author_comment.label"
+				},
+				{
+					"type": "checkbox",
+					"id": "author_verified",
+					"default": true,
+					"label": "t:sections.testimonial.settings.author_verified.label"
+				},
+				{
+					"type": "header",
+					"content": "t:settings_schema.product-card.name"
+				},
+				{
+					"type": "product",
+					"id": "product",
+					"label": "t:settings_schema.product.name"
+				},
+				{
+					"type": "header",
+					"content": "t:general.layout.name"
+				},
+				{
+					"type": "select",
+					"id": "position_x",
+					"options": [
+						{
+							"value": "start",
+							"label": "t:sections.slider.blocks.slider.settings.position_x.options__1.label"
+						},
+						{
+							"value": "center",
+							"label": "t:sections.slider.blocks.slider.settings.position_x.options__2.label"
+						},
+						{
+							"value": "end",
+							"label": "t:sections.slider.blocks.slider.settings.position_x.options__3.label"
+						}
+					],
+					"default": "center",
+					"label": "t:sections.slider.blocks.slider.settings.position_x.label",
+					"info": "t:general.layout.alignment.mobile_center.label"
+				},
+				{
+					"type": "select",
+					"id": "position_y",
+					"options": [
+						{
+							"value": "start",
+							"label": "t:sections.slider.blocks.slider.settings.position_y.options__1.label"
+						},
+						{
+							"value": "center",
+							"label": "t:sections.slider.blocks.slider.settings.position_y.options__2.label"
+						},
+						{
+							"value": "end",
+							"label": "t:sections.slider.blocks.slider.settings.position_y.options__3.label"
+						}
+					],
+					"default": "start",
+					"label": "t:sections.slider.blocks.slider.settings.position_y.label",
+					"info": "t:general.layout.alignment.mobile_center.label"
+				},
+				{
+					"type": "select",
+					"id": "text_align",
+					"options": [
+						{
+							"value": "left",
+							"label": "t:general.layout.alignment.option_1.label"
+						},
+						{
+							"value": "center",
+							"label": "t:general.layout.alignment.option_2.label"
+						},
+						{
+							"value": "right",
+							"label": "t:general.layout.alignment.option_3.label"
+						}
+					],
+					"default": "left",
+					"label": "t:general.layout.alignment.label"
+				},
+				{
+					"type": "header",
+					"content": "t:general.layout.mobile_layout.content"
+				},
+				{
+					"type": "select",
+					"id": "mobile_text_align",
+					"options": [
+						{
+							"value": "left",
+							"label": "t:general.layout.mobile_alignment.option_1.label"
+						},
+						{
+							"value": "center",
+							"label": "t:general.layout.mobile_alignment.option_2.label"
+						},
+						{
+							"value": "right",
+							"label": "t:general.layout.mobile_alignment.option_3.label"
+						}
+					],
+					"default": "left",
+					"label": "t:general.layout.mobile_alignment.label"
+				},
+				{
+					"type": "select",
+					"id": "description_line",
+					"options": [
+						{
+							"value": "1",
+							"label": "t:sections.slider.blocks.slider.settings.description_line.option_1.label"
+						},
+						{
+							"value": "2",
+							"label": "t:sections.slider.blocks.slider.settings.description_line.option_2.label"
+						},
+						{
+							"value": "3",
+							"label": "t:sections.slider.blocks.slider.settings.description_line.option_3.label"
+						}
+					],
+					"default": "2",
+					"label": "t:sections.slider.blocks.slider.settings.description_line.label"
+				}
+			]
+		}
+	],
+	"presets": [
+		{
+			"name": "t:sections.testimonial-with-carousel.name",
+			"blocks": [
+				{
+					"type": "slide"
+				},
+				{
+					"type": "slide"
+				},
+				{
+					"type": "slide"
+				}
+			]
+		}
+	]
+}
+{% endschema %}

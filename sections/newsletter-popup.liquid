@@ -1,0 +1,210 @@
+{%- liquid
+	assign delay_time        = section.settings.delay_time | times: 1000
+	assign form_class        = 'newsletter-popup-form'
+	assign heading           = section.settings.	heading
+	assign description       = section.settings.description
+	assign email_adress      = section.settings.email_adress
+	assign logo_image        = settings.logo_image
+	assign logo_mobile_image = settings.logo_mobile_image
+	assign image             = section.settings.image
+
+	if section.settings.first_visit
+		assign form_class = 'newsletter-popup-form first-visit'
+	endif
+-%}
+
+{%- capture header_logo -%}
+	<div class="site-branding-wrap h6">
+		<a class="site-branding" href="{{ routes.root_url }}" aria-label="{{- 'general.text.link' | t -}}">
+			{% if section.settings.custom_logo != blank %}
+				<span class="site-branding-inner custom">
+					{{ section.settings.custom_logo | image_url: width: 400 | image_tag: width: section.settings.custom_logo.width, height: section.settings.custom_logo.height, loading: 'lazy', class: 'site-branding-image' }}
+				</span>
+			{% else %}
+				<span class="site-branding-inner{% if logo_mobile_image != blank %} hidden-tablet hidden-mobile{% endif %}">
+					{%- liquid
+						if logo_image != blank
+							echo logo_image | image_url: width: 400 | image_tag: width: 60, height: 26, loading: 'lazy', class: 'site-branding-image'
+						else
+							echo shop.name
+						endif
+					-%}
+				</span>
+
+				{%- if logo_mobile_image != blank -%}
+					<span class="hidden-desktop">
+						{{- logo_mobile_image | image_url: width: 400 | image_tag: width: 60, height: 26, loading: 'lazy', class: 'site-branding-image' -}}
+					</span>
+				{%- endif -%}
+
+				{%- if logo_image != blank -%}
+					<span class="sr-only">{{- shop.name -}}</span>
+				{%- endif -%}
+			{%- endif -%}
+		</a>
+	</div>
+{%- endcapture -%}
+
+{%- form 'customer', id: nil, class: form_class, data-delay: delay_time -%}
+	<input type="hidden" name="contact[tags]" value="newsletter">
+
+	<div class="newsletter-inner color-{{ section.settings.color_scheme }}">
+		<span class="close-button close-popup hidden-desktop hidden-tablet">{%- render 'icon', code: 'close' -%}</span>
+
+		<div class="newsletter-content">
+			<div class="popup-item">
+				<div class="logo-content">
+					{%- liquid
+						# Logo
+						echo header_logo
+					-%}
+				</div>
+
+				{%- if heading != blank -%}
+					<div class="heading">{{- section.settings.heading -}}</div>
+				{%- endif -%}
+
+				{%- if description != blank -%}
+					<div class="description rte">{{- description -}}</div>
+				{%- endif -%}
+
+				<div class="field-form">
+					<label for="{{ section.id }}-field" class="field-input-wrapper">
+						<span class="sr-only">{{- 'templates.form.email' | t -}}</span>
+
+						<input class="field-input"
+							id="{{ section.id }}-field"
+							type="email"
+							name="contact[email]"
+							value="{{ form.email }}"
+							aria-required="true"
+							autocorrect="off"
+							autocapitalize="off"
+							autocomplete="email"
+							{% if form.errors %}
+								autofocus
+								aria-invalid="true"
+								aria-describedby="contact-error"
+							{% elsif form.posted_successfully? %}
+								aria-describedby="contact-success"
+							{% endif %}
+							placeholder="{{ email_adress }}"
+							pattern="^([a-zA-Z0-9_\-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([a-zA-Z0-9\-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$"
+							required />
+					</label>
+
+					<button type="submit" class="button primary-button add-to-cart-button" title ="{{ 'general.unity.prev' | t }}-nlt" aria-label="{{ 'general.unity.prev' | t }}nlt" id="{{ 'general.unity.prev' | t }}nlt" aria-labelledby="{{ 'general.unity.prev' | t }}nlt">
+						{%- render 'icon', code: 'email-form' -%}
+					</button>
+				</div>
+			</div>
+		</div>
+
+		<div class="newsletter-image">
+			<div class="popup-media popup-item">
+				<div class="popup-media-inner{% if settings.image_lazy and image != blank %} lazy-image{% endif %}">
+					{%- liquid
+						if image != blank
+							render 'lazy-image', image: image, width: 960
+						else
+							render 'icon', code: 'placeholder'
+						endif
+					-%}
+				</div>
+			</div>
+			<span class="close-button close-popup hidden-mobile">{%- render 'icon', code: 'close' -%}</span>
+		</div>
+
+		{%- if form.errors -%}
+			<small class="message error-message" id="{{ section.id }}-contact-error">
+				{%- liquid
+					render 'icon', code: 'error'
+
+					echo form.errors.translated_fields['email'] | capitalize
+					echo form.errors.messages['email']
+				-%}
+			</small>
+		{%- endif -%}
+
+		{%- if form.posted_successfully? -%}
+			<h3 class="message success-message" id="{{ section.id }}-contact-success" tabindex="-1" autofocus>
+				{%- liquid
+					render 'icon', code: 'success'
+
+					echo 'newsletter.success' | t
+				-%}
+			</h3>
+		{%- endif -%}
+	</div>
+{%- endform -%}
+
+{% schema %}
+{
+	"name": "t:sections.newsletter-popup.name",
+	"tag": "section",
+	"class": "newsletter-popup-section closed",
+	"limit": 1,
+	"enabled_on": {
+		"groups": ["footer"]
+	},
+	"settings": [
+		{
+			"type": "color_scheme",
+			"id": "color_scheme",
+			"label": "t:settings_schema.colors.label",
+			"default": "scheme-1"
+		},
+		{
+			"type": "image_picker",
+			"id": "custom_logo",
+			"label": "t:general.image.custom"
+		},
+		{
+			"type": "checkbox",
+			"id": "first_visit",
+			"label": "t:sections.newsletter-popup.settings.first_visit.label",
+			"info": "t:sections.newsletter-popup.settings.first_visit.info",
+			"default": true
+		},
+		{
+			"type": "range",
+			"id": "delay_time",
+			"label": "t:sections.newsletter-popup.settings.delay_time.label",
+			"info": "t:sections.newsletter-popup.settings.delay_time.info",
+			"default": 3,
+			"min": 0,
+			"max": 10,
+			"step": 1,
+			"unit": "s"
+		},
+		{
+			"type": "image_picker",
+			"id": "image",
+			"label": "t:general.image.label"
+		},
+		{
+			"type": "richtext",
+			"id": "heading",
+			"default": "<h4>Heading</h4>",
+			"label": "t:general.typography.heading.label"
+		},
+		{
+			"type": "richtext",
+			"id": "description",
+			"default": "<p>Be the first to know about new collections and exclusive offers.</p>",
+			"label": "t:general.typography.description.label"
+		},
+		{
+			"type": "text",
+			"id": "email_adress",
+			"default": "Enter your email address",
+			"label": "t:sections.newsletter-popup.settings.placeholder.label"
+		}
+	],
+	"presets": [
+		{
+			"name": "t:sections.newsletter-popup.name"
+		}
+	]
+}
+{% endschema %}

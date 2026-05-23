@@ -1,0 +1,375 @@
+{%- liquid
+	assign section_id     = '#shopify-section-' | append: section.id
+	assign animation      = settings.section_animation
+	assign full           = section.settings.full
+	assign caption        = section.settings.caption
+	assign heading        = section.settings.heading_text
+	assign heading_size   = section.settings.heading_size
+	assign button         = section.settings.button_label
+	assign columns        = section.settings.columns
+	assign columns_mobile = section.settings.columns_mobile
+	assign align          = section.settings.align
+-%}
+
+<style>
+	{{ section_id }} .section-wrapper {
+		padding-top: {{ section.settings.padding_top_mobile }}px;
+		padding-bottom: {{ section.settings.padding_bottom_mobile }}px;
+	}
+
+	@media (min-width: 992px) {
+		{{ section_id }} .section-wrapper {
+			padding-top: {{ section.settings.padding_top }}px;
+			padding-bottom: {{ section.settings.padding_bottom }}px;
+		}
+	}
+</style>
+
+<div class="section-wrapper color-{{ section.settings.color_scheme }}">
+	<div class="{% if full %}stretch-section stretch-padding{% else %}container{% endif %}">
+		<div class="multicolumn-wrapper">
+			{%- if caption != blank or heading != blank -%}
+				<div class="multicolumn-title">
+					{%- if caption != blank -%}
+						<div class="sub-heading rte">{{- caption -}}</div>
+					{%- endif -%}
+
+					{%- if heading != blank -%}
+						<h2 class="heading rte {{ heading_size }}">{{- heading -}}</h2>
+					{%- endif -%}
+				</div>
+			{%- endif -%}
+
+			<div class="multicolumn-inner grid grid-{{ columns }}{% unless section.settings.mobile_swipe %} grid-tablet-{{ columns_mobile }} grid-mobile-{{ columns_mobile }}{% endunless %}" role="list" data-column="{{ columns_mobile }}">
+				{%- for block in section.blocks -%}
+					<div class="grid-item column-item color-{{ section.settings.columns_color_scheme }} text-{{ align }} border-large{% if animation %} scroll-trigger{% endif %}" {{ block.shopify_attributes }}>
+						{%- case block.type -%}
+							{%- when '@app' -%}
+								{%- render block -%}
+
+							{%- when 'item' -%}
+								{%- assign image = block.settings.column_img -%}
+
+								{% if image != blank %}
+									<div class="image-wrapper flex-justify-{% if align == 'left' %}start{% elsif  align == 'right' %}end{% else %}center{% endif %}">
+										<div class="{{ section.settings.image_width }}-width">
+											<div class="image-media {{ section.settings.image_ratio }}-media">
+												<div class="column-image border-large{% if settings.image_lazy and image != blank %} lazy-image{% endif %}">
+													{%- render 'lazy-image', image: image, width: image.width, height: image.height -%}
+												</div>
+											</div>
+										</div>
+									</div>
+								{% endif %}
+
+								{% if block.settings.text != blank %}
+									<div class="column-heading h4 rte">{{- block.settings.text -}}</div>
+								{% endif %}
+
+								{% if block.settings.description != blank %}
+									<div class="column-description rte">{{- block.settings.description -}}</div>
+								{% endif %}
+
+								{%- if block.settings.button_label != blank -%}
+									<a class="button primary-button" href="{{ block.settings.button_url | default: '#' }}" aria-label="{{- 'general.text.link' | t -}}">
+										{{- block.settings.button_label | escape -}}
+									</a>
+								{%- endif -%}
+						{%- endcase -%}
+					</div>
+				{%- endfor -%}
+			</div>
+
+
+			{%- if button != blank -%}
+				<div class="button-wrapper">
+					<a class="button primary-button" href="{{ section.settings.button_link | default: '#' }}" aria-label="{{- 'general.text.link' | t -}}">
+						{{- button -}}
+					</a>
+				</div>
+			{%- endif -%}
+		</div>
+	</div>
+</div>
+
+{% schema %}
+{
+	"name": "t:sections.multicolumn.name",
+	"class": "multicolumn-section",
+	"tag": "section",
+	"disabled_on": {
+		"groups": ["header", "footer"]
+	},
+	"settings": [
+		{
+			"type": "checkbox",
+			"id": "full",
+			"default": false,
+			"label": "t:general.layout.full.label"
+		},
+		{
+			"type": "color_scheme",
+			"id": "color_scheme",
+			"label": "t:settings_schema.colors.label",
+			"default": "scheme-1"
+		},
+		{
+			"type": "inline_richtext",
+			"id": "caption",
+			"label": "t:general.typography.caption.label"
+		},
+		{
+			"type": "inline_richtext",
+			"id": "heading_text",
+			"default": "Multicolumn",
+			"label": "t:general.typography.heading.label"
+		},
+		{
+			"type": "select",
+			"id": "heading_size",
+			"options": [
+				{
+					"value": "h4",
+					"label": "t:general.typography.heading_size.option_1.label"
+				},
+				{
+					"value": "h3",
+					"label": "t:general.typography.heading_size.option_2.label"
+				},
+				{
+					"value": "h2",
+					"label": "t:general.typography.heading_size.option_3.label"
+				}
+			],
+			"default": "h3",
+			"label": "t:general.typography.heading_size.label"
+		},
+		{
+			"type": "text",
+			"id": "button_label",
+			"default": "Button label",
+			"label": "t:general.typography.button_label.label"
+		},
+		{
+			"type": "url",
+			"id": "button_link",
+			"label": "t:general.typography.button_link.label"
+		},
+		{
+			"type": "header",
+			"content": "t:general.slider.column.label"
+		},
+		{
+			"type": "color_scheme",
+			"id": "columns_color_scheme",
+			"label": "t:settings_schema.colors.label",
+			"default": "scheme-2"
+		},
+		{
+			"type": "select",
+			"id": "align",
+			"options": [
+				{
+					"value": "left",
+					"label": "t:general.layout.alignment.option_1.label"
+				},
+				{
+					"value": "center",
+					"label": "t:general.layout.alignment.option_2.label"
+				},
+				{
+					"value": "right",
+					"label": "t:general.layout.alignment.option_3.label"
+				}
+			],
+			"default": "left",
+			"label": "t:general.layout.alignment.label"
+		},
+		{
+			"type": "select",
+			"id": "image_width",
+			"options": [
+				{
+					"value": "adapt",
+					"label": "t:general.image.width.option_1.label"
+				},
+				{
+					"value": "third",
+					"label": "t:general.image.width.option_2.label"
+				},
+				{
+					"value": "half",
+					"label": "t:general.image.width.option_3.label"
+				},
+				{
+					"value": "full",
+					"label": "t:general.image.width.option_4.label"
+				}
+			],
+			"default": "full",
+			"label": "t:general.image.width.label"
+		},
+		{
+			"type": "select",
+			"id": "image_ratio",
+			"options": [
+				{
+					"value": "adapt",
+					"label": "t:general.image.ratio.option_1.label"
+				},
+				{
+					"value": "portrait",
+					"label": "t:general.image.ratio.option_2.label"
+				},
+				{
+					"value": "square",
+					"label": "t:general.image.ratio.option_3.label"
+				},
+				{
+					"value": "circle",
+					"label": "t:general.image.ratio.option_4.label"
+				}
+			],
+			"default": "adapt",
+			"label": "t:general.image.ratio.label"
+		},
+		{
+			"type": "range",
+			"id": "columns",
+			"min": 1,
+			"max": 6,
+			"step": 1,
+			"default": 3,
+			"label": "t:sections.multicolumn.settings.columns.label"
+		},
+		{
+			"type": "header",
+			"content": "t:sections.multicolumn.settings.mobile_layout.content"
+		},
+		{
+			"type": "select",
+			"id": "columns_mobile",
+			"options": [
+				{
+					"value": "1",
+					"label": "t:sections.multicolumn.settings.columns_mobile.options_1.label"
+				},
+				{
+					"value": "2",
+					"label": "t:sections.multicolumn.settings.columns_mobile.options_2.label"
+				}
+			],
+			"default": "1",
+			"label": "t:sections.multicolumn.settings.columns_mobile.label"
+		},
+		{
+			"type": "checkbox",
+			"id": "mobile_swipe",
+			"default": false,
+			"label": "t:sections.multicolumn.settings.mobile_swipe.label"
+		},
+		{
+			"type": "header",
+			"content": "t:general.padding.header_padding.content"
+		},
+		{
+			"type": "range",
+			"id": "padding_top",
+			"min": 0,
+			"max": 100,
+			"step": 1,
+			"default": 50,
+			"unit": "px",
+			"label": "t:general.padding.top.label"
+		},
+		{
+			"type": "range",
+			"id": "padding_bottom",
+			"min": 0,
+			"max": 100,
+			"step": 1,
+			"default": 50,
+			"unit": "px",
+			"label": "t:general.padding.bottom.label"
+		},
+		{
+			"type": "paragraph",
+			"content": "t:general.padding.paragraph_mobile.content"
+		},
+		{
+			"type": "range",
+			"id": "padding_top_mobile",
+			"min": 0,
+			"max": 100,
+			"step": 1,
+			"default": 20,
+			"unit": "px",
+			"label": "t:general.padding.top.label"
+		},
+		{
+			"type": "range",
+			"id": "padding_bottom_mobile",
+			"min": 0,
+			"max": 100,
+			"step": 1,
+			"default": 20,
+			"unit": "px",
+			"label": "t:general.padding.bottom.label"
+		}
+	],
+	"blocks": [
+		{
+			"type": "@app"
+		},
+		{
+			"type": "item",
+			"name": "t:sections.multicolumn.blocks.item.name",
+			"settings": [
+				{
+					"type":"image_picker",
+					"id":"column_img",
+					"label": "t:general.image.label"
+				},
+				{
+					"type": "inline_richtext",
+					"id": "text",
+					"default": "Column",
+					"label": "t:general.typography.heading.label"
+				},
+				{
+					"type": "richtext",
+					"id": "description",
+					"default": "<p>Pair text with an image to focus on your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.</p>",
+					"label": "t:general.typography.description.label"
+				},
+				{
+					"type": "text",
+					"id": "button_label",
+					"label": "t:general.typography.button_label.label"
+				},
+				{
+					"type": "url",
+					"id": "button_url",
+					"label": "t:general.typography.button_link.label"
+				}
+			]
+		}
+	],
+	"presets": [
+		{
+			"name": "t:sections.multicolumn.name",
+			"blocks": [
+				{
+					"type": "item"
+				},
+				{
+					"type": "item"
+				},
+				{
+					"type": "item"
+				}
+			]
+		}
+	]
+}
+{% endschema %}

@@ -1,0 +1,114 @@
+{%- liquid
+	assign recent_posts_heading      = section.settings.recent_posts_heading
+-%}
+
+<div class="recent-posts">
+	<div class="heading-wrap{% if recent_posts_heading != blank %} has-heading{% endif %}">
+		{%- if recent_posts_heading != blank -%}
+			<h2 class="heading">{{- recent_posts_heading -}}</h2>
+		{%- endif -%}
+
+		<div class="unity-arrows hidden-mobile">
+			<button class="unity-button unity-button-prev" title ="{{ 'general.unity.prev' | t }}-recently" aria-label="{{ 'general.unity.prev' | t }}-recently" id="{{ 'general.unity.prev' | t }}-recently" aria-labelledby="{{ 'general.unity.prev' | t }}-recently" disabled>
+				{%- render 'icon', code: 'chevron-left' -%}
+			</button>
+
+			<button class="unity-button unity-button-next" title ="{{ 'general.unity.next' | t }}-recently" aria-label="{{ 'general.unity.next' | t }}-recently" id="{{ 'general.unity.next' | t }}-recently" aria-labelledby="{{ 'general.unity.next' | t }}-recently" disabled>
+				{%- render 'icon', code: 'chevron-right' -%}
+			</button>
+		</div>
+	</div>
+
+	<div class="recent-posts-content">
+		<unity-slider class="unity-slider">
+			<template data-options>
+				{
+					"align": "start",
+					"_autoheight": true,
+					"_fade": false,
+					"_prevBtn": "{{ section_id }} .recent-posts .unity-button-prev",
+					"_nextBtn": "{{ section_id }} .recent-posts .unity-button-next"
+				}
+			</template>
+
+			<div class="unity-slider-viewport">
+				<div class="unity-slider-container">
+					{%- assign articleid = article.id -%}
+					{%- for article in blog.articles limit: total -%}
+						{% if article.id != articleid %}
+							<div class="unity-slide" data-id="{{ block.id }}" data-{{ forloop.index0 }} {% if request.design_mode %} data-index="{{ forloop.index0 }}"{% endif %} {{ block.shopify_attributes }}>
+								<article class="article-card border-large color-{{ section.settings.recent_posts_color_scheme }}">
+									{%- liquid
+										assign article_image = article.image
+									-%}
+
+									<div class="article-media-wrap border-large square-media{% unless article_image %} no-media{% endunless %}">
+										{%- if article_image -%}
+											<a href="{{ article.url }}" aria-label="{{- 'general.text.link' | t -}}" class="article-image border-large{% if settings.image_lazy and article_image %} lazy-image{% endif %}">
+												{%- liquid
+													assign image_load = 'eager'
+
+													if forloop.index > 1
+														assign image_load = 'lazy'
+													endif
+
+													render 'lazy-image', image: article_image, width: 740, lazy: image_load
+												-%}
+											</a>
+										{%- endif -%}
+
+										<a href="{{ blog.url }}" aria-label="{{- 'general.text.link' | t -}}" class="article-blog hidden-desktop hidden-tablet text-uppercase border-small">
+											{{- blog.title | escape -}}
+										</a>
+									</div>
+
+									<div class="article-info-wrapper">
+										<div class="article-info">
+											<div class="article-meta text-uppercase">
+												{% comment %} Date {% endcomment %}
+												<span class="article-date mitem">
+													{{- article.published_at | time_tag: format: 'short_month_day_year' -}}
+												</span>
+
+												<span class="separator">/</span>
+
+												{% comment %} Comment {% endcomment %}
+												{%- if blog.comments_enabled? -%}
+													<a class="article-comment mitem link-underline-transparent" href="{{ article.comment_post_url }}" aria-label="{{- 'general.text.link' | t -}}">{{ 'blogs.article.comments' | t: count: article.comments_count }}</a>
+												{%- endif -%}
+											</div>
+
+											{% comment %} Title {% endcomment %}
+											<h3 class="article-title h4">
+												<a href="{{ article.url }}" aria-label="{{- 'general.text.link' | t -}}" class="link-underline-transparent">
+													{{- article.title | escape  -}}
+												</a>
+											</h3>
+										</div>
+
+										<div class="article-info-bottom">
+											{% comment %} Blog {% endcomment %}
+											<a href="{{ blog.url }}" aria-label="{{- 'general.text.link' | t -}}" class="article-blog text-uppercase border-small">
+												{{- blog.title | escape -}}
+											</a>
+
+											{% comment %} Read more {% endcomment %}
+											<a class="readmore-btn" href="{{ article.url }}" aria-label="{{- 'general.text.link' | t -}}">
+												<span class="button-icon-wrapper hidden-mobile">
+													{%- render 'icon', code: 'arrow-circle-up-right' -%}
+													{%- render 'icon', code: 'arrow-circle-up-right' -%}
+												</span>
+
+												<span class="readmore-text text-uppercase link-underline hidden-desktop hidden-tablet">{{- 'blogs.article.read_more' | t -}}</span>
+											</a>
+										</div>
+									</div>
+								</article>
+							</div>
+						{%- endif -%}
+					{%- endfor -%}
+				</div>
+			</div>
+		</unity-slider>
+	</div>
+</div>

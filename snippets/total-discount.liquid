@@ -1,0 +1,34 @@
+{% comment %}
+	Renders total discount (savings)
+
+	Logic:
+	- Line-item discount: original_line_price - final_line_price
+	- Cart-level discount: total_allocated_amount from cart_level_discount_applications
+	- Avoid double-counting
+{% endcomment %}
+
+{%- liquid
+	assign line_item_discount = 0
+	assign cart_level_discount = 0
+	assign total_discount = 0
+
+	for line_item in items
+		assign line_item_discount = line_item_discount | plus: line_item.original_line_price | minus: line_item.final_line_price
+	endfor
+
+	for discount_application in cart.cart_level_discount_applications
+		assign cart_level_discount = cart_level_discount | plus: discount_application.total_allocated_amount
+	endfor
+
+	assign total_discount = line_item_discount | plus: cart_level_discount
+-%}
+
+{%- if total_discount > 0 -%}
+	{%- capture amount_saved -%}
+		<span class="cart-amount-total">{%- render 'get-price', price: total_discount -%}</span>
+	{%- endcapture -%}
+
+	<p class="cart-amount-saved">
+		{{- 'cart.general.savings_html' | t: savings: amount_saved -}}
+	</p>
+{%- endif -%}

@@ -1,0 +1,48 @@
+{%- liquid
+	if localization.available_countries.size > 1
+		assign country_selector = true
+	endif
+
+	if localization.available_languages.size > 1
+		assign language_selector = true
+	endif
+-%}
+
+{%- if language_selector or country_selector -%}
+	<div class="localization-form-wrapper">
+		<div class="localization-form-inner">
+			<button type="button" class="button close-button">{%- render 'icon', code: 'close' -%}</button>
+
+			{%- form 'localization', id: nil, class: 'localization-form' -%}
+				{% comment %} Language {% endcomment %}
+					{%- if language_selector -%}
+							<header class="dropdown-content-header">
+								<span class="dropdown-content-title">{{- 'localization.language_label' | t -}}</span>
+							</header>
+
+							<select name="locale_code" class="select-language">
+								{%- for language in localization.available_languages -%}
+									<option value="{{ language.iso_code }}"{% if language.iso_code == localization.language.iso_code %}selected aria-current="true"{% endif %}>
+										{{- language.endonym_name | capitalize -}}
+									</option>
+								{%- endfor -%}
+							</select>
+					{%- endif -%}
+
+					{%- if country_selector -%}
+							<header class="dropdown-content-header">
+								<span class="dropdown-content-title">{{- 'localization.currency_label' | t -}}</span>
+							</header>
+
+							<select name="country_code" class="select-currency">
+								{%- for country in localization.available_countries -%}
+									<option value="{{ country.iso_code }}"{% if country.iso_code == localization.country.iso_code %} selected aria-current="true"{% endif %}>
+										{{ country.iso_code }} ({{ country.currency.iso_code }}{% if country.currency.symbol %} {{ country.currency.symbol }}{%- endif -%})
+									</option>
+								{%- endfor -%}
+							</select>
+					{%- endif -%}
+			{%- endform -%}
+		</div>
+	</div>
+{%- endif -%}

@@ -1,0 +1,15 @@
+# OS generated files #
+######################
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+node_modules/
+*.cache
+package-lock.json
+sublime-gulp.log
+shopify.theme.toml
+.shopify/metafields.json

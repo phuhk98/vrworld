@@ -1,0 +1,88 @@
+.sticky-toolbar-mobile-section {
+	.direction-up & {
+		.toolbar-outer[data-direction="up"] {
+			transform: translateY(0);
+		}
+
+	}
+
+	.direction-down & {
+		.toolbar-outer[data-direction="down"] {
+			transform: translateY(0);
+		}
+
+	}
+
+	.toolbar-outer {
+		position: fixed;
+		z-index: 998;
+		// Under sticky add-to-cart
+		left: 0;
+		right: 0;
+		bottom: 0;
+		transition: transform 0.25s ease;
+		background-color: rgb(var(--background-color));
+		border-top: 0.1rem solid rgba(var(--text-color), 0.1);
+
+		&[data-direction] {
+			transform: translateY(100%);
+		}
+
+	}
+
+	.toolbar-inner {
+		display: flex;
+		justify-content: space-between;
+	}
+
+	.toolbar-item {
+		position: relative;
+		display: inline-flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+		cursor: pointer;
+		color: rgb(var(--text-color));
+	}
+
+	.toolbar-icon {
+		position: relative;
+		margin-bottom: 0.8rem;
+
+		svg {
+			width: 1.8rem;
+			height: 1.8rem;
+		}
+
+	}
+
+	.label {
+		line-height: 1;
+		font-weight: 500;
+	}
+
+	.item-count {
+		position: absolute;
+		font-size: 0.9rem;
+		left: 60%;
+		top: -20%;
+		background-color: rgb(var(--text-color));
+		border-radius: 5rem;
+		color: rgb(var(--background-color));
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		min-height: 1.6rem;
+		min-width: 1.6rem;
+		padding: 0 0.5em;
+		white-space: nowrap;
+		line-height: 1;
+		z-index: 1;
+
+		&:empty {
+			display: none;
+		}
+
+	}
+
+}

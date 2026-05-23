@@ -1,0 +1,421 @@
+{%- liquid
+	assign section_id   = '#shopify-section-' | append: section.id
+	assign animation    = settings.section_animation
+	assign full         = section.settings.full
+	assign sub_heading  = section.settings.sub_heading
+	assign heading      = section.settings.heading
+	assign columns      = section.settings.columns
+	assign heading_size = section.settings.heading_size
+	assign total        = section.settings.total
+-%}
+
+<style>
+	{{ section_id }} .featured-collection-tab {
+		padding-top: {{ section.settings.padding_top_mobile }}px;
+		padding-bottom: {{ section.settings.padding_bottom_mobile }}px;
+	}
+
+	{{ section_id }} .unity-slider {
+		--slide-size: 93%;
+	}
+
+	@media (min-width: 992px) {
+		{{ section_id }} .featured-collection-tab {
+			padding-top: {{ section.settings.padding_top }}px;
+			padding-bottom: {{ section.settings.padding_bottom }}px;
+		}
+
+		{{ section_id }} .unity-slider {
+			--slide-size: calc( 100% / {{ columns  }});
+			--slide-spacing: 0.8rem;
+		}
+	}
+</style>
+
+{%- if section.blocks.size > 0 -%}
+	<div class="featured-collection-tab color-{{ section.settings.color_scheme }}">
+		<div class="{% if full %}stretch-section stretch-padding{% else %} container{% endif %}">
+			<div class="featured-collection-tabs tabs">
+				{%- for block in section.blocks -%}
+					{%- liquid
+						assign class_tab = section.blocks.size
+
+						if class_tab == 1
+							assign class_tab = 'single'
+						endif
+					-%}
+				{%- endfor -%}
+
+				{%- if sub_heading != blank -%}
+					<div class="sub-heading">
+						{{ sub_heading }}
+					</div>
+				{%- endif -%}
+
+				{%- if heading != blank -%}
+					<div class="heading {{ heading_size }}">
+						{{ heading }}
+					</div>
+				{%- endif -%}
+
+				<div class="tabs-head tabs-{% echo class_tab %}">
+					<div class="tabs-head-desktop{% if animation %} scroll-trigger{% endif %}">
+						{%- for block in section.blocks -%}
+							<button class="tab-head{% if forloop.index == 1 %} active{% endif %}" data-index="{{ forloop.index }}" {{ block.shopify_attributes }}{% if request.design_mode %} data-id="{{ block.id }}"{% endif %}>
+								{%- liquid
+									assign collection = block.settings.collection
+
+									if block.settings.name != blank
+										echo block.settings.name | escape
+									elsif collection != blank
+										echo collection.title
+									else
+										echo 'general.text.tab' | t | append: ' ' | append: forloop.index
+									endif
+								-%}
+							</button>
+						{%- endfor -%}
+					</div>
+
+					<div class="toggle-dropdown tabs-head-mobile tab-{% echo class_tab %}">
+						<div class="dropdown-summary">
+							<span class="summary-info">
+								{%- liquid
+									for block in section.blocks limit: 1
+										assign collection = block.settings.collection
+
+										if block.settings.name != blank
+											echo block.settings.name | escape
+										elsif collection != blank
+											echo collection.title
+										else
+											echo 'general.text.tab' | t | append: ' ' | append: forloop.index
+										endif
+									endfor
+								-%}
+							</span>
+
+							{%- render 'icon', code: 'chevron-down' -%}
+						</div>
+
+						<div class="dropdown-content" role="list">
+							<div class="dropdown-content-inner">
+								<header class="dropdown-content-header">
+									<span class="dropdown-content-title">
+										{%- liquid
+											for block in section.blocks limit: 1
+												assign collection = block.settings.collection
+
+												if block.settings.name != blank
+													echo block.settings.name | escape
+												elsif collection != blank
+													echo collection.title
+												else
+													echo 'general.text.tab' | t | append: ' ' | append: forloop.index
+												endif
+											endfor
+										-%}
+									</span>
+
+									{%- render 'icon', code: 'chevron-down' -%}
+								</header>
+
+								<ul class="content" role="list">
+									{%- for block in section.blocks -%}
+										{%- liquid
+											assign collection = block.settings.collection
+
+											if block.settings.name != blank
+												assign name = block.settings.name | escape
+											elsif collection != blank
+												assign name = collection.title
+											else
+												assign name = 'general.text.tab' | t | append: ' ' | append: forloop.index
+											endif
+										-%}
+
+										<li class="dropdown-item" data-value="{{ name }}" data-index="{{ forloop.index }}">{{- name -}}</li>
+									{%- endfor -%}
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="tabs-content animation-{{ section.settings.animation }}">
+					{%- for block in section.blocks -%}
+						{%- assign collection = block.settings.collection -%}
+							<div class="product-main-slide{% if forloop.index == 1 %} active{% endif %}">
+								<unity-slider class="unity-slider">
+									<template data-options>
+										{
+											{%- if section.settings.loop -%}
+												"loop": true,
+											{%- endif -%}
+
+											{%- if section.settings.autoplay -%}
+												"_autoplay": {{ section.settings.delay | times: 1000 }},
+											{%- endif -%}
+
+											"align": "start",
+											"_autoheight": true,
+											"_fade": false,
+											"speed": 10,
+											"_prevBtn": "{{ section_id }} .unity-button-prev",
+											"_nextBtn": "{{ section_id }} .unity-button-next",
+											"_dotsNode": "{{ section_id }} .unity-dots"
+										}
+									</template>
+
+									<div class="unity-arrows {% if forloop.index == 1 %} active{% endif %}" data-index="{{ forloop.index }}">
+										<button class="unity-button unity-button-prev" title ="{{ 'general.unity.prev' | t }}-feature-clt" aria-label="{{ 'general.unity.prev' | t }}-feature-clt" id="{{ 'general.unity.prev' | t }}-feature-clt" aria-labelledby="{{ 'general.unity.prev' | t }}-feature-clt" disabled>
+											{%- render 'icon', code: 'chevron-left' -%}
+										</button>
+
+										<button class="unity-button unity-button-next" title ="{{ 'general.unity.next' | t }}-feature-clt" aria-label="{{ 'general.unity.next' | t }}-feature-clt" id="{{ 'general.unity.next' | t }}-feature-clt" aria-labelledby="{{ 'general.unity.next' | t }}-feature-clt" disabled>
+											{%- render 'icon', code: 'chevron-right' -%}
+										</button>
+									</div>
+
+									<div class="unity-slider-viewport">
+										<div class="unity-slider-container tab-content{% if forloop.index == 1 %} active{% endif %}" data-id="{{ block.id }}" data-index="{{ forloop.index }}">
+											{%- for product in collection.products limit: total -%}
+												<div class="unity-slide">
+													{%- render 'product-card', product: product -%}
+												</div>
+											{%- else -%}
+												{%- for i in (1..total) -%}
+													<div class="unity-slide">
+														{%- render 'product-card-placeholder', index: forloop.index -%}
+													</div>
+												{%- endfor -%}
+											{%- endfor -%}
+										</div>
+									</div>
+
+									{%- if section.settings.dots -%}
+									<div class="align-dots-center">
+										<div class="unity-dots{% if forloop.index == 1 %} active{% endif %}" data-index="{{ forloop.index }}">
+										</div>
+									</div>
+									{%- endif -%}
+								</unity-slider>
+							</div>
+					{%- endfor -%}
+				</div>
+			</div>
+		</div>
+	</div>
+{%- endif -%}
+
+{% schema %}
+{
+	"name": "t:sections.featured-collection.name",
+	"tag": "section",
+	"class": "featured-collection-section",
+	"disabled_on": {
+		"groups": ["header", "footer"]
+	},
+	"settings": [
+		{
+			"type": "checkbox",
+			"id": "full",
+			"default": false,
+			"label": "t:general.layout.full.label"
+		},
+		{
+			"type": "color_scheme",
+			"id": "color_scheme",
+			"label": "t:settings_schema.colors.label",
+			"default": "scheme-1"
+		},
+		{
+			"type": "header",
+			"content": "t:sections.featured-collection-tabs.settings.header_head.content"
+		},
+		{
+			"type": "text",
+			"id": "sub_heading",
+			"default": "( Browser our products )",
+			"label": "t:general.typography.sub_heading.label"
+		},
+		{
+			"type": "text",
+			"id": "heading",
+			"default": "Most popular",
+			"label": "t:general.typography.heading.label"
+		},
+		{
+			"type": "select",
+			"id": "heading_size",
+			"options": [
+				{
+					"value": "h4",
+					"label": "t:general.typography.heading_size.option_1.label"
+				},
+				{
+					"value": "h3",
+					"label": "t:general.typography.heading_size.option_2.label"
+				},
+				{
+					"value": "h2",
+					"label": "t:general.typography.heading_size.option_3.label"
+				}
+			],
+			"default": "h3",
+			"label": "t:general.typography.heading_size.label"
+		},
+		{
+			"type": "header",
+			"content": "t:sections.featured-collection-tabs.settings.header_content.content"
+		},
+		{
+			"type": "range",
+			"id": "columns",
+			"min": 2,
+			"max": 5,
+			"step": 1,
+			"default": 4,
+			"label": "t:general.slider.column.label"
+		},
+		{
+			"type": "range",
+			"min": 2,
+			"max": 20,
+			"step": 1,
+			"default": 8,
+			"id": "total",
+			"label": "t:general.slider.total.label"
+		},
+		{
+			"type": "header",
+			"content": "t:general.slider.options.label"
+		},
+		{
+			"type": "checkbox",
+			"id": "dots",
+			"default": false,
+			"label": "t:general.slider.show_dots.label"
+		},
+		{
+			"type": "checkbox",
+			"id": "loop",
+			"default": false,
+			"label": "t:general.slider.loop.label"
+		},
+		{
+			"type": "checkbox",
+			"id": "autoplay",
+			"default": false,
+			"label": "t:general.slider.autoplay.label"
+		},
+		{
+			"type": "range",
+			"id": "delay",
+			"min": 2,
+			"max": 20,
+			"step": 1,
+			"default": 2,
+			"unit": "s",
+			"label": "t:general.slider.delay.label"
+		},
+		{
+			"type": "header",
+			"content": "t:general.padding.header_padding.content"
+		},
+		{
+			"type": "range",
+			"id": "padding_top",
+			"min": 0,
+			"max": 100,
+			"step": 1,
+			"default": 50,
+			"unit": "px",
+			"label": "t:general.padding.top.label"
+		},
+		{
+			"type": "range",
+			"id": "padding_bottom",
+			"min": 0,
+			"max": 100,
+			"step": 1,
+			"default": 50,
+			"unit": "px",
+			"label": "t:general.padding.bottom.label"
+		},
+		{
+			"type": "paragraph",
+			"content": "t:general.padding.paragraph_mobile.content"
+		},
+		{
+			"type": "range",
+			"id": "padding_top_mobile",
+			"min": 0,
+			"max": 100,
+			"step": 1,
+			"default": 20,
+			"unit": "px",
+			"label": "t:general.padding.top.label"
+		},
+		{
+			"type": "range",
+			"id": "padding_bottom_mobile",
+			"min": 0,
+			"max": 100,
+			"step": 1,
+			"default": 20,
+			"unit": "px",
+			"label": "t:general.padding.bottom.label"
+		}
+	],
+	"blocks": [
+		{
+			"type": "tab",
+			"name": "t:sections.featured-collection-tabs.blocks.tab.name",
+			"settings": [
+				{
+					"type": "text",
+					"id": "name",
+					"label": "t:general.typography.heading.label"
+				},
+				{
+					"type": "collection",
+					"id": "collection",
+					"label": "t:sections.featured-collection-tabs.blocks.tab.settings.collection.label"
+				}
+			]
+		}
+	],
+	"presets": [
+		{
+			"name": "t:sections.featured-collection.name",
+			"blocks": [
+				{
+					"type": "tab",
+					"settings": {
+						"name": "Tab 1"
+					}
+				},
+				{
+					"type": "tab",
+					"settings": {
+						"name": "Tab 2"
+					}
+				},
+				{
+					"type": "tab",
+					"settings": {
+						"name": "Tab 3"
+					}
+				},
+				{
+					"type": "tab",
+					"settings": {
+						"name": "Tab 4"
+					}
+				}
+			]
+		}
+	]
+}
+{% endschema %}

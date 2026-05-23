@@ -1,0 +1,37 @@
+.richtext-section {
+	.rich-text-blocks {
+		display: flex;
+		flex-direction: column;
+		gap: 2rem;
+	}
+
+	.heading {
+		margin: 0;
+		position: relative;
+		z-index: 5;
+	}
+
+	.text {
+		*:last-child {
+			margin-bottom: 0;
+		}
+
+		@media (max-width: 767px) {
+			br {
+				display: none;
+			}
+		}
+	}
+
+	.text-center .button {
+		margin: auto;
+	}
+
+	.text-right .button {
+		margin-left: auto;
+	}
+
+	.text-left .button {
+		margin-right: auto;
+	}
+}

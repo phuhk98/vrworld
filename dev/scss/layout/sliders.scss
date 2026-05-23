@@ -1,0 +1,238 @@
+// Slider.
+.unity-slider {
+	--slide-spacing: 3.2rem;
+	--slide-size: 100%;
+	position: relative;
+
+	&:not(.initialized) {
+		.unity-arrows,
+		.unity-dots {
+			display: none;
+		}
+	}
+
+	.unity-slider-viewport {
+		overflow: hidden;
+		position: relative;
+	}
+
+	.unity-slider-container {
+		backface-visibility: hidden;
+		display: flex;
+		align-items: flex-start;
+		transition: height 0.2s;
+		touch-action: pan-y;
+		margin-left: calc(var(--slide-spacing) * -1);
+	}
+
+	.unity-slide {
+		flex: 0 0 var(--slide-size);
+		min-width: 0;
+		padding-left: var(--slide-spacing);
+		position: relative;
+	}
+
+	// Arrows & dots
+	.unity-arrows {
+		.unity-button {
+			position: absolute;
+			top: 50%;
+			transform: translateY(-50%);
+			border: 0.2rem solid rgba(var(--text-color));
+			border-radius: 50%;
+			&:hover {
+				background-color: rgb(var(--text-color));
+				color: rgb(var(--background-color));
+				svg {
+					color: rgb(var(--background-color));
+				}
+			}
+			svg {
+				color: rgba(var(--text-color));
+			}
+		}
+
+		.unity-button-prev {
+			left: 1.6rem;
+		}
+
+		.unity-button-next {
+			right: 1.6rem;
+		}
+	}
+
+	.unity-button {
+		-webkit-appearance: none;
+		align-items: center;
+		justify-content: center;
+		background-color: transparent;
+		touch-action: manipulation;
+		display: inline-flex;
+		text-decoration: none;
+		border: 0;
+		padding: 0;
+		margin: 0;
+		z-index: 1;
+		cursor: pointer;
+		width: 5.2rem;
+		height: 5.2rem;
+
+		&:disabled {
+			opacity: 0.3;
+		}
+	}
+
+	.align-dots-center {
+		margin-top: 3rem;
+		display: flex;
+		justify-content: center;
+	}
+
+	.unity-dots {
+		z-index: 1;
+		bottom: 0;
+		position: relative;
+		left: 0;
+		right: 0;
+		display: none;
+		align-items: center;
+
+		&.active {
+			display: flex;
+		}
+
+		.unity-dot {
+			width: 3rem;
+			height: 3rem;
+			padding: 0;
+			color: rgba(var(--button-bg-color), 1);
+			background-color: transparent;
+			display: flex;
+			border-radius: 50%;
+			cursor: pointer;
+			position: relative;
+			border: none;
+			background: transparent;
+
+			@media (max-width: 991px) {
+				width: 2.4rem;
+				height: 2.4rem;
+			}
+
+			&:hover {
+				&::before {
+					opacity: 1;
+					transform: scale(1.2);
+				}
+			}
+
+			&.selected {
+				&::before {
+					transform: scale(0);
+					transition: transform 150ms cubic-bezier(0, 0, 0.25, 1);
+				}
+			}
+
+			&:active {
+				~ .pagination-current {
+					&::before {
+						transform: scale(1.5, 0.8);
+						transition: transform 100ms cubic-bezier(0, 0, 0.5, 1);
+					}
+				}
+			}
+
+			&:before {
+				position: absolute;
+				content: '';
+				top: 0;
+				left: 0;
+				right: 0;
+				bottom: 0;
+				width: 1.4rem;
+				height: 1.4rem;
+				margin: auto;
+				border: 2px solid rgba(var(--text-color), 1);
+				border-radius: 50%;
+				transform: scale(1);
+				transition:
+					transform 120ms cubic-bezier(0.25, 0.1, 0.25, 1),
+					opacity 40ms cubic-bezier(0.25, 0.5, 0, 1);
+				opacity: 1;
+			}
+
+			&.selected:before {
+				transform: scale(0);
+				transition: transform 150ms cubic-bezier(0, 0, 0.25, 1);
+				background-color: rgba(var(--button-bg-color), 1);
+			}
+
+			&.selected {
+				.pagination-current {
+					transform: scale(1);
+				}
+			}
+		}
+
+		.pagination-current {
+			z-index: 1;
+			position: absolute;
+			display: flex;
+			width: 3rem;
+			height: 3rem;
+			transition: all 250ms cubic-bezier(0, 0, 0.5, 1);
+
+			@media (max-width: 991px) {
+				width: 2.4rem;
+				height: 2.4rem;
+			}
+
+			&:before {
+				position: absolute;
+				content: '';
+				top: 0;
+				left: 0;
+				right: 0;
+				bottom: 0;
+				width: 1.4rem;
+				height: 1.4rem;
+				margin: auto;
+				border: 2px solid rgba(var(--text-color), 1);
+				border-radius: 50%;
+				background-color: rgba(var(--text-color), 1);
+				transform: scale(1);
+				transition: transform 225ms 120ms cubic-bezier(0, 1.95, 0.75, 1);
+				cursor: pointer;
+			}
+		}
+	}
+
+	// Thumbs
+	.unity-thumbs-slider-viewport {
+		overflow: hidden;
+	}
+
+	.unity-thumbs-slider-container {
+		display: flex;
+		flex-direction: row;
+	}
+
+	.unity-thumbs-slide {
+		flex: 0 0 calc(33.3% - 0.5rem);
+		min-width: 0;
+		position: relative;
+		border: 0.1rem solid transparent;
+
+		@media (min-width: 576px) {
+			flex: 0 0 calc(33.3% - 0.5rem);
+		}
+	}
+
+	.unity-thumbs-slide {
+		transition: border-color 0.2s;
+
+		&.selected {
+			border-color: transparent;
+		}
+	}
+}

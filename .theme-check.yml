@@ -1,0 +1,10 @@
+SchemaJsonFormat:
+  enabled: false #The theme uses Tab, not Space
+NestedSnippet:
+  enabled: false
+TemplateLength:
+  enabled: false
+LiquidTag:
+  enabled: false #Misreported
+ImgLazyLoading:
+  enabled: false #The theme uses dynamic image lazy loading

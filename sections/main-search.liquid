@@ -1,0 +1,303 @@
+{%- liquid
+	assign section_id      = '#shopify-section-' | append: section.id
+	assign animation       = settings.section_animation
+	assign layout          = section.settings.layout
+	assign content_width   = section.settings.content_width
+	assign rows            = section.settings.rows
+	assign columns         = section.settings.columns | times: 1
+	assign columns_mobile  = section.settings.columns_mobile | times: 1
+	assign total           = rows | times: columns
+	assign show_sorting    = section.settings.show_sorting
+	assign results         = search
+	assign results_sort_by = search.sort_by | default: search.default_sort_by
+-%}
+
+<style>
+	@media (min-width: 1024px) {
+		{{ section_id }} .search-content {
+			max-width: {{ content_width }}%;
+			margin: 0 auto;
+		}
+	}
+
+	{{ section_id }} .section-wrapper {
+		--item-gap: 2rem 1rem;
+		--template-columns: repeat({{ columns_mobile }}, minmax(0, 1fr));
+		padding-top: {{ section.settings.padding_top_mobile }}px;
+		padding-bottom: {{ section.settings.padding_bottom_mobile }}px;
+	}
+
+	@media (min-width: 992px) {
+		{{ section_id }} .section-wrapper {
+			--item-gap: 0.8rem;
+			--template-columns: repeat({{ columns }}, minmax(0, 1fr));
+			padding-top: {{ section.settings.padding_top }}px;
+			padding-bottom: {{ section.settings.padding_bottom }}px;
+		}
+	}
+</style>
+
+{{ 'search-page.css' | asset_url | stylesheet_tag }}
+{{ 'filter.css' | asset_url | stylesheet_tag }}
+{{ 'nouislider.css' | asset_url | stylesheet_tag }}
+<script src="{{ 'nouislider.js' | asset_url }}" defer="defer"></script>
+<script src="{{ 'filter.js' | asset_url }}" defer="defer"></script>
+
+{% comment %} Sorting {% endcomment %}
+{%- capture filter_sorting -%}
+	{%- if show_sorting -%}
+		{{- 'sections.collection_template.sort_by_label' | t -}}
+
+		<select class="filter-sorting" name="sort_by" aria-label="{{- 'general.text.shop_order' | t -}}" data-noui>
+			{%- for option in results.sort_options -%}
+				<option value="{{ option.value }}" {% if option.value == results_sort_by %}selected{% endif %}>
+					{{ option.name | escape }}
+				</option>
+			{%- endfor -%}
+		</select>
+	{%- endif -%}
+{%- endcapture -%}
+
+<div class="section-wrapper color-{{ section.settings.color_scheme }}">
+	<div class="has-product-filters filters-{{ layout }}{% if layout == 'left' or layout == 'right' %} filters-sidebar{% endif %} search-content{% if search.results_count == 0 %} search-empty{% endif %}" data-id="{{ section.id }}">
+		<div class="content">
+			<div class="search-header container{% if animation %} scroll-trigger{% endif %}">
+				<h1 class="heading">
+					{%- liquid
+						if search.performed
+							echo 'templates.search.title' | t
+						else
+							echo 'general.search.label' | t
+						endif
+					-%}
+				</h1>
+
+				<main-search class="main-content" style="position: relative;display: flex;">
+					<form class="search-form-header quick-search-form" action="{{ routes.search_url }}" method="get" role="search">
+						{%- render 'icon', code: 'search' -%}
+						<input class="search-input search-input-page" type="search" name="q" id="{{ section.id }}-search" label="search" value="{{ search.terms | escape }}" placeholder="{{ 'general.search.placeholder' | t }}" role="combobox" aria-expanded="false" aria-owns="predictive-search" aria-controls="predictive-search" aria-haspopup="listbox" aria-autocomplete="list" autocorrect="off" autocomplete="off" autocapitalize="off" spellcheck="false" aria-activedescendant />
+						<label class="search-form-label hidden" for="{{ section.id }}-search">{{ 'general.search.label' | t }}</label>
+						<input type="hidden" name="options[prefix]" value="last">
+						<input type="hidden" name="type" value="product,page,article">
+						<div id="predictive-search" tabindex="-1"></div>
+					</form>
+
+					<div class="default-search">
+						{%- if section.settings.heading != blank -%}
+							<div class="search-head">
+								<h7 class="heading">{{- section.settings.heading | escape -}}</h7>
+							</div>
+						{%- endif -%}
+					</div>
+					<button type="button" class="reset-button clear-button">{{ 'general.search.clear' | t }}</button>
+				</main-search>
+			</div>
+			<div class="layout-collection">
+				{% comment %} Products filter {% endcomment %}
+				{%- if search.performed -%}
+					{%- paginate search.results by total -%}
+						<div class="action-layout search-results container {{ layout }} " data-type="search">
+							{% comment %} Toolbar {% endcomment %}
+							<div class="toolbar">
+								<div class="show-filter">
+									<input type="checkbox" value="show-filter" name="show" id="show-filter" checked>
+									<label class="show" for="show-filter">{{ 'onboarding.collections.show' | t }}</label>
+								</div>
+								<div class="toolbar-inner">
+									{%- if show_sorting -%}
+										<div class="item-toolbar-left">
+											<div class="layer-last-header">
+												{{- filter_sorting -}}
+											</div>
+										</div>
+									{%- endif -%}
+
+									<div class="item-toolbar-right">
+										<div class="change-column-product">
+											{% for column in (2..4) %}
+												{%- assign icon = "grid-"| append: column -%}
+												<div class="item grid-{{ column }}{% if columns == column %} active{% endif %}" data-column="{{ column }}">
+													{%- render 'icon', code: icon -%}
+												</div>
+											{% endfor %}
+										</div>
+									</div>
+								</div>
+							</div>
+
+							{%- render 'filter', results: search, ssettings: section.settings, paginate: paginate -%}
+						</div>
+					{%- endpaginate -%}
+				{%- endif -%}
+			</div>
+		</div>
+	</div>
+</div>
+
+{% schema %}
+{
+	"name": "t:sections.main-search.name",
+	"tag": "section",
+	"class": "search-page-section collection-page-section",
+	"settings": [
+		{
+			"type": "color_scheme",
+			"id": "color_scheme",
+			"label": "t:settings_schema.colors.label",
+			"default": "scheme-1"
+		},
+		{
+			"type": "select",
+			"id": "layout",
+			"options": [
+				{
+					"value": "left",
+					"label": "t:sections.main-collection.settings.layout.option_2.label"
+				},
+				{
+					"value": "right",
+					"label": "t:sections.main-collection.settings.layout.option_3.label"
+				},
+				{
+					"value": "none",
+					"label": "t:sections.main-collection.settings.layout.option_4.label"
+				}
+			],
+			"default": "left",
+			"label": "t:sections.main-collection.settings.layout.label",
+			"info": "t:sections.main-collection.settings.layout.info"
+		},
+		{
+			"type": "checkbox",
+			"id": "full",
+			"default": false,
+			"label": "t:general.layout.full.label"
+		},
+		{
+			"type": "range",
+			"id": "content_width",
+			"default": 100,
+			"min": 60,
+			"max": 100,
+			"step": 1,
+			"unit": "%",
+			"label": "t:general.dimensions.content_width.label"
+		},
+		{
+			"type": "range",
+			"id": "rows",
+			"default": 2,
+			"min": 1,
+			"max": 20,
+			"step": 1,
+			"label": "t:sections.main-collection.settings.rows.label"
+		},
+		{
+			"type": "select",
+			"id": "columns",
+			"default": "3",
+			"options": [
+				{
+					"value": "2",
+					"label": "2"
+				},
+				{
+					"value": "3",
+					"label": "3"
+				},
+				{
+					"value": "4",
+					"label": "4"
+				}
+			],
+			"label": "t:general.layout.search_columns.label"
+		},
+		{
+			"type": "select",
+			"id": "columns_mobile",
+			"default": "2",
+			"options": [
+				{
+					"value": "1",
+					"label": "1"
+				},
+				{
+					"value": "2",
+					"label": "2"
+				}
+			],
+			"label": "t:general.layout.search_columns_mobile.label"
+		},
+		{
+			"type": "header",
+			"content": "t:sections.main-collection.settings.header_filters.content"
+		},
+		{
+			"type": "checkbox",
+			"id": "show_sorting",
+			"default": true,
+			"label": "t:sections.main-collection.settings.show_sorting.label"
+		},
+		{
+			"type": "checkbox",
+			"id": "show_results_count",
+			"default": false,
+			"label": "t:sections.main-collection.settings.show_results_count.label"
+		},
+		{
+			"type": "checkbox",
+			"id": "show_filter_count",
+			"default": true,
+			"label": "t:sections.main-collection.settings.show_filter_count.label"
+		},
+		{
+			"type": "header",
+			"content": "t:general.padding.header_padding.content"
+		},
+		{
+			"type": "range",
+			"id": "padding_top",
+			"min": 0,
+			"max": 100,
+			"step": 1,
+			"default": 60,
+			"unit": "px",
+			"label": "t:general.padding.top.label"
+		},
+		{
+			"type": "range",
+			"id": "padding_bottom",
+			"min": 0,
+			"max": 100,
+			"step": 1,
+			"default": 60,
+			"unit": "px",
+			"label": "t:general.padding.bottom.label"
+		},
+		{
+			"type": "paragraph",
+			"content": "t:general.padding.paragraph_mobile.content"
+		},
+		{
+			"type": "range",
+			"id": "padding_top_mobile",
+			"min": 0,
+			"max": 100,
+			"step": 1,
+			"default": 20,
+			"unit": "px",
+			"label": "t:general.padding.top.label"
+		},
+		{
+			"type": "range",
+			"id": "padding_bottom_mobile",
+			"min": 0,
+			"max": 100,
+			"step": 1,
+			"default": 50,
+			"unit": "px",
+			"label": "t:general.padding.bottom.label"
+		}
+	]
+}
+{% endschema %}

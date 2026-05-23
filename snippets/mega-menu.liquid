@@ -1,0 +1,202 @@
+{%- liquid
+	capture go_back
+		render 'icon', code: 'chevron-left'
+		echo 'general.text.back' | t
+	endcapture
+
+	assign arrow_id = '#shopify-section-' | append: section.id
+-%}
+
+{%- for block in section.blocks -%}
+	{%- case block.type -%}
+		{%- when 'mega_menu' -%}
+			{%- liquid
+				assign mega_item         = block.settings.mega_item | upcase
+				assign link_title        = link.title | upcase
+				assign card_color_scheme = block.settings.card_color_scheme
+				assign data_products     = block.settings.data_products
+			-%}
+
+			{%- if block.settings.data == 'menu' and block.settings.data_menu != blank and mega_item == link_title -%}
+				<div class="sub-menu mega-menu-wrap color-{{ section.settings.menu_color_scheme }}" data-{{ block.id }} data-navigation data-level="2">
+					<div class="{% if full %}stretch-section stretch-padding{% else %}container{% endif %}">
+                        <div class="mega-menu{% if block.settings.image != blank %} has-image-item{% endif %}">
+							<div class="back">{{- go_back -}}</div>
+
+							{% comment %} Menu items {% endcomment %}
+							<div class="sub-menu-inner">
+								{%- for mega in block.settings.data_menu.links -%}
+									<div class="menu-item{% if mega.current %} current-menu{% endif %}">
+										<a href="{{ mega.url }}" aria-label="{{- 'general.text.link' | t -}}" class="menu-link{% if mega.links != blank %} has-children menu-heading{% endif %}">
+											<span class="menu-text">{{- mega.title -}}</span>
+
+											{%- if mega.links != blank -%}
+												<span class="menu-arrow">{%- render 'icon', code: 'chevron-down' -%}</span>
+											{%- endif -%}
+										</a>
+
+										{%- if mega.links != blank -%}
+											<ul class="sub-mega-menu" data-level="3">
+												<li class="back">{{- go_back -}}</li>
+
+												{%- for mega_sub in mega.links -%}
+													<li class="menu-item{% if mega_sub.current %} current-menu{% endif %}">
+														<a href="{{ mega_sub.url }}" aria-label="{{- 'general.text.link' | t -}}" class="menu-link">
+															<span class="menu-text">{{ mega_sub.title }}</span>
+														</a>
+													</li>
+												{%- endfor -%}
+											</ul>
+										{%- endif -%}
+									</div>
+								{%- endfor -%}
+							</div>
+
+							{% comment %} Mega menu image {% endcomment %}
+							{%- if block.settings.image != blank -%}
+								<div class="menu-item has-image">
+									<div class="image-wrapper">
+										{%- if block.settings.image_link != blank -%}<a class="image-link" href="{{ block.settings.image_link }}" aria-label="{{- 'general.text.link' | t -}}">{%- endif -%}
+										{%- if block.settings.image_link != blank -%}</a>{%- endif -%}
+
+										<img srcset= "{{ block.settings.image | image_url: width: 540 }} 1x, {{ block.settings.image | image_url: width: 768 }} 2x"
+											src="{{ block.settings.image | image_url: width: 740 }}" alt="{{ block.settings.image.alt | escape }}"
+											loading="lazy"
+											width="370"
+											height="210">
+									</div>
+								</div>
+							{%- endif -%}
+						</div>
+					</div>
+				</div>
+			{%- elsif block.settings.data == 'collection' and data_products != blank and mega_item == link_title -%}
+				<div class="sub-menu mega-menu-wrap color-{{ section.settings.menu_color_scheme }}" data-{{ block.id }} data-products data-level="2">
+					<div class="{% if full %}stretch-section stretch-padding{% else %}container{% endif %}">
+						<ul class="mega-menu">
+							<li class="back">{{- go_back -}}</li>
+
+							{% comment %} Menu items {% endcomment %}
+							<div class="sub-menu-inner">
+								<div class="data-products-tabs tabs">
+									<div class="tabs-head">
+										<div class="tabs-head-wrapper{% if animation %} scroll-trigger{% endif %}">
+											{%- for collection in data_products limit: 4 -%}
+												<button class="tab-head h4{% if forloop.index == 1 %} active{% endif %}" data-index="{{ forloop.index }}" {{ block.shopify_attributes }}{% if request.design_mode %} data-id="{{ collection.id }}"{% endif %} aria-label="mega-{{- 'general.text.button' | t -}}" aria-labelledby="mega-{{- 'general.text.button' | t -}}">
+													{%- liquid
+
+														if collection != blank
+															echo collection.title
+														else
+															echo 'general.text.tab' | t | append: ' ' | append: forloop.index
+														endif
+													-%}
+												</button>
+											{%- endfor -%}
+										</div>
+
+										{%- for collection in data_products -%}
+											<div class="unity-arrows hidden-tablet hidden-mobile{% if forloop.index == 1 %} active{% endif %}" data-id="{{ block.id }}" data-index="{{ forloop.index }}" {{ block.shopify_attributes }}>
+												<button class="unity-button unity-button-prev" title ="{{ 'general.unity.prev' | t }}-mega" aria-label="{{ 'general.unity.prev' | t }}-mega" id="{{ 'general.unity.prev' | t }}-mega" aria-labelledby="{{ 'general.unity.prev' | t }}-mega" data-id="{{ collection.id }}" data-index="{{ forloop.index }}" aria-label="{{- 'general.text.button' | t -}}">
+													{%- render 'icon', code: 'caretLeft' -%}
+												</button>
+
+												<button class="unity-button unity-button-next" title ="{{ 'general.unity.next' | t }}-mega" aria-label="{{ 'general.unity.next' | t }}-mega" id="{{ 'general.unity.next' | t }}-mega" aria-labelledby="{{ 'general.unity.next' | t }}-mega" data-id="{{ collection.id }}" data-index="{{ forloop.index }}" aria-label="{{- 'general.text.button' | t -}}">
+													{%- render 'icon', code: 'caretRight' -%}
+												</button>
+											</div>
+										{%- endfor -%}
+									</div>
+
+									<div class="tabs-content">
+										{%- for collection in data_products -%}
+											<div class="tab-content{% if forloop.index == 1 %} active{% endif %}" data-id="{{ block.id }}" data-index="{{ forloop.index }}">
+												<div class="tab-content-desktop hidden-tablet hidden-mobile">
+													<unity-slider class="unity-slider">
+														<template data-options>
+															{
+																"align": "start",
+																"_autoheight": true,
+																"_fade": false,
+																"_prevBtn": "{{ arrow_id }} .site-navigation [data-id='{{ collection.id }}'].unity-button-prev",
+																"_nextBtn": "{{ arrow_id }} .site-navigation [data-id='{{ collection.id }}'].unity-button-next"
+															}
+														</template>
+
+														<div class="unity-slider-viewport">
+															<div class="unity-slider-container">
+																{%- for product in collection.products -%}
+																	<div class="unity-slide"{% if request.design_mode %} data-id="{{ block.id }}" data-index="{{ forloop.index0 }}"{% endif %} {{ block.shopify_attributes }}>
+																			{%- render 'product-card', product: product -%}
+																	</div>
+																{%- endfor -%}
+															</div>
+														</div>
+													</unity-slider>
+												</div>
+
+												<div class="tab-content-mobile">
+													{%- liquid
+														for product in collection.products limit: 4
+															render 'product-card', product: product
+														else
+															for i in (1..total)
+																render 'product-card-placeholder', index: forloop.index
+															endfor
+														endfor
+													-%}
+												</div>
+											</div>
+										{%- endfor -%}
+									</div>
+								</div>
+							</div>
+						</ul>
+					</div>
+				</div>
+			{%- elsif block.settings.data == 'collection-list' and block.settings.data_collections != blank and mega_item == link_title -%}
+				<div class="sub-menu mega-menu-wrap color-{{ section.settings.menu_color_scheme }}" data-{{ block.id }} data-collections  data-level="2">
+					<div class="{% if full %}stretch-section stretch-padding{% else %}container{% endif %}">
+						<ul class="mega-menu">
+							<li class="back">{{- go_back -}}</li>
+
+							{% comment %} Menu items {% endcomment %}
+							<div class="sub-menu-inner">
+								{%- for collection in block.settings.data_collections limit: 4 -%}
+									<li class="menu-item">
+										<div class="card-media portrait-media">
+											<a href="{{ collection.url }}" aria-label="{{- 'general.text.link' | t -}}" class="card-link"><span class="sr-only">{{- collection.title -}}</span></a>
+
+											<div class="card-media-wrapper{% if settings.image_lazy and collection.featured_image != blank %} lazy-image{% endif %}  border-large">
+												{%- liquid
+													if collection.featured_image != blank
+														render 'lazy-image', image: collection.featured_image, width: 768
+													else
+														render 'icon', code: 'placeholder'
+													endif
+												-%}
+											</div>
+
+											<div class="card-meta text-uppercase color-{{ card_color_scheme }}">
+												{% assign counts = collection.all_products_count %}
+
+												<p class="card-count">( {{ 'sections.collection_list.count_collection' | t: count: counts }} )</p>
+
+												<h2 class="card-title h4">
+													<a href="{{ collection.url }}" aria-label="{{- 'general.text.link' | t -}}" class="card-url link-underline-transparent">
+														{%- liquid
+															echo collection.title
+														-%}
+													</a>
+												</h2>
+											</div>
+										</div>
+									</li>
+								{%- endfor -%}
+							</div>
+						</ul>
+					</div>
+				</div>
+			{%- endif -%}
+	{%- endcase -%}
+{%- endfor -%}

@@ -1,0 +1,439 @@
+{%- liquid
+	assign section_id       = '#shopify-section-' | append: section.id
+	assign animation        = settings.section_animation
+	assign full             = section.settings.full
+	assign overlay          = section.settings.overlay
+	assign image_desktop    = section.settings.image
+	assign image_mobile     = section.settings.mobile_image
+	assign alignment        = section.settings.alignment
+	assign mobile_alignment = section.settings.mobile_alignment
+	assign one_week         = 7 | times: 24 | times: 60 | times: 60
+	assign future_time      = 'now' | date: '%s' | plus: one_week | date: '%-m/%-d/%y %-H:%M:%S'
+
+-%}
+
+<style>
+	{{ section_id }} .section-content {
+		padding-top: {{ section.settings.padding_top_mobile }}px;
+		padding-bottom: {{ section.settings.padding_bottom_mobile }}px;
+	}
+
+	{% if image_desktop != blank %}
+		{{ section_id }} .section-content:before {
+			background: linear-gradient(to bottom,{%- if overlay == 100 -%}rgb(0,0,0){%- else -%}rgba(0,0,0,0.{{ overlay }}){%- endif -%},{%- if overlay == 100 -%}rgb(0,0,0){%- else -%}rgba(0,0,0,0.{{ overlay }}){%- endif -%});
+		}
+	{% endif %}
+
+	@media (max-width: 991px) {
+		{% if image_desktop != blank or image_mobile != blank %}
+			{{ section_id }} .section-content:before {
+				background: linear-gradient(to bottom,{%- if overlay == 100 -%}rgb(0,0,0){%- else -%}rgba(0,0,0,0.{{ overlay }}){%- endif -%},{%- if overlay == 100 -%}rgb(0,0,0){%- else -%}rgba(0,0,0,0.{{ overlay }}){%- endif -%});
+			}
+		{% endif %}
+	}
+
+	@media (min-width: 992px) {
+		{{ section_id }} .section-content {
+			padding-top: {{ section.settings.padding_top }}px;
+			padding-bottom: {{ section.settings.padding_bottom }}px;
+		}
+
+		{{ section_id }} .content .item,
+		{{ section_id }} .grid-layout .box-countdown {
+			width: {{ section.settings.width}}%;
+		}
+	}
+</style>
+
+<div class="section-wrapper{% if full %} stretch-section{% else %} container has-radius{% endif %}">
+	<div class="section-content color-{{ section.settings.color_scheme }}">
+		<div class="content-wrap {{ section.settings.layout }}-layout text-{{ alignment }} text-{{ mobile_alignment }}-mobile{% if full %} container{% endif %}">
+			<div class="content rte{% if animation %} scroll-trigger{% endif %}">
+				{%- for block in section.blocks -%}
+					<div class="item item-{{ block.type }}" data-id="{{ block.id }}" {{ block.shopify_attributes }}>
+						{%- liquid
+							assign caption       = block.settings.caption_text
+							assign heading       = block.settings.heading_text
+							assign heading_size  = block.settings.heading_size
+							assign text          = block.settings.text
+							assign button        = block.settings.button
+							assign second_button = block.settings.second_button
+						-%}
+
+						{%- case block.type -%}
+							{%- when '@app' -%}
+								{%- render block -%}
+
+							{%- when 'caption' -%}
+								{%- if caption != blank -%}
+									<p class="caption sub-heading rte">{{- caption -}}</p>
+								{%- endif -%}
+
+							{%- when 'heading' -%}
+								{%- if heading != blank -%}
+									<div class="heading rte {{ heading_size }}">{{- heading -}}</div>
+								{%- endif -%}
+
+							{%- when 'text' -%}
+								{%- if text != blank -%}
+									<div class="text rte">{{- text -}}</div>
+								{%- endif -%}
+
+							{%- when 'button' -%}
+								<div class="button-wrapper flex-justify-{% if alignment == 'left' %}start{% elsif alignment == 'right' %}end{% else %}center{% endif %} flex-justify-{% if mobile_alignment == 'left' %}start{% elsif mobile_alignment == 'right' %}end{% else %}center{% endif %}-mobile">
+									{%- if button != blank -%}
+										<a class="button primary-button" href="{{ block.settings.button_link | default: '#' }}" aria-label="{{- 'general.text.link' | t -}}">
+											{{- button -}}
+										</a>
+									{%- endif -%}
+
+									{%- if second_button != blank -%}
+										<a class="button secondary-button" href="{{ block.settings.second_button_link | default: '#' }}" aria-label="{{- 'general.text.link' | t -}}">
+											{{- second_button -}}
+										</a>
+									{%- endif -%}
+								</div>
+						{%- endcase -%}
+					</div>
+				{%- endfor -%}
+			</div>
+
+			<div class="box-countdown">
+				<div class="countdown-time-wrap flat-countdown hidden flex-justify-{% if alignment == 'left' %}start{% elsif alignment == 'right' %}end{% else %}center{% endif %} flex-justify-mobile-{% if mobile_alignment == 'left' %}start{% elsif mobile_alignment == 'right' %}end{% else %}center{% endif %}">
+					<div class="countdown-time" data-time="{% if section.settings.countdown_time != blank %}{{ section.settings.countdown_time }}{% else %} {{ future_time }}{% endif %}">
+						<div class="time-block border-large">
+							<span class="time-number days"></span>
+							<span class="time-text">{{- 'general.time.days' | t -}}</span>
+						</div>
+
+						<div class="time-block border-large">
+							<span class="time-number hours"></span>
+							<span class="time-text hidden-tablet hidden-mobile">{{- 'general.time.hours' | t -}}</span>
+							<span class="time-text hidden-desktop">{{- 'general.time.hrs' | t -}}</span>
+						</div>
+
+						<div class="time-block border-large">
+							<span class="time-number minutes"></span>
+							<span class="time-text hidden-tablet hidden-mobile">{{- 'general.time.minutes' | t -}}</span>
+							<span class="time-text hidden-desktop">{{- 'general.time.min' | t -}}</span>
+						</div>
+
+						<div class="time-block border-large">
+							<span class="time-number seconds"></span>
+							<span class="time-text hidden-tablet hidden-mobile">{{- 'general.time.seconds' | t -}}</span>
+							<span class="time-text hidden-desktop">{{- 'general.time.sec' | t -}}</span>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="image{% if animation %} scroll-trigger{% endif %}{% if image_mobile != blank %} hidden-tablet hidden-mobile{% endif %}{% if settings.image_lazy and image_desktop != blank %} lazy-image{% endif %}">
+			{%- liquid
+				if image_desktop != blank
+					render 'lazy-image', image: image_desktop, width: 1920
+				endif
+			-%}
+		</div>
+
+		{%- if image_mobile != blank -%}
+			<div class="image hidden-desktop{% if settings.image_lazy %} lazy-image{% endif %}">
+				{%- render 'lazy-image', image: image_mobile, width: 991 -%}
+			</div>
+		{%- endif -%}
+	</div>
+</div>
+
+{% schema %}
+{
+	"name": "t:sections.countdown-timer.name",
+	"tag": "section",
+	"class": "countdown-timer-section",
+	"disabled_on": {
+		"groups": ["header", "footer"]
+	},
+	"settings": [
+		{
+			"type": "color_scheme",
+			"id": "color_scheme",
+			"label": "t:settings_schema.colors.label",
+			"default": "scheme-1"
+		},
+		{
+			"type": "checkbox",
+			"id": "full",
+			"default": false,
+			"label": "t:general.layout.full.label"
+		},
+		{
+			"type": "select",
+			"id": "layout",
+			"options": [
+				{
+					"value": "grid",
+					"label": "t:sections.countdown-timer.settings.layout.option_1.label"
+				},
+				{
+					"value": "column",
+					"label": "t:sections.countdown-timer.settings.layout.option_2.label"
+				}
+			],
+			"default": "grid",
+			"label": "t:sections.countdown-timer.settings.layout.label"
+		},
+		{
+			"type": "range",
+			"id": "width",
+			"min": 55,
+			"max": 100,
+			"step": 1,
+			"default": 100,
+			"unit": "%",
+			"label": "t:sections.countdown-timer.settings.desktop_with.label",
+			"visible_if": "{{ section.settings.layout == 'grid' }}"
+		},
+		{
+			"type": "select",
+			"id": "alignment",
+			"options": [
+				{
+					"value": "left",
+					"label": "t:general.layout.alignment.option_1.label"
+				},
+				{
+					"value": "center",
+					"label": "t:general.layout.alignment.option_2.label"
+				},
+				{
+					"value": "right",
+					"label": "t:general.layout.alignment.option_3.label"
+				}
+			],
+			"default": "left",
+			"label": "t:general.layout.alignment.label"
+		},
+		{
+			"type": "select",
+			"id": "mobile_alignment",
+			"options": [
+				{
+					"value": "left",
+					"label": "t:general.layout.mobile_alignment.option_1.label"
+				},
+				{
+					"value": "center",
+					"label": "t:general.layout.mobile_alignment.option_2.label"
+				},
+				{
+					"value": "right",
+					"label": "t:general.layout.mobile_alignment.option_3.label"
+				}
+			],
+			"default": "left",
+			"label": "t:general.layout.mobile_alignment.label"
+		},
+		{
+			"type": "header",
+			"content": "t:sections.countdown-timer.settings.header_bgimage.content"
+		},
+		{
+			"type": "image_picker",
+			"id": "image",
+			"label": "t:general.image.label"
+		},
+		{
+			"type": "image_picker",
+			"id": "mobile_image",
+			"label": "t:sections.countdown-timer.settings.mobile_image.label"
+		},
+		{
+			"type": "range",
+			"id": "overlay",
+			"min": 0,
+			"max": 100,
+			"step": 1,
+			"default": 20,
+			"unit": "%",
+			"label": "t:general.image.overlay.label",
+			"info": "t:general.image.overlay.info"
+		},
+		{
+			"type": "header",
+			"content": "t:sections.countdown-timer.name"
+		},
+		{
+			"type": "text",
+			"id": "countdown_time",
+			"label": "t:sections.countdown-timer.settings.time-countdown.label",
+			"info": "t:sections.countdown-timer.settings.time-countdown.info"
+		},
+		{
+			"type": "header",
+			"content": "t:general.padding.header_padding.content"
+		},
+		{
+			"type": "range",
+			"id": "padding_top",
+			"min": 0,
+			"max": 100,
+			"step": 1,
+			"default": 50,
+			"unit": "px",
+			"label": "t:general.padding.top.label"
+		},
+		{
+			"type": "range",
+			"id": "padding_bottom",
+			"min": 0,
+			"max": 100,
+			"step": 1,
+			"default": 50,
+			"unit": "px",
+			"label": "t:general.padding.bottom.label"
+		},
+		{
+			"type": "paragraph",
+			"content": "t:general.padding.paragraph_mobile.content"
+		},
+		{
+			"type": "range",
+			"id": "padding_top_mobile",
+			"min": 0,
+			"max": 100,
+			"step": 1,
+			"default": 20,
+			"unit": "px",
+			"label": "t:general.padding.top.label"
+		},
+		{
+			"type": "range",
+			"id": "padding_bottom_mobile",
+			"min": 0,
+			"max": 100,
+			"step": 1,
+			"default": 20,
+			"unit": "px",
+			"label": "t:general.padding.bottom.label"
+		}
+	],
+	"blocks": [
+		{
+			"type": "@app"
+		},
+		{
+			"type": "caption",
+			"name": "t:general.typography.caption.label",
+			"limit": 1,
+			"settings": [
+				{
+					"type": "inline_richtext",
+					"id": "caption_text",
+					"default": "Caption",
+					"label": "t:general.typography.caption.label"
+				}
+			]
+		},
+		{
+			"type": "heading",
+			"name": "t:general.typography.heading.label",
+			"limit": 1,
+			"settings": [
+				{
+					"type": "richtext",
+					"id": "heading_text",
+					"default": "<p>Heading</p>",
+					"label": "t:general.typography.heading.label"
+				},
+				{
+					"type": "select",
+					"id": "heading_size",
+					"options": [
+						{
+							"value": "h4",
+							"label": "t:general.typography.heading_size.option_1.label"
+						},
+						{
+							"value": "h3",
+							"label": "t:general.typography.heading_size.option_2.label"
+						},
+						{
+							"value": "h2",
+							"label": "t:general.typography.heading_size.option_3.label"
+						}
+					],
+					"default": "h3",
+					"label": "t:general.typography.heading_size.label"
+				}
+			]
+		},
+		{
+			"type": "text",
+			"name": "t:general.typography.text.label",
+			"limit": 2,
+			"settings": [
+				{
+					"type": "richtext",
+					"id": "text",
+					"default": "<p>Pair text with an image to focus on your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.</p>",
+					"label": "t:general.typography.text.label"
+				}
+			]
+		},
+		{
+			"type": "button",
+			"name": "t:general.typography.button.label",
+			"limit": 1,
+			"settings": [
+				{
+					"type": "header",
+					"content": "t:general.typography.style.option_1.label"
+				},
+				{
+					"type": "text",
+					"id": "button",
+					"default": "Button label",
+					"label": "t:general.typography.button_label.label",
+					"info": "t:sections.countdown-timer.settings.button.info"
+				},
+				{
+					"type": "url",
+					"id": "button_link",
+					"label": "t:general.typography.button_link.label"
+				},
+				{
+					"type": "header",
+					"content": "t:general.typography.style.option_2.label"
+				},
+				{
+					"type": "text",
+					"id": "second_button",
+					"default": "Button label",
+					"label": "t:general.typography.button_label.label",
+					"info": "t:sections.countdown-timer.settings.button.info"
+				},
+				{
+					"type": "url",
+					"id": "second_button_link",
+					"label": "t:general.typography.button_link.label"
+				}
+			]
+		}
+	],
+	"presets": [
+		{
+			"name": "t:sections.countdown-timer.name",
+			"blocks": [
+				{
+					"type": "caption"
+				},
+				{
+					"type": "heading"
+				},
+				{
+					"type": "text"
+				}
+			]
+		}
+	]
+}
+{% endschema %}

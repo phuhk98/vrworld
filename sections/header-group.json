@@ -1,0 +1,142 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+	"name": "t:sections.header.name",
+	"type": "header",
+	"sections": {
+		"announcement-bar": {
+			"type": "announcement-bar",
+			"blocks": {
+				"slide_0": {
+					"type": "slide",
+					"settings": {
+						"icon_img": "shopify://shop_images/truck_adf77b21-6643-4cea-81a8-0bb54bb022e7.svg",
+						"title": "Free shipping for order over $100.00"
+					}
+				},
+				"slide_1": {
+					"type": "slide",
+					"settings": {
+						"icon_img": "shopify://shop_images/truck_adf77b21-6643-4cea-81a8-0bb54bb022e7.svg",
+						"title": "All order over $100.00, Free shipping"
+					}
+				},
+				"slide_2": {
+					"type": "slide",
+					"settings": {
+						"icon_img": "shopify://shop_images/truck_adf77b21-6643-4cea-81a8-0bb54bb022e7.svg",
+						"title": "Over $100.00, Free shipping for order"
+					}
+				}
+			},
+			"block_order": [
+				"slide_0",
+				"slide_1",
+				"slide_2"
+			],
+			"settings": {
+				"autoplay": true,
+				"delay": 5,
+				"color_scheme": "scheme-3",
+				"show_line_separator": true,
+				"show_social": false,
+				"show_country_language_selector": false,
+				"padding_top": 5,
+				"padding_bottom": 5,
+				"padding_top_mobile": 5,
+				"padding_bottom_mobile": 5
+			}
+		},
+		"header": {
+			"type": "header",
+			"blocks": {
+				"mega_menu_6PNkCW": {
+					"type": "mega_menu",
+					"settings": {
+						"mega_item": "shop",
+						"data": "menu",
+						"data_menu": "mega-menu",
+						"data_products": [],
+						"data_collections": [],
+						"card_color_scheme": "scheme-1",
+						"image": "shopify://shop_images/product_image_8.png",
+						"image_link": "shopify://collections/vitamins-collagens"
+					}
+				},
+				"mega_menu_7qwkcd": {
+					"type": "mega_menu",
+					"settings": {
+						"mega_item": "collections",
+						"data": "collection-list",
+						"data_menu": "",
+						"data_products": [],
+						"data_collections": [
+							"digestive-support",
+							"herbal-supplements",
+							"vitamins-collagens",
+							"essential-supplements"
+						],
+						"card_color_scheme": "scheme-3",
+						"image_link": ""
+					}
+				},
+				"mega_menu_hmJwAz": {
+					"type": "mega_menu",
+					"settings": {
+						"mega_item": "bestsellers",
+						"data": "collection",
+						"data_menu": "",
+						"data_products": [
+							"herbal-supplements",
+							"advanced-vitamins",
+							"digestive-support"
+						],
+						"data_collections": [],
+						"card_color_scheme": "scheme-1",
+						"image_link": ""
+					}
+				}
+			},
+			"block_order": [
+				"mega_menu_6PNkCW",
+				"mega_menu_7qwkcd",
+				"mega_menu_hmJwAz"
+			],
+			"settings": {
+				"header_layout": "logo-menu-left",
+				"full": false,
+				"enable_sticky_header": true,
+				"color_scheme": "",
+				"main_menu": "main-menu",
+				"drawer_menu": "",
+				"uppercase_menu": false,
+				"menu_color_scheme": "",
+				"transparent_logo_image": "shopify://shop_images/light-unity-logo.svg",
+				"enable_transparent_header": false,
+				"enable_transparent_header_article": true,
+				"transparent_custom": "transparen-page",
+				"transparent_color_scheme": "scheme-3",
+				"show_country_language_selector": true
+			}
+		},
+		"quick-search": {
+			"type": "quick-search",
+			"settings": {
+				"heading": "POPULAR PRODUCT",
+				"collection": "all-wellness-essentials"
+			}
+		}
+	},
+	"order": [
+		"announcement-bar",
+		"header",
+		"quick-search"
+	]
+}

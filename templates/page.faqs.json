@@ -1,0 +1,238 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+	"sections": {
+		"main": {
+			"type": "main-page",
+			"disabled": true,
+			"settings": {
+				"full": false,
+				"padding_top": 60,
+				"padding_bottom": 35,
+				"padding_top_mobile": 20,
+				"padding_bottom_mobile": 20
+			}
+		},
+		"breadcrumb": {
+			"type": "breadcrumb",
+			"name": "t:sections.breadcrumb.presets.name",
+			"settings": {
+				"full": false,
+				"overlay": 50,
+				"separator_line": true,
+				"color_scheme": "",
+				"show_title": false,
+				"show_scrolling": false,
+				"font_scale": 100,
+				"description": "",
+				"description_position": "below",
+				"right_description": false,
+				"padding_top": 16,
+				"padding_bottom": 16,
+				"padding_top_mobile": 16,
+				"padding_bottom_mobile": 16
+			}
+		},
+		"scrolling_promotion": {
+			"type": "scrolling-promotion",
+			"blocks": {
+				"text-1": {
+					"type": "text",
+					"settings": {
+						"text": "FAQ's",
+						"icon": true
+					}
+				},
+				"text-2": {
+					"type": "text",
+					"settings": {
+						"text": "FAQ's",
+						"icon": true
+					}
+				},
+				"text-3": {
+					"type": "text",
+					"settings": {
+						"text": "FAQ's",
+						"icon": true
+					}
+				},
+				"text-4": {
+					"type": "text",
+					"settings": {
+						"text": "FAQ's",
+						"icon": true
+					}
+				}
+			},
+			"block_order": [
+				"text-1",
+				"text-2",
+				"text-3",
+				"text-4"
+			],
+			"name": "t:sections.scrolling-promotion.name",
+			"settings": {
+				"color_scheme": "",
+				"full": true,
+				"hover_pause": true,
+				"direction": "rtl",
+				"time": 30,
+				"space": 80,
+				"scale": 400,
+				"image_scale": 100,
+				"product_color_scheme": "",
+				"padding_top": 80,
+				"padding_bottom": 80,
+				"padding_top_mobile": 60,
+				"padding_bottom_mobile": 60
+			}
+		},
+		"faqs": {
+			"type": "faqs",
+			"blocks": {
+				"category-1": {
+					"type": "category",
+					"settings": {
+						"category": "Product"
+					}
+				},
+				"tab-1": {
+					"type": "tab",
+					"settings": {
+						"question": "Are over-ear headphones comfortable for extended periods of listening?",
+						"answer": "<p><strong>Yes, over-ear headphones are generally comfortable for extended periods of listening</strong>, especially when they are well-designed. They fully enclose your ears, which helps distribute pressure more evenly around the head and reduces ear fatigue compared to on-ear or in-ear options.</p><p>However, comfort can vary depending on head shape, weight of the headphones, and how tight the clamping force is. Trying them on or reading user reviews can help you find a pair suited for long sessions.</p>"
+					}
+				},
+				"tab-2": {
+					"type": "tab",
+					"settings": {
+						"question": "Do over-ear headphones offer better sound quality compared to in-ear models?",
+						"answer": "<p><strong>Yes, over-ear headphones often offer better sound quality compared to in-ear models</strong>, especially in terms of soundstage, clarity, and bass response.</p><p>Here’s why:</p><ul><li><strong>Larger drivers</strong> in over-ear headphones can produce richer, more dynamic sound.</li><li><strong>Better soundstage</strong> gives you a more immersive, \"live\" experience, with clearer separation between instruments.</li><li><strong>Improved bass response</strong> due to more space for air movement.</li><li><strong>Noise isolation or cancellation</strong> tends to be more effective in premium over-ear designs<br/></li></ul><p>However, high-end in-ear monitors (IEMs) can also deliver excellent sound quality, especially for studio use or travel, and are often more portable. So while over-ears generally have the edge for audiophile or home listening, the best choice depends on your use case.</p>"
+					}
+				},
+				"tab-3": {
+					"type": "tab",
+					"settings": {
+						"question": "Are over-ear headphones suitable for sports or gym activities?",
+						"answer": "<p>Over-ear headphones are generally not ideal for sports or gym activities. While they can offer excellent sound and comfort, they come with a few drawbacks for active use:<br/><br/><strong>Why they may not be suitable:</strong></p><ul><li>Bulky and heavier than in-ear models, which can feel cumbersome during movement.</li><li>Less stable fit, making them more likely to shift or fall off during intense activity.</li><li>Limited sweat resistance — most over-ear headphones aren’t designed to handle moisture or heat buildup.</li></ul><p><strong>Better alternatives:</strong></p><ul><li>In-ear (true wireless or wired) earbuds with secure fit options (ear hooks, wings).</li><li>Sweatproof or waterproof ratings (IPX4 and above) are recommended.</li><li>If you really prefer over-ears for the gym, look for sport-specific models designed for durability and moisture resistance — but for most people, in-ears are the more practical choice.</li></ul>"
+					}
+				},
+				"tab-4": {
+					"type": "tab",
+					"settings": {
+						"question": "How do I maintain and clean my over-ear headphones?",
+						"answer": "<ol><li><strong>Unplug or turn off the headphones</strong><br/>Always disconnect them from your device before cleaning to avoid damage.<br/><br/></li><li><strong>Wipe down surfaces</strong><br/>Use a soft, dry or slightly damp microfiber cloth to clean the headband, ear cups, and exterior. Avoid harsh cleaners or alcohol.<br/><br/></li><li><strong>Clean the ear cushions<br/></strong>If they’re removable, take them off and gently wipe with a damp cloth.<br/><br/>For deeper cleaning, use a mild soap solution and let them air dry completely before reattaching.<br/><br/>Leather or faux leather pads benefit from a light application of conditioner.<br/><br/></li><li><strong>Clean the mesh/grill (speaker area)</strong><br/>Use a dry, soft-bristled brush or cotton swab to remove dust or debris gently—don’t press too hard.<br/><br/></li><li><strong>Check for sweat or moisture buildup</strong><br/>After workouts or long sessions, wipe down immediately to prevent material breakdown or odor.</li></ol>"
+					}
+				},
+				"category-2": {
+					"type": "category",
+					"settings": {
+						"category": "Shipping"
+					}
+				},
+				"tab-5": {
+					"type": "tab",
+					"settings": {
+						"question": "Do you ship to other countries?",
+						"answer": "<p><strong>Yes, we offer international shipping!</strong><br/><br/>We’re happy to deliver our products to customers around the world. Shipping costs and delivery times may vary depending on your location. You can view available countries and rates during checkout, or feel free to contact our support team if you need help with a specific destination.</p>"
+					}
+				},
+				"tab-6": {
+					"type": "tab",
+					"settings": {
+						"question": "How do I track my order?",
+						"answer": "<p><strong>You can track your order easily!</strong><br/><br/>Once your order ships, you’ll receive a confirmation email with a tracking number and a link to follow its progress. Just click the link or enter the tracking number on the carrier’s website to see the latest updates.</p><p>If you didn’t receive the email or need help, feel free to reach out to our customer support team—we’re happy to assist!</p>"
+					}
+				},
+				"tab-7": {
+					"type": "tab",
+					"settings": {
+						"question": "What if I receive a damaged or incorrect item?",
+						"answer": "<p>If you receive a damaged or incorrect item, please contact us within [X] days of delivery. Send us a photo of the item along with your order number, and we’ll arrange a replacement or refund as quickly as possible.</p><p>Your satisfaction is important to us, and we’ll do our best to resolve the issue promptly.</p>"
+					}
+				},
+				"category-3": {
+					"type": "category",
+					"settings": {
+						"category": "Orders"
+					}
+				},
+				"tab-8": {
+					"type": "tab",
+					"settings": {
+						"question": "How do I make an order?",
+						"answer": "<p>To begin your journey with us:</p><ol><li>Select the product(s) you desire.</li><li>Choose the appropriate size, quantity, or variation, then click “Add to Cart.”</li><li>When you're ready, proceed to checkout and enter your delivery and payment information.</li><li>Confirm your order — and leave the rest to us.</li></ol>"
+					}
+				},
+				"tab-9": {
+					"type": "tab",
+					"settings": {
+						"question": "How do I know my order is confirmed?",
+						"answer": "<p>You’ll receive a confirmation email and tracking details once your order is on its way. Should you need any help, our dedicated team is here to support you.</p>"
+					}
+				},
+				"tab-10": {
+					"type": "tab",
+					"settings": {
+						"question": "Can I change my shipping address after my order is placed?",
+						"answer": "<p>Yes — but only if your order hasn’t been shipped yet.</p><p>If you need to update your shipping address, please <strong>contact our support team as soon as possible</strong> with your order number and the correct address. We’ll do our best to make the change before your order is processed and dispatched.</p>"
+					}
+				},
+				"tab-11": {
+					"type": "tab",
+					"settings": {
+						"question": "Can I change my billing address after placing my order?",
+						"answer": "<p>In most cases, the billing address cannot be changed after an order has been placed, as it's used to verify your payment at the time of checkout.</p><p>If you accidentally entered the wrong billing address but your order went through successfully, <strong>there’s usually no need to worry</strong> — your payment has already been approved.</p><p>However, if you need to update the billing address for future purchases or have concerns about your order, feel free to contact our support team. We’re happy to help!</p>"
+					}
+				}
+			},
+			"block_order": [
+				"category-1",
+				"tab-1",
+				"tab-2",
+				"tab-3",
+				"tab-4",
+				"category-2",
+				"tab-5",
+				"tab-6",
+				"tab-7",
+				"category-3",
+				"tab-8",
+				"tab-9",
+				"tab-10",
+				"tab-11"
+			],
+			"name": "t:sections.faqs.name",
+			"settings": {
+				"color_scheme": "scheme-1",
+				"sub_heading_text": "",
+				"heading_text": "",
+				"heading_size": "h2",
+				"text": "",
+				"enable_contact": true,
+				"contact_color_scheme": "scheme-2",
+				"contact_heading": "Didn’t find your answer?",
+				"contact_heading_size": "h4",
+				"contact_text": "<p>Do not hesitate to contact us.</p>",
+				"padding_top": 0,
+				"padding_bottom": 80,
+				"padding_top_mobile": 0,
+				"padding_bottom_mobile": 60
+			}
+		}
+	},
+	"order": [
+		"main",
+		"breadcrumb",
+		"scrolling_promotion",
+		"faqs"
+	]
+}

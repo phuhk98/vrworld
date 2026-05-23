@@ -1,0 +1,232 @@
+{%- liquid
+	assign section_id      = '#shopify-section-' | append: section.id
+	assign animation       = settings.section_animation
+	assign map_coordinates = section.settings.map_coordinates
+	assign image           = section.settings.image
+	assign map             = section.settings.image_map
+	assign content_left    = section.settings.content_left
+	assign content_right   = section.settings.content_right
+	assign show_info       = section.settings.show_info
+-%}
+
+<style>
+	{{ section_id }} .stretch-section {
+		padding-top: {{ section.settings.padding_top_mobile }}px;
+		padding-bottom: {{ section.settings.padding_bottom_mobile }}px;
+	}
+
+	@media (min-width: 992px) {
+		{{ section_id }} .stretch-section {
+			padding-top: {{ section.settings.padding_top }}px;
+			padding-bottom: {{ section.settings.padding_bottom }}px;
+		}
+	}
+</style>
+<popup-handler>
+	<div class="stretch-section stretch-padding color-{{ section.settings.color_scheme }}">
+		<div class="map">
+			<div class="image-wrapper">
+				<div class="adapt-media{% if animation %} scroll-trigger{% endif %}">
+					{%- if map_coordinates != blank -%}
+						<div class="contact-map">
+							<template data-options>
+								{
+									"coordinates": {{ map_coordinates | json }},
+									"zoom": 15
+								}
+							</template>
+						</div>
+					{%- else -%}
+						<div class="image{% if settings.image_lazy and image %} lazy-image{% endif %}">
+							{%- liquid
+								if image != blank
+									render 'lazy-image', image: image, width: 1200
+								else
+									render 'icon', code: 'placeholder'
+								endif
+							-%}
+						</div>
+					{%- endif -%}
+				</div>
+
+				<div class="container">
+					<div class="item-wrapper">
+						<div class="item" style="--item-color: {{ section.settings.color }}; --item-x: {{ section.settings.horizontal }}%; --item-y: {{ section.settings.vertical }}%;" >
+
+							<div class="dot">
+								{%- render 'icon', code: 'location' -%}
+							</div>
+
+							<span class="product-target" data-product-id="{{ product.id }}">
+								<span class="sr-only"></span>
+							</span>
+						</div>
+					</div>
+
+					{% if show_info %}
+						<div class="item-inner">
+							<div class="item-summary">
+								<div class="product-image">
+									<div class="map{% if map == blank %} adapt-svg-placeholder{% endif %}{% if settings.image_lazy and map %} lazy-image{% endif %}">
+										{%- liquid
+											if map != blank
+												render 'lazy-image', image: map, width: 518, class: 'border-large'
+											else
+												render 'icon', code: 'placeholder'
+											endif
+										-%}
+									</div>
+								</div>
+
+								<div class="summary-inner">
+									<div class="infor">
+										<div class="left-content">
+											{%- if content_left != blank -%}
+												{{ content_left | replace: '[', '<span class="address">' | replace: ']', '</span>' }}
+											{%- endif -%}
+										</div>
+
+										<div class="right-content">
+											{%- if content_right != blank -%}
+												{{ content_right | replace: '[', '<span class="address">' | replace: ']', '</span>' }}
+											{%- endif -%}
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					{% endif %}
+				</div>
+			</div>
+		</div>
+	</div>
+</popup-handler>
+{% schema %}
+{
+	"name": "t:sections.map-section.name",
+	"tag": "section",
+	"class": "map-section",
+	"disabled_on": {
+		"groups": ["header", "footer"]
+	},
+	"settings": [
+		{
+			"type": "color_scheme",
+			"id": "color_scheme",
+			"label": "t:settings_schema.colors.label",
+			"default": "scheme-1"
+		},
+		{
+			"type": "text",
+			"id": "map_coordinates",
+			"label": "t:sections.contact.settings.map_coordinates.label",
+			"info": "t:sections.contact.settings.map_coordinates.info"
+		},
+		{
+			"type": "image_picker",
+			"id": "image",
+			"label": "t:general.image.label"
+		},
+		{
+			"type": "header",
+			"content": "t:sections.map-section.blocks.location.name"
+		},
+		{
+			"type": "checkbox",
+			"id": "show_info",
+			"default": true,
+			"label": "t:sections.map-section.settings.show_info.label"
+		},
+		{
+			"type": "range",
+			"id": "horizontal",
+			"min": 5,
+			"max": 95,
+			"step": 1,
+			"default": 50,
+			"unit": "%",
+			"label": "t:sections.map-section.blocks.horizontal.label"
+		},
+		{
+			"type": "range",
+			"id": "vertical",
+			"min": 5,
+			"max": 95,
+			"step": 1,
+			"default": 50,
+			"unit": "%",
+			"label": "t:sections.map-section.blocks.vertical.label"
+		},
+		{
+			"type": "image_picker",
+			"id": "image_map",
+			"label": "t:sections.scrolling_row.blocks.image.name"
+		},
+		{
+			"type": "richtext",
+			"id": "content_left",
+			"default": "<p>Content left</p>",
+			"label": "t:sections.scrolling_row.blocks.content_left.name"
+		},
+		{
+			"type": "richtext",
+			"id": "content_right",
+			"default": "<p>Content right</p>",
+			"label": "t:sections.scrolling_row.blocks.content_left.name"
+		},
+		{
+			"type": "header",
+			"content": "t:general.padding.header_padding.content"
+		},
+		{
+			"type": "range",
+			"id": "padding_top",
+			"min": 0,
+			"max": 100,
+			"step": 1,
+			"default": 0,
+			"unit": "px",
+			"label": "t:general.padding.padding_top.label"
+		},
+		{
+			"type": "range",
+			"id": "padding_bottom",
+			"min": 0,
+			"max": 100,
+			"step": 1,
+			"default": 0,
+			"unit": "px",
+			"label": "t:general.padding.padding_bottom.label"
+		},
+		{
+			"type": "paragraph",
+			"content": "t:general.padding.paragraph_mobile.content"
+		},
+		{
+			"type": "range",
+			"id": "padding_top_mobile",
+			"min": 0,
+			"max": 100,
+			"step": 1,
+			"default": 0,
+			"unit": "px",
+			"label": "t:general.padding.padding_top.label"
+		},
+		{
+			"type": "range",
+			"id": "padding_bottom_mobile",
+			"min": 0,
+			"max": 100,
+			"step": 1,
+			"default": 0,
+			"unit": "px",
+			"label": "t:general.padding.padding_bottom.label"
+		}
+	],
+	"presets": [
+		{
+			"name": "t:sections.map-section.name"
+		}
+	]
+}
+{% endschema %}
