@@ -12,7 +12,7 @@
     "logo_image": "shopify://shop_images/vrworld-logo.svg",
     "body_font": "open_sans_n4",
     "heading_font": "michroma_n4",
-    "third_font": "source_code_pro_n7",
+    "third_font": "michroma_n4",
     "enable_search": true,
     "enable_predictive_search": true,
     "screen_lg": 1318,
