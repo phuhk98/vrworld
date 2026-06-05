@@ -13,6 +13,7 @@
 
 		{%- liquid
 			echo 'style.css' | asset_url | stylesheet_tag
+			echo 'header.css' | asset_url | stylesheet_tag
 
 			render 'stylesheet'
 			render 'meta'
