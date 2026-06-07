@@ -9,84 +9,39 @@
  */
 {
   "sections": {
-    "slideshow": {
-      "type": "slideshow",
+    "vr_slideshow_wtDYnL": {
+      "type": "vr-slideshow",
       "blocks": {
-        "slide-1": {
+        "slide_g4azDt": {
           "type": "slide",
           "settings": {
-            "image": "shopify://shop_images/slideshow.jpg",
-            "overlay_opacity": 60,
-            "caption": "( TRUSTED SOURCE FOR HEALTH )",
-            "heading": "NOURISH YOUR BODY",
-            "heading_size": "h1",
-            "text": "<p>Elevating your health journey with <br/>premium vitamins, supplements, and<br/>expert guidance.</p>",
-            "description_size": "h3",
-            "button": "SHOP VITAMINS & SUPPLEMENTS",
-            "link": "shopify://collections/essential-supplements",
+            "image": "shopify://shop_images/7512484_12051-_Converted.png",
+            "overlay_opacity": 0,
+            "caption": "",
+            "heading": "Upgrade Your VR Experience Today",
+            "heading_size": "h2",
+            "text": "<p>Discover cutting-edge VR accessories to elevate your gaming experience—immerse yourself in the future of virtual reality.</p>",
+            "description_size": "h5",
+            "button": "Shop Now",
+            "link": "",
             "button_style": "primary",
             "content_width": 100,
             "position_x": "start",
-            "position_y": "start",
+            "position_y": "center",
             "text_align": "left",
-            "mobile_text_align": "left",
-            "description_line": "3"
-          }
-        },
-        "slide-2": {
-          "type": "slide",
-          "settings": {
-            "image": "shopify://shop_images/slideshow-2.jpg",
-            "overlay_opacity": 60,
-            "caption": "( TRUSTED SOURCE FOR HEALTH )",
-            "heading": "NOURISH YOUR HEALTH",
-            "heading_size": "h1",
-            "text": "<p>Transforming your health journey <br/>through superior vitamins, supplements, <br/>and trusted expertise.</p>",
-            "description_size": "h3",
-            "button": "SHOP DIGESTIVE SUPPORT",
-            "link": "shopify://collections/digestive-support",
-            "button_style": "primary",
-            "content_width": 100,
-            "position_x": "start",
-            "position_y": "start",
-            "text_align": "left",
-            "mobile_text_align": "left",
-            "description_line": "3"
-          }
-        },
-        "slide-3": {
-          "type": "slide",
-          "settings": {
-            "image": "shopify://shop_images/slideshow-3.jpg",
-            "overlay_opacity": 60,
-            "caption": "( TRUSTED SOURCE FOR HEALTH )",
-            "heading": "NOURISH YOUR LIFE",
-            "heading_size": "h1",
-            "text": "<p>Empowering your path to better health <br/>with premium supplements, vitamins, <br/>and professional guidance.</p>",
-            "description_size": "h3",
-            "button": "SHOP VITAMINS & COLLAGENS",
-            "link": "shopify://collections/vitamins-collagens",
-            "button_style": "primary",
-            "content_width": 100,
-            "position_x": "start",
-            "position_y": "start",
-            "text_align": "left",
-            "mobile_text_align": "left",
-            "description_line": "3"
+            "mobile_text_align": "center",
+            "description_line": "2"
           }
         }
       },
       "block_order": [
-        "slide-1",
-        "slide-2",
-        "slide-3"
+        "slide_g4azDt"
       ],
-      "name": "t:sections.slider.name",
+      "name": "t:sections.vr-slideshow.name",
       "settings": {
         "color_scheme": "scheme-098995c4-a3d0-4bae-bbf0-af17bca3e81e",
         "full": true,
-        "height": "large",
-        "height_mobile": "medium",
+        "height": "medium",
         "padding_top": 0,
         "padding_bottom": 0,
         "padding_top_mobile": 0,
@@ -106,16 +61,14 @@
         "video-1": {
           "type": "video",
           "settings": {
-            "cover_image": "shopify://shop_images/Rectangle_4_89f0b6b3-370a-4687-9ee9-139bc1be28f9.png",
             "video_url": "https://www.youtube.com/watch?v=_9VUPq3SxOc",
+            "autoplay": false,
             "description": "Describle video"
           }
         },
         "image-1": {
           "type": "image",
-          "settings": {
-            "image": "shopify://shop_images/p27-2.png"
-          }
+          "settings": {}
         }
       },
       "block_order": [
@@ -147,6 +100,7 @@
       "settings": {
         "color_scheme": "scheme-3",
         "height": "750px",
+        "overlay": 50,
         "sub_heading": "<p>( BROWSE WIDE RANGE OF PRODUCTS )</p>",
         "heading": "Shop by collections",
         "heading_size": "h2",
@@ -157,11 +111,6 @@
           "immune-antioxidants"
         ],
         "summary_vertical_align": "center",
-        "image_one": "shopify://shop_images/column-1-1.png",
-        "image_two": "shopify://shop_images/column-1-2.png",
-        "image_three": "shopify://shop_images/column-2-2.png",
-        "image_four": "shopify://shop_images/column-3-2.png",
-        "image_five": "shopify://shop_images/column-3-3.png",
         "padding_top": 0,
         "padding_bottom": 0,
         "padding_top_mobile": 60,
@@ -231,70 +180,60 @@
         "image-1": {
           "type": "image",
           "settings": {
-            "image": "shopify://shop_images/Vector.svg",
             "img_link": ""
           }
         },
         "image-2": {
           "type": "image",
           "settings": {
-            "image": "shopify://shop_images/Vector_73c9ff49-357c-4050-86cb-def299f6ddfb.svg",
             "img_link": ""
           }
         },
         "image-3": {
           "type": "image",
           "settings": {
-            "image": "shopify://shop_images/Vector_4.svg",
             "img_link": ""
           }
         },
         "image-4": {
           "type": "image",
           "settings": {
-            "image": "shopify://shop_images/Vector_2.svg",
             "img_link": ""
           }
         },
         "image-5": {
           "type": "image",
           "settings": {
-            "image": "shopify://shop_images/Vector_3.svg",
             "img_link": ""
           }
         },
         "image-6": {
           "type": "image",
           "settings": {
-            "image": "shopify://shop_images/Vector.svg",
             "img_link": ""
           }
         },
         "image-7": {
           "type": "image",
           "settings": {
-            "image": "shopify://shop_images/Vector_73c9ff49-357c-4050-86cb-def299f6ddfb.svg",
             "img_link": ""
           }
         },
         "image-8": {
           "type": "image",
           "settings": {
-            "image": "shopify://shop_images/Vector_4.svg",
             "img_link": ""
           }
         },
         "image-9": {
           "type": "image",
           "settings": {
-            "image": "shopify://shop_images/Vector_2.svg",
             "img_link": ""
           }
         },
         "image-10": {
           "type": "image",
           "settings": {
-            "image": "shopify://shop_images/Vector_3.svg",
             "img_link": ""
           }
         }
@@ -339,7 +278,6 @@
           "settings": {
             "star_reviews": "5",
             "body_text": "I take these Vitamin D3 soft gels daily. Sometimes my vitamin D gets low and this helps out a lot. They are easy to swallow and don’t leave a bad taste after. I take all my vitamins with something on my stomach.",
-            "author_image": "shopify://shop_images/image_4.png",
             "author_name": "<strong>Sarah T.</strong>",
             "author_comment": "I recommend this product.",
             "author_verified": true,
@@ -352,7 +290,6 @@
           "settings": {
             "star_reviews": "5",
             "body_text": "I can generally tell when I need this one, especially in the fall and winter months. I got these to try and get a head start and overall feel well, including these in my daily routine. I've tried and like this brand.",
-            "author_image": "shopify://shop_images/image.png",
             "author_name": "<strong>James L.</strong>",
             "author_comment": "I recommend this product.",
             "author_verified": true,
@@ -365,7 +302,6 @@
           "settings": {
             "star_reviews": "5",
             "body_text": "Around the three week mark of starting I noticed my back pain was diminishing. I haven't changed any other factors. My back pain is now reduced by roughly 70-80%. Really remarkable. I'm beyond impressed.",
-            "author_image": "shopify://shop_images/product_image_2.png",
             "author_name": "<strong>Susan G.</strong>",
             "author_comment": "I recommend this product.",
             "author_verified": true,
@@ -405,7 +341,6 @@
         "image-1": {
           "type": "image",
           "settings": {
-            "image": "shopify://shop_images/scrolling-text.png",
             "url": "",
             "icon": false
           }
@@ -420,7 +355,6 @@
         "image-2": {
           "type": "image",
           "settings": {
-            "image": "shopify://shop_images/scrolling-text.png",
             "url": "",
             "icon": false
           }
@@ -507,6 +441,7 @@
           "type": "add-to-cart",
           "settings": {
             "text_transform": "capitalize",
+            "show_price": true,
             "quantity_selector": true,
             "dynamic_checkout": true,
             "show_gift_card": true,
@@ -546,6 +481,8 @@
         "full": false,
         "product": "vitamin-d3-k2-with-coconut-oil",
         "image_width": 64,
+        "layout": "layout-1",
+        "thumb_in_gallery": true,
         "summary_horizontal_align": "left",
         "summary_vertical_align": "start",
         "padding_top": 0,
@@ -560,9 +497,7 @@
         "row-1": {
           "type": "row",
           "settings": {
-            "image": "shopify://shop_images/0d07f3e3dc2a078f786d0420da5ca8db7c186ce1.jpg",
             "heading": "BOLEVARD",
-            "image_map": "shopify://shop_images/CleanShot_2024-09-24_at_16.24.04_2x_4b57b22e-a8fa-414c-8f30-562d89f241c3.png",
             "content_left": "<p><strong>Boulevard</strong></p><p>[ADDRESS]</p><p>155 WillowbrookBoulevard, New Jersey</p><p><a href=\"https://maps.app.goo.gl/hreKFoWH3USgu9bD9\" target=\"_blank\" title=\"https://maps.app.goo.gl/hreKFoWH3USgu9bD9\">Get direction</a></p>",
             "content_right": "<p>[PHONE]</p><p>+1 (606) 598-5782</p><p>[EMAIL]</p><p>store.name@vrworld.com</p>"
           }
@@ -570,9 +505,7 @@
         "row-2": {
           "type": "row",
           "settings": {
-            "image": "shopify://shop_images/ebb0d88231e36653e71da5f92bade31fbe22cc34.jpg",
             "heading": "LEXINTON",
-            "image_map": "shopify://shop_images/1a05b60192e27bcb9ff2c1444d78a37973201c47.png",
             "content_left": "<p><strong>Lexington Ave</strong></p><p>[ADDRESS]</p><p>1091 Lexington Ave, New York, NY 10075, United States</p><p><a href=\"https://maps.app.goo.gl/p6BXuPdYhfpsRGGJA\" target=\"_blank\" title=\"https://maps.app.goo.gl/p6BXuPdYhfpsRGGJA\">Get direction</a></p>",
             "content_right": "<p>[PHONE]</p><p>+1 (606) 598-5782</p><p>[EMAIL]</p><p>store.name@vrworld.com</p>"
           }
@@ -580,9 +513,7 @@
         "row-3": {
           "type": "row",
           "settings": {
-            "image": "shopify://shop_images/0b113c6f73edb752b6ea7ea175c0bdc4c2dd57ee_83a924a2-4fe9-48c0-8cdb-7a2ca0f8bbf0.jpg",
             "heading": "HUDSON",
-            "image_map": "shopify://shop_images/bd128e3cf57abe645d7595d283cc493b12119979.png",
             "content_left": "<p><strong>Hudson Yard</strong></p><p>[ADDRESS]</p><p>20 W 34th St., New York, NY 10001, United States</p><p><a href=\"https://maps.app.goo.gl/pBB19yfgq7ZXArTD7\" target=\"_blank\" title=\"https://maps.app.goo.gl/pBB19yfgq7ZXArTD7\">Get direction</a></p>",
             "content_right": "<p>[PHONE]</p><p>+1 (606) 598-5782</p><p>[EMAIL]</p><p>store.name@vrworld.com</p>"
           }
@@ -590,9 +521,7 @@
         "row-4": {
           "type": "row",
           "settings": {
-            "image": "shopify://shop_images/2023-03-21.jpg",
             "heading": "<strong>Norman </strong>",
-            "image_map": "shopify://shop_images/1a05b60192e27bcb9ff2c1444d78a37973201c47.png",
             "content_left": "<p><strong>Norman Ave</strong></p><p>[ADDRESS]</p><p>89-75 Norman Ave, Brooklyn, NY 11222, USA</p><p><a href=\"https://maps.app.goo.gl/p6BXuPdYhfpsRGGJA\" target=\"_blank\" title=\"https://maps.app.goo.gl/p6BXuPdYhfpsRGGJA\">Get direction</a></p>",
             "content_right": "<p>[PHONE]</p><p>+1 (606) 598-5782</p><p>[EMAIL]</p><p>store.name@vrworld.com</p>"
           }
@@ -601,9 +530,7 @@
           "type": "row",
           "disabled": true,
           "settings": {
-            "image": "shopify://shop_images/2023-03-21.jpg",
             "heading": "<strong>Lomotron</strong>",
-            "image_map": "shopify://shop_images/1a05b60192e27bcb9ff2c1444d78a37973201c47.png",
             "content_left": "<p><strong>Lomotron</strong></p><p>[ADDRESS]</p><p>34th St., New York, NY, United States</p><p><a href=\"https://maps.app.goo.gl/p6BXuPdYhfpsRGGJA\" target=\"_blank\" title=\"https://maps.app.goo.gl/p6BXuPdYhfpsRGGJA\">Get direction</a></p>",
             "content_right": "<p>[PHONE]</p><p>+1 (606) 598-5782</p><p>[EMAIL]</p><p>store.name@vrworld.com</p>"
           }
@@ -661,7 +588,7 @@
     }
   },
   "order": [
-    "slideshow",
+    "vr_slideshow_wtDYnL",
     "multimedia_collage",
     "collection_list",
     "featured_collection",
