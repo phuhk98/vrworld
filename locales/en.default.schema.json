@@ -629,8 +629,14 @@
 					"label": "Background gradient",
 					"info": "Background gradient replaces background where possible."
 				},
+				"heading_gradient": {
+					"label": "Heading gradient"
+				},
 				"header_button": {
 					"content": "Button"
+				},
+				"button_bg_gradient": {
+					"label": "Button background gradient"
 				},
 				"header_product": {
 					"content": "Product"
