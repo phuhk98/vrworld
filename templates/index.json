@@ -25,6 +25,9 @@
             "button": "Shop Now",
             "link": "",
             "button_style": "primary",
+            "button_2": "Explore Products",
+            "link_2": "",
+            "button_style_2": "primary",
             "content_width": 100,
             "position_x": "start",
             "position_y": "center",
@@ -39,7 +42,7 @@
       ],
       "name": "t:sections.vr-slideshow.name",
       "settings": {
-        "color_scheme": "scheme-098995c4-a3d0-4bae-bbf0-af17bca3e81e",
+        "color_scheme": "scheme-cde439b3-4ec3-48e1-8170-0b95492e5005",
         "full": true,
         "height": "medium",
         "padding_top": 0,
