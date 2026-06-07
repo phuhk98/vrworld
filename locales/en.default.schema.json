@@ -2327,6 +2327,9 @@
 				}
 			}
 		},
+		"vr-slideshow": {
+			"name": "VR Slideshow"
+		},
 		"testimonial-with-carousel": {
 			"name": "Testimonial with carousel",
 			"settings": {
