@@ -146,7 +146,7 @@
 														{%- if has_button -%}
 														    <div class="slider-element slider-button" style="display: inline-flex; gap: 15px; flex-wrap: wrap;">
 																{%- if button != blank -%}
-																	<a href="{{ block.settings.link | default: '#' }}" class="button {% if block.settings.button_style == 'gradient' %}primary-button gradient-button{% else %}{{ block.settings.button_style }}-button{% endif %} slide-element-inner" tabindex="0" style="{% if block.settings.button_style == 'gradient' and section.settings.color_scheme.settings.button_bg_gradient != blank %}background: {{ section.settings.color_scheme.settings.button_bg_gradient }}; border: none;{% endif %}{% if block.settings.button_icon != blank %} display: inline-flex; align-items: center; justify-content: center; gap: 8px;{% endif %}">
+																	<a href="{{ block.settings.link | default: '#' }}" class="button {% if block.settings.button_style == 'gradient' %}primary-button gradient-button{% else %}{{ block.settings.button_style }}-button{% endif %} slide-element-inner" tabindex="0" style="{% if block.settings.button_icon != blank %} display: inline-flex; align-items: center; justify-content: center; gap: 8px;{% endif %}">
 																		{{- button | escape -}}
 																		{%- if block.settings.button_icon != blank -%}
 																			<img src="{{ block.settings.button_icon | image_url: width: 30 }}" alt="{{ block.settings.button_icon.alt | escape }}" style="width: 20px; height: auto;">
@@ -154,7 +154,7 @@
 																	</a>
 																{%- endif -%}
 																{%- if button_2 != blank -%}
-																	<a href="{{ block.settings.link_2 | default: '#' }}" class="button {% if block.settings.button_style_2 == 'gradient' %}primary-button gradient-button{% else %}{{ block.settings.button_style_2 }}-button{% endif %} slide-element-inner" tabindex="0" style="{% if block.settings.button_style_2 == 'gradient' and section.settings.color_scheme.settings.button_bg_gradient != blank %}background: {{ section.settings.color_scheme.settings.button_bg_gradient }}; border: none;{% endif %}{% if block.settings.button_icon_2 != blank %} display: inline-flex; align-items: center; justify-content: center; gap: 8px;{% endif %}">
+																	<a href="{{ block.settings.link_2 | default: '#' }}" class="button {% if block.settings.button_style_2 == 'gradient' %}primary-button gradient-button{% else %}{{ block.settings.button_style_2 }}-button{% endif %} slide-element-inner" tabindex="0" style="{% if block.settings.button_icon_2 != blank %} display: inline-flex; align-items: center; justify-content: center; gap: 8px;{% endif %}">
 																		{{- button_2 | escape -}}
 																		{%- if block.settings.button_icon_2 != blank -%}
 																			<img src="{{ block.settings.button_icon_2 | image_url: width: 30 }}" alt="{{ block.settings.button_icon_2.alt | escape }}" style="width: 20px; height: auto;">
