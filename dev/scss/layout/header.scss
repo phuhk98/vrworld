@@ -56,6 +56,13 @@
 					}
 				}
 
+				&.logo-menu-left-container {
+					.site-navigation {
+						margin-right: auto;
+						padding-left: 4rem;
+					}
+				}
+
 				&.logo-center-menu-left {
 					.site-navigation {
 						order: -1;
@@ -241,7 +248,7 @@
 		justify-content: space-between;
 		gap: 0.8rem;
 
-		&:not(.logo-menu-left) {
+		&:not(.logo-menu-left):not(.logo-menu-left-container) {
 			@media (min-width: 992px) {
 				display: grid;
 				gap: 3.2rem;

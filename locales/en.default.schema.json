@@ -2110,6 +2110,9 @@
 					},
 					"option_3": {
 						"label": "Logo Center - Menu Drawer Left"
+					},
+					"option_4": {
+						"label": "Logo Left - Menu Left - Header Container"
 					}
 				},
 				"uppercase_menu": {
