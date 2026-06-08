@@ -46,31 +46,30 @@
       border-bottom: .1rem solid rgb(var(--text-color), .12);
     }
 
+    .logo-menu-left-container {
+      padding: 0.625rem;
+      border-radius: 3.75rem;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      overflow: hidden;
+
+      &:after {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        backdrop-filter: blur(20px);
+        z-index: -1;
+      }
+    }
+
     .header-row {
       .drawer-content-left {
         display: flex;
         align-items: center;
         gap: 0.8rem;
       }
-
-      .logo-menu-left-container {
-        padding: 0.625rem;
-        border-radius: 3.75rem;
-        border: 1px solid rgba(255, 255, 255, 0.2);
-        overflow: hidden;
-
-        &:after {
-          content: '';
-          position: absolute;
-          top: 0;
-          left: 0;
-          width: 100%;
-          height: 100%;
-          backdrop-filter: blur(20px);
-          z-index: -1;
-        }
-      }
-
 
       @media (min-width: 992px) {
         padding: 1.6rem 0;
