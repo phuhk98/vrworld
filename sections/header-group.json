@@ -66,7 +66,7 @@
         "mega_menu_hmJwAz"
       ],
       "settings": {
-        "header_layout": "logo-menu-left",
+        "header_layout": "logo-menu-left-container",
         "full": false,
         "enable_sticky_header": true,
         "separator_line": true,
