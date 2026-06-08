@@ -69,6 +69,7 @@
         "header_layout": "logo-menu-left-container",
         "full": false,
         "enable_sticky_header": true,
+        "header_transparent": true,
         "separator_line": true,
         "color_scheme": "",
         "main_menu": "main-menu",
