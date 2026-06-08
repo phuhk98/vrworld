@@ -182,7 +182,7 @@
           "button_bg_color": "#ffffff",
           "button_bg_gradient": "linear-gradient(136deg, rgba(10, 234, 237, 1) 11%, rgba(250, 13, 253, 1) 84%)",
           "button_text_color": "#000000",
-          "button_outline_color": "#000000",
+          "button_outline_color": "#ffffff",
           "sale_label": "#f04d24",
           "sale_price": "#999999",
           "in_stock": "#1e9458",
