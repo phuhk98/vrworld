@@ -135,8 +135,8 @@
       overflow: hidden;
       position: relative;
 
-      .header-navigation menu {
-        background-color: rgba(var(--text-color), 0.2);
+      .header-navigation {
+        background-color: rgba(var(--text-color), 0.1);
         border-radius: 2rem;
       }
 
@@ -153,6 +153,7 @@
         height: 100%;
         backdrop-filter: blur(20px);
         z-index: -1;
+        background-color: rgba(var(--text-color), 0.1);
       }
 
 
