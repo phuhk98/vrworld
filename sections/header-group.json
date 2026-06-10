@@ -80,7 +80,7 @@
         "enable_transparent_header_article": true,
         "transparent_custom": "",
         "transparent_color_scheme": "scheme-3",
-        "show_country_language_selector": true
+        "show_country_language_selector": false
       }
     },
     "quick-search": {
