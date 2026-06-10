@@ -15,7 +15,7 @@
     "heading_font": "michroma_n4",
     "third_font": "michroma_n4",
     "enable_search": true,
-    "enable_predictive_search": true,
+    "enable_predictive_search": false,
     "screen_lg": 1318,
     "swatch_style": "circle",
     "social_facebook_link": "https://facebook.com/shopify",
