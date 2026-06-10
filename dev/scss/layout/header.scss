@@ -49,8 +49,13 @@
     .logo-menu-left-container {
       padding: 0.625rem;
       border-radius: 3.75rem;
-      border: 1px solid rgba(255, 255, 255, 0.2);
+      border: 1px solid rgba(var(--text-color), 0.2);
       overflow: hidden;
+      position: relative;
+
+      @media (min-width: 992px) {
+        padding: 0.625rem;
+      }
 
       &:after {
         content: '';
@@ -956,7 +961,7 @@
     color: rgb(var(--button-text-color));
     border: 1px solid rgb(var(--button-outline-color));
     border-radius: 50rem;
-    background-color: rgb(var(--button-bg-color));
+    background-color: rgb(var(--button-bg-color), 0.1);
     padding: 1rem;
     min-width: 4rem;
     height: 4rem;
