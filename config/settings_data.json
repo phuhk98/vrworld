@@ -10,6 +10,7 @@
 {
   "current": {
     "logo_image": "shopify://shop_images/logo.svg",
+    "logo_width": 170,
     "body_font": "open_sans_n4",
     "heading_font": "michroma_n4",
     "third_font": "michroma_n4",
