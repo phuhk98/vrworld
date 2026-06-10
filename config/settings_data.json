@@ -158,7 +158,7 @@
           "button_bg_color": "#000000",
           "button_bg_gradient": "",
           "button_text_color": "#ffffff",
-          "button_outline_color": "#000000",
+          "button_outline_color": "#ffffff",
           "sale_label": "#000000",
           "sale_price": "#999999",
           "in_stock": "#1e9458",
