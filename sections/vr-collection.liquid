@@ -54,7 +54,7 @@
 									assign subtext = count | append: ' brands Available'
 								endif
 							-%}
-							<div class="vr-collection-slide vrworld-slide color-{{ section.settings.color_scheme }}" {{ block.shopify_attributes }}>
+							<div class="vr-collection-slide vrworld-slide" {{ block.shopify_attributes }}>
 								<a href="{{ collection.url | default: '#' }}" class="vr-collection-card">
 									<div class="vr-collection-card__image-wrapper">
 										{%- if card_image != blank -%}
