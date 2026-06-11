@@ -176,6 +176,128 @@
         "padding_bottom_mobile": 20
       }
     },
+    "vr_partners_UKhRhW": {
+      "type": "vr-partners",
+      "blocks": {
+        "image_QKpb4d": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/logo5.png",
+            "img_link": ""
+          }
+        },
+        "image_RHUBQg": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/logo4.png",
+            "img_link": ""
+          }
+        },
+        "image_wqt6hH": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/logo3.png",
+            "img_link": ""
+          }
+        },
+        "image_Ke9hqc": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/logo2.png",
+            "img_link": ""
+          }
+        },
+        "image_w7nYL7": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/logo1.png",
+            "img_link": ""
+          }
+        },
+        "image_g3Jjwp": {
+          "type": "image",
+          "settings": {
+            "img_link": ""
+          }
+        },
+        "image_NCqKWB": {
+          "type": "image",
+          "settings": {
+            "img_link": ""
+          }
+        },
+        "image_agGX7B": {
+          "type": "image",
+          "settings": {
+            "img_link": ""
+          }
+        },
+        "image_9f3MtE": {
+          "type": "image",
+          "settings": {
+            "img_link": ""
+          }
+        },
+        "image_QMknTC": {
+          "type": "image",
+          "settings": {
+            "img_link": ""
+          }
+        },
+        "image_TJiktr": {
+          "type": "image",
+          "settings": {
+            "img_link": ""
+          }
+        },
+        "image_fajDtd": {
+          "type": "image",
+          "settings": {
+            "img_link": ""
+          }
+        },
+        "image_fNXCfV": {
+          "type": "image",
+          "settings": {
+            "img_link": ""
+          }
+        }
+      },
+      "block_order": [
+        "image_QKpb4d",
+        "image_RHUBQg",
+        "image_wqt6hH",
+        "image_Ke9hqc",
+        "image_w7nYL7",
+        "image_g3Jjwp",
+        "image_NCqKWB",
+        "image_agGX7B",
+        "image_9f3MtE",
+        "image_QMknTC",
+        "image_TJiktr",
+        "image_fajDtd",
+        "image_fNXCfV"
+      ],
+      "name": "VR Partners",
+      "settings": {
+        "color_scheme": "",
+        "heading_text": "Discover the Best in VR Top-Rated Brands",
+        "heading_size": "h5",
+        "text": "<p>Discover the most popular VR accessories chosen by gamers worldwide, designed to elevate your immersive experience.</p>",
+        "text_align": "center",
+        "mobile_align": "center",
+        "column": 4,
+        "loop": false,
+        "autoplay": false,
+        "delay": 5,
+        "enable_border": false,
+        "item_color_scheme": "",
+        "padding_top": 50,
+        "padding_bottom": 50,
+        "padding_top_mobile": 20,
+        "padding_bottom_mobile": 20
+      }
+    },
     "multimedia_collage": {
       "type": "multimedia-collage",
       "blocks": {
@@ -216,135 +338,6 @@
         "button_link": "shopify://collections/digestive-support",
         "desktop_layout": "right",
         "mobile_layout": "column",
-        "padding_top": 80,
-        "padding_bottom": 80,
-        "padding_top_mobile": 60,
-        "padding_bottom_mobile": 60
-      }
-    },
-    "featured_collection": {
-      "type": "featured-collection",
-      "blocks": {
-        "tab-4": {
-          "type": "tab",
-          "settings": {
-            "name": "",
-            "collection": "immune-antioxidants"
-          }
-        }
-      },
-      "block_order": [
-        "tab-4"
-      ],
-      "name": "t:sections.featured-collection.name",
-      "settings": {
-        "full": false,
-        "color_scheme": "scheme-249bc96c-a978-4bba-a5bc-70409aeabb75",
-        "sub_heading": "( Browser our products )",
-        "heading": "Most popular",
-        "heading_size": "h2",
-        "columns": 4,
-        "total": 8,
-        "dots": false,
-        "loop": false,
-        "autoplay": true,
-        "delay": 5,
-        "padding_top": 80,
-        "padding_bottom": 80,
-        "padding_top_mobile": 60,
-        "padding_bottom_mobile": 60
-      }
-    },
-    "partners": {
-      "type": "partners",
-      "blocks": {
-        "image-1": {
-          "type": "image",
-          "settings": {
-            "img_link": ""
-          }
-        },
-        "image-2": {
-          "type": "image",
-          "settings": {
-            "img_link": ""
-          }
-        },
-        "image-3": {
-          "type": "image",
-          "settings": {
-            "img_link": ""
-          }
-        },
-        "image-4": {
-          "type": "image",
-          "settings": {
-            "img_link": ""
-          }
-        },
-        "image-5": {
-          "type": "image",
-          "settings": {
-            "img_link": ""
-          }
-        },
-        "image-6": {
-          "type": "image",
-          "settings": {
-            "img_link": ""
-          }
-        },
-        "image-7": {
-          "type": "image",
-          "settings": {
-            "img_link": ""
-          }
-        },
-        "image-8": {
-          "type": "image",
-          "settings": {
-            "img_link": ""
-          }
-        },
-        "image-9": {
-          "type": "image",
-          "settings": {
-            "img_link": ""
-          }
-        },
-        "image-10": {
-          "type": "image",
-          "settings": {
-            "img_link": ""
-          }
-        }
-      },
-      "block_order": [
-        "image-1",
-        "image-2",
-        "image-3",
-        "image-4",
-        "image-5",
-        "image-6",
-        "image-7",
-        "image-8",
-        "image-9",
-        "image-10"
-      ],
-      "name": "t:sections.partners.name",
-      "settings": {
-        "color_scheme": "scheme-2",
-        "heading_text": "We’re proud to partner with some of the most admired brands in the industry to bring you exceptional supplements",
-        "heading_size": "h4",
-        "text": "<p>Our trusted partners are industry-leading, ethically sourced brands committed to providing high-quality, science-backed vitamins and supplements to support the well-being of our customers.</p>",
-        "text_align": "center",
-        "mobile_align": "center",
-        "column": 4,
-        "loop": true,
-        "autoplay": true,
-        "delay": 5,
-        "enable_border": false,
-        "item_color_scheme": "scheme-be293f48-285a-4399-9036-8e0fac37561a",
         "padding_top": 80,
         "padding_bottom": 80,
         "padding_top_mobile": 60,
@@ -672,9 +665,8 @@
     "vr_slideshow_wtDYnL",
     "vr_collection_EFpBQW",
     "vr_featured_collection_VUMmGP",
+    "vr_partners_UKhRhW",
     "multimedia_collage",
-    "featured_collection",
-    "partners",
     "testimonial",
     "scrolling_promotion",
     "featured_product",
