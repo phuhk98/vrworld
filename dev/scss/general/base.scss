@@ -651,9 +651,29 @@ input[type='file'],
   align-items: center;
   padding: 0 2.4rem;
   font-size: 1.4rem;
+  text-transform: uppercase;
   color: rgb(var(--button-outline-color));
-  border: var(--button-border-width) solid rgba(var(--button-outline-color), var(--button-border-opacity));
+  border: 1px solid transparent;
+  background-image: linear-gradient(rgb(var(--background-color)), rgb(var(--background-color))), var(--gradient-background, linear-gradient(rgba(var(--text-color), 0.08), rgba(var(--text-color), 0.08)));
+  background-clip: padding-box, border-box;
+  background-origin: border-box;
   border-radius: var(--button-radius);
+  font-family: var(--subheading-font-family);
+  font-weight: var(--subheading-font-weight);
+
+  &:after {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    transition: all 0.5s ease-in-out;
+    background: var(--button-bg-gradient);
+    border-radius: 30px;
+    visibility: hidden;
+    height: 100%;
+    width: 100%;
+    z-index: -1;
+  }
 }
 
 input[type='file'] {
