@@ -162,53 +162,9 @@
         "padding_bottom_mobile": 60
       }
     },
-    "collection_list": {
-      "type": "collection-list",
-      "name": "t:sections.collection-list-hover.name",
-      "settings": {
-        "color_scheme": "scheme-3",
-        "height": "750px",
-        "overlay": 50,
-        "sub_heading": "<p>( BROWSE WIDE RANGE OF PRODUCTS )</p>",
-        "heading": "Shop by collections",
-        "heading_size": "h2",
-        "collection_list": [
-          "herbal-supplements",
-          "advanced-vitamins",
-          "digestive-support",
-          "immune-antioxidants"
-        ],
-        "summary_vertical_align": "center",
-        "padding_top": 0,
-        "padding_bottom": 0,
-        "padding_top_mobile": 60,
-        "padding_bottom_mobile": 60
-      }
-    },
     "featured_collection": {
       "type": "featured-collection",
       "blocks": {
-        "tab-1": {
-          "type": "tab",
-          "settings": {
-            "name": "All",
-            "collection": "all-wellness-essentials"
-          }
-        },
-        "tab-2": {
-          "type": "tab",
-          "settings": {
-            "name": "",
-            "collection": "herbal-supplements"
-          }
-        },
-        "tab-3": {
-          "type": "tab",
-          "settings": {
-            "name": "",
-            "collection": "digestive-support"
-          }
-        },
         "tab-4": {
           "type": "tab",
           "settings": {
@@ -218,9 +174,6 @@
         }
       },
       "block_order": [
-        "tab-1",
-        "tab-2",
-        "tab-3",
         "tab-4"
       ],
       "name": "t:sections.featured-collection.name",
@@ -659,7 +612,6 @@
     "vr_slideshow_wtDYnL",
     "vr_collection_EFpBQW",
     "multimedia_collage",
-    "collection_list",
     "featured_collection",
     "partners",
     "testimonial",
