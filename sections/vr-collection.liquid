@@ -17,7 +17,7 @@
 	}
 </style>
 
-<div class="section-wrapper vr-collection-section color-{{ section.settings.color_scheme }}">
+<div class="section-wrapper vr-collection-section">
 	<div class="{% if section.settings.full_width %}stretch-section{% else %}container{% endif %}">
 		{%- if section.settings.heading != blank or section.settings.sub_heading != blank -%}
 			<div class="container title-wrapper text-{{ section.settings.text_align }}">
@@ -54,7 +54,7 @@
 									assign subtext = count | append: ' brands Available'
 								endif
 							-%}
-							<div class="vr-collection-slide vrworld-slide" {{ block.shopify_attributes }}>
+							<div class="vr-collection-slide vrworld-slide color-{{ section.settings.color_scheme }}" {{ block.shopify_attributes }}>
 								<a href="{{ collection.url | default: '#' }}" class="vr-collection-card">
 									<div class="vr-collection-card__image-wrapper">
 										{%- if card_image != blank -%}
