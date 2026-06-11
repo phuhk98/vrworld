@@ -122,10 +122,6 @@
         opacity: 1;
       }
 
-      .vr-collection-card__image {
-        transform: scale(1.08);
-      }
-
       .vr-collection-card__title {
         filter: invert(1);
       }
@@ -134,5 +130,13 @@
         filter: invert(1);
       }
     }
+  }
+}
+
+.vr-featured-collection-section {
+  .tab-head.active {
+    background: var(--heading-gradient) !important;
+    border-color: transparent !important;
+    color: #ffffff !important;
   }
 }
