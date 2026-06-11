@@ -122,37 +122,29 @@
         "tab_KLbwQb": {
           "type": "tab",
           "settings": {
-            "name": "Tab 1",
+            "name": "New Arrival",
             "collection": "automated-collection"
           }
         },
         "tab_AxxeEj": {
           "type": "tab",
           "settings": {
-            "name": "Tab 2",
+            "name": "Bestseller",
             "collection": "hydrogen"
           }
         },
         "tab_RrXhMj": {
           "type": "tab",
           "settings": {
-            "name": "Tab 3",
-            "collection": ""
-          }
-        },
-        "tab_G7ezE7": {
-          "type": "tab",
-          "settings": {
-            "name": "Tab 4",
-            "collection": ""
+            "name": "Offer sale",
+            "collection": "hydrogen"
           }
         }
       },
       "block_order": [
         "tab_KLbwQb",
         "tab_AxxeEj",
-        "tab_RrXhMj",
-        "tab_G7ezE7"
+        "tab_RrXhMj"
       ],
       "name": "VR Featured Collection",
       "settings": {
