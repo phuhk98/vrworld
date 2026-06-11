@@ -116,6 +116,66 @@
         "padding_bottom_mobile": 20
       }
     },
+    "vr_featured_collection_VUMmGP": {
+      "type": "vr-featured-collection",
+      "blocks": {
+        "tab_KLbwQb": {
+          "type": "tab",
+          "settings": {
+            "name": "Tab 1",
+            "collection": "automated-collection"
+          }
+        },
+        "tab_AxxeEj": {
+          "type": "tab",
+          "settings": {
+            "name": "Tab 2",
+            "collection": "hydrogen"
+          }
+        },
+        "tab_RrXhMj": {
+          "type": "tab",
+          "settings": {
+            "name": "Tab 3",
+            "collection": ""
+          }
+        },
+        "tab_G7ezE7": {
+          "type": "tab",
+          "settings": {
+            "name": "Tab 4",
+            "collection": ""
+          }
+        }
+      },
+      "block_order": [
+        "tab_KLbwQb",
+        "tab_AxxeEj",
+        "tab_RrXhMj",
+        "tab_G7ezE7"
+      ],
+      "name": "VR Featured Collection",
+      "settings": {
+        "full": false,
+        "color_scheme": "",
+        "sub_heading": "( Browser our products )",
+        "heading": "Most popular",
+        "heading_size": "h3",
+        "button_text": "Explore Products",
+        "button_link": "",
+        "button_style": "primary",
+        "columns": 4,
+        "total": 8,
+        "dots": false,
+        "loop": false,
+        "autoplay": false,
+        "delay": 2,
+        "padding_top": 50,
+        "padding_bottom": 50,
+        "padding_top_mobile": 20,
+        "padding_bottom_mobile": 20
+      }
+    },
     "multimedia_collage": {
       "type": "multimedia-collage",
       "blocks": {
@@ -611,6 +671,7 @@
   "order": [
     "vr_slideshow_wtDYnL",
     "vr_collection_EFpBQW",
+    "vr_featured_collection_VUMmGP",
     "multimedia_collage",
     "featured_collection",
     "partners",
