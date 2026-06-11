@@ -22,7 +22,7 @@
 		-%}
 
 		{% if forloop.index == 1 %}:root, {% endif %}.color-{{ scheme.id }} {
-			--gradient-background: {% if scheme.settings.background_gradient != empty %}{{ scheme.settings.background_gradient }}{% else %}{{ scheme.settings.background_color }}{% endif %};
+			--gradient-background: {{ scheme.settings.background_gradient }};
 			--background-color: {{ scheme.settings.background_color.red }}, {{ scheme.settings.background_color.green }}, {{ scheme.settings.background_color.blue }};
 			--text-color: {{ scheme.settings.text_color.red }}, {{ scheme.settings.text_color.green }}, {{ scheme.settings.text_color.blue }};
 			--heading-color: {{ scheme.settings.heading_color.red }}, {{ scheme.settings.heading_color.green }}, {{ scheme.settings.heading_color.blue }};

@@ -1,0 +1,271 @@
+{%- liquid
+	assign section_id             = '#shopify-section-' | append: section.id
+	assign animation              = settings.section_animation
+-%}
+
+<style>
+	{{ section_id }} .section-wrapper {
+		padding-top: {{ section.settings.padding_top_mobile }}px;
+		padding-bottom: {{ section.settings.padding_bottom_mobile }}px;
+	}
+
+	@media (min-width: 992px) {
+		{{ section_id }} .section-wrapper {
+			padding-top: {{ section.settings.padding_top }}px;
+			padding-bottom: {{ section.settings.padding_bottom }}px;
+		}
+	}
+</style>
+
+<div class="section-wrapper vr-collection-section color-{{ section.settings.color_scheme }}">
+	<div class="{% if section.settings.full_width %}stretch-section{% else %}container{% endif %}">
+		{%- if section.settings.heading != blank or section.settings.sub_heading != blank -%}
+			<div class="container title-wrapper text-{{ section.settings.text_align }}">
+				{%- if section.settings.sub_heading != blank -%}
+					<div class="sub-heading rte">{{ section.settings.sub_heading }}</div>
+				{%- endif -%}
+				{%- if section.settings.heading != blank -%}
+					<h2 class="heading rte {{ section.settings.heading_size }}">{{ section.settings.heading }}</h2>
+				{%- endif -%}
+			</div>
+		{%- endif -%}
+
+		<div class="vr-collection-slider">
+			<vrworld-slider class="vrworld-slider">
+				<template data-options>
+					{
+						"dragFree": true,
+						"align": "start",
+						"containScroll": "trimSnaps",
+						"_autoheight": true,
+						"_fade": false
+					}
+				</template>
+				<div class="vrworld-slider-viewport">
+					<div class="vrworld-slider-container">
+						{%- for block in section.blocks -%}
+							{%- liquid
+								assign collection = collections[block.settings.collection]
+								assign card_image = block.settings.image | default: collection.featured_image
+								assign card_title = block.settings.title_override | default: collection.title | default: 'Collection'
+								assign count = collection.all_products_count | default: 0
+								assign subtext = block.settings.custom_text
+								if subtext == blank
+									assign subtext = count | append: ' brands Available'
+								endif
+							-%}
+							<div class="vr-collection-slide vrworld-slide" {{ block.shopify_attributes }}>
+								<a href="{{ collection.url | default: '#' }}" class="vr-collection-card color-{{ block.settings.color_scheme }}">
+									<div class="vr-collection-card__image-wrapper">
+										{%- if card_image != blank -%}
+											{{ card_image | image_url: width: 300 | image_tag: class: 'vr-collection-card__image', loading: 'lazy' }}
+										{%- else -%}
+											{{ 'image' | placeholder_svg_tag: 'placeholder-svg vr-collection-card__placeholder' }}
+										{%- endif -%}
+									</div>
+									<div class="vr-collection-card__info">
+										<h3 class="vr-collection-card__title h4">{{ card_title }}</h3>
+										<p class="vr-collection-card__count">{{ subtext }}</p>
+									</div>
+								</a>
+							</div>
+						{%- else -%}
+							{%- for i in (1..5) -%}
+								<div class="vr-collection-slide vrworld-slide">
+									<div class="vr-collection-card color-scheme-1">
+										<div class="vr-collection-card__image-wrapper">
+											{{ 'image' | placeholder_svg_tag: 'placeholder-svg vr-collection-card__placeholder' }}
+										</div>
+										<div class="vr-collection-card__info">
+											<h3 class="vr-collection-card__title h4">Collection {{ i }}</h3>
+											<p class="vr-collection-card__count">0 brands Available</p>
+										</div>
+									</div>
+								</div>
+							{%- endfor -%}
+						{%- endfor -%}
+					</div>
+				</div>
+			</vrworld-slider>
+		</div>
+	</div>
+</div>
+
+{% schema %}
+{
+	"name": "VR Collection Slider",
+	"tag": "section",
+	"class": "vr-collection-slider-section",
+	"disabled_on": {
+		"groups": ["header", "footer"]
+	},
+	"settings": [
+		{
+			"type": "color_scheme",
+			"id": "color_scheme",
+			"label": "t:settings_schema.colors.label",
+			"default": "scheme-1"
+		},
+		{
+			"type": "checkbox",
+			"id": "full_width",
+			"default": true,
+			"label": "t:general.layout.full.label"
+		},
+		{
+			"type": "inline_richtext",
+			"id": "heading",
+			"label": "t:general.typography.heading.label"
+		},
+		{
+			"type": "select",
+			"id": "heading_size",
+			"options": [
+				{
+					"value": "h3",
+					"label": "t:general.typography.heading_size.option_1.label"
+				},
+				{
+					"value": "h2",
+					"label": "t:general.typography.heading_size.option_2.label"
+				},
+				{
+					"value": "h1",
+					"label": "t:general.typography.heading_size.option_3.label"
+				}
+			],
+			"default": "h2",
+			"label": "t:general.typography.heading_size.label"
+		},
+		{
+			"type": "richtext",
+			"id": "sub_heading",
+			"label": "t:general.typography.sub_heading.label"
+		},
+		{
+			"type": "select",
+			"id": "text_align",
+			"options": [
+				{
+					"value": "left",
+					"label": "t:general.layout.alignment.option_1.label"
+				},
+				{
+					"value": "center",
+					"label": "t:general.layout.alignment.option_2.label"
+				},
+				{
+					"value": "right",
+					"label": "t:general.layout.alignment.option_3.label"
+				}
+			],
+			"default": "center",
+			"label": "t:general.layout.alignment.label"
+		},
+		{
+			"type": "header",
+			"content": "t:general.padding.header_padding.content"
+		},
+		{
+			"type": "range",
+			"id": "padding_top",
+			"min": 0,
+			"max": 120,
+			"step": 4,
+			"default": 40,
+			"unit": "px",
+			"label": "t:general.padding.top.label"
+		},
+		{
+			"type": "range",
+			"id": "padding_bottom",
+			"min": 0,
+			"max": 120,
+			"step": 4,
+			"default": 40,
+			"unit": "px",
+			"label": "t:general.padding.bottom.label"
+		},
+		{
+			"type": "paragraph",
+			"content": "t:general.padding.paragraph_mobile.content"
+		},
+		{
+			"type": "range",
+			"id": "padding_top_mobile",
+			"min": 0,
+			"max": 100,
+			"step": 2,
+			"default": 20,
+			"unit": "px",
+			"label": "t:general.padding.top.label"
+		},
+		{
+			"type": "range",
+			"id": "padding_bottom_mobile",
+			"min": 0,
+			"max": 100,
+			"step": 2,
+			"default": 20,
+			"unit": "px",
+			"label": "t:general.padding.bottom.label"
+		}
+	],
+	"blocks": [
+		{
+			"type": "collection_item",
+			"name": "Collection Item",
+			"settings": [
+				{
+					"type": "collection",
+					"id": "collection",
+					"label": "Collection"
+				},
+				{
+					"type": "color_scheme",
+					"id": "color_scheme",
+					"label": "Color scheme",
+					"default": "scheme-2"
+				},
+				{
+					"type": "image_picker",
+					"id": "image",
+					"label": "Custom Image (Optional)"
+				},
+				{
+					"type": "text",
+					"id": "title_override",
+					"label": "Title Override (Optional)"
+				},
+				{
+					"type": "text",
+					"id": "custom_text",
+					"label": "Custom Subtext (Optional)"
+				}
+			]
+		}
+	],
+	"presets": [
+		{
+			"name": "VR Collection Slider",
+			"blocks": [
+				{
+					"type": "collection_item"
+				},
+				{
+					"type": "collection_item"
+				},
+				{
+					"type": "collection_item"
+				},
+				{
+					"type": "collection_item"
+				},
+				{
+					"type": "collection_item"
+				}
+			]
+		}
+	]
+}
+{% endschema %}
