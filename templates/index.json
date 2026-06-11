@@ -25,7 +25,6 @@
             "button": "Shop Now",
             "link": "",
             "button_style": "gradient",
-            "button_icon": "shopify://shop_images/bag.svg",
             "button_2": "Explore Products",
             "link_2": "",
             "button_style_2": "secondary",
@@ -589,6 +588,76 @@
         "padding_top_mobile": 60,
         "padding_bottom_mobile": 60
       }
+    },
+    "vr_collection_EFpBQW": {
+      "type": "vr-collection",
+      "blocks": {
+        "collection_item_p3Mw3m": {
+          "type": "collection_item",
+          "settings": {
+            "collection": "automated-collection",
+            "color_scheme": "scheme-cde439b3-4ec3-48e1-8170-0b95492e5005",
+            "title_override": "",
+            "custom_text": ""
+          }
+        },
+        "collection_item_zDfBdd": {
+          "type": "collection_item",
+          "settings": {
+            "collection": "",
+            "color_scheme": "",
+            "title_override": "",
+            "custom_text": ""
+          }
+        },
+        "collection_item_wj9fyJ": {
+          "type": "collection_item",
+          "settings": {
+            "collection": "",
+            "color_scheme": "",
+            "title_override": "",
+            "custom_text": ""
+          }
+        },
+        "collection_item_ciBGTD": {
+          "type": "collection_item",
+          "settings": {
+            "collection": "",
+            "color_scheme": "",
+            "title_override": "",
+            "custom_text": ""
+          }
+        },
+        "collection_item_ePAPpz": {
+          "type": "collection_item",
+          "settings": {
+            "collection": "",
+            "color_scheme": "",
+            "title_override": "",
+            "custom_text": ""
+          }
+        }
+      },
+      "block_order": [
+        "collection_item_p3Mw3m",
+        "collection_item_zDfBdd",
+        "collection_item_wj9fyJ",
+        "collection_item_ciBGTD",
+        "collection_item_ePAPpz"
+      ],
+      "name": "VR Collection Slider",
+      "settings": {
+        "color_scheme": "scheme-cde439b3-4ec3-48e1-8170-0b95492e5005",
+        "full_width": true,
+        "heading": "",
+        "heading_size": "h2",
+        "sub_heading": "",
+        "text_align": "center",
+        "padding_top": 40,
+        "padding_bottom": 40,
+        "padding_top_mobile": 20,
+        "padding_bottom_mobile": 20
+      }
     }
   },
   "order": [
@@ -601,6 +670,7 @@
     "scrolling_promotion",
     "featured_product",
     "scrolling_row",
-    "collage_blog_posts"
+    "collage_blog_posts",
+    "vr_collection_EFpBQW"
   ]
 }
