@@ -17,7 +17,7 @@
 	}
 </style>
 
-<div class="section-wrapper vr-collection-section">
+<div class="section-wrapper vr-collection-section color-{{ section.settings.color_scheme }}">
 	<div class="{% if section.settings.full_width %}stretch-section{% else %}container{% endif %}">
 		{%- if section.settings.heading != blank or section.settings.sub_heading != blank -%}
 			<div class="container title-wrapper text-{{ section.settings.text_align }}">
