@@ -55,7 +55,7 @@
 								endif
 							-%}
 							<div class="vr-collection-slide vrworld-slide" {{ block.shopify_attributes }}>
-								<a href="{{ collection.url | default: '#' }}" class="vr-collection-card color-{{ block.settings.color_scheme }}">
+								<a href="{{ collection.url | default: '#' }}" class="vr-collection-card">
 									<div class="vr-collection-card__image-wrapper">
 										{%- if card_image != blank -%}
 											{{ card_image | image_url: width: 300 | image_tag: class: 'vr-collection-card__image', loading: 'lazy' }}
@@ -72,7 +72,7 @@
 						{%- else -%}
 							{%- for i in (1..5) -%}
 								<div class="vr-collection-slide vrworld-slide">
-									<div class="vr-collection-card color-scheme-1">
+									<div class="vr-collection-card">
 										<div class="vr-collection-card__image-wrapper">
 											{{ 'image' | placeholder_svg_tag: 'placeholder-svg vr-collection-card__placeholder' }}
 										</div>
@@ -220,12 +220,6 @@
 					"type": "collection",
 					"id": "collection",
 					"label": "Collection"
-				},
-				{
-					"type": "color_scheme",
-					"id": "color_scheme",
-					"label": "Color scheme",
-					"default": "scheme-2"
 				},
 				{
 					"type": "image_picker",
