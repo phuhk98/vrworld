@@ -294,38 +294,6 @@
     },
     "vr_featured_product_d9eJP4": {
       "type": "vr-featured-product",
-      "blocks": {
-        "product_item_8aDEDg": {
-          "type": "product_item",
-          "settings": {
-            "product": "the-3p-fulfilled-snowboard"
-          }
-        },
-        "product_item_4UUYVM": {
-          "type": "product_item",
-          "settings": {
-            "product": "the-collection-snowboard-hydrogen"
-          }
-        },
-        "product_item_V8zw3J": {
-          "type": "product_item",
-          "settings": {
-            "product": "the-collection-snowboard-liquid"
-          }
-        },
-        "product_item_3bPEj8": {
-          "type": "product_item",
-          "settings": {
-            "product": "the-collection-snowboard-oxygen"
-          }
-        }
-      },
-      "block_order": [
-        "product_item_8aDEDg",
-        "product_item_4UUYVM",
-        "product_item_V8zw3J",
-        "product_item_3bPEj8"
-      ],
       "name": "VR Featured Product",
       "settings": {
         "color_scheme": "scheme-249bc96c-a978-4bba-a5bc-70409aeabb75",
@@ -337,6 +305,13 @@
         "button_text": "Explore Products",
         "button_link": "",
         "button_style": "gradient",
+        "collection": "hydrogen",
+        "columns": 4,
+        "total_items": 4,
+        "dots": false,
+        "loop": false,
+        "autoplay": false,
+        "delay": 2,
         "padding_top": 40,
         "padding_bottom": 40,
         "padding_top_mobile": 20,
