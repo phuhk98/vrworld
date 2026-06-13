@@ -1,6 +1,7 @@
 {%- liquid
 	assign section_id             = '#shopify-section-' | append: section.id
 	assign animation              = settings.section_animation
+	assign columns                = section.settings.columns | default: 4
 -%}
 
 <style>
@@ -9,70 +10,102 @@
 		padding-bottom: {{ section.settings.padding_bottom_mobile }}px;
 	}
 
+	{{ section_id }} .vrworld-slider {
+		--slide-size: 93%;
+	}
+
 	@media (min-width: 992px) {
 		{{ section_id }} .section-wrapper {
 			padding-top: {{ section.settings.padding_top }}px;
 			padding-bottom: {{ section.settings.padding_bottom }}px;
+		}
+
+		{{ section_id }} .vrworld-slider {
+			--slide-size: calc( 100% / {{ columns  }});
+			--slide-spacing: 0.8rem;
 		}
 	}
 </style>
 
 <div class="section-wrapper vr-featured-product-section color-{{ section.settings.color_scheme }}">
 	<div class="{% if section.settings.full_width %}stretch-section{% else %}container{% endif %}">
-		{%- if section.settings.heading != blank or section.settings.sub_heading != blank -%}
-			<div class="container title-wrapper text-{{ section.settings.text_align }}">
-				{%- if section.settings.sub_heading != blank -%}
-					<div class="sub-heading rte">{{ section.settings.sub_heading }}</div>
-				{%- endif -%}
-				{%- if section.settings.heading != blank -%}
-					<h2 class="heading rte {{ section.settings.heading_size }}">{{ section.settings.heading }}</h2>
-				{%- endif -%}
-			</div>
-		{%- endif -%}
-
-		<div class="vr-featured-product-slider">
-			<vrworld-slider class="vrworld-slider">
-				<template data-options>
-					{
-						"dragFree": true,
-						"align": "start",
-						"containScroll": "trimSnaps",
-						"_autoheight": true,
-						"_fade": false
-					}
-				</template>
-				<div class="vrworld-slider-viewport">
-					<div class="vrworld-slider-container">
-						{%- for block in section.blocks -%}
-							{%- liquid
-								assign product = all_products[block.settings.product]
-							-%}
-							<div class="vr-featured-product-slide vrworld-slide grid-item" {{ block.shopify_attributes }}>
-								{%- if product != blank -%}
-									{%- render 'product-card', product: product, alignment: 'center' -%}
-								{%- else -%}
-									{%- render 'product-card-placeholder', index: forloop.index, alignment: 'center' -%}
-								{%- endif -%}
-							</div>
-						{%- else -%}
-							{%- for i in (1..4) -%}
-								<div class="vr-featured-product-slide vrworld-slide grid-item">
-									{%- render 'product-card-placeholder', index: i, alignment: 'center' -%}
-								</div>
-							{%- endfor -%}
-						{%- endfor -%}
-					</div>
+		<div class="vr-featured-product-header">
+			{%- if section.settings.heading != blank or section.settings.sub_heading != blank -%}
+				<div class="title-wrapper">
+					{%- if section.settings.sub_heading != blank -%}
+						<div class="sub-heading rte">{{ section.settings.sub_heading }}</div>
+					{%- endif -%}
+					{%- if section.settings.heading != blank -%}
+						<h2 class="heading rte {{ section.settings.heading_size }}">{{ section.settings.heading }}</h2>
+					{%- endif -%}
 				</div>
-			</vrworld-slider>
+			{%- endif -%}
+
+			{%- if section.settings.button_text != blank -%}
+				<div class="section-button-wrapper">
+					<a href="{{ section.settings.button_link | default: '#' }}" class="button {% if section.settings.button_style == 'gradient' %}gradient-button{% else %}{{ section.settings.button_style }}-button{% endif %}"{% if section.settings.button_style == 'gradient' %} style="background: var(--button-bg-gradient);"{% endif %}>
+						{{ section.settings.button_text | escape }}
+					</a>
+				</div>
+			{%- endif -%}
 		</div>
 
-		{%- if section.settings.button_text != blank -%}
-			<div class="align-dots-center section-button-wrapper" style="margin-top: 4rem; display: flex; justify-content: center;">
-				<a href="{{ section.settings.button_link | default: '#' }}" class="button {% if section.settings.button_style == 'gradient' %}gradient-button{% else %}{{ section.settings.button_style }}-button{% endif %}"{% if section.settings.button_style == 'gradient' %} style="background: var(--button-bg-gradient);"{% endif %}>
-					{{ section.settings.button_text | escape }}
-				</a>
+		<vrworld-slider class="vrworld-slider">
+			<template data-options>
+				{
+					{%- if section.settings.loop -%}
+						"loop": true,
+					{%- endif -%}
+
+					{%- if section.settings.autoplay -%}
+						"_autoplay": {{ section.settings.delay | times: 1000 }},
+					{%- endif -%}
+
+					"align": "start",
+					"_autoheight": true,
+					"_fade": false,
+					"speed": 10,
+					"_prevBtn": "{{ section_id }} .vrworld-button-prev",
+					"_nextBtn": "{{ section_id }} .vrworld-button-next",
+					"_dotsNode": "{{ section_id }} .vrworld-dots"
+				}
+			</template>
+
+			<div class="vrworld-arrows active" data-index="1">
+				<button class="vrworld-button vrworld-button-prev" title ="{{ 'general.vrworld.prev' | t }}-feature-prd" aria-label="{{ 'general.vrworld.prev' | t }}-feature-prd" id="{{ 'general.vrworld.prev' | t }}-feature-prd" aria-labelledby="{{ 'general.vrworld.prev' | t }}-feature-prd" disabled>
+					{%- render 'icon', code: 'chevron-left' -%}
+				</button>
+
+				<button class="vrworld-button vrworld-button-next" title ="{{ 'general.vrworld.next' | t }}-feature-prd" aria-label="{{ 'general.vrworld.next' | t }}-feature-prd" id="{{ 'general.vrworld.next' | t }}-feature-prd" aria-labelledby="{{ 'general.vrworld.next' | t }}-feature-prd" disabled>
+					{%- render 'icon', code: 'chevron-right' -%}
+				</button>
 			</div>
-		{%- endif -%}
+
+			<div class="vrworld-slider-viewport">
+				<div class="vrworld-slider-container" data-id="{{ section.id }}" data-index="1">
+					{%- assign collection = section.settings.collection -%}
+					{%- assign total_items = section.settings.total_items | default: 4 -%}
+					{%- for product in collection.products limit: total_items -%}
+						<div class="vrworld-slide vr-featured-product-card">
+							{%- render 'product-card', product: product, alignment: 'center' -%}
+						</div>
+					{%- else -%}
+						{%- assign limit = section.settings.total_items | default: 4 -%}
+						{%- for i in (1..limit) -%}
+							<div class="vrworld-slide vr-featured-product-card">
+								{%- render 'product-card-placeholder', index: i, alignment: 'center' -%}
+							</div>
+						{%- endfor -%}
+					{%- endfor -%}
+				</div>
+			</div>
+
+			{%- if section.settings.dots -%}
+			<div class="align-dots-center">
+				<div class="vrworld-dots active" data-index="1"></div>
+			</div>
+			{%- endif -%}
+		</vrworld-slider>
 	</div>
 </div>
 
@@ -185,6 +218,61 @@
 			"label": "Button Style"
 		},
 		{
+			"type": "collection",
+			"id": "collection",
+			"label": "Collection"
+		},
+		{
+			"type": "header",
+			"content": "Slider Settings"
+		},
+		{
+			"type": "range",
+			"id": "columns",
+			"min": 2,
+			"max": 5,
+			"step": 1,
+			"default": 4,
+			"label": "Columns on Desktop"
+		},
+		{
+			"type": "range",
+			"id": "total_items",
+			"min": 2,
+			"max": 5,
+			"step": 1,
+			"default": 4,
+			"label": "Total items to show"
+		},
+		{
+			"type": "checkbox",
+			"id": "dots",
+			"default": false,
+			"label": "Show dots"
+		},
+		{
+			"type": "checkbox",
+			"id": "loop",
+			"default": false,
+			"label": "Loop"
+		},
+		{
+			"type": "checkbox",
+			"id": "autoplay",
+			"default": false,
+			"label": "Autoplay"
+		},
+		{
+			"type": "range",
+			"id": "delay",
+			"min": 2,
+			"max": 20,
+			"step": 1,
+			"default": 2,
+			"unit": "s",
+			"label": "Autoplay Delay"
+		},
+		{
 			"type": "header",
 			"content": "t:general.padding.header_padding.content"
 		},
@@ -233,36 +321,9 @@
 			"label": "t:general.padding.bottom.label"
 		}
 	],
-	"blocks": [
-		{
-			"type": "product_item",
-			"name": "Product Item",
-			"settings": [
-				{
-					"type": "product",
-					"id": "product",
-					"label": "Product"
-				}
-			]
-		}
-	],
 	"presets": [
 		{
-			"name": "VR Featured Product",
-			"blocks": [
-				{
-					"type": "product_item"
-				},
-				{
-					"type": "product_item"
-				},
-				{
-					"type": "product_item"
-				},
-				{
-					"type": "product_item"
-				}
-			]
+			"name": "VR Featured Product"
 		}
 	]
 }

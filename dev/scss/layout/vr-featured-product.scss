@@ -1,6 +1,27 @@
 .vr-featured-product-section {
-  .grid-item,
-  .vrworld-slide {
+  .vr-featured-product-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    flex-wrap: wrap;
+    gap: 2rem;
+    margin-bottom: 4rem;
+
+    .title-wrapper {
+      margin-bottom: 0;
+      text-align: left !important;
+
+      .heading {
+        margin-top: 1rem;
+      }
+    }
+
+    .section-button-wrapper {
+      margin-top: 0 !important;
+    }
+  }
+
+  .vr-featured-product-card {
     position: relative;
     border: 1px solid rgba(241, 237, 235, 1);
     background-color: rgb(var(--background-color));
@@ -50,9 +71,5 @@
         }
       }
     }
-  }
-
-  .vr-featured-product-slider {
-    margin-top: 3rem;
   }
 }
