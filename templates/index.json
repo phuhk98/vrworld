@@ -153,9 +153,11 @@
         "sub_heading": "Discover the most popular VR accessories chosen by gamers worldwide, designed to elevate your immersive experience.",
         "heading": "Top-rate Featured VR Accessories",
         "heading_size": "h4",
+        "text_align": "center",
         "button_text": "Explore Products",
         "button_link": "",
         "button_style": "gradient",
+        "enable_slider": false,
         "columns": 4,
         "total": 8,
         "dots": false,
@@ -651,6 +653,57 @@
         "padding_top_mobile": 60,
         "padding_bottom_mobile": 60
       }
+    },
+    "vr_featured_product_d9eJP4": {
+      "type": "vr-featured-product",
+      "blocks": {
+        "product_item_8aDEDg": {
+          "type": "product_item",
+          "settings": {
+            "product": "the-3p-fulfilled-snowboard"
+          }
+        },
+        "product_item_4UUYVM": {
+          "type": "product_item",
+          "settings": {
+            "product": "the-collection-snowboard-hydrogen"
+          }
+        },
+        "product_item_V8zw3J": {
+          "type": "product_item",
+          "settings": {
+            "product": "the-collection-snowboard-liquid"
+          }
+        },
+        "product_item_3bPEj8": {
+          "type": "product_item",
+          "settings": {
+            "product": "the-collection-snowboard-oxygen"
+          }
+        }
+      },
+      "block_order": [
+        "product_item_8aDEDg",
+        "product_item_4UUYVM",
+        "product_item_V8zw3J",
+        "product_item_3bPEj8"
+      ],
+      "name": "VR Featured Product",
+      "settings": {
+        "color_scheme": "scheme-249bc96c-a978-4bba-a5bc-70409aeabb75",
+        "full_width": true,
+        "heading": "Featured Products",
+        "heading_size": "h2",
+        "sub_heading": "<p>Select and customize your recommended products.</p>",
+        "text_align": "center",
+        "button_text": "Explore Products",
+        "button_link": "",
+        "button_style": "primary",
+        "padding_top": 40,
+        "padding_bottom": 40,
+        "padding_top_mobile": 20,
+        "padding_bottom_mobile": 20
+      }
     }
   },
   "order": [
@@ -663,6 +716,7 @@
     "scrolling_promotion",
     "featured_product",
     "scrolling_row",
-    "collage_blog_posts"
+    "collage_blog_posts",
+    "vr_featured_product_d9eJP4"
   ]
 }
