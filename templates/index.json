@@ -305,7 +305,7 @@
         "button_text": "Explore Products",
         "button_link": "",
         "button_style": "gradient",
-        "collection": "hydrogen",
+        "collection": "automated-collection",
         "columns": 4,
         "total_items": 4,
         "dots": false,
