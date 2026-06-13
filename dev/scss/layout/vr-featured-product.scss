@@ -1,0 +1,58 @@
+.vr-featured-product-section {
+  .grid-item,
+  .vrworld-slide {
+    position: relative;
+    border: 1px solid rgba(241, 237, 235, 1);
+    background-color: rgb(var(--background-color));
+    border-radius: 1.2rem;
+    z-index: 1;
+    overflow: hidden;
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    cursor: pointer;
+
+    &::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: var(--button-bg-gradient);
+      opacity: 0.1;
+      z-index: -1;
+      border-radius: 1.2rem;
+      transition: opacity 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+      pointer-events: none;
+    }
+
+    &:hover {
+      border: 1px solid rgba(0, 0, 0, 0);
+      background-image: linear-gradient(rgb(var(--background-color)), rgb(var(--background-color))), var(--button-bg-gradient, linear-gradient(rgba(var(--text-color), .08), rgba(var(--text-color), .08)));
+      background-clip: padding-box, border-box;
+      background-origin: border-box;
+    }
+
+    .product-card {
+      background: transparent !important;
+      border: 0 !important;
+      margin-bottom: 0 !important;
+      border-radius: 0 !important;
+      box-shadow: none !important;
+
+      .product-media-wrap {
+        background-color: transparent !important;
+        background: transparent !important;
+
+        img {
+          mix-blend-mode: multiply;
+          background-color: transparent !important;
+          background: transparent !important;
+        }
+      }
+    }
+  }
+
+  .vr-featured-product-slider {
+    margin-top: 3rem;
+  }
+}
