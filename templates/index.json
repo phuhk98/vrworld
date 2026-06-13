@@ -297,7 +297,7 @@
       "name": "VR Featured Product",
       "settings": {
         "color_scheme": "scheme-249bc96c-a978-4bba-a5bc-70409aeabb75",
-        "full_width": true,
+        "full_width": false,
         "heading": "Recommended products just for You",
         "heading_size": "h3",
         "sub_heading": "<p>Explore the many options tailored to your space's unique features, making sure you find the perfect furniture for your Spaces</p>",
