@@ -266,6 +266,15 @@
 				"label": "t:general.typography.font_size_scale.label"
 			},
 			{
+				"type": "range",
+				"id": "heading_font_weight",
+				"default": 800,
+				"min": 100,
+				"max": 900,
+				"step": 100,
+				"label": "Heading Font Weight"
+			},
+			{
 				"type": "header",
 				"content": "t:settings_schema.typography.settings.third_heading.content"
 			},

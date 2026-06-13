@@ -12,6 +12,7 @@
 
 	{{ section_id }} .vrworld-slider {
 		--slide-size: 93%;
+		--slide-spacing: var(--grid-horizontal);
 	}
 
 	@media (min-width: 992px) {
@@ -22,7 +23,6 @@
 
 		{{ section_id }} .vrworld-slider {
 			--slide-size: calc( 100% / {{ columns  }});
-			--slide-spacing: 0.8rem;
 		}
 	}
 </style>
@@ -32,11 +32,11 @@
 		<div class="vr-featured-product-header">
 			{%- if section.settings.heading != blank or section.settings.sub_heading != blank -%}
 				<div class="title-wrapper">
-					{%- if section.settings.sub_heading != blank -%}
-						<div class="sub-heading rte">{{ section.settings.sub_heading }}</div>
-					{%- endif -%}
 					{%- if section.settings.heading != blank -%}
 						<h2 class="heading rte {{ section.settings.heading_size }}">{{ section.settings.heading }}</h2>
+					{%- endif -%}
+					{%- if section.settings.sub_heading != blank -%}
+						<div class="sub-description rte">{{ section.settings.sub_heading }}</div>
 					{%- endif -%}
 				</div>
 			{%- endif -%}
