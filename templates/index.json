@@ -155,7 +155,7 @@
         "heading_size": "h3",
         "button_text": "Explore Products",
         "button_link": "",
-        "button_style": "primary",
+        "button_style": "gradient",
         "columns": 4,
         "total": 8,
         "dots": false,
