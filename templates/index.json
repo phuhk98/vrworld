@@ -386,7 +386,7 @@
         "button_text": "Explore Products",
         "button_type": "gradient-button",
         "post_color_scheme": "",
-        "card_layout": "overlay",
+        "card_layout": "standard",
         "image_ratio": "square",
         "heading_line": "2",
         "show_date": true,
