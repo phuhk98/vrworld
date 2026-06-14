@@ -46,17 +46,25 @@
 	}
 </style>
 
-<div class="section-wrapper color-{{ section.settings.color_scheme }}">
+<div class="section-wrapper color-{{ section.settings.color_scheme }} vr-blog-posts-section">
 	<div class="{% if full %}stretch-section stretch-padding{% else %}container{% endif %}">
-		{%- if caption != blank or heading != blank -%}
-			<div class="blog-posts-top text-{{ alignment }}">
-				{%- if caption != blank -%}
-					<div class="caption sub-heading rte">{{ caption }}</div>
-				{%- endif -%}
-
-				{%- if heading != blank -%}
-					<h2 class="heading {{ heading_size }} rte">{{- heading -}}</h2>
-				{%- endif -%}
+		{%- if caption != blank or heading != blank or section.settings.button_text != blank -%}
+			<div class="vr-blog-posts-header">
+                <div class="header-left">
+                    {%- if heading != blank -%}
+                        <h2 class="heading {{ heading_size }} rte">{{- heading -}}</h2>
+                    {%- endif -%}
+                    {%- if caption != blank -%}
+                        <div class="caption sub-heading rte">{{ caption }}</div>
+                    {%- endif -%}
+                </div>
+                {%- if section.settings.button_text != blank -%}
+                    <div class="header-right">
+                        <a class="button {{ section.settings.button_type }} view-all-btn" href="{{ section.settings.blog.url | default: '#' }}" aria-label="{{- 'general.text.link' | t -}}">
+                            {{- section.settings.button_text -}}
+                        </a>
+                    </div>
+                {%- endif -%}
 			</div>
 		{%- endif -%}
 
@@ -76,7 +84,7 @@
 					<div class="vrworld-slider-container">
 						{%- for article in blog.articles limit: total -%}
 							<div class="vrworld-slide {{ section.settings.card_layout }}-item" data-{{ forloop.index0 }} {% if request.design_mode %} data-index="{{ forloop.index0 }}"{% endif %}>
-								<div class="border-large color-{{ section.settings.post_color_scheme }}">
+								<div class="vr-blog-post-item color-{{ section.settings.post_color_scheme }}">
 									<article class="article-card{% if animation %} scroll-trigger{% endif %}">
 										<div class="article-media-wrap">
 											<div class="article-image border-large {{ section.settings.image_ratio }}-media{% unless article.image %} no-media{% endunless %}">
@@ -181,7 +189,8 @@
 						{%- else -%}
 							{%- for i in (1..total) -%}
 								<div class="vrworld-slide {{ section.settings.card_layout }}-item" data-{{ forloop.index0 }}>
-									<article class="article-card border-large color-{{ section.settings.post_color_scheme }}">
+									<div class="vr-blog-post-item color-{{ section.settings.post_color_scheme }}">
+										<article class="article-card">
 										<div class="article-media-wrap">
 											<div class="article-image adapt-media">
 												{%- render 'icon', code: 'placeholder' -%}
@@ -228,11 +237,7 @@
 				</div>
 			</vrworld-slider>
 
-			{%- if section.settings.button_text != blank -%}
-				<a class="button primary-button view-all-btn" href="{{ section.settings.blog.url | default: '#' }}" aria-label="{{- 'general.text.link' | t -}}">
-					{{- section.settings.button_text -}}
-				</a>
-			{%- endif -%}
+
 		</div>
 	</div>
 </div>
@@ -343,6 +348,26 @@
 			"id": "button_text",
 			"default": "ALL POSTS",
 			"label": "t:general.typography.button_text.label"
+		},
+		{
+			"type": "select",
+			"id": "button_type",
+			"options": [
+				{
+					"value": "primary-button",
+					"label": "Primary"
+				},
+				{
+					"value": "secondary-button",
+					"label": "Secondary"
+				},
+				{
+					"value": "gradient-button",
+					"label": "Gradient"
+				}
+			],
+			"default": "gradient-button",
+			"label": "Button Type"
 		},
 		{
 			"type": "header",
