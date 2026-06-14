@@ -363,8 +363,38 @@
       "name": "VR Features",
       "settings": {
         "color_scheme": "scheme-249bc96c-a978-4bba-a5bc-70409aeabb75",
-        "item_scheme": "",
         "columns": 4,
+        "padding_top": 50,
+        "padding_bottom": 50,
+        "padding_top_mobile": 20,
+        "padding_bottom_mobile": 20
+      }
+    },
+    "vr_blog_post_yi6GFe": {
+      "type": "vr-blog-post",
+      "name": "VR Blog Posts",
+      "settings": {
+        "full": false,
+        "color_scheme": "",
+        "blog": "",
+        "column": 3,
+        "total": 5,
+        "align": "left",
+        "caption": "Explore the many options tailored to your space's unique features, making sure you find the perfect furniture for your Spaces",
+        "heading_text": "Explore Your Needs by Category",
+        "heading_size": "h3",
+        "button_text": "ALL POSTS",
+        "post_color_scheme": "",
+        "card_layout": "overlay",
+        "image_ratio": "square",
+        "heading_line": "2",
+        "show_date": true,
+        "show_comment": true,
+        "show_author": false,
+        "show_blog": true,
+        "show_read_more": true,
+        "columns_mobile": "1",
+        "card_space": 15,
         "padding_top": 50,
         "padding_bottom": 50,
         "padding_top_mobile": 20,
@@ -378,6 +408,7 @@
     "vr_featured_collection_VUMmGP",
     "vr_partners_UKhRhW",
     "vr_featured_product_d9eJP4",
-    "vr_features_zr9j4m"
+    "vr_features_zr9j4m",
+    "vr_blog_post_yi6GFe"
   ]
 }
