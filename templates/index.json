@@ -324,23 +324,15 @@
         "feature_U7rYrV": {
           "type": "feature",
           "settings": {
-            "icon": "",
+            "icon": "shopify://shop_images/ship.svg",
             "title": "Free Shipping",
             "description": "<p>Enjoy free shipping on all orders.</p>"
-          }
-        },
-        "feature_9NMbra": {
-          "type": "feature",
-          "settings": {
-            "icon": "",
-            "title": "Free Shipping",
-            "description": "<p>Enjoy free shipping on all orders, minimum purchase required. Shop now and save!</p>"
           }
         },
         "feature_kjaLEw": {
           "type": "feature",
           "settings": {
-            "icon": "",
+            "icon": "shopify://shop_images/24-hour-icon_1.svg",
             "title": "24/7 Support",
             "description": "<p>Get 24/7 support for all your needs. We're here to help, anytime, anywhere.</p>"
           }
@@ -348,7 +340,7 @@
         "feature_7J6f8X": {
           "type": "feature",
           "settings": {
-            "icon": "",
+            "icon": "shopify://shop_images/7aa008da7f892afd9b835879826f5ed7.svg",
             "title": "Money Return",
             "description": "<p>Get a full refund with our hassle-free money-back guarantee.</p>"
           }
@@ -356,7 +348,7 @@
         "feature_wadKaq": {
           "type": "feature",
           "settings": {
-            "icon": "",
+            "icon": "shopify://shop_images/mdi_cart-discount.svg",
             "title": "Order Discount",
             "description": "<p>Enjoy discounted prices on your orders. Don't miss out on our special discounts.</p>"
           }
@@ -364,7 +356,6 @@
       },
       "block_order": [
         "feature_U7rYrV",
-        "feature_9NMbra",
         "feature_kjaLEw",
         "feature_7J6f8X",
         "feature_wadKaq"
