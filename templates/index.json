@@ -375,7 +375,7 @@
       "name": "VR Blog Posts",
       "settings": {
         "full": false,
-        "color_scheme": "",
+        "color_scheme": "scheme-249bc96c-a978-4bba-a5bc-70409aeabb75",
         "blog": "",
         "column": 3,
         "total": 5,
@@ -384,6 +384,7 @@
         "heading_text": "Explore Your Needs by Category",
         "heading_size": "h3",
         "button_text": "Explore Products",
+        "button_type": "gradient-button",
         "post_color_scheme": "",
         "card_layout": "overlay",
         "image_ratio": "square",
