@@ -28,7 +28,7 @@
         <div class="vr-feature-item box-item color-{{ section.settings.item_scheme }}" {{ block.shopify_attributes }}>
           <div class="vr-feature-icon">
             {%- if block.settings.icon != blank -%}
-              {%- render 'icon', code: block.settings.icon -%}
+              <img src="{{ block.settings.icon | image_url: width: 64 }}" alt="{{ block.settings.icon.alt | escape }}" loading="lazy" width="32" height="32" style="object-fit: contain;">
             {%- else -%}
               {%- render 'icon', code: 'check' -%}
             {%- endif -%}
@@ -127,10 +127,10 @@
       "name": "Feature Item",
       "settings": [
         {
-          "type": "text",
+          "type": "image_picker",
           "id": "icon",
-          "label": "Icon name",
-          "info": "Enter icon name to match 'icon.liquid' snippet (e.g., 'check', 'email', 'star')"
+          "label": "Icon image",
+          "info": "Upload an icon image (transparent PNG or SVG recommended)"
         },
         {
           "type": "text",
