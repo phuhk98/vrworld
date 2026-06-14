@@ -90,3 +90,108 @@
 	}
 
 }
+
+// VR Blog Posts Custom Styles
+.vr-blog-posts-section {
+    .vr-blog-posts-header {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        align-items: flex-end;
+        gap: 2rem;
+        margin-bottom: 4rem;
+        
+        .header-left {
+            max-width: 65rem;
+            
+            .heading {
+                margin: 0 0 1.6rem 0;
+            }
+            .caption {
+                margin: 0;
+                font-size: 1.6rem;
+            }
+        }
+        
+        .header-right {
+            margin-bottom: 0.5rem;
+            .view-all-btn {
+                margin: 0;
+                padding: 0 3rem;
+                height: 5.2rem;
+            }
+        }
+        
+        @media (max-width: 767px) {
+            flex-direction: column;
+            align-items: flex-start;
+        }
+    }
+
+    .vr-blog-post-item {
+        position: relative;
+        border: 1px solid rgba(241, 237, 235, 1);
+        background-color: rgb(var(--background-color));
+        border-radius: 1.2rem;
+        z-index: 1;
+        overflow: hidden;
+        transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        cursor: pointer;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+
+        &::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: var(--button-bg-gradient);
+            opacity: 0.1;
+            z-index: -1;
+            border-radius: 1.2rem;
+            transition: opacity 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            pointer-events: none;
+        }
+
+        &:hover {
+            border: 1px solid rgba(0, 0, 0, 0);
+            background-image: linear-gradient(rgb(var(--background-color)), rgb(var(--background-color))), var(--button-bg-gradient, linear-gradient(rgba(var(--text-color), .08), rgba(var(--text-color), .08)));
+            background-clip: padding-box, border-box;
+            background-origin: border-box;
+        }
+
+        .article-card {
+            background: transparent !important;
+            border: none !important;
+            padding: 0;
+        }
+        
+        .article-image {
+            border-bottom-left-radius: 0;
+            border-bottom-right-radius: 0;
+        }
+
+        .article-info-wrapper {
+            padding: 3rem;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            
+            .article-title {
+                margin: 0 0 1rem 0;
+                font-size: 2rem;
+                font-weight: 700;
+            }
+            
+            .article-excerpt {
+                margin: 0;
+                font-size: 1.6rem;
+                line-height: 1.5;
+                opacity: 0.8;
+            }
+        }
+    }
+}

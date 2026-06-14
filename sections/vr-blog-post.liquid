@@ -1,0 +1,367 @@
+{%- liquid
+	assign section_id         = '#shopify-section-' | append: section.id
+	assign animation          = settings.section_animation
+	assign full               = section.settings.full
+	assign blog               = section.settings.blog
+	assign caption            = section.settings.caption
+	assign heading            = section.settings.heading_text
+	assign heading_size       = section.settings.heading_size
+	assign total              = section.settings.total
+	assign column             = section.settings.column
+-%}
+
+<style>
+	{{ section_id }} .section-wrapper {
+		padding-top: {{ section.settings.padding_top_mobile }}px;
+		padding-bottom: {{ section.settings.padding_bottom_mobile }}px;
+	}
+
+	@media (min-width: 992px) {
+		{{ section_id }} .section-wrapper {
+			padding-top: {{ section.settings.padding_top }}px;
+			padding-bottom: {{ section.settings.padding_bottom }}px;
+		}
+
+		{{ section_id }} .vrworld-slider {
+			--slide-size: calc(100% / {{ column }});
+		}
+	}
+
+	{{ section_id }} {
+		--heading-line: {{ section.settings.heading_line }};
+	}
+
+	@media (max-width: 991px) {
+		{% if section.settings.columns_mobile == '2' %}
+			{{ section_id }} .vrworld-slider {
+				--slide-size: calc(93% / 2);
+			}
+		{% endif %}
+
+		{{ section_id }} .article-info-wrapper {
+			padding: {{ section.settings.card_space }}px;
+			padding-top: 2.4rem;
+		}
+	}
+</style>
+
+<div class="section-wrapper color-{{ section.settings.color_scheme }} vr-blog-posts-section">
+	<div class="{% if full %}stretch-section stretch-padding{% else %}container{% endif %}">
+		{%- if caption != blank or heading != blank or section.settings.button_text != blank -%}
+			<div class="vr-blog-posts-header">
+                <div class="header-left">
+                    {%- if heading != blank -%}
+                        <h2 class="heading {{ heading_size }} rte">{{- heading -}}</h2>
+                    {%- endif -%}
+                    {%- if caption != blank -%}
+                        <div class="caption sub-heading rte">{{ caption }}</div>
+                    {%- endif -%}
+                </div>
+                {%- if section.settings.button_text != blank -%}
+                    <div class="header-right">
+                        <a class="button gradient-button view-all-btn" href="{{ section.settings.blog.url | default: '#' }}" aria-label="{{- 'general.text.link' | t -}}">
+                            {{- section.settings.button_text -}}
+                        </a>
+                    </div>
+                {%- endif -%}
+			</div>
+		{%- endif -%}
+
+		<div class="blog-posts-content{% if animation %} scroll-trigger{% endif %}">
+			<vrworld-slider class="vrworld-slider">
+				<template data-options>
+					{
+						"align": "start",
+						"_autoheight": true,
+						"_fade": false,
+						"_prevBtn": "{{ section_id }} .vrworld-button-prev",
+						"_nextBtn": "{{ section_id }} .vrworld-button-next"
+					}
+				</template>
+
+				<div class="vrworld-slider-viewport">
+					<div class="vrworld-slider-container">
+						{%- for article in blog.articles limit: total -%}
+							<div class="vrworld-slide {{ section.settings.card_layout }}-item" data-{{ forloop.index0 }} {% if request.design_mode %} data-index="{{ forloop.index0 }}"{% endif %}>
+								<div class="vr-blog-post-item color-{{ section.settings.post_color_scheme }}">
+									<article class="article-card{% if animation %} scroll-trigger{% endif %}">
+										<div class="article-media-wrap">
+											<div class="article-image border-large {{ section.settings.image_ratio }}-media{% unless article.image %} no-media{% endunless %}">
+												{%- if article.image -%}
+													<a href="{{ article.url }}" aria-label="{{- 'general.text.link' | t -}}" class="card-image image-overlay border-large{% if settings.image_lazy and article.image %} lazy-image{% endif %}">
+														{%- liquid
+															if article.image
+																render 'lazy-image', image: article.image, width: 740
+															endif
+														-%}
+													</a>
+												{%- endif -%}
+											</div>
+										</div>
+
+										<div class="article-info-wrapper">
+											<div class="article-info">
+												{% comment %} Title {% endcomment %}
+												<h2 class="article-title h5">
+													<a href="{{ article.url }}" aria-label="{{- 'general.text.link' | t -}}" class="link-underline-transparent">
+														{{- article.title | escape  -}}
+													</a>
+												</h2>
+
+												{% comment %} Excerpt/Content  {% endcomment %}
+												{%- if section.settings.show_excerpt and article.excerpt_or_content.size > 0 -%}
+													<div class="article-excerpt">
+														{%- liquid
+															if article.excerpt_or_content.size > 0
+																echo article.excerpt_or_content | strip_html | truncatewords: 20
+															endif
+														-%}
+													</div>
+												{%- endif -%}
+											</div>
+										</div>
+									</article>
+								</div>
+							</div>
+						{%- else -%}
+							{%- for i in (1..total) -%}
+								<div class="vrworld-slide {{ section.settings.card_layout }}-item" data-{{ forloop.index0 }}>
+									<div class="vr-blog-post-item color-{{ section.settings.post_color_scheme }}">
+                                        <article class="article-card">
+                                            <div class="article-media-wrap">
+                                                <div class="article-image adapt-media">
+                                                    {%- render 'icon', code: 'placeholder' -%}
+                                                </div>
+                                            </div>
+
+                                            <div class="article-info-wrapper">
+                                                <div class="article-info">
+                                                    <h4 class="article-title h5">
+                                                        {{- 'onboarding.blogs.title' | t -}}
+                                                    </h4>
+                                                    <p class="article-excerpt">
+                                                        {{- 'onboarding.blogs.excerpt' | t | default: 'Sample description for this VR blog post item.' -}}
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </article>
+                                    </div>
+								</div>
+							{%- endfor -%}
+						{%- endfor -%}
+					</div>
+				</div>
+			</vrworld-slider>
+		</div>
+	</div>
+</div>
+
+{% schema %}
+{
+	"name": "VR Blog Posts",
+	"tag": "section",
+	"class": "vr-blog-posts-section-wrapper",
+	"disabled_on": {
+		"groups": ["header", "footer"]
+	},
+	"settings": [
+		{
+			"type": "checkbox",
+			"id": "full",
+			"default": false,
+			"label": "t:general.layout.full.label"
+		},
+		{
+			"type": "color_scheme",
+			"id": "color_scheme",
+			"label": "t:settings_schema.colors.label",
+			"default": "scheme-1"
+		},
+		{
+			"type": "blog",
+			"id": "blog",
+			"label": "t:sections.blog-posts.settings.blog.label"
+		},
+
+		{
+			"type": "range",
+			"id": "column",
+			"min": 1,
+			"max": 4,
+			"step": 1,
+			"default": 3,
+			"label": "t:sections.blog-posts.settings.columns.label"
+		},
+		{
+			"type": "range",
+			"id": "total",
+			"min": 2,
+			"max": 20,
+			"step": 1,
+			"default": 3,
+			"label": "t:sections.blog-posts.settings.columns_total.label"
+		},
+		{
+			"type": "header",
+			"content": "t:general.typography.text.label"
+		},
+		{
+			"type": "inline_richtext",
+			"id": "heading_text",
+			"default": "Explore Your Needs<br/>by Category",
+			"label": "t:general.typography.heading.label"
+		},
+		{
+			"type": "select",
+			"id": "heading_size",
+			"options": [
+				{
+					"value": "h5",
+					"label": "t:general.typography.heading_size.option_1.label"
+				},
+				{
+					"value": "h4",
+					"label": "t:general.typography.heading_size.option_2.label"
+				},
+				{
+					"value": "h3",
+					"label": "t:general.typography.heading_size.option_3.label"
+				}
+			],
+			"default": "h3",
+			"label": "t:general.typography.heading_size.label"
+		},
+		{
+			"type": "inline_richtext",
+			"id": "caption",
+			"default": "Explore the many options tailored to your space's unique features,<br/>making sure you find the perfect furniture for your Spaces",
+			"label": "t:general.typography.caption.label"
+		},
+		{
+			"type": "text",
+			"id": "button_text",
+			"default": "EXPLORE PRODUCTS",
+			"label": "t:general.typography.button_text.label"
+		},
+		{
+			"type": "header",
+			"content": "t:sections.blog-posts.settings.card.content"
+		},
+		{
+			"type": "color_scheme",
+			"id": "post_color_scheme",
+			"label": "t:settings_schema.colors.label",
+			"default": "scheme-1"
+		},
+		{
+			"type": "select",
+			"id": "image_ratio",
+			"options": [
+				{
+					"value": "adapt",
+					"label": "t:general.image.ratio.option_1.label"
+				},
+				{
+					"value": "portrait",
+					"label": "t:general.image.ratio.option_2.label"
+				},
+				{
+					"value": "square",
+					"label": "t:general.image.ratio.option_3.label"
+				}
+			],
+			"default": "adapt",
+			"label": "t:general.image.ratio.label"
+		},
+		{
+			"type": "checkbox",
+			"id": "show_excerpt",
+			"default": true,
+			"label": "Show excerpt"
+		},
+		{
+			"type": "header",
+			"content": "t:sections.multicolumn.settings.mobile_layout.content"
+		},
+		{
+			"type": "select",
+			"id": "columns_mobile",
+			"options": [
+				{
+					"value": "1",
+					"label": "t:sections.multicolumn.settings.columns_mobile.options_1.label"
+				},
+				{
+					"value": "2",
+					"label": "t:sections.multicolumn.settings.columns_mobile.options_2.label"
+				}
+			],
+			"default": "1",
+			"label": "t:sections.multicolumn.settings.columns_mobile.label"
+		},
+		{
+			"type": "range",
+			"id": "card_space",
+			"min": 0,
+			"max": 24,
+			"step": 1,
+			"default": 15,
+			"unit": "px",
+			"label": "t:sections.blog-posts.settings.card_space.label"
+		},
+		{
+			"type": "header",
+			"content": "t:general.padding.header_padding.content"
+		},
+		{
+			"type": "range",
+			"id": "padding_top",
+			"min": 0,
+			"max": 100,
+			"step": 1,
+			"default": 50,
+			"unit": "px",
+			"label": "t:general.padding.top.label"
+		},
+		{
+			"type": "range",
+			"id": "padding_bottom",
+			"min": 0,
+			"max": 100,
+			"step": 1,
+			"default": 50,
+			"unit": "px",
+			"label": "t:general.padding.bottom.label"
+		},
+		{
+			"type": "paragraph",
+			"content": "t:general.padding.paragraph_mobile.content"
+		},
+		{
+			"type": "range",
+			"id": "padding_top_mobile",
+			"min": 0,
+			"max": 100,
+			"step": 1,
+			"default": 20,
+			"unit": "px",
+			"label": "t:general.padding.top.label"
+		},
+		{
+			"type": "range",
+			"id": "padding_bottom_mobile",
+			"min": 0,
+			"max": 100,
+			"step": 1,
+			"default": 20,
+			"unit": "px",
+			"label": "t:general.padding.bottom.label"
+		}
+	],
+	"presets": [
+		{
+			"name": "VR Blog Posts"
+		}
+	]
+}
+{% endschema %}
