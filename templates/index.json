@@ -317,6 +317,68 @@
         "padding_top_mobile": 20,
         "padding_bottom_mobile": 20
       }
+    },
+    "vr_features_zr9j4m": {
+      "type": "vr-features",
+      "blocks": {
+        "feature_U7rYrV": {
+          "type": "feature",
+          "settings": {
+            "icon": "",
+            "title": "Free Shipping",
+            "description": "<p>Enjoy free shipping on all orders.</p>"
+          }
+        },
+        "feature_9NMbra": {
+          "type": "feature",
+          "settings": {
+            "icon": "",
+            "title": "Free Shipping",
+            "description": "<p>Enjoy free shipping on all orders, minimum purchase required. Shop now and save!</p>"
+          }
+        },
+        "feature_kjaLEw": {
+          "type": "feature",
+          "settings": {
+            "icon": "",
+            "title": "24/7 Support",
+            "description": "<p>Get 24/7 support for all your needs. We're here to help, anytime, anywhere.</p>"
+          }
+        },
+        "feature_7J6f8X": {
+          "type": "feature",
+          "settings": {
+            "icon": "",
+            "title": "Money Return",
+            "description": "<p>Get a full refund with our hassle-free money-back guarantee.</p>"
+          }
+        },
+        "feature_wadKaq": {
+          "type": "feature",
+          "settings": {
+            "icon": "",
+            "title": "Order Discount",
+            "description": "<p>Enjoy discounted prices on your orders. Don't miss out on our special discounts.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "feature_U7rYrV",
+        "feature_9NMbra",
+        "feature_kjaLEw",
+        "feature_7J6f8X",
+        "feature_wadKaq"
+      ],
+      "name": "VR Features",
+      "settings": {
+        "color_scheme": "",
+        "item_scheme": "",
+        "columns": 4,
+        "padding_top": 50,
+        "padding_bottom": 50,
+        "padding_top_mobile": 20,
+        "padding_bottom_mobile": 20
+      }
     }
   },
   "order": [
@@ -324,6 +386,7 @@
     "vr_collection_EFpBQW",
     "vr_featured_collection_VUMmGP",
     "vr_partners_UKhRhW",
-    "vr_featured_product_d9eJP4"
+    "vr_featured_product_d9eJP4",
+    "vr_features_zr9j4m"
   ]
 }
