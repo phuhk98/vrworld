@@ -1009,6 +1009,27 @@
 		}
 	},
 	"sections": {
+		"vr-video-with-text": {
+			"name": "VR Video with text"
+		},
+		"vr-partners": {
+			"name": "VR Partners"
+		},
+		"vr-features": {
+			"name": "VR Features"
+		},
+		"vr-featured-product": {
+			"name": "VR Featured Product"
+		},
+		"vr-featured-collection": {
+			"name": "VR Featured Collection"
+		},
+		"vr-collection": {
+			"name": "VR Collection Slider"
+		},
+		"vr-blog-post": {
+			"name": "VR Blog Posts"
+		},
 		"apps": {
 			"name": "Apps",
 			"presets": {
