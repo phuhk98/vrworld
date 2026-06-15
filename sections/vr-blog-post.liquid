@@ -84,7 +84,7 @@
 					<div class="vrworld-slider-container">
 						{%- for article in blog.articles limit: total -%}
 							<div class="vrworld-slide {{ section.settings.card_layout }}-item" data-{{ forloop.index0 }} {% if request.design_mode %} data-index="{{ forloop.index0 }}"{% endif %}>
-								<div class="vr-blog-post-item color-{{ section.settings.post_color_scheme }}">
+								<div class="vr-blog-post-item">
 									<article class="article-card{% if animation %} scroll-trigger{% endif %}">
 										<div class="article-media-wrap">
 											<div class="article-image border-large {{ section.settings.image_ratio }}-media{% unless article.image %} no-media{% endunless %}">
@@ -108,9 +108,8 @@
 
 										<div class="article-info-wrapper">
 											<div class="article-info">
-												{%- if section.settings.show_date or section.settings.show_comment and blog.comments_enabled? or section.settings.show_author -%}
+												{%- if section.settings.show_date or section.settings.show_author -%}
 													<div class="article-meta text-uppercase">
-														{% comment %} Date {% endcomment %}
 														{%- if section.settings.show_date -%}
 															<span class="article-date mitem">
 																{{- article.published_at | time_tag: format: 'short_month_day_year' -}}
@@ -119,15 +118,6 @@
 															<span class="separator">/</span>
 														{%- endif -%}
 
-														{% comment %} Comment {% endcomment %}
-														{%- if section.settings.show_comment and blog.comments_enabled? -%}
-															<a class="article-comment mitem link-underline-transparent" href="{{ article.comment_post_url }}" aria-label="{{- 'general.text.link' | t -}}">{{ 'blogs.article.comments' | t: count: article.comments_count }}</a>
-
-															<span class="separator">/</span>
-														{%- endif -%}
-
-
-														{% comment %} Author {% endcomment %}
 														{%- if section.settings.show_author -%}
 															<div class="article-author mitem">
 																{{ article.author }}
@@ -136,15 +126,13 @@
 													</div>
 												{%- endif -%}
 
-												{% comment %} Title {% endcomment %}
 												<h2 class="article-title h4">
 													<a href="{{ article.url }}" aria-label="{{- 'general.text.link' | t -}}" class="link-underline-transparent">
 														{{- article.title | escape  -}}
 													</a>
 												</h2>
 
-												{% comment %} Excerpt/Content  {% endcomment %}
-												{%- if section.settings.show_excerpt and article.excerpt_or_content.size > 0 -%}
+												{%- if article.excerpt_or_content.size > 0 -%}
 													<p class="article-excerpt">
 														{%- liquid
 															if article.excerpt_or_content.size > 0
@@ -153,6 +141,7 @@
 														-%}
 													</p>
 												{%- endif -%}
+
 											</div>
 
 											{% if section.settings.card_layout == 'overlay' %}
@@ -189,45 +178,59 @@
 						{%- else -%}
 							{%- for i in (1..total) -%}
 								<div class="vrworld-slide {{ section.settings.card_layout }}-item" data-{{ forloop.index0 }}>
-									<div class="vr-blog-post-item color-{{ section.settings.post_color_scheme }}">
+									<div class="vr-blog-post-item">
 										<article class="article-card">
 										<div class="article-media-wrap">
 											<div class="article-image adapt-media">
 												{%- render 'icon', code: 'placeholder' -%}
 											</div>
 
-											{%- if section.settings.card_layout == 'standard' -%}
+											{%- if section.settings.card_layout == 'standard' and section.settings.show_blog -%}
 												<span class="article-blog-link text-uppercase border-small mitem">{{- 'onboarding.blogs.cate' | t -}}</span>
 											{%- endif -%}
 										</div>
 
 										<div class="article-info-wrapper">
 											<div class="article-info">
-												<div class="article-meta text-uppercase">
-													<span class="mitem">{{- 'onboarding.blogs.date' | t | time_tag: format: 'short_month_day_year' -}}</span>
-													<span class="separator">/</span>
-													<span class="mitem">{{- 'blogs.article.comments' | t: count: 0 -}}</span>
-												</div>
+												{%- if section.settings.show_date or section.settings.show_author -%}
+													<div class="article-meta text-uppercase">
+														{%- if section.settings.show_date -%}
+															<span class="mitem">{{- 'onboarding.blogs.date' | t | time_tag: format: 'short_month_day_year' -}}</span>
+															<span class="separator">/</span>
+														{%- endif -%}
+														{%- if section.settings.show_author -%}
+															<span class="mitem">Author Name</span>
+														{%- endif -%}
+													</div>
+												{%- endif -%}
 
 												<h4 class="article-title">
 													{{- 'onboarding.blogs.title' | t -}}
 												</h4>
 											</div>
 
-											<div class="article-info-bottom">
-												{%- if section.settings.card_layout == 'overlay' -%}
-													<span class="article-blog-link text-uppercase border-small mitem">{{- 'onboarding.blogs.cate' | t -}}</span>
+											{% if section.settings.card_layout == 'overlay' %}
+												{%- if section.settings.show_blog or section.settings.show_read_more -%}
+													<div class="article-info-bottom{% unless section.settings.show_blog %} no-blog{% endunless %}">
+														{%- if section.settings.show_blog -%}
+															<span class="article-blog-link text-uppercase border-small mitem">{{- 'onboarding.blogs.cate' | t -}}</span>
+														{%- endif -%}
 
-													<span class="readmore-btn button">
-														<span class="button-icon-wrapper">
-															{%- render 'icon', code: 'arrow-circle-up-right' -%}
-															{%- render 'icon', code: 'arrow-circle-up-right' -%}
-														</span>
-													</span>
-												{%- else -%}
+														{%- if section.settings.show_read_more -%}
+															<span class="readmore-btn button">
+																<span class="button-icon-wrapper">
+																	{%- render 'icon', code: 'arrow-circle-up-right' -%}
+																	{%- render 'icon', code: 'arrow-circle-up-right' -%}
+																</span>
+															</span>
+														{%- endif -%}
+													</div>
+												{%- endif -%}
+											{%- else -%}
+												{%- if section.settings.show_read_more -%}
 													<span class="readmore-text">{{- 'blogs.article.read_more' | t -}}</span>
 												{%- endif -%}
-											</div>
+											{%- endif -%}
 										</div>
 									</article>
 								</div>
@@ -375,12 +378,6 @@
 			"content": "t:sections.blog-posts.settings.card.content"
 		},
 		{
-			"type": "color_scheme",
-			"id": "post_color_scheme",
-			"label": "t:settings_schema.colors.label",
-			"default": "scheme-1"
-		},
-		{
 			"type": "select",
 			"id": "card_layout",
 			"options": [
@@ -441,12 +438,6 @@
 			"id": "show_date",
 			"default": true,
 			"label": "t:sections.blog-posts.settings.show_date.label"
-		},
-		{
-			"type": "checkbox",
-			"id": "show_comment",
-			"default": true,
-			"label": "t:sections.blog-posts.settings.show_comment.label"
 		},
 		{
 			"type": "checkbox",
