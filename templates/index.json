@@ -15,7 +15,7 @@
         "slide_g4azDt": {
           "type": "slide",
           "settings": {
-            "image": "shopify://shop_images/7512484_12051-_Converted.png",
+            "image": "shopify://shop_images/Group_1000000712.jpg",
             "overlay_opacity": 0,
             "caption": "",
             "heading": "Upgrade Your VR Experience Today",
@@ -376,7 +376,7 @@
       "settings": {
         "full": false,
         "color_scheme": "scheme-249bc96c-a978-4bba-a5bc-70409aeabb75",
-        "blog": "",
+        "blog": "news",
         "column": 3,
         "total": 5,
         "align": "left",
