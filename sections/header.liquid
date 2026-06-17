@@ -161,7 +161,7 @@
 			{%- render 'icon', code: 'cart' -%}
 			<span class="sr-only">{{ 'templates.cart.cart' | t }}:</span>
 			<span class="item-count cart-item-count">{{- cart.item_count -}}</span>
-			<span class="item-count-label">{%- if cart.item_count == 1 -%}{{ 'sections.header.cart_count.one' | t }}{% else %}{{ 'sections.header.cart_count.other' | t }}{% endif %}</span>
+			<span class="item-count-label sr-only">{%- if cart.item_count == 1 -%}{{ 'sections.header.cart_count.one' | t }}{% else %}{{ 'sections.header.cart_count.other' | t }}{% endif %}</span>
 		</a>
 	</div>
 {%- endcapture -%}
@@ -193,9 +193,11 @@
 
 	{%- if sticky_header -%}
 		{{ section_id }} {
-			position: sticky;
+			position: fixed;
 			top: -1px;
 			z-index: 99;
+			width: 100%;
+			padding: 24px 0;
 		}
 	{%- endif -%}
 
@@ -249,7 +251,7 @@
 	{%- endif -%}
 </style>
 
-<header class="header{% if sticky_header %} is-sticky{% endif %}{% if transparent_header %} transparent-header color-{{ section.settings.transparent_color_scheme }}{% else %} color-{{ section.settings.color_scheme }}{% endif %}{% if section.settings.separator_line %} separator-line{% endif %}" data-color-scheme="color-{{ section.settings.color_scheme }}" data-transparent-scheme="color-{{ section.settings.transparent_color_scheme }}" data-has-transparent="{{ transparent_header }}">
+<header class="header{% if sticky_header %} is-sticky{% endif %}{% if transparent_header %} transparent-header color-{{ section.settings.transparent_color_scheme }}{% else %} color-{{ section.settings.color_scheme }}{% endif %}{% if section.settings.separator_line %} separator-line{% endif %}{% if section.settings.header_transparent %} header-transparent{% endif %}" data-color-scheme="color-{{ section.settings.color_scheme }}" data-transparent-scheme="color-{{ section.settings.transparent_color_scheme }}" data-has-transparent="{{ transparent_header }}">
 	<div class="{% if full %}stretch-section stretch-padding{% else %}container{% endif %}">
 		<div class="header-row {{ header_layout }}">
 			{% comment %} Toggle {% endcomment %}
@@ -360,6 +362,10 @@
 				{
 					"value": "logo-center-drawer-left",
 					"label": "t:sections.header.settings.header_layout.option_3.label"
+				},
+				{
+					"value": "logo-menu-left-container",
+					"label": "t:sections.header.settings.header_layout.option_4.label"
 				}
 			],
 			"default": "logo-center-menu-left",
@@ -377,6 +383,12 @@
 			"id": "enable_sticky_header",
 			"default": false,
 			"label": "t:sections.header.settings.enable_sticky_header.label"
+		},
+		{
+			"type": "checkbox",
+			"id": "header_transparent",
+			"default": false,
+			"label": "t:sections.header.settings.header_transparent.label"
 		},
 		{
 			"type": "checkbox",

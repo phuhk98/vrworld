@@ -1,0 +1,42 @@
+.vr-features-section {
+  .vr-features-grid {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    gap: var(--grid-horizontal);
+  }
+
+  .vr-feature-item {
+    text-align: center;
+    padding: 3rem;
+    border-radius: var(--border-radius, 8px);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    height: 100%;
+  }
+
+  .vr-feature-icon {
+    width: 7.3rem;
+    height: 7.3rem;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 2rem;
+    background: linear-gradient(135deg, #A828C2, #3B82F6);
+    color: #fff;
+
+    svg {
+      width: 3.2rem;
+      height: 3.2rem;
+      fill: currentColor;
+    }
+  }
+
+  .vr-feature-desc {
+    font-size: 1.6rem;
+    line-height: 1.5;
+
+    p {
+      margin: 0;
+    }
+  }
+}

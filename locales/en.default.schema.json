@@ -1,3 +1,12 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin language editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
 	"general": {
 		"label": "General",
@@ -620,8 +629,14 @@
 					"label": "Background gradient",
 					"info": "Background gradient replaces background where possible."
 				},
+				"heading_gradient": {
+					"label": "Heading gradient"
+				},
 				"header_button": {
 					"content": "Button"
+				},
+				"button_bg_gradient": {
+					"label": "Button background gradient"
 				},
 				"header_product": {
 					"content": "Product"
@@ -994,6 +1009,27 @@
 		}
 	},
 	"sections": {
+		"vr-video-with-text": {
+			"name": "VR Video with text"
+		},
+		"vr-partners": {
+			"name": "VR Partners"
+		},
+		"vr-features": {
+			"name": "VR Features"
+		},
+		"vr-featured-product": {
+			"name": "VR Featured Product"
+		},
+		"vr-featured-collection": {
+			"name": "VR Featured Collection"
+		},
+		"vr-collection": {
+			"name": "VR Collection Slider"
+		},
+		"vr-blog-post": {
+			"name": "VR Blog Posts"
+		},
 		"apps": {
 			"name": "Apps",
 			"presets": {
@@ -2075,6 +2111,9 @@
 				"enable_sticky_header": {
 					"label": "Enable sticky header"
 				},
+				"header_transparent": {
+					"label": "Header Transparent"
+				},
 				"drawer_menu": {
 					"label": "Drawer menu (optional)"
 				},
@@ -2095,6 +2134,9 @@
 					},
 					"option_3": {
 						"label": "Logo Center - Menu Drawer Left"
+					},
+					"option_4": {
+						"label": "Logo Left - Menu Left - Header Container"
 					}
 				},
 				"uppercase_menu": {
@@ -2326,6 +2368,9 @@
 					}
 				}
 			}
+		},
+		"vr-slideshow": {
+			"name": "VR Slideshow"
 		},
 		"testimonial-with-carousel": {
 			"name": "Testimonial with carousel",
