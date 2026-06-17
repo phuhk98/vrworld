@@ -433,8 +433,8 @@
           "type": "item",
           "settings": {
             "column_img": "shopify://shop_images/27.jpg",
-            "text": "Column",
-            "description": "<p>Pair text with an image to focus on your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.</p>",
+            "text": "Start Your VR Arcade",
+            "description": "<p>Exclusive VR arcade bundles, expert advice, and dedicated support for launching your VR arcade business.</p>",
             "button_label": "Learn More",
             "button_url": ""
           }
