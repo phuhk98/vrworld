@@ -443,8 +443,8 @@
           "type": "item",
           "settings": {
             "column_img": "shopify://shop_images/2148932811.jpg",
-            "text": "Column",
-            "description": "<p>Pair text with an image to focus on your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.</p>",
+            "text": "Customized XR Solutions",
+            "description": "<p>Tailored Extended Reality (XR) solutions for enterprises, delivering customized professional experiences to meet unique business needs</p>",
             "button_label": "Learn More",
             "button_url": ""
           }
@@ -457,7 +457,7 @@
       "name": "t:sections.vr-multicolumn.name",
       "settings": {
         "full": false,
-        "color_scheme": "",
+        "color_scheme": "scheme-be293f48-285a-4399-9036-8e0fac37561a",
         "caption": "",
         "heading_text": "VR Multicolumn",
         "heading_size": "h3",
