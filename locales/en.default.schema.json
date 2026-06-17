@@ -1009,6 +1009,9 @@
 		}
 	},
 	"sections": {
+		"vr-multicolumn": {
+			"name": "VR Multicolumn"
+		},
 		"vr-video-with-text": {
 			"name": "VR Video with text"
 		},
