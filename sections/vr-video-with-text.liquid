@@ -38,6 +38,36 @@
 			padding-bottom: {{ section.settings.padding_bottom }}px;
 		}
 	}
+
+	{{ section_id }} .video-full-first {
+		display: block;
+	}
+
+	{{ section_id }} .video-full-first .video-item {
+		width: 100%;
+		max-height: none;
+	}
+
+	{{ section_id }} .video-full-first .content {
+		position: absolute;
+		top: 50%;
+		left: 0;
+		transform: translateY(-50%);
+		width: 100%;
+		z-index: 2;
+		background: transparent;
+		pointer-events: none;
+	}
+	
+	{{ section_id }} .video-full-first .content-inner {
+		pointer-events: auto;
+	}
+
+	@media (min-width: 992px) {
+		{{ section_id }} .video-full-first .content {
+			width: 50%;
+		}
+	}
 </style>
 
 <div class="section-wrapper color-{{ section.settings.color_scheme }}">
@@ -183,6 +213,10 @@
 				{
 					"value": "text",
 					"label": "t:sections.video-with-text.settings.layout.option_2.label"
+				},
+				{
+					"value": "video-full",
+					"label": "Video full"
 				}
 			],
 			"default": "video",
