@@ -425,6 +425,54 @@
         "padding_top_mobile": 20,
         "padding_bottom_mobile": 20
       }
+    },
+    "vr_multicolumn_FeGzRf": {
+      "type": "vr-multicolumn",
+      "blocks": {
+        "item_fWJdFa": {
+          "type": "item",
+          "settings": {
+            "column_img": "shopify://shop_images/27.jpg",
+            "text": "Column",
+            "description": "<p>Pair text with an image to focus on your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.</p>",
+            "button_label": "Learn More",
+            "button_url": ""
+          }
+        },
+        "item_pa8tLA": {
+          "type": "item",
+          "settings": {
+            "column_img": "shopify://shop_images/2148932811.jpg",
+            "text": "Column",
+            "description": "<p>Pair text with an image to focus on your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.</p>",
+            "button_label": "Learn More",
+            "button_url": ""
+          }
+        }
+      },
+      "block_order": [
+        "item_fWJdFa",
+        "item_pa8tLA"
+      ],
+      "name": "t:sections.vr-multicolumn.name",
+      "settings": {
+        "full": false,
+        "color_scheme": "",
+        "caption": "",
+        "heading_text": "VR Multicolumn",
+        "heading_size": "h3",
+        "button_label": "",
+        "button_link": "",
+        "columns_color_scheme": "",
+        "align": "left",
+        "columns": 2,
+        "columns_mobile": "1",
+        "mobile_swipe": false,
+        "padding_top": 50,
+        "padding_bottom": 50,
+        "padding_top_mobile": 20,
+        "padding_bottom_mobile": 20
+      }
     }
   },
   "order": [
@@ -435,6 +483,7 @@
     "vr_featured_product_d9eJP4",
     "vr_features_zr9j4m",
     "vr_blog_post_yi6GFe",
-    "vr_video_with_text_L9zNph"
+    "vr_video_with_text_L9zNph",
+    "vr_multicolumn_FeGzRf"
   ]
 }
