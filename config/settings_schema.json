@@ -82,7 +82,8 @@
 						"type": "color_background",
 						"id": "background_gradient",
 						"label": "t:settings_schema.colors.settings.background_gradient.label",
-						"info": "t:settings_schema.colors.settings.background_gradient.info"
+						"info": "t:settings_schema.colors.settings.background_gradient.info",
+						"default": "linear-gradient(136deg, rgba(188, 8, 207, 1) 11%, rgba(44, 187, 224, 1) 84%)"
 					},
 					{
 						"type": "color",
@@ -95,11 +96,6 @@
 						"id": "heading_color",
 						"default": "#000000",
 						"label": "t:general.typography.heading.label"
-					},
-					{
-						"type": "color_background",
-						"id": "heading_gradient",
-						"label": "t:settings_schema.colors.settings.heading_gradient.label"
 					},
 					{
 						"type": "color",
@@ -369,6 +365,26 @@
 			{
 				"type": "header",
 				"content": "t:settings_schema.buttons.settings.header_1.content"
+			},
+			{
+				"type": "select",
+				"id": "button_style",
+				"options": [
+					{
+						"value": "primary",
+						"label": "t:general.typography.style.option_1.label"
+					},
+					{
+						"value": "secondary",
+						"label": "t:general.typography.style.option_2.label"
+					},
+					{
+						"value": "gradient",
+						"label": "t:general.typography.style.option_3.label"
+					}
+				],
+				"default": "gradient",
+				"label": "t:general.typography.style.label"
 			},
 			{
 				"type": "range",

@@ -24,8 +24,8 @@
 		{{ section_id }} .section-wrapper {
 			padding-top: {{ section.settings.padding_top }}px;
 			padding-bottom: {{ section.settings.padding_bottom }}px;
-		} 
-	}  
+		}
+	}
 
 	{%- if height != 'auto' -%}
 		{{ section_id }} .theme-slider.height-{{ height }} .vrworld-slide {
@@ -146,12 +146,12 @@
 														{%- if has_button -%}
 														    <div class="slider-element slider-button" style="display: inline-flex; gap: 15px; flex-wrap: wrap;">
 																{%- if button != blank -%}
-																	<a href="{{ block.settings.link | default: '#' }}" class="button {% if block.settings.button_style == 'gradient' %} gradient-button{% else %}{{ block.settings.button_style }}-button{% endif %} slide-element-inner" tabindex="0"{% if block.settings.button_style == 'gradient' %} style="background: var(--button-bg-gradient);"{% endif %}>
+																	<a href="{{ block.settings.link | default: '#' }}" class="button {{ settings.button_style }}-button slide-element-inner" tabindex="0"{% if block.settings.button_style == 'gradient' %}{% endif %}>
 																		{{- button | escape -}}
 																	</a>
 																{%- endif -%}
 																{%- if button_2 != blank -%}
-																	<a href="{{ block.settings.link_2 | default: '#' }}" class="button {% if block.settings.button_style_2 == 'gradient' %}gradient-button{% else %}{{ block.settings.button_style_2 }}-button{% endif %} slide-element-inner" tabindex="0"{% if block.settings.button_style_2 == 'gradient' %} style="background: var(--button-bg-gradient);"{% endif %}>
+																	<a href="{{ block.settings.link_2 | default: '#' }}" class="button {{ settings.button_style }}-button slide-element-inner" tabindex="0"{% if block.settings.button_style_2 == 'gradient' %}{% endif %}>
 																		{{- button_2 | escape -}}
 																	</a>
 																{%- endif -%}
@@ -386,26 +386,6 @@
 					"label": "t:general.typography.button_link.label"
 				},
 				{
-					"type": "select",
-					"id": "button_style",
-					"options": [
-						{
-							"value": "primary",
-							"label": "t:general.typography.style.option_1.label"
-						},
-						{
-							"value": "secondary",
-							"label": "t:general.typography.style.option_2.label"
-						},
-						{
-							"value": "gradient",
-							"label": "Gradient button"
-						}
-					],
-					"default": "primary",
-					"label": "t:general.typography.style.label"
-				},
-				{
 					"type": "text",
 					"id": "button_2",
 					"default": "Button label 2",
@@ -415,26 +395,6 @@
 					"type": "url",
 					"id": "link_2",
 					"label": "t:general.typography.button_link.label"
-				},
-				{
-					"type": "select",
-					"id": "button_style_2",
-					"options": [
-						{
-							"value": "primary",
-							"label": "t:general.typography.style.option_1.label"
-						},
-						{
-							"value": "secondary",
-							"label": "t:general.typography.style.option_2.label"
-						},
-						{
-							"value": "gradient",
-							"label": "Gradient button"
-						}
-					],
-					"default": "secondary",
-					"label": "t:general.typography.style.label"
 				},
 				{
 					"type": "header",

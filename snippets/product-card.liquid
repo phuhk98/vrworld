@@ -220,7 +220,7 @@
 			{%- if product.available -%}
 				{%- if product.has_only_default_variant -%}
 					<div class="product-warning error-messages message"></div>
-					<button type="submit" name="add" class="button primary-button add-to-cart-button{% if product.selling_plan_groups.size > 0 and product.requires_selling_plan %} selling-plan-error{% endif %}">
+					<button type="submit" name="add" class="button {{ settings.button_style }}-button add-to-cart-button{% if product.selling_plan_groups.size > 0 and product.requires_selling_plan %} selling-plan-error{% endif %}">
 						{%- render 'icon', code: 'product-add-to-cart' -%}
 						{{- 'products.product.add_to_cart' | t -}}
 					</button>
@@ -229,7 +229,7 @@
 						<div class="selling-plan-message error-messages message hidden"></div>
 					{%- endif -%}
 
-					<button type="submit" name="add" class="button primary-button add-to-cart-button quick-add-button {% if product.selling_plan_groups.size > 0 %} selling-plan-error{% endif %}">
+					<button type="submit" name="add" class="button {{ settings.button_style }}-button add-to-cart-button quick-add-button {% if product.selling_plan_groups.size > 0 %} selling-plan-error{% endif %}">
 						{%- render 'icon', code: 'product-add-to-cart' -%}
 						{{- 'products.product.quick_add' | t -}}
 					</button>
@@ -286,14 +286,14 @@
 					{%- endcapture -%}
 
 					{%- if settings.card_show_quickview == true -%}
-						<a class="button primary-button product-action product-quick-view{% if product.selling_plan_groups.size > 0 %} selling-plan-error{% endif %}" href="{{ product.url | split: '?' | first }}" arial-label="{{ 'products.product.quick_view' | t }}">
+						<a class="button {{ settings.button_style }}-button product-action product-quick-view{% if product.selling_plan_groups.size > 0 %} selling-plan-error{% endif %}" href="{{ product.url | split: '?' | first }}" arial-label="{{ 'products.product.quick_view' | t }}">
 							{%- render 'icon', code: 'product-add-to-cart' -%}
 							{{ 'products.product.view_options' | t }}
 						</a>
 					{%- else -%}
 						{%- if quick_add_box != blank -%}
 							<div class="quick-add no-js-hidden">
-								<a href="{{ product.url }}" aria-label="{{- 'general.text.link' | t -}}" class="primary-button add-to-cart-button quick-add-button{% if product.selling_plan_groups.size > 0 %} selling-plan-error{% endif %}">
+								<a href="{{ product.url }}" aria-label="{{- 'general.text.link' | t -}}" class="{{ settings.button_style }}-button add-to-cart-button quick-add-button{% if product.selling_plan_groups.size > 0 %} selling-plan-error{% endif %}">
 									{%- render 'icon', code: 'product-add-to-cart' -%}
 									{{- 'products.product.quick_add' | t -}}
 								</a>
@@ -307,7 +307,7 @@
 										<div class="selling-plan-message error-messages message hidden"></div>
 									{%- endif -%}
 
-									<button type="submit" name="add" class="primary-button add-to-cart-button{% if product.selling_plan_groups.size > 0 %} selling-plan-error{% endif %}">
+									<button type="submit" name="add" class="{{ settings.button_style }}-button add-to-cart-button{% if product.selling_plan_groups.size > 0 %} selling-plan-error{% endif %}">
 										{%- render 'icon', code: 'product-add-to-cart' -%}
 										{{- 'products.product.add_to_cart' | t -}}
 									</button>
@@ -315,11 +315,11 @@
 							</div>
 
 							<noscript>
-								<a href="{{ product.url }}" aria-label="{{- 'general.text.link' | t -}}" class="primary-button add-to-cart-button">{{- 'products.product.view_options' | t -}}</a>
+								<a href="{{ product.url }}" aria-label="{{- 'general.text.link' | t -}}" class="{{ settings.button_style }}-button add-to-cart-button">{{- 'products.product.view_options' | t -}}</a>
 							</noscript>
 						{%- else -%}
 							<div class="product-warning error-messages message"></div>
-							<button type="submit" name="add" class="button primary-button add-to-cart-button quick-add-button">
+							<button type="submit" name="add" class="button {{ settings.button_style }}-button add-to-cart-button quick-add-button">
 								{%- render 'icon', code: 'product-add-to-cart' -%}
 								{{- 'products.product.quick_add' | t -}}
 							</button>
@@ -327,7 +327,7 @@
 					{%- endif -%}
 				{%- endif -%}
 			{%- else -%}
-				<button type="submit" name="add" class="primary-button add-to-cart-button" disabled>
+				<button type="submit" name="add" class="{{ settings.button_style }}-button add-to-cart-button" disabled>
 					{%- render 'icon', code: 'product-add-to-cart' -%}
 					{{- 'products.product.sold_out' | t -}}
 				</button>

@@ -302,12 +302,15 @@
 				"label": "Button link"
 			},
 			"style": {
-				"label": "Button style",
+				"label": "Style",
 				"option_1": {
 					"label": "Solid button"
 				},
 				"option_2": {
 					"label": "Outline button"
+				},
+				"option_3": {
+					"label": "Gradient button"
 				}
 			},
 			"font_size": {
@@ -636,7 +639,7 @@
 					"content": "Button"
 				},
 				"button_bg_gradient": {
-					"label": "Button background gradient"
+					"label": "Background gradient"
 				},
 				"header_product": {
 					"content": "Product"
