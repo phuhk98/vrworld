@@ -115,7 +115,7 @@
 
 							{%- if button_label != blank -%}
 								<div class="button-wrapper">
-									<a class="button primary-button{% if animation %} scroll-trigger{% endif %}" href="{{ section.settings.button_link | default: '#' }}" aria-label="play-{{- 'general.text.button' | t -}}">
+									<a class="button gradient-button {% if animation %} scroll-trigger{% endif %}" href="{{ section.settings.button_link | default: '#' }}" aria-label="play-{{- 'general.text.button' | t -}}">
 										{{- button_label -}}
 									</a>
 								</div>

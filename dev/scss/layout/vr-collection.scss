@@ -103,14 +103,14 @@
 
     &__title {
       font-family: var(--heading-font-family);
-      color: rgb(var(--text-color));
+      color: rgb(var(--heading-color));
       margin: 0 0 0.8rem 0;
       transition: color 0.3s ease, filter 0.3s ease;
     }
 
     &__count {
       font-family: var(--body-font-family);
-      color: var(--text-color);
+      color: var(--heading-color);
       margin: 0;
       transition: color 0.3s ease, filter 0.3s ease;
     }
