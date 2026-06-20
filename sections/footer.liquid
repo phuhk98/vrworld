@@ -143,6 +143,36 @@
 								<p>&copy; {{ 'now' | date: '%Y' }} {{ shop.name | link_to: 'routes.root_url' }}. {{ powered_by_link }}.</p>
 							</div>
 						{%- endif -%}
+
+						{%- for block in section.blocks -%}
+							{%- if block.type == 'social' or block.type == 'info' -%}
+								<div class="ft-block-item ft-block-{{ block.type }}{% if animation %} scroll-trigger{% endif %}" data-id="{{ block.id }}" {{ block.shopify_attributes }}>
+									{%- case block.type -%}
+                  {%- when 'info' -%}
+											{%- if block.settings.info_heading != blank -%}
+												<div class="info-heading ft-block-heading rte">{{- block.settings.info_heading -}}</div>
+											{%- endif -%}
+
+											{%- if block.settings.info_text != blank -%}
+												<div class="info-text rte">{{- block.settings.info_text -}}</div>
+											{%- endif -%}
+                      
+										{%- when 'social' -%}
+											{%- if block.settings.social_heading != blank -%}
+												<div class="social-heading ft-block-heading rte">{{- block.settings.social_heading -}}</div>
+											{%- endif -%}
+
+											{%- liquid
+												if block.settings.show_social
+													render 'social-media'
+												endif
+											-%}
+
+										
+									{%- endcase -%}
+								</div>
+							{%- endif -%}
+						{%- endfor -%}
 					</div>
 
 					{%- if ft_bgimage != blank -%}
@@ -155,8 +185,11 @@
 
 			<div class="footer-blocks">
 				<div class="ft-blocks-inner grid grid-{{ column }} grid-tablet-1 grid-mobile-1">
+					{%- assign valid_block_index = 0 -%}
 					{%- for block in section.blocks -%}
-						<div class="ft-block-item ft-block-{{ block.type }}{% if animation %} scroll-trigger{% endif %}" data-id="{{ block.id }}" data-{{ forloop.index0 }} {{ block.shopify_attributes }}>
+						{%- if block.type == 'social' or block.type == 'info' -%}{%- continue -%}{%- endif -%}
+						{%- assign valid_block_index = valid_block_index | plus: 1 -%}
+						<div class="ft-block-item ft-block-{{ block.type }}{% if animation %} scroll-trigger{% endif %}" data-id="{{ block.id }}" data-{{ valid_block_index | minus: 1 }} {{ block.shopify_attributes }}>
 							{%- liquid
 								capture heading
 									if block.settings.heading != blank
@@ -193,32 +226,13 @@
 												{%- endfor -%}
 											{%- endif -%}
 										</ul>
-									{%- when 'social' -%}
-										{%- if block.settings.social_heading != blank -%}
-											<div class="social-heading ft-block-heading rte">{{- block.settings.social_heading -}}</div>
-										{%- endif -%}
-
-										{%- liquid
-											if block.settings.show_social
-												render 'social-media'
-											endif
-										-%}
-
-									{%- when 'info' -%}
-										{%- if block.settings.info_heading != blank -%}
-											<div class="info-heading ft-block-heading rte">{{- block.settings.info_heading -}}</div>
-										{%- endif -%}
-
-										{%- if block.settings.info_text != blank -%}
-											<div class="info-text rte">{{- block.settings.info_text -}}</div>
-										{%- endif -%}
-								{%- endcase -%}
+									{%- endcase -%}
 							</div>
 						</div>
 
-						{%- assign modulo_result = forloop.index | modulo: column -%}
+						{%- assign modulo_result = valid_block_index | modulo: column -%}
 
-						{%- if forloop.index0 != 0 and modulo_result == 0 -%}
+						{%- if valid_block_index != 0 and modulo_result == 0 -%}
 						    <div class="ft-block-divider"></div>
 						{%- endif -%}
 					{%- endfor -%}
