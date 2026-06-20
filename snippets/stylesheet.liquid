@@ -26,7 +26,7 @@
 			--background-color: {{ scheme.settings.background_color.red }}, {{ scheme.settings.background_color.green }}, {{ scheme.settings.background_color.blue }};
 			--text-color: {{ scheme.settings.text_color.red }}, {{ scheme.settings.text_color.green }}, {{ scheme.settings.text_color.blue }};
 			--heading-color: {{ scheme.settings.heading_color.red }}, {{ scheme.settings.heading_color.green }}, {{ scheme.settings.heading_color.blue }};
-			--heading-gradient: {{ scheme.settings.heading_gradient }};
+
 			--subheading-color: {{ scheme.settings.subheading_color.red }}, {{ scheme.settings.subheading_color.green }}, {{ scheme.settings.subheading_color.blue }};
 			--link-color: {{ scheme.settings.link_color.red }}, {{ scheme.settings.link_color.green }}, {{ scheme.settings.link_color.blue }};
 			--success-color: {{ scheme.settings.success_color.red }}, {{ scheme.settings.success_color.green }}, {{ scheme.settings.success_color.blue }};
@@ -34,7 +34,7 @@
 			--loading-color: {{ scheme.settings.loading_color.red }}, {{ scheme.settings.loading_color.green }}, {{ scheme.settings.loading_color.blue }};
 
 			--button-bg-color: {{ scheme.settings.button_bg_color.red }}, {{ scheme.settings.button_bg_color.green }}, {{ scheme.settings.button_bg_color.blue }};
-			--button-bg-gradient: {{ scheme.settings.button_bg_gradient }};
+
 			--button-text-color: {{ scheme.settings.button_text_color.red }}, {{ scheme.settings.button_text_color.green }}, {{ scheme.settings.button_text_color.blue }};
 			--button-outline-color: {{ scheme.settings.button_outline_color.red }}, {{ scheme.settings.button_outline_color.green }}, {{ scheme.settings.button_outline_color.blue }};
 
@@ -95,7 +95,7 @@
 
 	{{ scheme_classes | prepend: 'body' }} {
 		color: rgb(var(--text-color));
-		background: var(--gradient-background, rgb(var(--background-color)));
+		background: rgb(var(--background-color)), var(--gradient-background);
 	}
 
 	:root {
