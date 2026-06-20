@@ -137,6 +137,13 @@
 							</a>
 						{%- endif -%}
 
+						{% comment %} Copyright {% endcomment %}
+						{%- if section.settings.show_copyright -%}
+							<div class="ft-copyright{% if animation %} scroll-trigger{% endif %}">
+								<p>&copy; {{ 'now' | date: '%Y' }} {{ shop.name | link_to: 'routes.root_url' }}. {{ powered_by_link }}.</p>
+							</div>
+						{%- endif -%}
+
 						{%- for block in section.blocks -%}
 							{%- if block.type == 'social' or block.type == 'info' -%}
 								<div class="ft-block-item ft-block-{{ block.type }}{% if animation %} scroll-trigger{% endif %}" data-id="{{ block.id }}" {{ block.shopify_attributes }}>
@@ -149,7 +156,7 @@
 											{%- if block.settings.info_text != blank -%}
 												<div class="info-text rte">{{- block.settings.info_text -}}</div>
 											{%- endif -%}
-
+                      
 										{%- when 'social' -%}
 											{%- if block.settings.social_heading != blank -%}
 												<div class="social-heading ft-block-heading rte">{{- block.settings.social_heading -}}</div>
@@ -238,7 +245,12 @@
 								{% comment %} Language/Country {% endcomment %}
 								{{- language_country_selector -}}
 
-								
+								{% comment %} Copyright {% endcomment %}
+								{%- if section.settings.show_copyright_bar -%}
+									<div class="ft-copyright{% if animation %} scroll-trigger{% endif %}">
+										<p>&copy; {{ 'now' | date: '%Y' }} {{ shop.name | link_to: 'routes.root_url' }}. {{ powered_by_link }}.</p>
+									</div>
+								{%- endif -%}
 							</div>
 						{%- endif -%}
 
@@ -269,13 +281,6 @@
 								{%- endif -%}
 							</div>
 						{%- endif -%}
-
-            {% comment %} Copyright {% endcomment %}
-              {%- if section.settings.show_copyright_bar -%}
-                <div class="ft-copyright{% if animation %} scroll-trigger{% endif %}">
-                  <p>&copy; {{ 'now' | date: '%Y' }} {{ shop.name | link_to: 'routes.root_url' }}. {{ powered_by_link }}.</p>
-                </div>
-            {%- endif -%}
 					</div>
 				{%- endif -%}
 			</div>
