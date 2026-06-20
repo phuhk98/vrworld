@@ -54,29 +54,13 @@
             "social_heading": "CONNECT WITH US:",
             "show_social": true
           }
-        },
-        "info_JExxBt": {
-          "type": "info",
-          "settings": {
-            "info_heading": "ADDRESS",
-            "info_text": "<p>155 Willowbrook, BoulevardNew Jersey<br/>+01 (606) 598-5782</p>"
-          }
-        },
-        "info_V3Mp8k": {
-          "type": "info",
-          "settings": {
-            "info_heading": "WORKING HOURS",
-            "info_text": "<p>Mon - Fri: 9.00 a.m to 19.00 p.m<br/>Sat & Sun: 10 a.m to 17.00 p.m</p>"
-          }
         }
       },
       "block_order": [
         "block-2",
         "menu_gyP8t9",
         "menu_QBq4fi",
-        "social_cFrarC",
-        "info_JExxBt",
-        "info_V3Mp8k"
+        "social_cFrarC"
       ],
       "settings": {
         "color_scheme": "scheme-3",
