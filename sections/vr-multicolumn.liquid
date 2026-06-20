@@ -102,7 +102,7 @@
 
 			<div class="multicolumn-inner grid grid-{{ columns }}{% unless section.settings.mobile_swipe %} grid-tablet-{{ columns_mobile }} grid-mobile-{{ columns_mobile }}{% endunless %}" role="list" data-column="{{ columns_mobile }}">
 				{%- for block in section.blocks -%}
-					<div class="grid-item column-item color-{{ section.settings.columns_color_scheme }} text-{{ align }} border-large{% if animation %} scroll-trigger{% endif %}" {{ block.shopify_attributes }}>
+					<div class="grid-item column-item text-{{ align }} border-large{% if animation %} scroll-trigger{% endif %}" {{ block.shopify_attributes }}>
 						{%- case block.type -%}
 							{%- when '@app' -%}
 								{%- render block -%}
