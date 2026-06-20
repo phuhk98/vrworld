@@ -20,7 +20,7 @@
 			assign scheme_classes = scheme_classes | append: ', .color-' | append: scheme.id
 			assign svg_color      = scheme.settings.text_color | replace: '#', '%23'
 		-%}
-
+ 
 		{% if forloop.index == 1 %}:root, {% endif %}.color-{{ scheme.id }} {
 			--gradient-background: {% if scheme.settings.background_gradient != empty %}{{ scheme.settings.background_gradient }}{% else %}{{ scheme.settings.background_color }}{% endif %};
 			--background-color: {{ scheme.settings.background_color.red }}, {{ scheme.settings.background_color.green }}, {{ scheme.settings.background_color.blue }};
