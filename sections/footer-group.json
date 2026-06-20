@@ -27,6 +27,13 @@
     "footer": {
       "type": "footer",
       "blocks": {
+        "info_rbNYXG": {
+          "type": "info",
+          "settings": {
+            "info_heading": "",
+            "info_text": "<p>VR’WORLD   VR accessories store offers high-quality gear like headsets, controllers, straps, and stands to enhance immersive experiences</p>"
+          }
+        },
         "block-2": {
           "type": "menu",
           "settings": {
@@ -57,6 +64,7 @@
         }
       },
       "block_order": [
+        "info_rbNYXG",
         "block-2",
         "menu_gyP8t9",
         "menu_QBq4fi",
