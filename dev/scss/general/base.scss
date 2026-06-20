@@ -316,17 +316,17 @@ h2,
 
 h3,
 .h3 {
-	font-size: calc(var(--heading-font-scale) * 3rem);
+	font-size: calc(var(--heading-font-scale) * 3.2rem);
 }
 
 h4,
 .h4 {
-	font-size: calc(var(--heading-font-scale) * 2rem);
+	font-size: calc(var(--heading-font-scale) * 2.4rem);
 }
 
 h5,
 .h5 {
-	font-size: calc(var(--heading-font-scale) * 1.92rem);
+	font-size: calc(var(--heading-font-scale) * 2rem);
 }
 
 h6,
@@ -346,22 +346,22 @@ h6,
 
 	h2,
 	.h2 {
-		font-size: calc(var(--heading-font-scale) * 3.6rem);
+		font-size: calc(var(--heading-font-scale) * 4.8rem);
 	}
 
 	h3,
 	.h3 {
-		font-size: calc(var(--heading-font-scale) * 3rem);
+		font-size: calc(var(--heading-font-scale) * 4rem);
 	}
 
 	h4,
 	.h4 {
-		font-size: calc(var(--heading-font-scale) * 2rem);
+		font-size: calc(var(--heading-font-scale) * 3.2rem);
 	}
 
 	h5,
 	.h5 {
-		font-size: calc(var(--heading-font-scale) * 1.92rem);
+		font-size: calc(var(--heading-font-scale) * 2.4rem);
 	}
 
 	h6,
@@ -447,7 +447,7 @@ input {
 		&:not(:placeholder-shown) {
 			padding: 2.2rem 2rem 0.8rem;
 
-			~label {
+			~ label {
 				font-size: 1rem;
 				letter-spacing: 0.04rem;
 				top: 0.3rem;
@@ -575,11 +575,31 @@ input[type='file'],
 	overflow: hidden;
 	transition: all 0.5s ease-in-out;
 
+	&:after {
+		content: '';
+		position: absolute;
+		left: 0;
+		top: 0;
+		transition: all 0.5s ease-in-out;
+		background-color: rgb(var(--button-bg-color));
+		border-radius: 30px;
+		transform: scale(100) translateX(2px);
+		height: 10px;
+		width: 10px;
+		z-index: -1;
+		visibility: visible;
+	}
+
 	&:hover {
-		transform: translateY(-0.2rem);
-		background: transparent;
-		border: 0.1rem solid rgb(var(--button-bg-color));
 		color: rgb(var(--button-bg-color));
+		border: 0.1rem solid rgb(var(--button-bg-color));
+		background-color: transparent;
+		box-shadow: none;
+	}
+
+	&:hover::after {
+		transform: scale(0);
+		visibility: hidden;
 	}
 
 }
@@ -595,55 +615,29 @@ input[type='file'],
 	border: var(--button-border-width) solid rgba(var(--button-outline-color), var(--button-border-opacity));
 	border-radius: var(--button-radius);
 
-	&:hover {
-		transform: translateY(-0.2rem);
-		background-color: rgb(var(--button-bg-color));
-		color: rgb(var(--button-text-color));
-	}
-
-}
-
-.gradient-button {
-	height: 5.2rem;
-	line-height: 1.7;
-	display: flex;
-	align-items: center;
-	padding: 0 2.4rem;
-	font-size: 1.4rem;
-	text-transform: uppercase;
-	color: rgb(var(--button-outline-color));
-	border: 0;
-	border-radius: var(--button-radius);
-	font-family: var(--subheading-font-family);
-	font-weight: var(--subheading-font-weight);
-	position: relative;
-	z-index: 1;
-	overflow: hidden;
-	background-image: linear-gradient(transparent, transparent), var(--button-bg-gradient);
-	background-size: 100% 100%, 200% 100%;
-	background-position: 0 0, 0 0;
-	transition: background-position .6s ease, transform .3s ease, box-shadow .3s ease;
-
-	&::after {
+	&:after {
 		content: '';
 		position: absolute;
+		left: 0;
 		top: 0;
-		left: -150%;
-		width: 40%;
-		height: 100%;
-		background: linear-gradient(90deg, transparent, rgba(255, 255, 255, .4), transparent);
-		transform: skewX(-20deg);
-		transition: left .7s ease;
-		pointer-events: none;
+		transition: all 0.5s ease-in-out;
+		background-color: rgb(var(--button-bg-color));
+		border-radius: 30px;
+		visibility: hidden;
+		height: 10px;
+		width: 10px;
+		z-index: -1;
 	}
 
 	&:hover {
-		background-position: 0 0, 100% 0;
-		transform: translateY(-2px);
+		box-shadow: 1px 1px 200px rgb(var(--button-bg-color));
+		color: rgb(var(--button-text-color));
+		border: var(--button-border-width) solid rgba(var(--button-outline-color), var(--button-border-opacity));
 	}
 
 	&:hover::after {
-		left: 150%;
+		visibility: visible;
+		transform: scale(100) translateX(2px);
 	}
 
 }

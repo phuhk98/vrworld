@@ -9,7 +9,7 @@
 	endif
 -%}
 
-<div class="product-card{% if class %} {{ class }}{% endif %} text-{{ alignment | default: 'left' }}">
+<div class="product-card text-left">
 	<div class="product-media-wrap square-media card-item" tabindex="-1">
 		{{- 'product-' | append: index | placeholder_svg_tag: 'placeholder-svg' -}}
 

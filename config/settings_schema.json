@@ -4,8 +4,8 @@
 		"theme_name": "Vrworld",
 		"theme_version": "1.0.0",
 		"theme_author": "19Themes",
-		"theme_documentation_url": "https:\/\/app.gitbook.com\/o\/qW0k0Hg0VJuCtqUoQUVp\/sites\/site_zgJt6",
-		"theme_support_url": "https:\/\/forms.gle\/ktL9i2wkjyc2oD6b8"
+		"theme_documentation_url": "https:\/\/boostifythemes.com\/docs\/vrworld",
+		"theme_support_url": "https:\/\/boostifythemes.com\/contact"
 	},
 	{
 		"name": "t:sections.header.settings.header_logo.content",
@@ -82,8 +82,7 @@
 						"type": "color_background",
 						"id": "background_gradient",
 						"label": "t:settings_schema.colors.settings.background_gradient.label",
-						"info": "t:settings_schema.colors.settings.background_gradient.info",
-						"default": "linear-gradient(136deg, rgba(188, 8, 207, 1) 11%, rgba(44, 187, 224, 1) 84%)"
+						"info": "t:settings_schema.colors.settings.background_gradient.info"
 					},
 					{
 						"type": "color",
@@ -136,11 +135,6 @@
 						"id": "button_bg_color",
 						"label": "t:general.background.label",
 						"default": "#000000"
-					},
-					{
-						"type": "color_background",
-						"id": "button_bg_gradient",
-						"label": "t:settings_schema.colors.settings.button_bg_gradient.label"
 					},
 					{
 						"type": "color",
@@ -203,10 +197,7 @@
 					},
 					"links": "link_color",
 					"icons": "text_color",
-					"primary_button": {
-						"solid": "button_bg_color",
-						"gradient": "button_bg_gradient"
-					},
+					"primary_button": "button_bg_color",
 					"on_primary_button": "button_text_color",
 					"primary_button_border": "button_bg_color",
 					"secondary_button": "button_outline_color",
@@ -260,15 +251,6 @@
 				"step": 5,
 				"unit": "%",
 				"label": "t:general.typography.font_size_scale.label"
-			},
-			{
-				"type": "range",
-				"id": "heading_font_weight",
-				"default": 800,
-				"min": 100,
-				"max": 900,
-				"step": 100,
-				"label": "Heading Font Weight"
 			},
 			{
 				"type": "header",
@@ -362,26 +344,6 @@
 	{
 		"name": "t:settings_schema.buttons.name",
 		"settings": [
-			{
-				"type": "select",
-				"id": "button_style",
-				"options": [
-					{
-						"value": "primary",
-						"label": "t:general.typography.style.option_1.label"
-					},
-					{
-						"value": "secondary",
-						"label": "t:general.typography.style.option_2.label"
-					},
-					{
-						"value": "gradient",
-						"label": "t:general.typography.style.option_3.label"
-					}
-				],
-				"default": "gradient",
-				"label": "t:general.typography.style.label"
-			},
 			{
 				"type": "header",
 				"content": "t:settings_schema.buttons.settings.header_1.content"

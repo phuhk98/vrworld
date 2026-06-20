@@ -8,94 +8,96 @@
  * ------------------------------------------------------------
  */
 {
-  "name": "t:sections.footer.name",
-  "type": "footer",
-  "sections": {
-    "newsletter_popup_GxLzU8": {
-      "type": "newsletter-popup",
-      "name": "t:sections.newsletter-popup.name",
-      "settings": {
-        "color_scheme": "scheme-249bc96c-a978-4bba-a5bc-70409aeabb75",
-        "first_visit": true,
-        "delay_time": 3,
-        "heading": "<h4>Unlock Exclusive Benefits!</h4>",
-        "description": "<p>By subscribing to our newsletter, You’ll get exclusive access to special discounts, expert health tips and early updates on new products and promotions.</p>",
-        "email_adress": "Enter your email address"
-      }
-    },
-    "footer": {
-      "type": "footer",
-      "blocks": {
-        "block-2": {
-          "type": "menu",
-          "settings": {
-            "heading": "SHOP",
-            "menu": ""
-          }
-        },
-        "menu_gyP8t9": {
-          "type": "menu",
-          "settings": {
-            "heading": "DISCOVER",
-            "menu": ""
-          }
-        },
-        "menu_QBq4fi": {
-          "type": "menu",
-          "settings": {
-            "heading": "QUICK LINKS",
-            "menu": ""
-          }
-        },
-        "social_cFrarC": {
-          "type": "social",
-          "settings": {
-            "social_heading": "CONNECT WITH US:",
-            "show_social": true
-          }
-        },
-        "info_JExxBt": {
-          "type": "info",
-          "settings": {
-            "info_heading": "ADDRESS",
-            "info_text": "<p>155 Willowbrook, BoulevardNew Jersey<br/>+01 (606) 598-5782</p>"
-          }
-        },
-        "info_V3Mp8k": {
-          "type": "info",
-          "settings": {
-            "info_heading": "WORKING HOURS",
-            "info_text": "<p>Mon - Fri: 9.00 a.m to 19.00 p.m<br/>Sat & Sun: 10 a.m to 17.00 p.m</p>"
-          }
-        }
-      },
-      "block_order": [
-        "block-2",
-        "menu_gyP8t9",
-        "menu_QBq4fi",
-        "social_cFrarC",
-        "info_JExxBt",
-        "info_V3Mp8k"
-      ],
-      "settings": {
-        "color_scheme": "scheme-3",
-        "full": false,
-        "separator_line": false,
-        "overlay": 20,
-        "content": "Get 20% off for your first order.",
-        "text": "Be the first one to get our latest promotions and expert articles.",
-        "show_form": true,
-        "show_copyright": true,
-        "column": 3,
-        "show_country_language_selector": true,
-        "show_copyright_bar": false,
-        "show_payments": true,
-        "show_follow": true
-      }
-    }
-  },
-  "order": [
-    "newsletter_popup_GxLzU8",
-    "footer"
-  ]
+	"name": "t:sections.footer.name",
+	"type": "footer",
+	"sections": {
+		"newsletter_popup_GxLzU8": {
+			"type": "newsletter-popup",
+			"name": "t:sections.newsletter-popup.name",
+			"settings": {
+				"color_scheme": "scheme-1",
+				"first_visit": true,
+				"delay_time": 4,
+				"image": "shopify://shop_images/image_b9796565-3e70-465f-b787-0d8ff4129e94.png",
+				"heading": "<h4>Unlock Exclusive Benefits!</h4>",
+				"description": "<p>By subscribing to our newsletter, You’ll get exclusive access to special discounts, expert health tips and early updates on new products and promotions.</p>",
+				"email_adress": "Enter your email address"
+			}
+		},
+		"footer": {
+			"type": "footer",
+			"blocks": {
+				"block-2": {
+					"type": "menu",
+					"settings": {
+						"heading": "SHOP",
+						"menu": "footer-shop"
+					}
+				},
+				"menu_gyP8t9": {
+					"type": "menu",
+					"settings": {
+						"heading": "DISCOVER",
+						"menu": "footer-discover"
+					}
+				},
+				"menu_QBq4fi": {
+					"type": "menu",
+					"settings": {
+						"heading": "QUICK LINKS",
+						"menu": "footer-quick-link"
+					}
+				},
+				"social_cFrarC": {
+					"type": "social",
+					"settings": {
+						"social_heading": "CONNECT WITH US:",
+						"show_social": true
+					}
+				},
+				"info_JExxBt": {
+					"type": "info",
+					"settings": {
+						"info_heading": "ADDRESS",
+						"info_text": "<p>155 Willowbrook, BoulevardNew Jersey<br/>+01 (606) 598-5782</p>"
+					}
+				},
+				"info_V3Mp8k": {
+					"type": "info",
+					"settings": {
+						"info_heading": "WORKING HOURS",
+						"info_text": "<p>Mon - Fri: 9.00 a.m to 19.00 p.m<br/>Sat & Sun: 10 a.m to 17.00 p.m</p>"
+					}
+				}
+			},
+			"block_order": [
+				"block-2",
+				"menu_gyP8t9",
+				"menu_QBq4fi",
+				"social_cFrarC",
+				"info_JExxBt",
+				"info_V3Mp8k"
+			],
+			"settings": {
+				"color_scheme": "scheme-3",
+				"full": false,
+				"separator_line": false,
+				"ft_logo": "shopify://shop_images/light-vrworld-logo.svg",
+				"overlay": 20,
+				"content": "Get 20% off for your first order.",
+				"text": "Be the first one to get our latest promotions and expert articles.",
+				"show_form": true,
+				"show_copyright": true,
+				"column": 3,
+				"show_country_language_selector": true,
+				"show_copyright_bar": false,
+				"show_payments": true,
+				"show_follow": true
+			}
+		}
+	},
+	"order": [
+		"newsletter_popup_GxLzU8",
+		"footer"
+	]
 }
