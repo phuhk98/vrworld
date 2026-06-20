@@ -76,7 +76,7 @@
     "color_schemes": {
       "scheme-1": {
         "settings": {
-          "background_color": "#2F2F2F",
+          "background_color": "#FFFFFF",
           "background_gradient": "linear-gradient(136deg, rgba(188, 8, 207, 1) 11%, rgba(44, 187, 224, 1) 84%)",
           "text_color": "#ffffff",
           "heading_color": "#ffffff",
