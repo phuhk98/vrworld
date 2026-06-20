@@ -75,6 +75,7 @@
         "full": false,
         "separator_line": false,
         "ft_logo": "shopify://shop_images/logo-footer.svg",
+        "ft_bgimage": "shopify://shop_images/bkg-footer-newsletter.png",
         "overlay": 20,
         "content": "Get 20% off for your first order.",
         "text": "Be the first one to get our latest promotions and expert articles.",
