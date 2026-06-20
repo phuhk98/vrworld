@@ -73,8 +73,8 @@
         "show_form": true,
         "show_copyright": true,
         "column": 4,
-        "show_country_language_selector": true,
-        "show_copyright_bar": false,
+        "show_country_language_selector": false,
+        "show_copyright_bar": true,
         "show_payments": true,
         "show_follow": true
       }
