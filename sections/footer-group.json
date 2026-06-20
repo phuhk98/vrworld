@@ -79,7 +79,7 @@
         "content": "Get 20% off for your first order.",
         "text": "Be the first one to get our latest promotions and expert articles.",
         "show_form": true,
-        "show_copyright": true,
+        "show_copyright": false,
         "column": 4,
         "show_country_language_selector": false,
         "show_copyright_bar": true,
