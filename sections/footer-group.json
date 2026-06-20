@@ -51,7 +51,7 @@
         "social_cFrarC": {
           "type": "social",
           "settings": {
-            "social_heading": "CONNECT WITH US:",
+            "social_heading": "",
             "show_social": true
           }
         }
