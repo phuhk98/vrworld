@@ -43,22 +43,43 @@
     border-top: 0.1rem solid rgb(var(--text-color), 0.16);
   }
 
+  .footer-newsletter {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    z-index: 3;
+    padding: 4rem 0;
+  }
+
+  .ft-newsletter {
+    z-index: 3;
+    flex-grow: 1;
+    position: relative;
+  }
+
+  .ft-logo-copyright {
+    display: flex;
+    flex-direction: column;
+    gap: 1.6rem;
+    z-index: 3;
+
+    .ft-logo {
+      margin-top: 8rem;
+    }
+  }
+
+  .image {
+    position: absolute;
+    z-index: 1;
+    width: 300%;
+    height: 100%;
+    top: 0;
+    left: -195%;
+    max-width: unset;
+  }
+
   .footer-inner {
-    .footer-newsletter {
-      position: relative;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      z-index: 3;
-      padding: 4rem 0;
-    }
-
-    .ft-newsletter {
-      z-index: 3;
-      flex-grow: 1;
-      position: relative;
-    }
-
     .footer-blocks {
       width: 100%;
       display: flex;
@@ -70,17 +91,6 @@
       display: grid;
       column-gap: 3.2rem;
       row-gap: 3.8rem;
-    }
-
-    .ft-logo-copyright {
-      display: flex;
-      flex-direction: column;
-      gap: 1.6rem;
-      z-index: 3;
-
-      .ft-logo {
-        margin-top: 8rem;
-      }
     }
 
     .ft-bar {
@@ -97,36 +107,27 @@
       }
     }
 
-    .image {
-      position: absolute;
-      z-index: 1;
-      width: 300%;
-      height: 100%;
-      top: 0;
-      left: -195%;
-      max-width: unset;
+  @media (min-width: 992px) {
+    .ft-newsletter {
+      display: flex;
+      gap: 2rem;
+      justify-content: space-between;
+      align-items: center;
+
+      .ft-newsletter-content {
+        width: 47%;
+      }
+
+      .newsletter-form {
+        width: 45%;
+      }
     }
 
-    @media (min-width: 992px) {
-      .ft-newsletter {
-        display: flex;
-        gap: 2rem;
-        justify-content: space-between;
-        align-items: center;
+    .image {
+      left: -200%;
+    }
 
-        .ft-newsletter-content {
-          width: 47%;
-        }
-
-        .newsletter-form {
-          width: 45%;
-        }
-      }
-
-      .image {
-        left: -200%;
-      }
-
+    .footer-inner {
       .footer-blocks {
         padding: 8rem 0;
 
