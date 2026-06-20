@@ -82,6 +82,7 @@
         "color_scheme": "scheme-3",
         "full": false,
         "separator_line": false,
+        "ft_logo": "shopify://shop_images/logo-footer.svg",
         "overlay": 20,
         "content": "Get 20% off for your first order.",
         "text": "Be the first one to get our latest promotions and expert articles.",
