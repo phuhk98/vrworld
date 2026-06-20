@@ -40,7 +40,7 @@
       ],
       "name": "t:sections.vr-slideshow.name",
       "settings": {
-        "color_scheme": "scheme-098995c4-a3d0-4bae-bbf0-af17bca3e81e",
+        "color_scheme": "scheme-1",
         "full": true,
         "height": "medium",
         "padding_top": 0,
@@ -102,7 +102,7 @@
       ],
       "name": "VR Collection Slider",
       "settings": {
-        "color_scheme": "scheme-cde439b3-4ec3-48e1-8170-0b95492e5005",
+        "color_scheme": "scheme-2",
         "full_width": true,
         "heading": "",
         "heading_size": "h2",
@@ -147,7 +147,7 @@
       "name": "VR Featured Collection",
       "settings": {
         "full": false,
-        "color_scheme": "scheme-249bc96c-a978-4bba-a5bc-70409aeabb75",
+        "color_scheme": "scheme-2",
         "sub_heading": "Discover the most popular VR accessories chosen by gamers worldwide, designed to elevate your immersive experience.",
         "heading": "Top-rate Featured VR Accessories",
         "heading_size": "h4",
@@ -272,7 +272,7 @@
       ],
       "name": "VR Partners",
       "settings": {
-        "color_scheme": "",
+        "color_scheme": "scheme-2",
         "heading_text": "Discover the Best in VR Top-Rated Brands",
         "heading_size": "h5",
         "text": "<p>Discover the most popular VR accessories chosen by gamers worldwide, designed to elevate your immersive experience.</p>",
@@ -455,7 +455,7 @@
       "name": "t:sections.vr-multicolumn.name",
       "settings": {
         "full": false,
-        "color_scheme": "scheme-1",
+        "color_scheme": "scheme-be293f48-285a-4399-9036-8e0fac37561a",
         "caption": "",
         "heading_text": "VR Multicolumn",
         "heading_size": "h3",
