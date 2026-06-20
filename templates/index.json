@@ -402,7 +402,7 @@
       "type": "vr-video-with-text",
       "name": "t:sections.vr-video-with-text.name",
       "settings": {
-        "color_scheme": "",
+        "color_scheme": "scheme-1",
         "full": false,
         "source": "host",
         "url": "https://www.youtube.com/watch?v=_9VUPq3SxOc",
@@ -455,7 +455,7 @@
       "name": "t:sections.vr-multicolumn.name",
       "settings": {
         "full": false,
-        "color_scheme": "scheme-be293f48-285a-4399-9036-8e0fac37561a",
+        "color_scheme": "scheme-1",
         "caption": "",
         "heading_text": "VR Multicolumn",
         "heading_size": "h3",
