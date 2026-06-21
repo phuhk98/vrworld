@@ -298,30 +298,35 @@
         "image_9f3MtE": {
           "type": "image",
           "settings": {
+            "image": "shopify://shop_images/meta.png",
             "img_link": ""
           }
         },
         "image_agGX7B": {
           "type": "image",
           "settings": {
+            "image": "shopify://shop_images/len.png",
             "img_link": ""
           }
         },
         "image_NCqKWB": {
           "type": "image",
           "settings": {
+            "image": "shopify://shop_images/ste.png",
             "img_link": ""
           }
         },
         "image_g3Jjwp": {
           "type": "image",
           "settings": {
+            "image": "shopify://shop_images/govar.png",
             "img_link": ""
           }
         },
         "image_TJiktr": {
           "type": "image",
           "settings": {
+            "image": "shopify://shop_images/manus.png",
             "img_link": ""
           }
         },
