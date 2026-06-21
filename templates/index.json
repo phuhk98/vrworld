@@ -30,7 +30,7 @@
             "position_x": "start",
             "position_y": "center",
             "text_align": "left",
-            "mobile_text_align": "center",
+            "mobile_text_align": "left",
             "description_line": "2"
           }
         }
