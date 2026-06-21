@@ -18,10 +18,10 @@
   }
 
   .multicolumn-inner {
-    gap: 2rem;
+    gap: var(--grid-horizontal);
 
     .column-item {
-      padding: 2rem;
+      padding: 0;
 
       .column-heading,
       .column-description {

@@ -49,7 +49,8 @@
 		<div class="footer-newsletter">
 			{% if section.settings.content != blank or section.settings.text != blank or section.settings.show_form %}
 				<div class="ft-newsletter"{% if newsletter_bgimage != blank %} style="background-image: url({{ newsletter_bgimage | image_url: width: 1920 }}); background-size: cover; background-position: center; background-repeat: no-repeat;"{% endif %}>
-					<div class="ft-newsletter-content">
+					<div class="container newsletter-container">
+						<div class="ft-newsletter-content">
 						{% if section.settings.content != blank %}
 							<h2 class="ft-newsletter-heading">
 								{{- section.settings.content -}}
@@ -122,57 +123,13 @@
 									{%- endif -%}
 								</div>
 							{%- endform -%}
+							</div>
 						{% endif %}
+					</div>
 					</div>
 				{% endif %}
 
-				<div class="ft-logo-copyright">
-					{%- if section.settings.ft_logo != blank -%}
-						<a class="ft-logo" href="{{ routes.root_url }}">
-							{%- liquid
-								echo section.settings.ft_logo | image_url: width: 270 | image_tag: width: 115, height: 115, loading: 'lazy'
-							-%}
 
-							<span class="sr-only">{{- shop.name -}}</span>
-						</a>
-					{%- endif -%}
-
-					{% comment %} Copyright {% endcomment %}
-					{%- if section.settings.show_copyright -%}
-						<div class="ft-copyright{% if animation %} scroll-trigger{% endif %}">
-							<p>&copy; {{ 'now' | date: '%Y' }} {{ shop.name | link_to: 'routes.root_url' }}. {{ powered_by_link }}.</p>
-						</div>
-					{%- endif -%}
-
-					{%- for block in section.blocks -%}
-						{%- if block.type == 'social' or block.type == 'info' -%}
-							<div class="ft-block-item ft-block-{{ block.type }}{% if animation %} scroll-trigger{% endif %}" data-id="{{ block.id }}" {{ block.shopify_attributes }}>
-								{%- case block.type -%}
-									{%- when 'info' -%}
-										{%- if block.settings.info_heading != blank -%}
-											<div class="info-heading ft-block-heading rte">{{- block.settings.info_heading -}}</div>
-										{%- endif -%}
-
-										{%- if block.settings.info_text != blank -%}
-											<div class="info-text rte">{{- block.settings.info_text -}}</div>
-										{%- endif -%}
-
-									{%- when 'social' -%}
-										{%- if block.settings.social_heading != blank -%}
-											<div class="social-heading ft-block-heading rte">{{- block.settings.social_heading -}}</div>
-										{%- endif -%}
-
-										{%- liquid
-											if block.settings.show_social
-												render 'social-media'
-											endif
-										-%}
-
-								{%- endcase -%}
-							</div>
-						{%- endif -%}
-					{%- endfor -%}
-				</div>
 
 				{%- if ft_bgimage != blank -%}
 					<div class="image{% if animation %} scroll-trigger{% endif %}{% if settings.image_lazy %} lazy-image{% endif %}">
@@ -187,6 +144,54 @@
 
 			<div class="footer-blocks">
 				<div class="ft-blocks-inner grid grid-{{ column }} grid-tablet-1 grid-mobile-1">
+					<div class="ft-block-item ft-logo-copyright">
+						{%- if section.settings.ft_logo != blank -%}
+							<a class="ft-logo" href="{{ routes.root_url }}">
+								{%- liquid
+									echo section.settings.ft_logo | image_url: width: 270 | image_tag: width: 170, height: 170, loading: 'lazy'
+								-%}
+
+								<span class="sr-only">{{- shop.name -}}</span>
+							</a>
+						{%- endif -%}
+
+						{% comment %} Copyright {% endcomment %}
+						{%- if section.settings.show_copyright -%}
+							<div class="ft-copyright{% if animation %} scroll-trigger{% endif %}">
+								<p>&copy; {{ 'now' | date: '%Y' }} {{ shop.name | link_to: 'routes.root_url' }}. {{ powered_by_link }}.</p>
+							</div>
+						{%- endif -%}
+
+						{%- for block in section.blocks -%}
+							{%- if block.type == 'social' or block.type == 'info' -%}
+								<div class="ft-block-{{ block.type }}{% if animation %} scroll-trigger{% endif %}" data-id="{{ block.id }}" {{ block.shopify_attributes }}>
+									{%- case block.type -%}
+										{%- when 'info' -%}
+											{%- if block.settings.info_heading != blank -%}
+												<div class="info-heading ft-block-heading rte">{{- block.settings.info_heading -}}</div>
+											{%- endif -%}
+
+											{%- if block.settings.info_text != blank -%}
+												<div class="info-text rte">{{- block.settings.info_text -}}</div>
+											{%- endif -%}
+
+										{%- when 'social' -%}
+											{%- if block.settings.social_heading != blank -%}
+												<div class="social-heading ft-block-heading rte">{{- block.settings.social_heading -}}</div>
+											{%- endif -%}
+
+											{%- liquid
+												if block.settings.show_social
+													render 'social-media'
+												endif
+											-%}
+
+									{%- endcase -%}
+								</div>
+							{%- endif -%}
+						{%- endfor -%}
+					</div>
+
 					{%- assign valid_block_index = 0 -%}
 					{%- for block in section.blocks -%}
 						{%- if block.type == 'social' or block.type == 'info' -%}{%- continue -%}{%- endif -%}
