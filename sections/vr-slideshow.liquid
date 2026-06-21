@@ -10,7 +10,7 @@
 		when 'medium'
 			assign height_value = '580px'
 		when 'large'
-			assign height_value = '700px'
+			assign height_value = '774px'
 	endcase
 -%}
 
@@ -147,12 +147,12 @@
 														    <div class="slider-element slider-button" style="display: inline-flex; gap: 15px; flex-wrap: wrap;">
 																{%- if button != blank -%}
 																	<a href="{{ block.settings.link | default: '#' }}" class="button {{ settings.button_style }}-button slide-element-inner" tabindex="0"{% if block.settings.button_style == 'gradient' %}{% endif %}>
-																		{{- button | escape -}}
+																		{{- button -}}
 																	</a>
 																{%- endif -%}
 																{%- if button_2 != blank -%}
 																	<a href="{{ block.settings.link_2 | default: '#' }}" class="button {{ settings.button_style }}-button slide-element-inner" tabindex="0"{% if block.settings.button_style_2 == 'gradient' %}{% endif %}>
-																		{{- button_2 | escape -}}
+																		{{- button_2 -}}
 																	</a>
 																{%- endif -%}
 															</div>
@@ -317,13 +317,13 @@
 					"content": "t:general.typography.text.label"
 				},
 				{
-					"type": "inline_richtext",
+					"type": "textarea",
 					"id": "caption",
 					"default": "Image caption",
 					"label": "t:general.typography.caption.label"
 				},
 				{
-					"type": "inline_richtext",
+					"type": "textarea",
 					"id": "heading",
 					"default": "Image slide",
 					"label": "t:general.typography.heading.label"

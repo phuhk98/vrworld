@@ -13,6 +13,9 @@
 
     .heading {
       margin-bottom: 1.7rem;
+      max-width: 40rem;
+      margin-left: auto;
+      margin-right: auto;
     }
 
     .description {
@@ -79,7 +82,7 @@
   @media (min-width:992px) {
     .title-wrapper {
       margin-bottom: 4rem;
-      width: 53rem;
+      width: 55rem;
       max-width: 100%;
     }
 
