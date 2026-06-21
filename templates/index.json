@@ -364,6 +364,54 @@
         "padding_bottom_mobile": 20
       }
     },
+    "vr_multicolumn_FeGzRf": {
+      "type": "vr-multicolumn",
+      "blocks": {
+        "item_fWJdFa": {
+          "type": "item",
+          "settings": {
+            "column_img": "shopify://shop_images/27.jpg",
+            "text": "Start Your VR Arcade",
+            "description": "<p>Exclusive VR arcade bundles, expert advice, and dedicated support for launching your VR arcade business.</p>",
+            "button_label": "Learn More",
+            "button_url": ""
+          }
+        },
+        "item_pa8tLA": {
+          "type": "item",
+          "settings": {
+            "column_img": "shopify://shop_images/2148932811.jpg",
+            "text": "Customized XR Solutions",
+            "description": "<p>Tailored Extended Reality (XR) solutions for enterprises, delivering customized professional experiences to meet unique business needs</p>",
+            "button_label": "Learn More",
+            "button_url": ""
+          }
+        }
+      },
+      "block_order": [
+        "item_fWJdFa",
+        "item_pa8tLA"
+      ],
+      "name": "t:sections.vr-multicolumn.name",
+      "settings": {
+        "full": false,
+        "color_scheme": "scheme-1",
+        "caption": "",
+        "heading_text": "",
+        "heading_size": "h3",
+        "button_label": "",
+        "button_link": "",
+        "columns_color_scheme": "",
+        "align": "left",
+        "columns": 2,
+        "columns_mobile": "1",
+        "mobile_swipe": false,
+        "padding_top": 50,
+        "padding_bottom": 50,
+        "padding_top_mobile": 20,
+        "padding_bottom_mobile": 20
+      }
+    },
     "vr_features_zr9j4m": {
       "type": "vr-features",
       "blocks": {
@@ -415,54 +463,6 @@
         "padding_top_mobile": 20,
         "padding_bottom_mobile": 20
       }
-    },
-    "vr_multicolumn_FeGzRf": {
-      "type": "vr-multicolumn",
-      "blocks": {
-        "item_fWJdFa": {
-          "type": "item",
-          "settings": {
-            "column_img": "shopify://shop_images/27.jpg",
-            "text": "Start Your VR Arcade",
-            "description": "<p>Exclusive VR arcade bundles, expert advice, and dedicated support for launching your VR arcade business.</p>",
-            "button_label": "Learn More",
-            "button_url": ""
-          }
-        },
-        "item_pa8tLA": {
-          "type": "item",
-          "settings": {
-            "column_img": "shopify://shop_images/2148932811.jpg",
-            "text": "Customized XR Solutions",
-            "description": "<p>Tailored Extended Reality (XR) solutions for enterprises, delivering customized professional experiences to meet unique business needs</p>",
-            "button_label": "Learn More",
-            "button_url": ""
-          }
-        }
-      },
-      "block_order": [
-        "item_fWJdFa",
-        "item_pa8tLA"
-      ],
-      "name": "t:sections.vr-multicolumn.name",
-      "settings": {
-        "full": false,
-        "color_scheme": "scheme-1",
-        "caption": "",
-        "heading_text": "",
-        "heading_size": "h3",
-        "button_label": "",
-        "button_link": "",
-        "columns_color_scheme": "",
-        "align": "left",
-        "columns": 2,
-        "columns_mobile": "1",
-        "mobile_swipe": false,
-        "padding_top": 50,
-        "padding_bottom": 50,
-        "padding_top_mobile": 20,
-        "padding_bottom_mobile": 20
-      }
     }
   },
   "order": [
@@ -473,7 +473,7 @@
     "vr_video_with_text_L9zNph",
     "vr_featured_product_d9eJP4",
     "vr_partners_UKhRhW",
-    "vr_features_zr9j4m",
-    "vr_multicolumn_FeGzRf"
+    "vr_multicolumn_FeGzRf",
+    "vr_features_zr9j4m"
   ]
 }
