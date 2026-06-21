@@ -245,7 +245,7 @@
         "autoplay": false,
         "delay": 2,
         "padding_top": 100,
-        "padding_bottom": 40,
+        "padding_bottom": 52,
         "padding_top_mobile": 20,
         "padding_bottom_mobile": 20
       }
@@ -358,7 +358,7 @@
         "delay": 5,
         "enable_border": false,
         "item_color_scheme": "",
-        "padding_top": 50,
+        "padding_top": 98,
         "padding_bottom": 50,
         "padding_top_mobile": 20,
         "padding_bottom_mobile": 20
