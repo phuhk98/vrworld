@@ -329,12 +329,6 @@
             "image": "shopify://shop_images/manus.png",
             "img_link": ""
           }
-        },
-        "image_fajDtd": {
-          "type": "image",
-          "settings": {
-            "img_link": ""
-          }
         }
       },
       "block_order": [
@@ -348,8 +342,7 @@
         "image_agGX7B",
         "image_NCqKWB",
         "image_g3Jjwp",
-        "image_TJiktr",
-        "image_fajDtd"
+        "image_TJiktr"
       ],
       "name": "VR Partners",
       "settings": {
