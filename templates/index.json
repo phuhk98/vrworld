@@ -403,11 +403,11 @@
       "name": "t:sections.vr-video-with-text.name",
       "settings": {
         "color_scheme": "scheme-1",
-        "full": false,
+        "full": true,
         "source": "host",
         "url": "https://www.youtube.com/watch?v=_9VUPq3SxOc",
         "image": "shopify://shop_images/video-poster.jpg",
-        "height": "medium",
+        "height": "small",
         "layout": "video-full",
         "caption": "",
         "heading_text": "See Your VR Accessories in Action Immerse Yourself in the Experience",
