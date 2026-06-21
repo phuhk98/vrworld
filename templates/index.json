@@ -224,128 +224,6 @@
         "padding_bottom_mobile": 20
       }
     },
-    "vr_partners_UKhRhW": {
-      "type": "vr-partners",
-      "blocks": {
-        "image_QKpb4d": {
-          "type": "image",
-          "settings": {
-            "image": "shopify://shop_images/logo5.png",
-            "img_link": ""
-          }
-        },
-        "image_RHUBQg": {
-          "type": "image",
-          "settings": {
-            "image": "shopify://shop_images/logo4.png",
-            "img_link": ""
-          }
-        },
-        "image_wqt6hH": {
-          "type": "image",
-          "settings": {
-            "image": "shopify://shop_images/logo3.png",
-            "img_link": ""
-          }
-        },
-        "image_Ke9hqc": {
-          "type": "image",
-          "settings": {
-            "image": "shopify://shop_images/logo2.png",
-            "img_link": ""
-          }
-        },
-        "image_w7nYL7": {
-          "type": "image",
-          "settings": {
-            "image": "shopify://shop_images/logo1.png",
-            "img_link": ""
-          }
-        },
-        "image_g3Jjwp": {
-          "type": "image",
-          "settings": {
-            "img_link": ""
-          }
-        },
-        "image_NCqKWB": {
-          "type": "image",
-          "settings": {
-            "img_link": ""
-          }
-        },
-        "image_agGX7B": {
-          "type": "image",
-          "settings": {
-            "img_link": ""
-          }
-        },
-        "image_9f3MtE": {
-          "type": "image",
-          "settings": {
-            "img_link": ""
-          }
-        },
-        "image_QMknTC": {
-          "type": "image",
-          "settings": {
-            "img_link": ""
-          }
-        },
-        "image_TJiktr": {
-          "type": "image",
-          "settings": {
-            "img_link": ""
-          }
-        },
-        "image_fajDtd": {
-          "type": "image",
-          "settings": {
-            "img_link": ""
-          }
-        },
-        "image_fNXCfV": {
-          "type": "image",
-          "settings": {
-            "img_link": ""
-          }
-        }
-      },
-      "block_order": [
-        "image_QKpb4d",
-        "image_RHUBQg",
-        "image_wqt6hH",
-        "image_Ke9hqc",
-        "image_w7nYL7",
-        "image_g3Jjwp",
-        "image_NCqKWB",
-        "image_agGX7B",
-        "image_9f3MtE",
-        "image_QMknTC",
-        "image_TJiktr",
-        "image_fajDtd",
-        "image_fNXCfV"
-      ],
-      "name": "VR Partners",
-      "settings": {
-        "color_scheme": "scheme-2",
-        "heading_text": "Discover the Best in VR Top-Rated Brands",
-        "heading_size": "h5",
-        "text": "<p>Discover the most popular VR accessories chosen by gamers worldwide, designed to elevate your immersive experience.</p>",
-        "text_align": "center",
-        "mobile_align": "center",
-        "column": 4,
-        "loop": false,
-        "autoplay": false,
-        "delay": 5,
-        "enable_border": false,
-        "item_color_scheme": "",
-        "padding_top": 50,
-        "padding_bottom": 50,
-        "padding_top_mobile": 20,
-        "padding_bottom_mobile": 20
-      }
-    },
     "vr_featured_product_d9eJP4": {
       "type": "vr-featured-product",
       "name": "VR Featured Product",
@@ -368,6 +246,122 @@
         "delay": 2,
         "padding_top": 40,
         "padding_bottom": 40,
+        "padding_top_mobile": 20,
+        "padding_bottom_mobile": 20
+      }
+    },
+    "vr_partners_UKhRhW": {
+      "type": "vr-partners",
+      "blocks": {
+        "image_w7nYL7": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/logo1.png",
+            "img_link": ""
+          }
+        },
+        "image_Ke9hqc": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/logo2.png",
+            "img_link": ""
+          }
+        },
+        "image_wqt6hH": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/logo3.png",
+            "img_link": ""
+          }
+        },
+        "image_RHUBQg": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/logo4.png",
+            "img_link": ""
+          }
+        },
+        "image_QKpb4d": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/logo5.png",
+            "img_link": ""
+          }
+        },
+        "image_QMknTC": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/logo6.png",
+            "img_link": ""
+          }
+        },
+        "image_9f3MtE": {
+          "type": "image",
+          "settings": {
+            "img_link": ""
+          }
+        },
+        "image_agGX7B": {
+          "type": "image",
+          "settings": {
+            "img_link": ""
+          }
+        },
+        "image_NCqKWB": {
+          "type": "image",
+          "settings": {
+            "img_link": ""
+          }
+        },
+        "image_g3Jjwp": {
+          "type": "image",
+          "settings": {
+            "img_link": ""
+          }
+        },
+        "image_TJiktr": {
+          "type": "image",
+          "settings": {
+            "img_link": ""
+          }
+        },
+        "image_fajDtd": {
+          "type": "image",
+          "settings": {
+            "img_link": ""
+          }
+        }
+      },
+      "block_order": [
+        "image_w7nYL7",
+        "image_Ke9hqc",
+        "image_wqt6hH",
+        "image_RHUBQg",
+        "image_QKpb4d",
+        "image_QMknTC",
+        "image_9f3MtE",
+        "image_agGX7B",
+        "image_NCqKWB",
+        "image_g3Jjwp",
+        "image_TJiktr",
+        "image_fajDtd"
+      ],
+      "name": "VR Partners",
+      "settings": {
+        "color_scheme": "scheme-2",
+        "heading_text": "Discover the Best in VR Top-Rated Brands",
+        "heading_size": "h5",
+        "text": "<p>Discover the most popular VR accessories chosen by gamers worldwide, designed to elevate your immersive experience.</p>",
+        "text_align": "center",
+        "mobile_align": "center",
+        "column": 4,
+        "loop": false,
+        "autoplay": false,
+        "delay": 5,
+        "enable_border": false,
+        "item_color_scheme": "",
+        "padding_top": 50,
+        "padding_bottom": 50,
         "padding_top_mobile": 20,
         "padding_bottom_mobile": 20
       }
