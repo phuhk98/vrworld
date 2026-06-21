@@ -120,7 +120,7 @@
       },
       "scheme-3": {
         "settings": {
-          "background_color": "#000000",
+          "background_color": "#1C1B1B",
           "background_gradient": "linear-gradient(136deg, rgba(188, 8, 207, 1) 11%, rgba(44, 187, 224, 1) 84%)",
           "text_color": "#ffffff",
           "heading_color": "#ffffff",
