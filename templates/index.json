@@ -198,6 +198,32 @@
         "padding_bottom_mobile": 20
       }
     },
+    "vr_video_with_text_L9zNph": {
+      "type": "vr-video-with-text",
+      "name": "t:sections.vr-video-with-text.name",
+      "settings": {
+        "color_scheme": "scheme-1",
+        "full": true,
+        "source": "host",
+        "url": "https://www.youtube.com/watch?v=_9VUPq3SxOc",
+        "image": "shopify://shop_images/video-poster.jpg",
+        "height": "small",
+        "layout": "video-full",
+        "caption": "",
+        "heading_text": "See Your VR Accessories in Action Immerse Yourself in the Experience",
+        "heading_size": "h3",
+        "text": "",
+        "button_label": "Learn More",
+        "button_link": "",
+        "desktop_align": "left",
+        "mobile_align": "left",
+        "content_color_scheme": "scheme-be293f48-285a-4399-9036-8e0fac37561a",
+        "padding_top": 50,
+        "padding_bottom": 50,
+        "padding_top_mobile": 20,
+        "padding_bottom_mobile": 20
+      }
+    },
     "vr_partners_UKhRhW": {
       "type": "vr-partners",
       "blocks": {
@@ -398,32 +424,6 @@
         "padding_bottom_mobile": 20
       }
     },
-    "vr_video_with_text_L9zNph": {
-      "type": "vr-video-with-text",
-      "name": "t:sections.vr-video-with-text.name",
-      "settings": {
-        "color_scheme": "scheme-1",
-        "full": true,
-        "source": "host",
-        "url": "https://www.youtube.com/watch?v=_9VUPq3SxOc",
-        "image": "shopify://shop_images/video-poster.jpg",
-        "height": "small",
-        "layout": "video-full",
-        "caption": "",
-        "heading_text": "See Your VR Accessories in Action Immerse Yourself in the Experience",
-        "heading_size": "h3",
-        "text": "",
-        "button_label": "Learn More",
-        "button_link": "",
-        "desktop_align": "left",
-        "mobile_align": "left",
-        "content_color_scheme": "scheme-be293f48-285a-4399-9036-8e0fac37561a",
-        "padding_top": 50,
-        "padding_bottom": 50,
-        "padding_top_mobile": 20,
-        "padding_bottom_mobile": 20
-      }
-    },
     "vr_multicolumn_FeGzRf": {
       "type": "vr-multicolumn",
       "blocks": {
@@ -478,10 +478,10 @@
     "vr_collection_EFpBQW",
     "vr_blog_post_yi6GFe",
     "vr_featured_collection_VUMmGP",
-    "vr_partners_UKhRhW",
-    "vr_featured_product_d9eJP4",
-    "vr_features_zr9j4m",
     "vr_video_with_text_L9zNph",
+    "vr_featured_product_d9eJP4",
+    "vr_partners_UKhRhW",
+    "vr_features_zr9j4m",
     "vr_multicolumn_FeGzRf"
   ]
 }
