@@ -80,7 +80,7 @@
           "background_gradient": "linear-gradient(136deg, rgba(188, 8, 207, 1) 11%, rgba(44, 187, 224, 1) 84%)",
           "text_color": "#ffffff",
           "heading_color": "#ffffff",
-          "subheading_color": "#737373",
+          "subheading_color": "#1C1B1B",
           "link_color": "#ffffff",
           "success_color": "#198252",
           "error_color": "#c5452e",
