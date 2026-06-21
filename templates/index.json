@@ -114,6 +114,36 @@
         "padding_bottom_mobile": 20
       }
     },
+    "vr_blog_post_yi6GFe": {
+      "type": "vr-blog-post",
+      "name": "VR Blog Posts",
+      "settings": {
+        "full": false,
+        "color_scheme": "scheme-2",
+        "blog": "news",
+        "column": 3,
+        "total": 5,
+        "align": "left",
+        "caption": "Explore the many options tailored to your space's unique features, making sure you find the perfect furniture for your Spaces",
+        "heading_text": "Explore Your Needs by Category",
+        "heading_size": "h4",
+        "button_text": "Explore Products",
+        "button_type": "gradient-button",
+        "card_layout": "standard",
+        "image_ratio": "square",
+        "heading_line": "2",
+        "show_date": false,
+        "show_author": false,
+        "show_blog": true,
+        "show_read_more": false,
+        "columns_mobile": "1",
+        "card_space": 15,
+        "padding_top": 50,
+        "padding_bottom": 50,
+        "padding_top_mobile": 20,
+        "padding_bottom_mobile": 20
+      }
+    },
     "vr_featured_collection_VUMmGP": {
       "type": "vr-featured-collection",
       "blocks": {
@@ -150,7 +180,7 @@
         "color_scheme": "scheme-2",
         "sub_heading": "Discover the most popular VR accessories chosen by gamers worldwide, designed to elevate your immersive experience.",
         "heading": "Top-rate Featured VR Accessories",
-        "heading_size": "h3",
+        "heading_size": "h4",
         "text_align": "center",
         "button_text": "Explore Products",
         "button_link": "",
@@ -368,36 +398,6 @@
         "padding_bottom_mobile": 20
       }
     },
-    "vr_blog_post_yi6GFe": {
-      "type": "vr-blog-post",
-      "name": "VR Blog Posts",
-      "settings": {
-        "full": false,
-        "color_scheme": "scheme-2",
-        "blog": "news",
-        "column": 3,
-        "total": 5,
-        "align": "left",
-        "caption": "Explore the many options tailored to your space's unique features, making sure you find the perfect furniture for your Spaces",
-        "heading_text": "Explore Your Needs by Category",
-        "heading_size": "h4",
-        "button_text": "Explore Products",
-        "button_type": "gradient-button",
-        "card_layout": "standard",
-        "image_ratio": "square",
-        "heading_line": "2",
-        "show_date": false,
-        "show_author": false,
-        "show_blog": true,
-        "show_read_more": false,
-        "columns_mobile": "1",
-        "card_space": 15,
-        "padding_top": 50,
-        "padding_bottom": 50,
-        "padding_top_mobile": 20,
-        "padding_bottom_mobile": 20
-      }
-    },
     "vr_video_with_text_L9zNph": {
       "type": "vr-video-with-text",
       "name": "t:sections.vr-video-with-text.name",
@@ -476,11 +476,11 @@
   "order": [
     "vr_slideshow_wtDYnL",
     "vr_collection_EFpBQW",
+    "vr_blog_post_yi6GFe",
     "vr_featured_collection_VUMmGP",
     "vr_partners_UKhRhW",
     "vr_featured_product_d9eJP4",
     "vr_features_zr9j4m",
-    "vr_blog_post_yi6GFe",
     "vr_video_with_text_L9zNph",
     "vr_multicolumn_FeGzRf"
   ]
