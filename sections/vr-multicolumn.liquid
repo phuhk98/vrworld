@@ -28,7 +28,7 @@
 	{{ section_id }} .vr-multicolumn-card {
 		position: relative;
 		overflow: hidden;
-		min-height: 320px;
+		min-height: 300px;
 		display: flex;
 		flex-direction: column;
 		justify-content: center;
@@ -64,8 +64,8 @@
 	{{ section_id }} .vr-multicolumn-card .card-content {
 		position: relative;
 		z-index: 3;
-		padding: 40px;
-		max-width: 80%;
+		padding: 40px 52px;
+		max-width: 437px;
 		color: rgb(var(--text-color));
 	}
 
@@ -77,11 +77,11 @@
 	}
 
 	{{ section_id }} .vr-multicolumn-card .column-heading {
-		margin-bottom: 15px;
+		margin-bottom: 12px;
 	}
 
 	{{ section_id }} .vr-multicolumn-card .column-description {
-		margin-bottom: 24px;
+		margin-bottom: 10px;
 	}
 </style>
 
@@ -108,7 +108,7 @@
 								{%- render block -%}
 
 							{%- when 'item' -%}
-								<div class="vr-multicolumn-card border-large">
+								<div class="vr-multicolumn-card border-extra-large">
 									{%- assign image = block.settings.column_img -%}
 									
 									<div class="card-background">

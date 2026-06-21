@@ -16,7 +16,7 @@
 		when 'small'
 			assign height_value = '453px'
 		when 'medium'
-			assign height_value = '580px'
+			assign height_value = '500px'
 		when 'large'
 			assign height_value = '700px'
 	endcase
@@ -71,7 +71,7 @@
 </style>
 
 <div class="section-wrapper color-{{ section.settings.color_scheme }}">
-	<div class="{% if full %}stretch-section stretch-padding{% else %}container{% endif %}">
+	<div class="{% if full %}stretch-section {% else %}container{% endif %}">
 		<div class="video-with-text border-large {{ layout }}-first color-{{ section.settings.content_color_scheme }}">
 			<div class="video-item border-large height-{{ height }}{% if animation %} scroll-trigger{% endif %}">
 				{%- if section.settings.source == 'host' -%}
@@ -98,7 +98,7 @@
 			</div>
 
 			{%- if caption != blank or heading != blank or description != blank or button_label != blank -%}
-				<div class="content">
+				<div class="content container">
 					<div class="content-inner-wrapper">
 						<div class="content-inner text-{{ desktop_align }} text-{{ mobile_align }}-mobile rte">
 							{%- if caption != blank -%}

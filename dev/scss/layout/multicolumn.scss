@@ -29,6 +29,10 @@
         color: var(--text-color);
       }
 
+      .column-description {
+        font-weight: 600;
+      }
+
       * {
         margin: 0;
       }
@@ -73,7 +77,7 @@
     }
 
     .button-wrapper {
-      margin-top: 2.4rem;
+      margin-top: 1rem;
     }
 
     .grid:not(.grid-mobile-1):not(.grid-mobile-2) {

@@ -55,7 +55,7 @@
       font-weight: 800;
       margin-top: 0;
       margin-bottom: 1.6rem;
-      max-width: 61.4rem;
+      max-width: 42rem;
     }
 
     .heading.text-center {
@@ -293,15 +293,19 @@
   &.vr-featured-collection-section {
     .tabs-head {
 
-      .tab-head.active,
-      .tab-head:hover {
+      .tab-head {
         background: transparent !important;
         border-color: transparent !important;
-        background-image: var(--gradient-background) !important;
+        background-image: linear-gradient(rgba(var(--text-color), 1), rgba(var(--text-color), 1)) !important;
         -webkit-background-clip: text !important;
         background-clip: text !important;
         -webkit-text-fill-color: transparent !important;
         color: transparent !important;
+      }
+
+      .tab-head.active,
+      .tab-head:hover {
+        background-image: var(--gradient-background) !important;
       }
 
       &.justify-left {

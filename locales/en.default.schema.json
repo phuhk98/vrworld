@@ -2113,9 +2113,6 @@
         "enable_sticky_header": {
           "label": "Enable sticky header"
         },
-        "header_transparent": {
-          "label": "Header Transparent"
-        },
         "drawer_menu": {
           "label": "Drawer menu (optional)"
         },

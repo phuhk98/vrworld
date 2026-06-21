@@ -11,7 +11,15 @@
     border-radius: var(--border-radius, 8px);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     height: 100%;
+
+    .vr-feature-title {
+      font-size: 19.5px;
+      font-weight: 500;
+      font-family: var(--body-font-family);
+    }
   }
+
+
 
   .vr-feature-icon {
     width: 7.3rem;

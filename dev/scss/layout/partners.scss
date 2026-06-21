@@ -1,89 +1,88 @@
 .partners-section {
-	.section-wrapper {
-		overflow: hidden;
-	}
+  .section-wrapper {
+    overflow: hidden;
+  }
 
-	.title-wrapper {
-		margin: 0 auto;
-		margin-bottom: 4rem;
+  .title-wrapper {
+    margin: 0 auto;
+    margin-bottom: 4rem;
 
-		* {
-			margin: 0;
-		}
+    * {
+      margin: 0;
+    }
 
-		.heading {
-			margin-bottom: 2.4rem;
-			line-height: 3.6rem;
-		}
+    .heading {
+      margin-bottom: 1.7rem;
+    }
 
-		.description {
-			p {
-				font-size: 1.6rem;
-			}
+    .description {
+      p {
+        font-size: 1.6rem;
+      }
 
-		}
+    }
 
-	}
+  }
 
-	.vrworld-slider {
-		cursor: grab;
+  .vrworld-slider {
+    cursor: grab;
 
-		.vrworld-slider-viewport {
-			overflow: visible;
-		}
+    .vrworld-slide {
+      padding-left: 0;
+    }
 
-	}
+    .vrworld-slider-viewport {
+      overflow: hidden;
+    }
 
-	.brand-item {
-		height: 16rem;
-		border-radius: 0.8rem;
-		display: flex;
-		justify-content: center;
-		align-items: center;
-	}
+  }
 
-	.image {
-		svg,
-		img {
-			max-height: 5.4rem;
-			object-fit: scale-down;
-		}
+  .brand-item {
+    height: 6.4rem;
+    border-radius: 0.8rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
 
-	}
+  .image {
 
-	.image-link {
-		position: absolute;
-		top: 0;
-		bottom: 0;
-		left: 0;
-		right: 0;
-		z-index: 1;
-	}
+    svg,
+    img {
+      max-height: 5.4rem;
+      object-fit: scale-down;
+    }
 
-	.placeholder-svg,
-	img {
-		min-width: 10rem;
-	}
+  }
 
-	@media (max-width:991px) {
-		br {
-			display: none;
-		}
+  .image-link {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 1;
+  }
 
-	}
+  .placeholder-svg,
+  img {
+    min-width: 10rem;
+  }
 
-	@media (min-width:992px) {
-		.title-wrapper {
-			margin-bottom: 6rem;
-			width: 85rem;
-			max-width: 100%;
+  @media (max-width:991px) {
+    br {
+      display: none;
+    }
 
-			.heading {
-				line-height: 4rem;
-			}
+  }
 
-		}
+  @media (min-width:992px) {
+    .title-wrapper {
+      margin-bottom: 4rem;
+      width: 53rem;
+      max-width: 100%;
+    }
 
-	}
+  }
 
 }

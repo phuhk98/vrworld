@@ -1108,6 +1108,10 @@ dd {
   word-wrap: normal !important;
 }
 
+.border-extra-large {
+  border-radius: 2rem;
+}
+
 @media (prefers-reduced-motion) {
   .motion-reduce {
     // transition: none !important;

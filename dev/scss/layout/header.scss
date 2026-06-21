@@ -5,14 +5,12 @@
 
 
 .header-section {
-  .header-transparent {
-    background: transparent;
-  }
 
   .header {
     position: relative;
     z-index: 20;
     transition: background-color 0.3s;
+    background-color: rgba(var(--background-color), 0);
 
     &.header-separator {
       &:after {
@@ -154,9 +152,48 @@
         backdrop-filter: blur(20px);
         z-index: -1;
         background-color: rgba(var(--text-color), 0.1);
+        transition: all 0.3s ease;
       }
 
 
+    }
+  }
+
+  .solid-sticky {
+    .logo-menu-left-container {
+      .site-branding-image {
+        filter: invert(1);
+      }
+
+      .header-icon {
+        color: rgb(var(--text-color));
+        filter: invert(1);
+
+        svg {
+          fill: rgb(var(--text-color));
+        }
+      }
+
+      .action-cart {
+        svg {
+          fill: none;
+          stroke: rgb(var(--text-color));
+        }
+      }
+
+      .header-navigation {
+        background-color: rgba(var(--text-color), 0.1);
+        filter: invert(1);
+
+        .menu-item>.menu-link,
+        .menu-item>.menu-toggle {
+          color: rgb(var(--text-color));
+        }
+      }
+
+      &:after {
+        background-color: rgba(var(--text-color), 1);
+      }
     }
   }
 
@@ -185,6 +222,12 @@
     &.solid-sticky {
       .transparent-header-branding-image {
         display: none;
+      }
+
+      .logo-menu-left-container {
+        &:after {
+          background-color: rgba(var(--text-color), 1);
+        }
       }
     }
   }

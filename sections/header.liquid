@@ -251,7 +251,7 @@
 	{%- endif -%}
 </style>
 
-<header class="header{% if sticky_header %} is-sticky{% endif %}{% if transparent_header %} transparent-header color-{{ section.settings.transparent_color_scheme }}{% else %} color-{{ section.settings.color_scheme }}{% endif %}{% if section.settings.separator_line %} separator-line{% endif %}{% if section.settings.header_transparent %} header-transparent{% endif %}" data-color-scheme="color-{{ section.settings.color_scheme }}" data-transparent-scheme="color-{{ section.settings.transparent_color_scheme }}" data-has-transparent="{{ transparent_header }}">
+<header class="header{% if sticky_header %} is-sticky{% endif %}{% if transparent_header %} transparent-header color-{{ section.settings.transparent_color_scheme }}{% else %} color-{{ section.settings.color_scheme }}{% endif %}{% if section.settings.separator_line %} separator-line{% endif %}" data-color-scheme="color-{{ section.settings.color_scheme }}" data-transparent-scheme="color-{{ section.settings.transparent_color_scheme }}" data-has-transparent="{{ transparent_header }}">
 	<div class="{% if full %}stretch-section stretch-padding{% else %}container{% endif %}">
 		<div class="header-row {{ header_layout }}">
 			{% comment %} Toggle {% endcomment %}
@@ -383,12 +383,6 @@
 			"id": "enable_sticky_header",
 			"default": false,
 			"label": "t:sections.header.settings.enable_sticky_header.label"
-		},
-		{
-			"type": "checkbox",
-			"id": "header_transparent",
-			"default": false,
-			"label": "t:sections.header.settings.header_transparent.label"
 		},
 		{
 			"type": "checkbox",
