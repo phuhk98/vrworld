@@ -458,7 +458,7 @@
       "settings": {
         "color_scheme": "scheme-2",
         "columns": 4,
-        "padding_top": 50,
+        "padding_top": 100,
         "padding_bottom": 50,
         "padding_top_mobile": 20,
         "padding_bottom_mobile": 20
