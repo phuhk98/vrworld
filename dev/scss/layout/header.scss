@@ -161,6 +161,14 @@
 
   .solid-sticky {
     .logo-menu-left-container {
+      position: relative;
+
+      border-color: rgba(var(--subheading-color), 1);
+
+      .toggle-panel-button {
+        filter: invert(1);
+      }
+
       .site-branding-image {
         filter: invert(1);
       }
@@ -419,7 +427,7 @@
       &>.menu-link,
       .menu-toggle {
         height: 100%;
-        padding: 0.8rem 1.6rem;
+        padding: 0.8rem 1.5rem;
         background-color: transparent;
         transition: .5s cubic-bezier(.3, 1, .3, 1);
 
@@ -565,6 +573,48 @@
       justify-content: space-between;
       transform: translateX(-100%);
       transition: transform 0.2s ease;
+
+      @media (min-width: 991px) {
+
+        .toggle-panel-button,
+        .site-panel-close {
+          filter: invert(1);
+        }
+
+        .site-branding-image {
+          filter: invert(1);
+        }
+
+        .header-icon {
+          color: rgb(var(--text-color));
+          filter: invert(1);
+
+          svg {
+            fill: rgb(var(--text-color));
+          }
+        }
+
+        .action-cart {
+          svg {
+            fill: none;
+            stroke: rgb(var(--text-color));
+          }
+        }
+
+        .header-navigation {
+          background-color: rgba(var(--text-color), 0.1);
+          filter: invert(1);
+
+          .menu-item>.menu-link,
+          .menu-item>.menu-toggle {
+            color: rgb(var(--text-color));
+          }
+        }
+
+        &:after {
+          background-color: rgba(var(--text-color), 1);
+        }
+      }
     }
 
     .header-icons {
@@ -751,6 +801,10 @@
         width: 100%;
         border: unset;
         line-height: 2.7rem;
+
+        @media (min-width: 991px) {
+          filter: invert(1);
+        }
 
         .menu-arrow {
           flex-grow: 1;

@@ -214,27 +214,25 @@
 
     }
 
-  }
+    &.slider-button {
+      margin-top: 4rem;
 
-  &.slider-button {
-    margin-top: 4rem;
+      .button {
+        font-size: 1.4rem;
+        display: inline-flex;
 
-    .button {
-      font-size: 1.4rem;
-      display: inline-flex;
+        &:not(.sr-only):not(.visually-hidden):not(.add-to-cart-button.loading) {
+          text-transform: unset;
+        }
 
-      &:not(.sr-only):not(.visually-hidden):not(.add-to-cart-button.loading) {
-        text-transform: unset;
       }
 
     }
 
   }
 
-}
-
-// Pagination
-.slider-pagination {
+  // Pagination
+  .slider-pagination {
   position: relative;
 
   .thumb-slider {

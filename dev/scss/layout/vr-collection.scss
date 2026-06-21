@@ -4,7 +4,7 @@
 
   .vrworld-slider {
     width: 100%;
-    --slide-spacing: 4.3rem;
+    --slide-spacing: var(--grid-horizontal);
     --slide-size: 20%;
 
     @media (max-width: 1200px) {

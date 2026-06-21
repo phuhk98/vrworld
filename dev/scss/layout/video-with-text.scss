@@ -14,7 +14,7 @@
 
   .content {
     display: flex;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
 
     @media (min-width: 992px) {
@@ -195,7 +195,7 @@
   // Responsive
   @media (max-width: 991px) {
     .content {
-      padding: 4rem;
+      padding: 4rem calc(var(--grid-horizontal) / 2);
     }
 
     .video-with-text {
