@@ -406,7 +406,7 @@
         "columns": 2,
         "columns_mobile": "1",
         "mobile_swipe": false,
-        "padding_top": 50,
+        "padding_top": 100,
         "padding_bottom": 50,
         "padding_top_mobile": 20,
         "padding_bottom_mobile": 20
