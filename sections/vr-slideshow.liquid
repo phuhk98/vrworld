@@ -147,12 +147,12 @@
 														    <div class="slider-element slider-button" style="display: inline-flex; gap: 15px; flex-wrap: wrap;">
 																{%- if button != blank -%}
 																	<a href="{{ block.settings.link | default: '#' }}" class="button {{ settings.button_style }}-button slide-element-inner" tabindex="0"{% if block.settings.button_style == 'gradient' %}{% endif %}>
-																		{{- button -}}
+																		{{- button | escape -}}
 																	</a>
 																{%- endif -%}
 																{%- if button_2 != blank -%}
 																	<a href="{{ block.settings.link_2 | default: '#' }}" class="button {{ settings.button_style }}-button slide-element-inner" tabindex="0"{% if block.settings.button_style_2 == 'gradient' %}{% endif %}>
-																		{{- button_2 -}}
+																		{{- button_2 | escape -}}
 																	</a>
 																{%- endif -%}
 															</div>

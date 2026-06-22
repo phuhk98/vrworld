@@ -648,6 +648,53 @@ input[type='file'],
     left: 150%;
   }
 
+  height: 5.2rem;
+  line-height: 1.7;
+  display: flex;
+  align-items: center;
+  padding: 0 2.4rem;
+  font-size: 1.4rem;
+  text-transform: uppercase;
+  color: rgb(var(--button-outline-color));
+  border: 0;
+  border-radius: var(--button-radius);
+  font-family: var(--subheading-font-family);
+  font-weight: var(--subheading-font-weight);
+  position: relative;
+  z-index: 1;
+  overflow: hidden;
+  background-image: linear-gradient(transparent, transparent),
+  var(--button-bg-gradient);
+  background-size: 100% 100%,
+  200% 100%;
+  background-position: 0 0,
+  0 0;
+  transition: background-position .6s ease,
+  transform .3s ease,
+  box-shadow .3s ease;
+
+  &::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -150%;
+    width: 40%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, .4), transparent);
+    transform: skewX(-20deg);
+    transition: left .7s ease;
+    pointer-events: none;
+  }
+
+  &:hover {
+    background-position: 0 0, 100% 0;
+    transform: translateY(-2px);
+  }
+
+  &:hover::after {
+    left: 150%;
+  }
+
 }
 
 input[type='file'] {

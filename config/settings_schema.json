@@ -138,6 +138,11 @@
 						"default": "#000000"
 					},
 					{
+						"type": "color_background",
+						"id": "button_bg_gradient",
+						"label": "t:settings_schema.colors.settings.button_bg_gradient.label"
+					},
+					{
 						"type": "color",
 						"id": "button_text_color",
 						"label": "t:general.colors.label",
@@ -198,7 +203,10 @@
 					},
 					"links": "link_color",
 					"icons": "text_color",
-					"primary_button": "button_bg_color",
+					"primary_button": {
+						"solid": "button_bg_color",
+						"gradient": "button_bg_gradient"
+					},
 					"on_primary_button": "button_text_color",
 					"primary_button_border": "button_bg_color",
 					"secondary_button": "button_outline_color",
