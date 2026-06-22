@@ -44,14 +44,14 @@
         "block-2": {
           "type": "menu",
           "settings": {
-            "heading": "Company Info",
+            "heading": "COMPANY INFO",
             "menu": ""
           }
         },
         "menu_gyP8t9": {
           "type": "menu",
           "settings": {
-            "heading": "Store Address",
+            "heading": "STORE ADDRESS",
             "menu": ""
           }
         },
