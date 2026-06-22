@@ -96,10 +96,10 @@
 											placeholder="{{ section.settings.placeholder | default: 'Email address' }}"
 											pattern="^([a-zA-Z0-9_\-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([a-zA-Z0-9\-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$"
 											required >
-										<button type="submit" class="button signup-button hidden {{ settings.button_style }}-button add-to-cart-button" title ="{{ 'general.vrworld.prev' | t }}-ft" aria-label="{{ 'general.vrworld.prev' | t }}-ft" id="{{ 'general.vrworld.prev' | t }}-ft" aria-labelledby="{{ 'general.vrworld.prev' | t }}-ft">
+										<button type="submit" class="button signup-button hidden {{ settings.button_style }}-button" title ="{{ 'general.vrworld.prev' | t }}-ft" aria-label="{{ 'general.vrworld.prev' | t }}-ft" id="{{ 'general.vrworld.prev' | t }}-ft" aria-labelledby="{{ 'general.vrworld.prev' | t }}-ft">
 											{%- render 'icon', code: 'envelope' -%}
 										</button>
-										<button type="submit" class="button {{ settings.button_style }}-button add-to-cart-button" title ="{{ 'general.vrworld.prev' | t }}-ftbutton" aria-label="{{ 'general.vrworld.prev' | t }}-ftbutton" id="{{ 'general.vrworld.prev' | t }}-ftbutton" aria-labelledby="{{ 'general.vrworld.prev' | t }}-ftbutton">
+										<button type="submit" class="button {{ settings.button_style }}-button" title ="{{ 'general.vrworld.prev' | t }}-ftbutton" aria-label="{{ 'general.vrworld.prev' | t }}-ftbutton" id="{{ 'general.vrworld.prev' | t }}-ftbutton" aria-labelledby="{{ 'general.vrworld.prev' | t }}-ftbutton">
 											{{- 'newsletter.button_label' | t -}}
 										</button>
 									</div>

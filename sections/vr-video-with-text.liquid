@@ -100,7 +100,7 @@
 			{%- if caption != blank or heading != blank or description != blank or button_label != blank -%}
 				<div class="content container">
 					<div class="content-inner-wrapper">
-						<div class="content-inner text-{{ desktop_align }} text-{{ mobile_align }}-mobile rte">
+						<div class="content-inner text-{{ desktop_align }} text-{{ mobile_align }}-mobile">
 							{%- if caption != blank -%}
 								<div class="sub-heading rte{% if animation %} scroll-trigger{% endif %}">{{- caption -}}</div>
 							{%- endif -%}
@@ -114,8 +114,8 @@
 							{%- endif -%}
 
 							{%- if button_label != blank -%}
-								<div class="button-wrapper">
-									<a class="button gradient-button {% if animation %} scroll-trigger{% endif %}" href="{{ section.settings.button_link | default: '#' }}" aria-label="play-{{- 'general.text.button' | t -}}">
+								<div class="button-wrapper  {% if animation %} scroll-trigger{% endif %}">
+									<a class="button gradient-button" href="{{ section.settings.button_link | default: '#' }}" aria-label="play-{{- 'general.text.button' | t -}}">
 										{{- button_label -}}
 									</a>
 								</div>
