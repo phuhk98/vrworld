@@ -8,668 +8,472 @@
  * ------------------------------------------------------------
  */
 {
-	"sections": {
-		"slideshow": {
-			"type": "slideshow",
-			"blocks": {
-				"slide-1": {
-					"type": "slide",
-					"settings": {
-						"image": "shopify://shop_images/slideshow.jpg",
-						"overlay_opacity": 60,
-						"caption": "( TRUSTED SOURCE FOR HEALTH )",
-						"heading": "NOURISH YOUR BODY",
-						"heading_size": "h1",
-						"text": "<p>Elevating your health journey with <br/>premium vitamins, supplements, and<br/>expert guidance.</p>",
-						"description_size": "h3",
-						"button": "SHOP VITAMINS & SUPPLEMENTS",
-						"link": "shopify://collections/essential-supplements",
-						"button_style": "primary",
-						"content_width": 100,
-						"position_x": "start",
-						"position_y": "start",
-						"text_align": "left",
-						"mobile_text_align": "left",
-						"description_line": "3"
-					}
-				},
-				"slide-2": {
-					"type": "slide",
-					"settings": {
-						"image": "shopify://shop_images/slideshow-2.jpg",
-						"overlay_opacity": 60,
-						"caption": "( TRUSTED SOURCE FOR HEALTH )",
-						"heading": "NOURISH YOUR HEALTH",
-						"heading_size": "h1",
-						"text": "<p>Transforming your health journey <br/>through superior vitamins, supplements, <br/>and trusted expertise.</p>",
-						"description_size": "h3",
-						"button": "SHOP DIGESTIVE SUPPORT",
-						"link": "shopify://collections/digestive-support",
-						"button_style": "primary",
-						"content_width": 100,
-						"position_x": "start",
-						"position_y": "start",
-						"text_align": "left",
-						"mobile_text_align": "left",
-						"description_line": "3"
-					}
-				},
-				"slide-3": {
-					"type": "slide",
-					"settings": {
-						"image": "shopify://shop_images/slideshow-3.jpg",
-						"overlay_opacity": 60,
-						"caption": "( TRUSTED SOURCE FOR HEALTH )",
-						"heading": "NOURISH YOUR LIFE",
-						"heading_size": "h1",
-						"text": "<p>Empowering your path to better health <br/>with premium supplements, vitamins, <br/>and professional guidance.</p>",
-						"description_size": "h3",
-						"button": "SHOP VITAMINS & COLLAGENS",
-						"link": "shopify://collections/vitamins-collagens",
-						"button_style": "primary",
-						"content_width": 100,
-						"position_x": "start",
-						"position_y": "start",
-						"text_align": "left",
-						"mobile_text_align": "left",
-						"description_line": "3"
-					}
-				}
-			},
-			"block_order": [
-				"slide-1",
-				"slide-2",
-				"slide-3"
-			],
-			"name": "t:sections.slider.name",
-			"settings": {
-				"color_scheme": "scheme-098995c4-a3d0-4bae-bbf0-af17bca3e81e",
-				"full": true,
-				"height": "large",
-				"height_mobile": "medium",
-				"padding_top": 0,
-				"padding_bottom": 0,
-				"padding_top_mobile": 0,
-				"padding_bottom_mobile": 0
-			}
-		},
-		"multimedia_collage": {
-			"type": "multimedia-collage",
-			"blocks": {
-				"product-1": {
-					"type": "product",
-					"settings": {
-						"product_color_scheme": "",
-						"product": "superhuman-pre-lion-s-blood"
-					}
-				},
-				"video-1": {
-					"type": "video",
-					"settings": {
-						"cover_image": "shopify://shop_images/Rectangle_4_89f0b6b3-370a-4687-9ee9-139bc1be28f9.png",
-						"video_url": "https://www.youtube.com/watch?v=_9VUPq3SxOc",
-						"description": "Describle video"
-					}
-				},
-				"image-1": {
-					"type": "image",
-					"settings": {
-						"image": "shopify://shop_images/p27-2.png"
-					}
-				}
-			},
-			"block_order": [
-				"product-1",
-				"video-1",
-				"image-1"
-			],
-			"name": "t:sections.multimedia-collage.name",
-			"settings": {
-				"color_scheme": "scheme-249bc96c-a978-4bba-a5bc-70409aeabb75",
-				"full": false,
-				"caption": "( OUR STORY )",
-				"heading_text": "From passion to purpose: Our wellness journey",
-				"heading_size": "h2",
-				"text": "<p>Driven by a passion for health and wellness, we’ve dedicated ourselves to sourcing the best natural ingredients and crafting products that truly supportyour well-being.</p>",
-				"button_label": "LEARN MORE",
-				"button_link": "shopify://collections/digestive-support",
-				"desktop_layout": "right",
-				"mobile_layout": "column",
-				"padding_top": 80,
-				"padding_bottom": 80,
-				"padding_top_mobile": 60,
-				"padding_bottom_mobile": 60
-			}
-		},
-		"collection_list": {
-			"type": "collection-list",
-			"name": "t:sections.collection-list-hover.name",
-			"settings": {
-				"color_scheme": "scheme-3",
-				"height": "750px",
-				"sub_heading": "<p>( BROWSE WIDE RANGE OF PRODUCTS )</p>",
-				"heading": "Shop by collections",
-				"heading_size": "h2",
-				"collection_list": [
-					"herbal-supplements",
-					"advanced-vitamins",
-					"digestive-support",
-					"immune-antioxidants"
-				],
-				"summary_vertical_align": "center",
-				"image_one": "shopify://shop_images/column-1-1.png",
-				"image_two": "shopify://shop_images/column-1-2.png",
-				"image_three": "shopify://shop_images/column-2-2.png",
-				"image_four": "shopify://shop_images/column-3-2.png",
-				"image_five": "shopify://shop_images/column-3-3.png",
-				"padding_top": 0,
-				"padding_bottom": 0,
-				"padding_top_mobile": 60,
-				"padding_bottom_mobile": 60
-			}
-		},
-		"featured_collection": {
-			"type": "featured-collection",
-			"blocks": {
-				"tab-1": {
-					"type": "tab",
-					"settings": {
-						"name": "All",
-						"collection": "all-wellness-essentials"
-					}
-				},
-				"tab-2": {
-					"type": "tab",
-					"settings": {
-						"name": "",
-						"collection": "herbal-supplements"
-					}
-				},
-				"tab-3": {
-					"type": "tab",
-					"settings": {
-						"name": "",
-						"collection": "digestive-support"
-					}
-				},
-				"tab-4": {
-					"type": "tab",
-					"settings": {
-						"name": "",
-						"collection": "immune-antioxidants"
-					}
-				}
-			},
-			"block_order": [
-				"tab-1",
-				"tab-2",
-				"tab-3",
-				"tab-4"
-			],
-			"name": "t:sections.featured-collection.name",
-			"settings": {
-				"full": false,
-				"color_scheme": "scheme-1",
-				"sub_heading": "( Browser our products )",
-				"heading": "Most popular",
-				"heading_size": "h2",
-				"columns": 4,
-				"total": 8,
-				"dots": false,
-				"loop": false,
-				"autoplay": true,
-				"delay": 5,
-				"padding_top": 80,
-				"padding_bottom": 80,
-				"padding_top_mobile": 60,
-				"padding_bottom_mobile": 60
-			}
-		},
-		"partners": {
-			"type": "partners",
-			"blocks": {
-				"image-1": {
-					"type": "image",
-					"settings": {
-						"image": "shopify://shop_images/Vector.svg",
-						"img_link": ""
-					}
-				},
-				"image-2": {
-					"type": "image",
-					"settings": {
-						"image": "shopify://shop_images/Vector_73c9ff49-357c-4050-86cb-def299f6ddfb.svg",
-						"img_link": ""
-					}
-				},
-				"image-3": {
-					"type": "image",
-					"settings": {
-						"image": "shopify://shop_images/Vector_4.svg",
-						"img_link": ""
-					}
-				},
-				"image-4": {
-					"type": "image",
-					"settings": {
-						"image": "shopify://shop_images/Vector_2.svg",
-						"img_link": ""
-					}
-				},
-				"image-5": {
-					"type": "image",
-					"settings": {
-						"image": "shopify://shop_images/Vector_3.svg",
-						"img_link": ""
-					}
-				},
-				"image-6": {
-					"type": "image",
-					"settings": {
-						"image": "shopify://shop_images/Vector.svg",
-						"img_link": ""
-					}
-				},
-				"image-7": {
-					"type": "image",
-					"settings": {
-						"image": "shopify://shop_images/Vector_73c9ff49-357c-4050-86cb-def299f6ddfb.svg",
-						"img_link": ""
-					}
-				},
-				"image-8": {
-					"type": "image",
-					"settings": {
-						"image": "shopify://shop_images/Vector_4.svg",
-						"img_link": ""
-					}
-				},
-				"image-9": {
-					"type": "image",
-					"settings": {
-						"image": "shopify://shop_images/Vector_2.svg",
-						"img_link": ""
-					}
-				},
-				"image-10": {
-					"type": "image",
-					"settings": {
-						"image": "shopify://shop_images/Vector_3.svg",
-						"img_link": ""
-					}
-				}
-			},
-			"block_order": [
-				"image-1",
-				"image-2",
-				"image-3",
-				"image-4",
-				"image-5",
-				"image-6",
-				"image-7",
-				"image-8",
-				"image-9",
-				"image-10"
-			],
-			"name": "t:sections.partners.name",
-			"settings": {
-				"color_scheme": "scheme-2",
-				"heading_text": "We’re proud to partner with some of the most admired brands in the industry to bring you exceptional supplements",
-				"heading_size": "h4",
-				"text": "<p>Our trusted partners are industry-leading, ethically sourced brands committed to providing high-quality, science-backed vitamins and supplements to support the well-being of our customers.</p>",
-				"text_align": "center",
-				"mobile_align": "center",
-				"column": 4,
-				"loop": true,
-				"autoplay": true,
-				"delay": 5,
-				"enable_border": false,
-				"item_color_scheme": "scheme-be293f48-285a-4399-9036-8e0fac37561a",
-				"padding_top": 80,
-				"padding_bottom": 80,
-				"padding_top_mobile": 60,
-				"padding_bottom_mobile": 60
-			}
-		},
-		"testimonial": {
-			"type": "testimonial",
-			"blocks": {
-				"testimonial-1": {
-					"type": "testimonial",
-					"settings": {
-						"star_reviews": "5",
-						"body_text": "I take these Vitamin D3 soft gels daily. Sometimes my vitamin D gets low and this helps out a lot. They are easy to swallow and don’t leave a bad taste after. I take all my vitamins with something on my stomach.",
-						"author_image": "shopify://shop_images/image_4.png",
-						"author_name": "<strong>Sarah T.</strong>",
-						"author_comment": "I recommend this product.",
-						"author_verified": true,
-						"product": "vitamin-d3-with-oil",
-						"product_color_scheme": ""
-					}
-				},
-				"testimonial-2": {
-					"type": "testimonial",
-					"settings": {
-						"star_reviews": "5",
-						"body_text": "I can generally tell when I need this one, especially in the fall and winter months. I got these to try and get a head start and overall feel well, including these in my daily routine. I've tried and like this brand.",
-						"author_image": "shopify://shop_images/image.png",
-						"author_name": "<strong>James L.</strong>",
-						"author_comment": "I recommend this product.",
-						"author_verified": true,
-						"product": "garlic-with-parsley",
-						"product_color_scheme": ""
-					}
-				},
-				"testimonial-3": {
-					"type": "testimonial",
-					"settings": {
-						"star_reviews": "5",
-						"body_text": "Around the three week mark of starting I noticed my back pain was diminishing. I haven't changed any other factors. My back pain is now reduced by roughly 70-80%. Really remarkable. I'm beyond impressed.",
-						"author_image": "shopify://shop_images/product_image_2.png",
-						"author_name": "<strong>Susan G.</strong>",
-						"author_comment": "I recommend this product.",
-						"author_verified": true,
-						"product": "collagen-peptides",
-						"product_color_scheme": ""
-					}
-				}
-			},
-			"block_order": [
-				"testimonial-1",
-				"testimonial-2",
-				"testimonial-3"
-			],
-			"name": "t:sections.testimonial.name",
-			"settings": {
-				"color_scheme": "scheme-3",
-				"full": false,
-				"caption": "( 4.9/5.0 BASED ON +10,000 CUSTOMERS )",
-				"heading": "What customers say about us",
-				"heading_size": "h2",
-				"padding_top": 100,
-				"padding_bottom": 100,
-				"padding_top_mobile": 60,
-				"padding_bottom_mobile": 60
-			}
-		},
-		"scrolling_promotion": {
-			"type": "scrolling-promotion",
-			"blocks": {
-				"text-1": {
-					"type": "text",
-					"settings": {
-						"text": "FEATURED PRODUCT",
-						"icon": false
-					}
-				},
-				"image-1": {
-					"type": "image",
-					"settings": {
-						"image": "shopify://shop_images/scrolling-text.png",
-						"url": "",
-						"icon": false
-					}
-				},
-				"text-2": {
-					"type": "text",
-					"settings": {
-						"text": "FEATURED PRODUCT",
-						"icon": false
-					}
-				},
-				"image-2": {
-					"type": "image",
-					"settings": {
-						"image": "shopify://shop_images/scrolling-text.png",
-						"url": "",
-						"icon": false
-					}
-				}
-			},
-			"block_order": [
-				"text-1",
-				"image-1",
-				"text-2",
-				"image-2"
-			],
-			"name": "t:sections.scrolling-promotion.name",
-			"settings": {
-				"color_scheme": "",
-				"full": true,
-				"hover_pause": true,
-				"direction": "rtl",
-				"time": 40,
-				"space": 80,
-				"scale": 400,
-				"mobile_text_scale": 200,
-				"image_scale": 80,
-				"product_color_scheme": "",
-				"padding_top": 80,
-				"padding_bottom": 80,
-				"padding_top_mobile": 60,
-				"padding_bottom_mobile": 60
-			}
-		},
-		"featured_product": {
-			"type": "featured-product",
-			"blocks": {
-				"information-1": {
-					"type": "information",
-					"settings": {
-						"vendor": true,
-						"collections": false,
-						"tags": false,
-						"type": false,
-						"sku": false,
-						"barcode": false,
-						"padding_bottom": 8
-					}
-				},
-				"title-1": {
-					"type": "title",
-					"settings": {
-						"font_size": "h4",
-						"padding_bottom": 20
-					}
-				},
-				"price-1": {
-					"type": "price",
-					"settings": {
-						"font_size": "h7",
-						"padding_bottom": 24
-					}
-				},
-				"variant_picker-1": {
-					"type": "variant-picker",
-					"settings": {
-						"picker_type": "swatch",
-						"swatch": "image",
-						"swatch_style": "square",
-						"swatch_size": 37,
-						"padding_bottom": 24
-					}
-				},
-				"availability-1": {
-					"type": "availability",
-					"settings": {
-						"low_stock": 0,
-						"padding_bottom": 24
-					}
-				},
-				"divider-1": {
-					"type": "divider",
-					"settings": {
-						"color": "",
-						"height": 16
-					}
-				},
-				"add_to_cart-1": {
-					"type": "add-to-cart",
-					"settings": {
-						"text_transform": "capitalize",
-						"quantity_selector": true,
-						"dynamic_checkout": true,
-						"show_gift_card": true,
-						"padding_bottom": 24
-					}
-				},
-				"pickup_availability-1": {
-					"type": "pickup-availability",
-					"settings": {
-						"padding_bottom": 24
-					}
-				},
-				"share-1": {
-					"type": "share",
-					"settings": {
-						"share_label": "Share",
-						"type": "social",
-						"style": "outline",
-						"padding_bottom": 20
-					}
-				}
-			},
-			"block_order": [
-				"information-1",
-				"title-1",
-				"price-1",
-				"variant_picker-1",
-				"availability-1",
-				"divider-1",
-				"add_to_cart-1",
-				"pickup_availability-1",
-				"share-1"
-			],
-			"name": "t:sections.featured-product.name",
-			"settings": {
-				"color_scheme": "",
-				"full": false,
-				"product": "vitamin-d3-k2-with-coconut-oil",
-				"image_width": 64,
-				"summary_horizontal_align": "left",
-				"summary_vertical_align": "start",
-				"padding_top": 0,
-				"padding_bottom": 80,
-				"padding_top_mobile": 0,
-				"padding_bottom_mobile": 40
-			}
-		},
-		"scrolling_row": {
-			"type": "scrolling-row",
-			"blocks": {
-				"row-1": {
-					"type": "row",
-					"settings": {
-						"image": "shopify://shop_images/0d07f3e3dc2a078f786d0420da5ca8db7c186ce1.jpg",
-						"heading": "BOLEVARD",
-						"image_map": "shopify://shop_images/CleanShot_2024-09-24_at_16.24.04_2x_4b57b22e-a8fa-414c-8f30-562d89f241c3.png",
-						"content_left": "<p><strong>Boulevard</strong></p><p>[ADDRESS]</p><p>155 WillowbrookBoulevard, New Jersey</p><p><a href=\"https://maps.app.goo.gl/hreKFoWH3USgu9bD9\" target=\"_blank\" title=\"https://maps.app.goo.gl/hreKFoWH3USgu9bD9\">Get direction</a></p>",
-						"content_right": "<p>[PHONE]</p><p>+1 (606) 598-5782</p><p>[EMAIL]</p><p>store.name@vrworld.com</p>"
-					}
-				},
-				"row-2": {
-					"type": "row",
-					"settings": {
-						"image": "shopify://shop_images/ebb0d88231e36653e71da5f92bade31fbe22cc34.jpg",
-						"heading": "LEXINTON",
-						"image_map": "shopify://shop_images/1a05b60192e27bcb9ff2c1444d78a37973201c47.png",
-						"content_left": "<p><strong>Lexington Ave</strong></p><p>[ADDRESS]</p><p>1091 Lexington Ave, New York, NY 10075, United States</p><p><a href=\"https://maps.app.goo.gl/p6BXuPdYhfpsRGGJA\" target=\"_blank\" title=\"https://maps.app.goo.gl/p6BXuPdYhfpsRGGJA\">Get direction</a></p>",
-						"content_right": "<p>[PHONE]</p><p>+1 (606) 598-5782</p><p>[EMAIL]</p><p>store.name@vrworld.com</p>"
-					}
-				},
-				"row-3": {
-					"type": "row",
-					"settings": {
-						"image": "shopify://shop_images/0b113c6f73edb752b6ea7ea175c0bdc4c2dd57ee_83a924a2-4fe9-48c0-8cdb-7a2ca0f8bbf0.jpg",
-						"heading": "HUDSON",
-						"image_map": "shopify://shop_images/bd128e3cf57abe645d7595d283cc493b12119979.png",
-						"content_left": "<p><strong>Hudson Yard</strong></p><p>[ADDRESS]</p><p>20 W 34th St., New York, NY 10001, United States</p><p><a href=\"https://maps.app.goo.gl/pBB19yfgq7ZXArTD7\" target=\"_blank\" title=\"https://maps.app.goo.gl/pBB19yfgq7ZXArTD7\">Get direction</a></p>",
-						"content_right": "<p>[PHONE]</p><p>+1 (606) 598-5782</p><p>[EMAIL]</p><p>store.name@vrworld.com</p>"
-					}
-				},
-				"row-4": {
-					"type": "row",
-					"settings": {
-						"image": "shopify://shop_images/2023-03-21.jpg",
-						"heading": "<strong>Norman </strong>",
-						"image_map": "shopify://shop_images/1a05b60192e27bcb9ff2c1444d78a37973201c47.png",
-						"content_left": "<p><strong>Norman Ave</strong></p><p>[ADDRESS]</p><p>89-75 Norman Ave, Brooklyn, NY 11222, USA</p><p><a href=\"https://maps.app.goo.gl/p6BXuPdYhfpsRGGJA\" target=\"_blank\" title=\"https://maps.app.goo.gl/p6BXuPdYhfpsRGGJA\">Get direction</a></p>",
-						"content_right": "<p>[PHONE]</p><p>+1 (606) 598-5782</p><p>[EMAIL]</p><p>store.name@vrworld.com</p>"
-					}
-				},
-				"row-5": {
-					"type": "row",
-					"disabled": true,
-					"settings": {
-						"image": "shopify://shop_images/2023-03-21.jpg",
-						"heading": "<strong>Lomotron</strong>",
-						"image_map": "shopify://shop_images/1a05b60192e27bcb9ff2c1444d78a37973201c47.png",
-						"content_left": "<p><strong>Lomotron</strong></p><p>[ADDRESS]</p><p>34th St., New York, NY, United States</p><p><a href=\"https://maps.app.goo.gl/p6BXuPdYhfpsRGGJA\" target=\"_blank\" title=\"https://maps.app.goo.gl/p6BXuPdYhfpsRGGJA\">Get direction</a></p>",
-						"content_right": "<p>[PHONE]</p><p>+1 (606) 598-5782</p><p>[EMAIL]</p><p>store.name@vrworld.com</p>"
-					}
-				}
-			},
-			"block_order": [
-				"row-1",
-				"row-2",
-				"row-3",
-				"row-4",
-				"row-5"
-			],
-			"name": "t:sections.scrolling_row.name",
-			"settings": {
-				"color_scheme": "",
-				"caption": "( Our locations )",
-				"heading_text": "Find our store",
-				"heading_size": "h2",
-				"button_label": "ALL LOCATIONS",
-				"button_link": "shopify://pages/location-grid",
-				"scale_heading": 185,
-				"image_layout": "alternate-left",
-				"desktop_alignment": "left",
-				"mobile_layout": "list",
-				"padding_top": 0,
-				"padding_bottom": 0,
-				"padding_top_mobile": 0,
-				"padding_bottom_mobile": 0
-			}
-		},
-		"collage_blog_posts": {
-			"type": "collage-blog-posts",
-			"name": "t:sections.collage-blog-posts.name",
-			"settings": {
-				"full": false,
-				"color_scheme": "scheme-2",
-				"blog": "news",
-				"total": 3,
-				"caption": "( OUR JOURNAL )",
-				"heading_text": "Get advice from experts",
-				"heading_size": "h3",
-				"button_label": "ALL POSTS",
-				"post_color_scheme": "scheme-3",
-				"heading_line": "3",
-				"show_date": true,
-				"show_comment": true,
-				"show_author": false,
-				"show_blog": true,
-				"show_read_more": true,
-				"padding_top": 80,
-				"padding_bottom": 80,
-				"padding_top_mobile": 60,
-				"padding_bottom_mobile": 60
-			}
-		}
-	},
-	"order": [
-		"slideshow",
-		"multimedia_collage",
-		"collection_list",
-		"featured_collection",
-		"partners",
-		"testimonial",
-		"scrolling_promotion",
-		"featured_product",
-		"scrolling_row",
-		"collage_blog_posts"
-	]
+  "sections": {
+    "vr_slideshow_wtDYnL": {
+      "type": "vr-slideshow",
+      "blocks": {
+        "slide_g4azDt": {
+          "type": "slide",
+          "settings": {
+            "image": "shopify://shop_images/Group_1000000712.jpg",
+            "overlay_opacity": 0,
+            "caption": "",
+            "heading": "Upgrade Your VR <strong>Experience</strong> Today",
+            "heading_size": "h1",
+            "text": "<p>Discover cutting-edge VR accessories to elevate your gaming experience—immerse yourself in the future of virtual reality.</p>",
+            "description_size": "has-small-text",
+            "button": "Shop Now",
+            "link": "",
+            "button_2": "Explore Products",
+            "link_2": "",
+            "content_width": 42,
+            "position_x": "start",
+            "position_y": "center",
+            "text_align": "left",
+            "mobile_text_align": "left",
+            "description_line": "2"
+          }
+        }
+      },
+      "block_order": [
+        "slide_g4azDt"
+      ],
+      "name": "t:sections.vr-slideshow.name",
+      "settings": {
+        "color_scheme": "scheme-1",
+        "full": true,
+        "height": "large",
+        "padding_top": 0,
+        "padding_bottom": 0,
+        "padding_top_mobile": 0,
+        "padding_bottom_mobile": 0
+      }
+    },
+    "vr_collection_EFpBQW": {
+      "type": "vr-collection",
+      "blocks": {
+        "collection_item_p3Mw3m": {
+          "type": "collection_item",
+          "settings": {
+            "collection": "automated-collection",
+            "title_override": "",
+            "custom_text": ""
+          }
+        },
+        "collection_item_zDfBdd": {
+          "type": "collection_item",
+          "settings": {
+            "collection": "",
+            "title_override": "",
+            "custom_text": ""
+          }
+        },
+        "collection_item_wj9fyJ": {
+          "type": "collection_item",
+          "settings": {
+            "collection": "",
+            "title_override": "",
+            "custom_text": ""
+          }
+        },
+        "collection_item_ciBGTD": {
+          "type": "collection_item",
+          "settings": {
+            "collection": "",
+            "title_override": "",
+            "custom_text": ""
+          }
+        },
+        "collection_item_ePAPpz": {
+          "type": "collection_item",
+          "settings": {
+            "collection": "",
+            "title_override": "",
+            "custom_text": ""
+          }
+        }
+      },
+      "block_order": [
+        "collection_item_p3Mw3m",
+        "collection_item_zDfBdd",
+        "collection_item_wj9fyJ",
+        "collection_item_ciBGTD",
+        "collection_item_ePAPpz"
+      ],
+      "name": "VR Collection Slider",
+      "settings": {
+        "color_scheme": "scheme-2",
+        "full_width": true,
+        "heading": "",
+        "heading_size": "h2",
+        "sub_heading": "",
+        "text_align": "center",
+        "padding_top": 80,
+        "padding_bottom": 100,
+        "padding_top_mobile": 20,
+        "padding_bottom_mobile": 20
+      }
+    },
+    "vr_blog_post_yi6GFe": {
+      "type": "vr-blog-post",
+      "name": "VR Blog Posts",
+      "settings": {
+        "full": false,
+        "color_scheme": "scheme-2",
+        "blog": "news",
+        "column": 3,
+        "total": 5,
+        "align": "left",
+        "caption": "Explore the many options tailored to your space's unique features, making sure you find the perfect furniture for your Spaces",
+        "heading_text": "Explore Your Needs by Category",
+        "heading_size": "h4",
+        "button_text": "Explore Products",
+        "button_type": "gradient-button",
+        "card_layout": "standard",
+        "image_ratio": "square",
+        "heading_line": "2",
+        "show_date": false,
+        "show_author": false,
+        "show_blog": true,
+        "show_read_more": false,
+        "columns_mobile": "1",
+        "card_space": 15,
+        "padding_top": 50,
+        "padding_bottom": 50,
+        "padding_top_mobile": 20,
+        "padding_bottom_mobile": 20
+      }
+    },
+    "vr_featured_collection_VUMmGP": {
+      "type": "vr-featured-collection",
+      "blocks": {
+        "tab_KLbwQb": {
+          "type": "tab",
+          "settings": {
+            "name": "New Arrival",
+            "collection": "automated-collection"
+          }
+        },
+        "tab_AxxeEj": {
+          "type": "tab",
+          "settings": {
+            "name": "Bestseller",
+            "collection": "hydrogen"
+          }
+        },
+        "tab_RrXhMj": {
+          "type": "tab",
+          "settings": {
+            "name": "Offer sale",
+            "collection": "hydrogen"
+          }
+        }
+      },
+      "block_order": [
+        "tab_KLbwQb",
+        "tab_AxxeEj",
+        "tab_RrXhMj"
+      ],
+      "name": "VR Featured Collection",
+      "settings": {
+        "full": false,
+        "color_scheme": "scheme-2",
+        "sub_heading": "Discover the most popular VR accessories chosen by gamers worldwide, designed to elevate your immersive experience.",
+        "heading": "Top-rate Featured VR Accessories",
+        "heading_size": "h4",
+        "text_align": "center",
+        "button_text": "Explore Products",
+        "button_link": "",
+        "button_style": "gradient",
+        "enable_slider": false,
+        "columns": 4,
+        "total": 8,
+        "dots": false,
+        "loop": false,
+        "autoplay": false,
+        "delay": 2,
+        "padding_top": 100,
+        "padding_bottom": 63,
+        "padding_top_mobile": 20,
+        "padding_bottom_mobile": 20
+      }
+    },
+    "vr_video_with_text_L9zNph": {
+      "type": "vr-video-with-text",
+      "name": "t:sections.vr-video-with-text.name",
+      "settings": {
+        "color_scheme": "scheme-1",
+        "full": true,
+        "source": "host",
+        "url": "https://www.youtube.com/watch?v=_9VUPq3SxOc",
+        "image": "shopify://shop_images/video-poster.jpg",
+        "height": "small",
+        "layout": "video-full",
+        "caption": "",
+        "heading_text": "See Your VR Accessories in Action Immerse Yourself in the Experience",
+        "heading_size": "h3",
+        "text": "",
+        "button_label": "Learn More",
+        "button_link": "",
+        "desktop_align": "left",
+        "mobile_align": "left",
+        "content_color_scheme": "scheme-be293f48-285a-4399-9036-8e0fac37561a",
+        "padding_top": 100,
+        "padding_bottom": 50,
+        "padding_top_mobile": 20,
+        "padding_bottom_mobile": 20
+      }
+    },
+    "vr_featured_product_d9eJP4": {
+      "type": "vr-featured-product",
+      "name": "VR Featured Product",
+      "settings": {
+        "color_scheme": "scheme-2",
+        "full_width": false,
+        "heading": "Recommended products just for You",
+        "heading_size": "h3",
+        "sub_heading": "<p>Explore the many options tailored to your space's unique features, making sure you find the perfect furniture for your Spaces</p>",
+        "text_align": "left",
+        "button_text": "Explore Products",
+        "button_link": "",
+        "button_style": "gradient",
+        "collection": "automated-collection",
+        "columns": 4,
+        "total_items": 4,
+        "dots": false,
+        "loop": false,
+        "autoplay": false,
+        "delay": 2,
+        "padding_top": 100,
+        "padding_bottom": 52,
+        "padding_top_mobile": 20,
+        "padding_bottom_mobile": 20
+      }
+    },
+    "vr_partners_UKhRhW": {
+      "type": "vr-partners",
+      "blocks": {
+        "image_w7nYL7": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/logo1.png",
+            "img_link": ""
+          }
+        },
+        "image_Ke9hqc": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/logo2.png",
+            "img_link": ""
+          }
+        },
+        "image_wqt6hH": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/logo3.png",
+            "img_link": ""
+          }
+        },
+        "image_RHUBQg": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/logo4.png",
+            "img_link": ""
+          }
+        },
+        "image_QKpb4d": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/logo5.png",
+            "img_link": ""
+          }
+        },
+        "image_QMknTC": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/logo6.png",
+            "img_link": ""
+          }
+        },
+        "image_9f3MtE": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/meta.png",
+            "img_link": ""
+          }
+        },
+        "image_agGX7B": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/len.png",
+            "img_link": ""
+          }
+        },
+        "image_NCqKWB": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/ste.png",
+            "img_link": ""
+          }
+        },
+        "image_g3Jjwp": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/govar.png",
+            "img_link": ""
+          }
+        },
+        "image_TJiktr": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/manus.png",
+            "img_link": ""
+          }
+        }
+      },
+      "block_order": [
+        "image_w7nYL7",
+        "image_Ke9hqc",
+        "image_wqt6hH",
+        "image_RHUBQg",
+        "image_QKpb4d",
+        "image_QMknTC",
+        "image_9f3MtE",
+        "image_agGX7B",
+        "image_NCqKWB",
+        "image_g3Jjwp",
+        "image_TJiktr"
+      ],
+      "name": "VR Partners",
+      "settings": {
+        "color_scheme": "scheme-2",
+        "heading_text": "Discover the Best in VR Top-Rated Brands",
+        "heading_size": "h5",
+        "text": "<p>Discover the most popular VR accessories chosen by gamers worldwide, designed to elevate your immersive experience.</p>",
+        "text_align": "center",
+        "mobile_align": "center",
+        "column": 6,
+        "loop": true,
+        "autoplay": false,
+        "delay": 5,
+        "enable_border": false,
+        "item_color_scheme": "",
+        "padding_top": 98,
+        "padding_bottom": 50,
+        "padding_top_mobile": 20,
+        "padding_bottom_mobile": 20
+      }
+    },
+    "vr_multicolumn_FeGzRf": {
+      "type": "vr-multicolumn",
+      "blocks": {
+        "item_fWJdFa": {
+          "type": "item",
+          "settings": {
+            "column_img": "shopify://shop_images/27.jpg",
+            "text": "Start Your VR Arcade",
+            "description": "<p>Exclusive VR arcade bundles, expert advice, and dedicated support for launching your VR arcade business.</p>",
+            "button_label": "Learn More",
+            "button_url": ""
+          }
+        },
+        "item_pa8tLA": {
+          "type": "item",
+          "settings": {
+            "column_img": "shopify://shop_images/2148932811.jpg",
+            "text": "Customized XR Solutions",
+            "description": "<p>Tailored Extended Reality (XR) solutions for enterprises, delivering customized professional experiences to meet unique business needs</p>",
+            "button_label": "Learn More",
+            "button_url": ""
+          }
+        }
+      },
+      "block_order": [
+        "item_fWJdFa",
+        "item_pa8tLA"
+      ],
+      "name": "t:sections.vr-multicolumn.name",
+      "settings": {
+        "full": false,
+        "color_scheme": "scheme-1",
+        "caption": "",
+        "heading_text": "",
+        "heading_size": "h3",
+        "button_label": "",
+        "button_link": "",
+        "columns_color_scheme": "",
+        "align": "left",
+        "columns": 2,
+        "columns_mobile": "1",
+        "mobile_swipe": false,
+        "padding_top": 100,
+        "padding_bottom": 50,
+        "padding_top_mobile": 20,
+        "padding_bottom_mobile": 20
+      }
+    },
+    "vr_features_zr9j4m": {
+      "type": "vr-features",
+      "blocks": {
+        "feature_U7rYrV": {
+          "type": "feature",
+          "settings": {
+            "icon": "shopify://shop_images/ship.svg",
+            "title": "Free Shipping",
+            "description": "<p>Enjoy free shipping on all orders.</p>"
+          }
+        },
+        "feature_kjaLEw": {
+          "type": "feature",
+          "settings": {
+            "icon": "shopify://shop_images/24-hour-icon_1.svg",
+            "title": "24/7 Support",
+            "description": "<p>Get 24/7 support for all your needs. We're here to help, anytime, anywhere.</p>"
+          }
+        },
+        "feature_7J6f8X": {
+          "type": "feature",
+          "settings": {
+            "icon": "shopify://shop_images/7aa008da7f892afd9b835879826f5ed7.svg",
+            "title": "Money Return",
+            "description": "<p>Get a full refund with our hassle-free money-back guarantee.</p>"
+          }
+        },
+        "feature_wadKaq": {
+          "type": "feature",
+          "settings": {
+            "icon": "shopify://shop_images/mdi_cart-discount.svg",
+            "title": "Order Discount",
+            "description": "<p>Enjoy discounted prices on your orders. Don't miss out on our special discounts.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "feature_U7rYrV",
+        "feature_kjaLEw",
+        "feature_7J6f8X",
+        "feature_wadKaq"
+      ],
+      "name": "VR Features",
+      "settings": {
+        "color_scheme": "scheme-2",
+        "columns": 4,
+        "padding_top": 100,
+        "padding_bottom": 50,
+        "padding_top_mobile": 20,
+        "padding_bottom_mobile": 20
+      }
+    }
+  },
+  "order": [
+    "vr_slideshow_wtDYnL",
+    "vr_collection_EFpBQW",
+    "vr_blog_post_yi6GFe",
+    "vr_featured_collection_VUMmGP",
+    "vr_video_with_text_L9zNph",
+    "vr_featured_product_d9eJP4",
+    "vr_partners_UKhRhW",
+    "vr_multicolumn_FeGzRf",
+    "vr_features_zr9j4m"
+  ]
 }

@@ -1,94 +1,100 @@
 .multicolumn-section {
-	p {
-		margin-bottom: 0;
-	}
+  p {
+    margin-bottom: 0;
+  }
 
-	.multicolumn-title {
-		margin-bottom: 4rem;
+  .multicolumn-title {
+    margin-bottom: 4rem;
 
-		.heading {
-			margin: 0;
-		}
-	}
+    .heading {
+      margin: 0;
+    }
+  }
 
-	.button-wrapper {
-		margin-top: 4rem;
-		display: flex;
-		justify-content: center;
-	}
+  .button-wrapper {
+    margin-top: 4rem;
+    display: flex;
+    justify-content: center;
+  }
 
-	.multicolumn-inner {
-		gap: 2rem;
+  .multicolumn-inner {
+    gap: var(--grid-horizontal);
 
-		.column-item {
-			padding: 2rem;
+    .column-item {
+      padding: 0;
 
-			.column-heading,
-			.column-description {
-				white-space: normal;
-			}
+      .column-heading,
+      .column-description {
+        white-space: normal;
+        color: var(--text-color);
+      }
 
-			* {
-				margin: 0;
-			}
+      .column-description {
+        font-weight: 600;
+      }
 
-			.column-heading {
-				margin: 1.6rem 0;
-			}
-		}
+      * {
+        margin: 0;
+      }
 
-		.image-wrapper {
-			display: flex;
-		}
+      .column-heading {
+        margin: 1.6rem 0;
+        color: var(--heading-color);
+      }
+    }
 
-		.button {
-			display: inline-flex;
-			margin-top: 1.6rem;
-		}
-	}
+    .image-wrapper {
+      display: flex;
+    }
 
-	.third-width {
-		width: 35%;
-	}
+    .button {
+      display: inline-flex;
+      margin-top: 1.6rem;
+    }
+  }
 
-	.half-width {
-		width: 50%;
-	}
+  .third-width {
+    width: 35%;
+  }
 
-	.full-width {
-		width: 100%;
-	}
+  .half-width {
+    width: 50%;
+  }
 
-	.adapt-width {
-		img {
-			width: revert-layer;
-		}
-	}
+  .full-width {
+    width: 100%;
+  }
 
-	@media (max-width: 991px) {
-		.multicolumn-inner {
-			gap: 0.8rem;
-		}
+  .adapt-width {
+    img {
+      width: revert-layer;
+    }
+  }
 
-		.button-wrapper {
-			margin-top: 2.4rem;
-		}
+  @media (max-width: 991px) {
+    .multicolumn-inner {
+      gap: 0.8rem;
+    }
 
-		.grid:not(.grid-mobile-1):not(.grid-mobile-2) {
-			overflow-x: auto;
-			white-space: nowrap;
-			display: flex;
-			flex-wrap: nowrap;
+    .button-wrapper {
+      margin-top: 1rem;
+    }
 
-			.grid-item {
-				overflow: hidden;
-				flex-shrink: 0;
-				width: calc(100% - 4.2rem);
-			}
-		}
+    .grid:not(.grid-mobile-1):not(.grid-mobile-2) {
+      overflow-x: auto;
+      white-space: nowrap;
+      display: flex;
+      flex-wrap: nowrap;
 
-		.multicolumn-title {
-			margin-bottom: 2.4rem;
-		}
-	}
+      .grid-item {
+        overflow: hidden;
+        flex-shrink: 0;
+        width: calc(100% - 4.2rem);
+      }
+    }
+
+    .multicolumn-title {
+      margin-bottom: 2.4rem;
+    }
+  }
 }

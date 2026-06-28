@@ -20,12 +20,13 @@
 			assign scheme_classes = scheme_classes | append: ', .color-' | append: scheme.id
 			assign svg_color      = scheme.settings.text_color | replace: '#', '%23'
 		-%}
- 
+
 		{% if forloop.index == 1 %}:root, {% endif %}.color-{{ scheme.id }} {
-			--gradient-background: {% if scheme.settings.background_gradient != empty %}{{ scheme.settings.background_gradient }}{% else %}{{ scheme.settings.background_color }}{% endif %};
+			--gradient-background: {{ scheme.settings.background_gradient }};
 			--background-color: {{ scheme.settings.background_color.red }}, {{ scheme.settings.background_color.green }}, {{ scheme.settings.background_color.blue }};
 			--text-color: {{ scheme.settings.text_color.red }}, {{ scheme.settings.text_color.green }}, {{ scheme.settings.text_color.blue }};
 			--heading-color: {{ scheme.settings.heading_color.red }}, {{ scheme.settings.heading_color.green }}, {{ scheme.settings.heading_color.blue }};
+
 			--subheading-color: {{ scheme.settings.subheading_color.red }}, {{ scheme.settings.subheading_color.green }}, {{ scheme.settings.subheading_color.blue }};
 			--link-color: {{ scheme.settings.link_color.red }}, {{ scheme.settings.link_color.green }}, {{ scheme.settings.link_color.blue }};
 			--success-color: {{ scheme.settings.success_color.red }}, {{ scheme.settings.success_color.green }}, {{ scheme.settings.success_color.blue }};
@@ -33,6 +34,7 @@
 			--loading-color: {{ scheme.settings.loading_color.red }}, {{ scheme.settings.loading_color.green }}, {{ scheme.settings.loading_color.blue }};
 
 			--button-bg-color: {{ scheme.settings.button_bg_color.red }}, {{ scheme.settings.button_bg_color.green }}, {{ scheme.settings.button_bg_color.blue }};
+
 			--button-text-color: {{ scheme.settings.button_text_color.red }}, {{ scheme.settings.button_text_color.green }}, {{ scheme.settings.button_text_color.blue }};
 			--button-outline-color: {{ scheme.settings.button_outline_color.red }}, {{ scheme.settings.button_outline_color.green }}, {{ scheme.settings.button_outline_color.blue }};
 
@@ -93,7 +95,7 @@
 
 	{{ scheme_classes | prepend: 'body' }} {
 		color: rgb(var(--text-color));
-		background: var(--gradient-background, rgb(var(--background-color)));
+	background-color: rgb(var(--background-color));
 	}
 
 	:root {
@@ -109,7 +111,7 @@
 
 		--heading-font-family: {{ heading_font }};
 		--heading-font-style: {{ settings.heading_font.style }};
-		--heading-font-weight: {{ settings.heading_font.weight }};
+		--heading-font-weight: {{ settings.heading_font_weight }};
 		--heading-font-scale: {{ settings.heading_font_scale | divided_by: 100.0 }};
 
 		--subheading-font-family: {{ third_font }};

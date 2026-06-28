@@ -23,12 +23,17 @@
 
 		@media (hover:hover) {
 			&:hover {
-				> .menu-link {
+				> .menu-link,
+				> .menu-toggle {
 					.menu-arrow {
 						svg {
 							transform: rotate(180deg);
 						}
 
+					}
+
+					.menu-text {
+						background-size: 100% 0.1rem, 100% 0.1rem;
 					}
 
 				}
@@ -46,6 +51,14 @@
 
 			@media (max-width:1600px) {
 				padding: 1rem 1.5rem;
+			}
+
+			.menu-text {
+				background-image: linear-gradient(to top, currentColor 0, currentColor 0), linear-gradient(to top, transparent 0, transparent 0);
+				background-repeat: no-repeat;
+				background-position: left bottom;
+				background-size: 0 0.1rem, 100% 0.1rem;
+				transition: background-size 0.3s ease-in-out;
 			}
 
 		}

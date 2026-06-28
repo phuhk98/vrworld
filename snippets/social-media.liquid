@@ -12,11 +12,33 @@
 		{% assign social_media_count = true %}
 	{%- endif -%}
 
+	{%- if settings.social_linkedin_link != blank -%}
+		<li>
+			<a href="{{ settings.social_linkedin_link | replace_first: 'https:', '' | replace_first: 'http:', '' }}" class="icon" target="_blank" rel="noopener" aria-label="{{ 'general.social.links.linkedin' | t }}">
+				{%- render 'icon', code: 'linkedin' -%}
+				<span class="tooltip tooltip-top">{{- 'general.social.links.linkedin' | t -}}</span>
+			</a>
+		</li>
+
+		{% assign social_media_count = true %}
+	{%- endif -%}
+
 	{%- if settings.social_twitter_link != blank -%}
 		<li>
 			<a href="{{ settings.social_twitter_link | replace_first: 'https:', '' | replace_first: 'http:', '' }}" class="icon" target="_blank" rel="noopener" aria-label="{{ 'general.social.links.twitter' | t }}">
 				{%- render 'icon', code: 'twitter' -%}
 				<span class="tooltip tooltip-top">{{- 'general.social.links.twitter' | t -}}</span>
+			</a>
+		</li>
+
+		{% assign social_media_count = true %}
+	{%- endif -%}
+
+	{%- if settings.social_instagram_link != blank -%}
+		<li>
+			<a href="{{ settings.social_instagram_link | replace_first: 'https:', '' | replace_first: 'http:', '' }}" class="icon" target="_blank" rel="noopener" aria-label="{{ 'general.social.links.instagram' | t }}">
+				{%- render 'icon', code: 'instagram' -%}
+				<span class="tooltip tooltip-top">{{- 'general.social.links.instagram' | t -}}</span>
 			</a>
 		</li>
 
@@ -45,17 +67,6 @@
 		{% assign social_media_count = true %}
 	{%- endif -%}
 
-	{%- if settings.social_instagram_link != blank -%}
-		<li>
-			<a href="{{ settings.social_instagram_link | replace_first: 'https:', '' | replace_first: 'http:', '' }}" class="icon" target="_blank" rel="noopener" aria-label="{{ 'general.social.links.instagram' | t }}">
-				{%- render 'icon', code: 'instagram' -%}
-				<span class="tooltip tooltip-top">{{- 'general.social.links.instagram' | t -}}</span>
-			</a>
-		</li>
-
-		{% assign social_media_count = true %}
-	{%- endif -%}
-
 	{%- if settings.social_tiktok_link != blank -%}
 		<li>
 			<a href="{{ settings.social_tiktok_link | replace_first: 'https:', '' | replace_first: 'http:', '' }}" class="icon" target="_blank" rel="noopener" aria-label="{{ 'general.social.links.tiktok' | t }}">
@@ -78,16 +89,6 @@
 		{% assign social_media_count = true %}
 	{%- endif -%}
 
-	{%- if settings.social_linkedin_link != blank -%}
-		<li>
-			<a href="{{ settings.social_linkedin_link | replace_first: 'https:', '' | replace_first: 'http:', '' }}" class="icon" target="_blank" rel="noopener" aria-label="{{ 'general.social.links.linkedin' | t }}">
-				{%- render 'icon', code: 'linkedin' -%}
-				<span class="tooltip tooltip-top">{{- 'general.social.links.linkedin' | t -}}</span>
-			</a>
-		</li>
-
-		{% assign social_media_count = true %}
-	{%- endif -%}
 
 	{%- if settings.social_snapchat_link != blank -%}
 		<li>

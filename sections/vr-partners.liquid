@@ -1,0 +1,336 @@
+{%- liquid
+	assign section_id        = '#shopify-section-' | append: section.id
+	assign column            = section.settings.column
+	assign heading           = section.settings.heading_text
+	assign heading_size      = section.settings.heading_size
+	assign text              = section.settings.text
+-%}
+
+<style>
+	{{ section_id }} .section-wrapper {
+		padding-top: {{ section.settings.padding_top_mobile }}px;
+		padding-bottom: {{ section.settings.padding_bottom_mobile }}px;
+	}
+
+	{{ section_id }} .heading-wrapper {
+		justify-content: {{ section.settings.align }};
+	}
+
+	{{ section_id }} .vrworld-slider {
+		--slide-spacing: 0.8rem;
+	}
+
+	{% if section.settings.enable_border %}
+		{{ section_id }} .brand-item {
+			border: 0.1rem solid rgb(var(--text-color), .16);
+		}
+	{% endif %}
+
+	@media (max-width: 991px) {
+		{{ section_id }} .vrworld-slider {
+			--slide-size: 93%;
+		}
+	}
+
+	@media (min-width: 992px) {
+		{{ section_id }} .section-wrapper {
+			padding-top: {{ section.settings.padding_top }}px;
+			padding-bottom: {{ section.settings.padding_bottom }}px;
+		}
+
+		{{ section_id }} .vrworld-slider {
+			--slide-size: calc( 100% / {{ column }});
+		}
+	}
+</style>
+
+<div class="section-wrapper color-{{ section.settings.color_scheme }}">
+	<div class="container">
+		<div class="partner-inner">
+			{%- if heading != blank or text != blank -%}
+				<div class="title-wrapper text-{{ section.settings.text_align }} text-{{ section.settings.mobile_align }}-mobile">
+					{%- if heading != blank -%}
+						<div class="heading rte {{ heading_size }}">{{- heading -}}</div>
+					{%- endif -%}
+
+					{%- if text != blank -%}
+						<div class="description rte">{{- text -}}</div>
+					{%- endif -%}
+				</div>
+			{%- endif -%}
+
+			<vrworld-slider class="vrworld-slider">
+				<template data-options>
+					{
+						{%- if section.settings.loop -%}
+							"loop": true,
+						{%- endif -%}
+
+						{%- comment -%} Attr options {%- endcomment -%}
+						{%- if section.settings.autoplay -%}
+							"_autoplay": {{ section.settings.delay | times: 1000 }},
+						{%- endif -%}
+						"align": "start",
+						"_autoheight": true,
+						"_fade": false
+					}
+				</template>
+
+				<div class="vrworld-slider-viewport">
+					<div class="vrworld-slider-container">
+						{%- for block in section.blocks -%}
+							{%- assign image = block.settings.image -%}
+
+							<div class="vrworld-slide"{% if request.design_mode %} data-id="{{ block.id }}" data-index="{{ forloop.index0 }}"{% endif %} {{ block.shopify_attributes }}>
+								<div class="brand-item color-{{ section.settings.item_color_scheme }}">
+									{% if block.settings.img_link %}<a href="{{ block.settings.img_link }}" class="image-link" aria-label="Link"></a>{% endif %}
+
+									<div class="item adapt-media">
+										<div class="image{% if settings.image_lazy and image %} lazy-image{% endif %}">
+											{%- liquid
+												if image != blank
+													render 'lazy-image', image: image, width: 150
+												else
+													render 'icon', code: 'placeholder'
+												endif
+											-%}
+										</div>
+									</div>
+								</div>
+							</div>
+						{%- endfor -%}
+					</div>
+				</div>
+			</vrworld-slider>
+		</div>
+	</div>
+</div>
+
+{% schema %}
+{
+	"name": "t:sections.vr-partners.name",
+	"tag": "section",
+	"class": "partners-section",
+	"disabled_on": {
+		"groups": ["header", "footer"]
+	},
+	"settings": [
+		{
+			"type": "color_scheme",
+			"id": "color_scheme",
+			"label": "t:settings_schema.colors.label",
+			"default": "scheme-1"
+		},
+		{
+			"type": "inline_richtext",
+			"id": "heading_text",
+			"default": "Heading",
+			"label": "t:general.typography.heading.label"
+		},
+		{
+			"type": "select",
+			"id": "heading_size",
+			"options": [
+				{
+					"value": "h4",
+					"label": "t:general.typography.heading_size.option_1.label"
+				},
+				{
+					"value": "h3",
+					"label": "t:general.typography.heading_size.option_2.label"
+				},
+				{
+					"value": "h2",
+					"label": "t:general.typography.heading_size.option_3.label"
+				}
+			],
+			"default": "h3",
+			"label": "t:general.typography.heading_size.label"
+		},
+		{
+			"type": "richtext",
+			"id": "text",
+			"default": "<p>Pair text with an image to focus on your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.</p>",
+			"label": "t:general.typography.description.label"
+		},
+		{
+
+			"type": "select",
+			"id": "text_align",
+			"options": [
+				{
+					"value": "left",
+					"label": "t:general.layout.alignment.option_1.label"
+				},
+				{
+					"value": "center",
+					"label": "t:general.layout.alignment.option_2.label"
+				},
+				{
+					"value": "right",
+					"label": "t:general.layout.alignment.option_3.label"
+				}
+			],
+			"default": "center",
+			"label": "t:general.layout.alignment.label"
+		},
+		{
+			"type": "select",
+			"id": "mobile_align",
+			"options": [
+				{
+					"value": "left",
+					"label": "t:general.layout.mobile_alignment.option_1.label"
+				},
+				{
+					"value": "center",
+					"label": "t:general.layout.mobile_alignment.option_2.label"
+				},
+				{
+					"value": "right",
+					"label": "t:general.layout.mobile_alignment.option_3.label"
+				}
+			],
+			"default": "center",
+			"label": "t:general.layout.mobile_alignment.label"
+		},
+		{
+			"type": "header",
+			"content": "t:sections.partners.settings.header_slider_options.content"
+		},
+		{
+			"type": "range",
+			"id": "column",
+			"min": 2,
+			"max": 6,
+			"step": 1,
+			"default": 4,
+			"label": "t:general.slider.column.label"
+		},
+		{
+			"type": "checkbox",
+			"id": "loop",
+			"default": false,
+			"label": "t:general.slider.loop.label"
+		},
+		{
+			"type": "checkbox",
+			"id": "autoplay",
+			"default": false,
+			"label": "t:general.slider.autoplay.label"
+		},
+		{
+			"type": "range",
+			"id": "delay",
+			"min": 3,
+			"max": 20,
+			"step": 1,
+			"default": 5,
+			"label": "t:general.slider.delay.label"
+		},
+		{
+			"type": "checkbox",
+			"id": "enable_border",
+			"default": false,
+			"label":  "t:sections.partners.settings.enable_border.label"
+		},
+		{
+			"type": "color_scheme",
+			"id": "item_color_scheme",
+			"label": "t:settings_schema.colors.label",
+			"default": "scheme-2"
+		},
+		{
+			"type": "header",
+			"content": "t:general.padding.header_padding.content"
+		},
+		{
+			"type": "range",
+			"id": "padding_top",
+			"min": 0,
+			"max": 100,
+			"step": 1,
+			"default": 50,
+			"unit": "px",
+			"label": "t:general.padding.top.label"
+		},
+		{
+			"type": "range",
+			"id": "padding_bottom",
+			"min": 0,
+			"max": 100,
+			"step": 1,
+			"default": 50,
+			"unit": "px",
+			"label": "t:general.padding.bottom.label"
+		},
+		{
+			"type": "paragraph",
+			"content": "t:general.padding.paragraph_mobile.content"
+		},
+		{
+			"type": "range",
+			"id": "padding_top_mobile",
+			"min": 0,
+			"max": 100,
+			"step": 1,
+			"default": 20,
+			"unit": "px",
+			"label": "t:general.padding.top.label"
+		},
+		{
+			"type": "range",
+			"id": "padding_bottom_mobile",
+			"min": 0,
+			"max": 100,
+			"step": 1,
+			"default": 20,
+			"unit": "px",
+			"label": "t:general.padding.bottom.label"
+		}
+	],
+	"blocks": [
+		{
+			"type": "@app"
+		},
+		{
+			"type": "image",
+			"name": "t:general.image.label",
+			"settings": [
+				{
+					"type": "image_picker",
+					"id": "image",
+					"label": "t:general.image.label"
+				},
+				{
+					"type": "url",
+					"id": "img_link",
+					"label": "t:general.typography.link.label"
+				}
+			]
+		}
+	],
+	"presets": [
+		{
+			"name": "t:sections.vr-partners.name",
+			"blocks": [
+				{
+					"type": "image"
+				},
+				{
+					"type": "image"
+				},
+				{
+					"type": "image"
+				},
+				{
+					"type": "image"
+				},
+				{
+					"type": "image"
+				}
+			]
+		}
+	]
+}
+{% endschema %}
