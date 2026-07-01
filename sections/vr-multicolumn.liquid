@@ -110,7 +110,7 @@
 							{%- when 'item' -%}
 								<div class="vr-multicolumn-card border-extra-large">
 									{%- assign image = block.settings.column_img -%}
-									
+
 									<div class="card-background">
 										{% if image != blank %}
 											{{ image | image_url: width: 1200 | image_tag: width: image.width, height: image.height, loading: 'lazy' }}
@@ -171,7 +171,7 @@
 			"type": "color_scheme",
 			"id": "color_scheme",
 			"label": "t:settings_schema.colors.label",
-			"default": "scheme-1"
+			"default": "scheme-5"
 		},
 		{
 			"type": "inline_richtext",
@@ -217,12 +217,6 @@
 		{
 			"type": "header",
 			"content": "t:general.slider.column.label"
-		},
-		{
-			"type": "color_scheme",
-			"id": "columns_color_scheme",
-			"label": "t:settings_schema.colors.label",
-			"default": "scheme-2"
 		},
 		{
 			"type": "select",

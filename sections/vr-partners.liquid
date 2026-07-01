@@ -82,7 +82,7 @@
 							{%- assign image = block.settings.image -%}
 
 							<div class="vrworld-slide"{% if request.design_mode %} data-id="{{ block.id }}" data-index="{{ forloop.index0 }}"{% endif %} {{ block.shopify_attributes }}>
-								<div class="brand-item color-{{ section.settings.item_color_scheme }}">
+								<div class="brand-item">
 									{% if block.settings.img_link %}<a href="{{ block.settings.img_link }}" class="image-link" aria-label="Link"></a>{% endif %}
 
 									<div class="item adapt-media">
@@ -119,7 +119,7 @@
 			"type": "color_scheme",
 			"id": "color_scheme",
 			"label": "t:settings_schema.colors.label",
-			"default": "scheme-1"
+			"default": "scheme-6"
 		},
 		{
 			"type": "inline_richtext",
@@ -233,12 +233,6 @@
 			"id": "enable_border",
 			"default": false,
 			"label":  "t:sections.partners.settings.enable_border.label"
-		},
-		{
-			"type": "color_scheme",
-			"id": "item_color_scheme",
-			"label": "t:settings_schema.colors.label",
-			"default": "scheme-2"
 		},
 		{
 			"type": "header",

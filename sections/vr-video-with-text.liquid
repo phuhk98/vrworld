@@ -58,7 +58,7 @@
 		background: transparent;
 		pointer-events: none;
 	}
-	
+
 	{{ section_id }} .video-full-first .content-inner {
 		pointer-events: auto;
 	}
@@ -72,7 +72,7 @@
 
 <div class="section-wrapper color-{{ section.settings.color_scheme }}">
 	<div class="{% if full %}stretch-section {% else %}container{% endif %}">
-		<div class="video-with-text border-large {{ layout }}-first color-{{ section.settings.content_color_scheme }}">
+		<div class="video-with-text border-large {{ layout }}-first color-{{ section.settings.color_scheme }}">
 			<div class="video-item border-large height-{{ height }}{% if animation %} scroll-trigger{% endif %}">
 				{%- if section.settings.source == 'host' -%}
 					{% if section.settings.url.type == 'youtube' %}
@@ -141,7 +141,7 @@
 			"type": "color_scheme",
 			"id": "color_scheme",
 			"label": "t:settings_schema.colors.label",
-			"default": "scheme-1"
+			"default": "scheme-5"
 		},
 		{
 			"type": "checkbox",
@@ -316,12 +316,6 @@
 			"label": "t:general.layout.mobile_alignment.label"
 		},
 		{
-			"type": "color_scheme",
-			"id": "content_color_scheme",
-			"label": "t:settings_schema.colors.label",
-			"default": "scheme-1"
-		},
-		{
 			"type": "header",
 			"content": "t:general.padding.header_padding.content"
 		},
@@ -331,7 +325,7 @@
 			"min": 0,
 			"max": 100,
 			"step": 1,
-			"default": 50,
+			"default": 0,
 			"unit": "px",
 			"label": "t:general.padding.top.label"
 		},
@@ -341,7 +335,7 @@
 			"min": 0,
 			"max": 100,
 			"step": 1,
-			"default": 50,
+			"default": 0,
 			"unit": "px",
 			"label": "t:general.padding.bottom.label"
 		},
@@ -355,7 +349,7 @@
 			"min": 0,
 			"max": 100,
 			"step": 1,
-			"default": 20,
+			"default": 0,
 			"unit": "px",
 			"label": "t:general.padding.top.label"
 		},
@@ -365,7 +359,7 @@
 			"min": 0,
 			"max": 100,
 			"step": 1,
-			"default": 20,
+			"default": 0,
 			"unit": "px",
 			"label": "t:general.padding.bottom.label"
 		}

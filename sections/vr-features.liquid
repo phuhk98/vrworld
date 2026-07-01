@@ -1,186 +1,186 @@
 {%- liquid
-  assign section_id = '#shopify-section-' | append: section.id
-  assign columns = section.settings.columns
+	assign section_id = '#shopify-section-' | append: section.id
+	assign columns = section.settings.columns
 -%}
 
 <style>
-  {{ section_id }} .vr-feature-item {
-    position: relative;
-    border: 1px solid rgba(241, 237, 235, 1);
-    background-color: rgb(var(--background-color));
-    border-radius: 1.2rem;
-    z-index: 1;
-    overflow: hidden;
-    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-    cursor: pointer;
-  }
-  {{ section_id }} .vr-feature-item::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: var(--gradient-background);
-    opacity: 0.1;
-    z-index: -1;
-    border-radius: 1.2rem;
-    transition: opacity 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-    pointer-events: none;
-  }
-  {{ section_id }} .vr-feature-item:hover {
-    border: 1px solid rgba(0, 0, 0, 0);
-    background-image: linear-gradient(rgb(var(--background-color)), rgb(var(--background-color))), var(--gradient-background, linear-gradient(rgba(var(--text-color), .08), rgba(var(--text-color), .08)));
-    background-clip: padding-box, border-box;
-    background-origin: border-box;
-  }
-  {{ section_id }} .vr-features-section-wrapper {
-    padding-top: {{ section.settings.padding_top_mobile }}px;
-    padding-bottom: {{ section.settings.padding_bottom_mobile }}px;
-  }
-  @media (min-width: 992px) {
-    {{ section_id }} .vr-features-section-wrapper {
-      padding-top: {{ section.settings.padding_top }}px;
-      padding-bottom: {{ section.settings.padding_bottom }}px;
-    }
-  }
-  @media (min-width: 1024px) {
-    {{ section_id }} .vr-features-grid {
-      grid-template-columns: repeat({{ columns }}, 1fr);
-    }
-  }
+	{{ section_id }} .vr-feature-item {
+		position: relative;
+		border: 1px solid rgba(241, 237, 235, 1);
+		background-color: rgb(var(--background-color));
+		border-radius: 1.2rem;
+		z-index: 1;
+		overflow: hidden;
+		transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+		cursor: pointer;
+	}
+	{{ section_id }} .vr-feature-item::before {
+		content: '';
+		position: absolute;
+		top: 0;
+		left: 0;
+		right: 0;
+		bottom: 0;
+		background: var(--gradient-background);
+		opacity: 0.1;
+		z-index: -1;
+		border-radius: 1.2rem;
+		transition: opacity 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+		pointer-events: none;
+	}
+	{{ section_id }} .vr-feature-item:hover {
+		border: 1px solid rgba(0, 0, 0, 0);
+		background-image: linear-gradient(rgb(var(--background-color)), rgb(var(--background-color))), var(--gradient-background, linear-gradient(rgba(var(--text-color), .08), rgba(var(--text-color), .08)));
+		background-clip: padding-box, border-box;
+		background-origin: border-box;
+	}
+	{{ section_id }} .vr-features-section-wrapper {
+		padding-top: {{ section.settings.padding_top_mobile }}px;
+		padding-bottom: {{ section.settings.padding_bottom_mobile }}px;
+	}
+	@media (min-width: 992px) {
+		{{ section_id }} .vr-features-section-wrapper {
+			padding-top: {{ section.settings.padding_top }}px;
+			padding-bottom: {{ section.settings.padding_bottom }}px;
+		}
+	}
+	@media (min-width: 1024px) {
+		{{ section_id }} .vr-features-grid {
+			grid-template-columns: repeat({{ columns }}, 1fr);
+		}
+	}
 </style>
 
 <div class="vr-features-section-wrapper color-{{ section.settings.color_scheme }}">
-  <div class="container">
-    <div class="vr-features-grid">
-      {%- for block in section.blocks -%}
-        <div class="vr-feature-item box-item" {{ block.shopify_attributes }}>
-          <div class="vr-feature-icon">
-            {%- if block.settings.icon != blank -%}
-              <img src="{{ block.settings.icon | image_url: width: 64 }}" alt="{{ block.settings.icon.alt | escape }}" loading="lazy" width="32" height="32" style="object-fit: contain;">
-            {%- else -%}
-              {%- render 'icon', code: 'check' -%}
-            {%- endif -%}
-          </div>
-          {%- if block.settings.title != blank -%}
-            <h5 class="vr-feature-title">{{ block.settings.title }}</h5>
-          {%- endif -%}
-          {%- if block.settings.description != blank -%}
-            <div class="vr-feature-desc rte">{{ block.settings.description }}</div>
-          {%- endif -%}
-        </div>
-      {%- endfor -%}
-    </div>
-  </div>
+	<div class="container">
+		<div class="vr-features-grid">
+			{%- for block in section.blocks -%}
+				<div class="vr-feature-item box-item" {{ block.shopify_attributes }}>
+					<div class="vr-feature-icon">
+						{%- if block.settings.icon != blank -%}
+							<img src="{{ block.settings.icon | image_url: width: 64 }}" alt="{{ block.settings.icon.alt | escape }}" loading="lazy" width="32" height="32" style="object-fit: contain;">
+						{%- else -%}
+							{%- render 'icon', code: 'check' -%}
+						{%- endif -%}
+					</div>
+					{%- if block.settings.title != blank -%}
+						<h5 class="vr-feature-title">{{ block.settings.title }}</h5>
+					{%- endif -%}
+					{%- if block.settings.description != blank -%}
+						<div class="vr-feature-desc rte">{{ block.settings.description }}</div>
+					{%- endif -%}
+				</div>
+			{%- endfor -%}
+		</div>
+	</div>
 </div>
 
 {% schema %}
 {
-  "name": "t:sections.vr-features.name",
-  "tag": "section",
-  "class": "vr-features-section",
-  "settings": [
-    {
-      "type": "color_scheme",
-      "id": "color_scheme",
-      "label": "t:settings_schema.colors.label",
-      "default": "scheme-1"
-    },
-    {
-      "type": "range",
-      "id": "columns",
-      "min": 2,
-      "max": 6,
-      "step": 1,
-      "default": 4,
-      "label": "Columns (Desktop)"
-    },
-    {
-      "type": "header",
-      "content": "t:general.padding.header_padding.content"
-    },
-    {
-      "type": "range",
-      "id": "padding_top",
-      "min": 0,
-      "max": 100,
-      "step": 1,
-      "default": 50,
-      "unit": "px",
-      "label": "t:general.padding.top.label"
-    },
-    {
-      "type": "range",
-      "id": "padding_bottom",
-      "min": 0,
-      "max": 100,
-      "step": 1,
-      "default": 50,
-      "unit": "px",
-      "label": "t:general.padding.bottom.label"
-    },
-    {
-      "type": "paragraph",
-      "content": "t:general.padding.paragraph_mobile.content"
-    },
-    {
-      "type": "range",
-      "id": "padding_top_mobile",
-      "min": 0,
-      "max": 100,
-      "step": 1,
-      "default": 20,
-      "unit": "px",
-      "label": "t:general.padding.top.label"
-    },
-    {
-      "type": "range",
-      "id": "padding_bottom_mobile",
-      "min": 0,
-      "max": 100,
-      "step": 1,
-      "default": 20,
-      "unit": "px",
-      "label": "t:general.padding.bottom.label"
-    }
-  ],
-  "blocks": [
-    {
-      "type": "feature",
-      "name": "Feature Item",
-      "settings": [
-        {
-          "type": "image_picker",
-          "id": "icon",
-          "label": "Icon image",
-          "info": "Upload an icon image (transparent PNG or SVG recommended)"
-        },
-        {
-          "type": "text",
-          "id": "title",
-          "label": "Title",
-          "default": "Free Shipping"
-        },
-        {
-          "type": "richtext",
-          "id": "description",
-          "label": "Description",
-          "default": "<p>Enjoy free shipping on all orders.</p>"
-        }
-      ]
-    }
-  ],
-  "presets": [
-    {
-      "name": "t:sections.vr-features.name",
-      "blocks": [
-        { "type": "feature", "settings": { "title": "Free Shipping", "description": "<p>Enjoy free shipping on all orders, minimum purchase required. Shop now and save!</p>" } },
-        { "type": "feature", "settings": { "title": "24/7 Support", "description": "<p>Get 24/7 support for all your needs. We're here to help, anytime, anywhere.</p>" } },
-        { "type": "feature", "settings": { "title": "Money Return", "description": "<p>Get a full refund with our hassle-free money-back guarantee.</p>" } },
-        { "type": "feature", "settings": { "title": "Order Discount", "description": "<p>Enjoy discounted prices on your orders. Don't miss out on our special discounts.</p>" } }
-      ]
-    }
-  ]
+	"name": "t:sections.vr-features.name",
+	"tag": "section",
+	"class": "vr-features-section",
+	"settings": [
+		{
+			"type": "color_scheme",
+			"id": "color_scheme",
+			"label": "t:settings_schema.colors.label",
+			"default": "scheme-6"
+		},
+		{
+			"type": "range",
+			"id": "columns",
+			"min": 2,
+			"max": 6,
+			"step": 1,
+			"default": 4,
+			"label": "Columns (Desktop)"
+		},
+		{
+			"type": "header",
+			"content": "t:general.padding.header_padding.content"
+		},
+		{
+			"type": "range",
+			"id": "padding_top",
+			"min": 0,
+			"max": 100,
+			"step": 1,
+			"default": 50,
+			"unit": "px",
+			"label": "t:general.padding.top.label"
+		},
+		{
+			"type": "range",
+			"id": "padding_bottom",
+			"min": 0,
+			"max": 100,
+			"step": 1,
+			"default": 50,
+			"unit": "px",
+			"label": "t:general.padding.bottom.label"
+		},
+		{
+			"type": "paragraph",
+			"content": "t:general.padding.paragraph_mobile.content"
+		},
+		{
+			"type": "range",
+			"id": "padding_top_mobile",
+			"min": 0,
+			"max": 100,
+			"step": 1,
+			"default": 20,
+			"unit": "px",
+			"label": "t:general.padding.top.label"
+		},
+		{
+			"type": "range",
+			"id": "padding_bottom_mobile",
+			"min": 0,
+			"max": 100,
+			"step": 1,
+			"default": 20,
+			"unit": "px",
+			"label": "t:general.padding.bottom.label"
+		}
+	],
+	"blocks": [
+		{
+			"type": "feature",
+			"name": "Feature Item",
+			"settings": [
+				{
+					"type": "image_picker",
+					"id": "icon",
+					"label": "Icon image",
+					"info": "Upload an icon image (transparent PNG or SVG recommended)"
+				},
+				{
+					"type": "text",
+					"id": "title",
+					"label": "Title",
+					"default": "Free Shipping"
+				},
+				{
+					"type": "richtext",
+					"id": "description",
+					"label": "Description",
+					"default": "<p>Enjoy free shipping on all orders.</p>"
+				}
+			]
+		}
+	],
+	"presets": [
+		{
+			"name": "t:sections.vr-features.name",
+			"blocks": [
+				{ "type": "feature", "settings": { "title": "Free Shipping", "description": "<p>Enjoy free shipping on all orders, minimum purchase required. Shop now and save!</p>" } },
+				{ "type": "feature", "settings": { "title": "24/7 Support", "description": "<p>Get 24/7 support for all your needs. We're here to help, anytime, anywhere.</p>" } },
+				{ "type": "feature", "settings": { "title": "Money Return", "description": "<p>Get a full refund with our hassle-free money-back guarantee.</p>" } },
+				{ "type": "feature", "settings": { "title": "Order Discount", "description": "<p>Enjoy discounted prices on your orders. Don't miss out on our special discounts.</p>" } }
+			]
+		}
+	]
 }
 {% endschema %}
