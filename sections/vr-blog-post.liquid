@@ -60,7 +60,7 @@
                 </div>
                 {%- if section.settings.button_text != blank -%}
                     <div class="header-right">
-                        <a class="button {{ section.settings.button_type }} view-all-btn" href="{{ section.settings.blog.url | default: '#' }}" aria-label="{{- 'general.text.link' | t -}}">
+                        <a class="button {% if section.settings.button_style == 'gradient' %}gradient-button{% else %}{{ section.settings.button_style }}-button{% endif %} view-all-btn" href="{{ section.settings.blog.url | default: '#' }}" aria-label="{{- 'general.text.link' | t -}}">
                             {{- section.settings.button_text -}}
                         </a>
                     </div>
@@ -355,23 +355,23 @@
 		},
 		{
 			"type": "select",
-			"id": "button_type",
+			"id": "button_style",
 			"options": [
 				{
-					"value": "primary-button",
-					"label": "Primary"
+					"value": "primary",
+					"label": "t:general.typography.style.option_1.label"
 				},
 				{
-					"value": "secondary-button",
-					"label": "Secondary"
+					"value": "secondary",
+					"label": "t:general.typography.style.option_2.label"
 				},
 				{
-					"value": "gradient-button",
-					"label": "Gradient"
+					"value": "gradient",
+					"label": "Gradient button"
 				}
 			],
-			"default": "gradient-button",
-			"label": "Button Type"
+			"default": "gradient",
+			"label": "Button Style"
 		},
 		{
 			"type": "header",

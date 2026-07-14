@@ -130,7 +130,7 @@
 										{% endif %}
 
 										{%- if block.settings.button_label != blank -%}
-											<a class="button gradient-button" href="{{ block.settings.button_url | default: '#' }}" aria-label="{{- 'general.text.link' | t -}}">
+											<a class="button {% if block.settings.button_style == 'gradient' %}gradient-button{% else %}{{ block.settings.button_style }}-button{% endif %}" href="{{ block.settings.button_url | default: '#' }}" aria-label="{{- 'general.text.link' | t -}}">
 												{{- block.settings.button_label | escape -}}
 											</a>
 										{%- endif -%}
@@ -143,7 +143,7 @@
 
 			{%- if button != blank -%}
 				<div class="button-wrapper text-center" style="margin-top: 40px;">
-					<a class="button gradient-button" href="{{ section.settings.button_link | default: '#' }}" aria-label="{{- 'general.text.link' | t -}}">
+					<a class="button {% if section.settings.button_style == 'gradient' %}gradient-button{% else %}{{ section.settings.button_style }}-button{% endif %}" href="{{ section.settings.button_link | default: '#' }}" aria-label="{{- 'general.text.link' | t -}}">
 						{{- button -}}
 					</a>
 				</div>
@@ -213,6 +213,26 @@
 			"type": "url",
 			"id": "button_link",
 			"label": "t:general.typography.button_link.label"
+		},
+		{
+			"type": "select",
+			"id": "button_style",
+			"options": [
+				{
+					"value": "primary",
+					"label": "t:general.typography.style.option_1.label"
+				},
+				{
+					"value": "secondary",
+					"label": "t:general.typography.style.option_2.label"
+				},
+				{
+					"value": "gradient",
+					"label": "Gradient button"
+				}
+			],
+			"default": "gradient",
+			"label": "Button Style"
 		},
 		{
 			"type": "header",
@@ -357,6 +377,26 @@
 					"type": "url",
 					"id": "button_url",
 					"label": "t:general.typography.button_link.label"
+				},
+				{
+					"type": "select",
+					"id": "button_style",
+					"options": [
+						{
+							"value": "primary",
+							"label": "t:general.typography.style.option_1.label"
+						},
+						{
+							"value": "secondary",
+							"label": "t:general.typography.style.option_2.label"
+						},
+						{
+							"value": "gradient",
+							"label": "Gradient button"
+						}
+					],
+					"default": "gradient",
+					"label": "Button Style"
 				}
 			]
 		}
