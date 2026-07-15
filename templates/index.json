@@ -40,6 +40,7 @@
       ],
       "name": "t:sections.vr-slideshow.name",
       "settings": {
+        "color_scheme": "",
         "full": true,
         "height": "large",
         "padding_top": 0,
@@ -101,6 +102,7 @@
       ],
       "name": "VR Collection Slider",
       "settings": {
+        "color_scheme": "",
         "full_width": true,
         "heading": "",
         "heading_size": "h2",
@@ -117,6 +119,7 @@
       "name": "VR Blog Posts",
       "settings": {
         "full": false,
+        "color_scheme": "",
         "blog": "news",
         "column": 3,
         "total": 5,
@@ -173,13 +176,13 @@
       "name": "VR Featured Collection",
       "settings": {
         "full": false,
+        "color_scheme": "",
         "sub_heading": "Discover the most popular VR accessories chosen by gamers worldwide, designed to elevate your immersive experience.",
         "heading": "Top-rate Featured VR Accessories",
         "heading_size": "h4",
         "text_align": "center",
         "button_text": "Explore Products",
         "button_link": "",
-        "button_style": "gradient",
         "enable_slider": false,
         "columns": 4,
         "total": 8,
@@ -197,6 +200,7 @@
       "type": "vr-video-with-text",
       "name": "t:sections.vr-video-with-text.name",
       "settings": {
+        "color_scheme": "",
         "full": true,
         "source": "host",
         "url": "https://www.youtube.com/watch?v=_9VUPq3SxOc",
@@ -221,6 +225,7 @@
       "type": "vr-featured-product",
       "name": "VR Featured Product",
       "settings": {
+        "color_scheme": "",
         "full_width": false,
         "heading": "Recommended products just for You",
         "heading_size": "h3",
@@ -228,7 +233,6 @@
         "text_align": "left",
         "button_text": "Explore Products",
         "button_link": "",
-        "button_style": "gradient",
         "collection": "automated-collection",
         "columns": 4,
         "total_items": 4,
@@ -338,6 +342,7 @@
       ],
       "name": "VR Partners",
       "settings": {
+        "color_scheme": "",
         "heading_text": "Discover the Best in VR Top-Rated Brands",
         "heading_size": "h5",
         "text": "<p>Discover the most popular VR accessories chosen by gamers worldwide, designed to elevate your immersive experience.</p>",
@@ -364,7 +369,8 @@
             "text": "Start Your VR Arcade",
             "description": "<p>Exclusive VR arcade bundles, expert advice, and dedicated support for launching your VR arcade business.</p>",
             "button_label": "Learn More",
-            "button_url": ""
+            "button_url": "",
+            "button_style": "gradient"
           }
         },
         "item_pa8tLA": {
@@ -374,7 +380,8 @@
             "text": "Customized XR Solutions",
             "description": "<p>Tailored Extended Reality (XR) solutions for enterprises, delivering customized professional experiences to meet unique business needs</p>",
             "button_label": "Learn More",
-            "button_url": ""
+            "button_url": "",
+            "button_style": "gradient"
           }
         }
       },
@@ -385,6 +392,7 @@
       "name": "t:sections.vr-multicolumn.name",
       "settings": {
         "full": false,
+        "color_scheme": "scheme-3",
         "caption": "",
         "heading_text": "",
         "heading_size": "h3",
@@ -444,6 +452,7 @@
       ],
       "name": "VR Features",
       "settings": {
+        "color_scheme": "",
         "columns": 4,
         "padding_top": 100,
         "padding_bottom": 50,
