@@ -200,7 +200,7 @@
       "type": "vr-video-with-text",
       "name": "t:sections.vr-video-with-text.name",
       "settings": {
-        "color_scheme": "",
+        "color_scheme": "scheme-1",
         "full": true,
         "source": "host",
         "url": "https://www.youtube.com/watch?v=_9VUPq3SxOc",
