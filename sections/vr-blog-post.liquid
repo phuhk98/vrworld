@@ -60,7 +60,8 @@
                 </div>
                 {%- if section.settings.button_text != blank -%}
                     <div class="header-right">
-                        <a class="button {% if section.settings.button_style == 'gradient' %}gradient-button{% else %}{{ section.settings.button_style }}-button{% endif %} view-all-btn" href="{{ section.settings.blog.url | default: '#' }}" aria-label="{{- 'general.text.link' | t -}}">
+						{%- assign global_btn_style = settings.button_style | default: 'primary' -%}
+                        <a class="button {% if global_btn_style == 'primary' %}primary-button{% elsif global_btn_style == 'secondary' %}secondary-button{% elsif global_btn_style == 'gradient' %}gradient-button{% else %}{{ global_btn_style }}-button{% endif %} view-all-btn" href="{{ section.settings.blog.url | default: '#' }}" aria-label="{{- 'general.text.link' | t -}}">
                             {{- section.settings.button_text -}}
                         </a>
                     </div>
@@ -352,26 +353,6 @@
 			"id": "button_text",
 			"default": "ALL POSTS",
 			"label": "t:general.typography.button_text.label"
-		},
-		{
-			"type": "select",
-			"id": "button_style",
-			"options": [
-				{
-					"value": "primary",
-					"label": "t:general.typography.style.option_1.label"
-				},
-				{
-					"value": "secondary",
-					"label": "t:general.typography.style.option_2.label"
-				},
-				{
-					"value": "gradient",
-					"label": "Gradient button"
-				}
-			],
-			"default": "gradient",
-			"label": "Button Style"
 		},
 		{
 			"type": "header",

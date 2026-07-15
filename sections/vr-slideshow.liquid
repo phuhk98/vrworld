@@ -146,12 +146,13 @@
 														{%- if has_button -%}
 														    <div class="slider-element slider-button" style="display: inline-flex; gap: 15px; flex-wrap: wrap;">
 																{%- if button != blank -%}
-																	<a href="{{ block.settings.link | default: '#' }}" class="button {% if block.settings.button_style == 'gradient' %}gradient-button{% else %}{{ block.settings.button_style }}-button{% endif %} slide-element-inner" tabindex="0">
+																	{%- assign global_btn_style = settings.button_style | default: 'primary' -%}
+																	<a href="{{ block.settings.link | default: '#' }}" class="button {% if global_btn_style == 'primary' %}primary-button{% elsif global_btn_style == 'secondary' %}secondary-button{% elsif global_btn_style == 'gradient' %}gradient-button{% else %}{{ global_btn_style }}-button{% endif %} slide-element-inner" tabindex="0">
 																		{{- button | escape -}}
 																	</a>
 																{%- endif -%}
 																{%- if button_2 != blank -%}
-																	<a href="{{ block.settings.link_2 | default: '#' }}" class="button {% if block.settings.button_style_2 == 'gradient' %}gradient-button{% else %}{{ block.settings.button_style_2 }}-button{% endif %} slide-element-inner" tabindex="0">
+																	<a href="{{ block.settings.link_2 | default: '#' }}" class="button {% if global_btn_style == 'primary' %}primary-button{% elsif global_btn_style == 'secondary' %}secondary-button{% elsif global_btn_style == 'gradient' %}gradient-button{% else %}{{ global_btn_style }}-button{% endif %} slide-element-inner" tabindex="0">
 																		{{- button_2 | escape -}}
 																	</a>
 																{%- endif -%}
@@ -386,26 +387,6 @@
 					"label": "t:general.typography.button_link.label"
 				},
 				{
-					"type": "select",
-					"id": "button_style",
-					"options": [
-						{
-							"value": "primary",
-							"label": "t:general.typography.style.option_1.label"
-						},
-						{
-							"value": "secondary",
-							"label": "t:general.typography.style.option_2.label"
-						},
-						{
-							"value": "gradient",
-							"label": "Gradient button"
-						}
-					],
-					"default": "primary",
-					"label": "Button Style"
-				},
-				{
 					"type": "text",
 					"id": "button_2",
 					"default": "Button label 2",
@@ -415,26 +396,6 @@
 					"type": "url",
 					"id": "link_2",
 					"label": "t:general.typography.button_link.label"
-				},
-				{
-					"type": "select",
-					"id": "button_style_2",
-					"options": [
-						{
-							"value": "primary",
-							"label": "t:general.typography.style.option_1.label"
-						},
-						{
-							"value": "secondary",
-							"label": "t:general.typography.style.option_2.label"
-						},
-						{
-							"value": "gradient",
-							"label": "Gradient button"
-						}
-					],
-					"default": "primary",
-					"label": "Button Style 2"
 				},
 				{
 					"type": "header",
