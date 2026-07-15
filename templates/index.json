@@ -40,7 +40,7 @@
       ],
       "name": "t:sections.vr-slideshow.name",
       "settings": {
-        "color_scheme": "",
+        "color_scheme": "scheme-3",
         "full": true,
         "height": "large",
         "padding_top": 0,
