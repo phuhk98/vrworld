@@ -8,596 +8,595 @@
  * ------------------------------------------------------------
  */
 {
-	"sections": {
-		"breadcrumb": {
-			"type": "breadcrumb",
-			"name": "t:sections.breadcrumb.presets.name",
-			"settings": {
-				"full": false,
-				"overlay": 50,
-				"separator_line": true,
-				"color_scheme": "",
-				"show_title": false,
-				"show_scrolling": false,
-				"font_scale": 100,
-				"description": "",
-				"description_position": "below",
-				"right_description": false,
-				"padding_top": 16,
-				"padding_bottom": 16,
-				"padding_top_mobile": 16,
-				"padding_bottom_mobile": 16
-			}
-		},
-		"main": {
-			"type": "main-product",
-			"blocks": {
-				"information-1": {
-					"type": "information",
-					"settings": {
-						"vendor": true,
-						"collections": false,
-						"tags": false,
-						"type": false,
-						"sku": false,
-						"barcode": false,
-						"padding_bottom": 18
-					}
-				},
-				"title": {
-					"type": "title",
-					"settings": {
-						"font_size": "h4",
-						"padding_bottom": 8
-					}
-				},
-				"price": {
-					"type": "price",
-					"settings": {
-						"font_size": "h6",
-						"padding_bottom": 20
-					}
-				},
-				"variant-picker": {
-					"type": "variant-picker",
-					"settings": {
-						"picker_type": "swatch",
-						"padding_bottom": 24
-					}
-				},
-				"description": {
-					"type": "description",
-					"settings": {
-						"padding_bottom": 24
-					}
-				},
-				"availability_hfntLN": {
-					"type": "availability",
-					"settings": {
-						"low_stock": 0,
-						"padding_bottom": 24
-					}
-				},
-				"add-to-cart": {
-					"type": "add-to-cart",
-					"settings": {
-						"text_transform": "uppercase",
-						"quantity_selector": true,
-						"dynamic_checkout": true,
-						"show_gift_card": true,
-						"padding_bottom": 24
-					}
-				},
-				"pickup_availability-1": {
-					"type": "pickup-availability",
-					"settings": {
-						"padding_bottom": 24
-					}
-				},
-				"share-1": {
-					"type": "share",
-					"settings": {
-						"share_label": "Share",
-						"type": "social",
-						"padding_bottom": 24
-					}
-				},
-				"collapsible_tab-1": {
-					"type": "collapsible-tab",
-					"settings": {
-						"heading": "Description",
-						"font_size": "h7",
-						"content": "<p>Use collapsible tabs for more detailed information that will help customers make a purchasing decision.</p><p>Ex: Shipping and return policies, size guides, and other common questions.</p>",
-						"page": "",
-						"icon": "information",
-						"padding_bottom": 0
-					}
-				},
-				"collapsible-tab-2": {
-					"type": "collapsible-tab",
-					"settings": {
-						"heading": "Ingredients",
-						"font_size": "h7",
-						"content": "<p>All shipping methods are shown in checkout with a delivery time estimate. As this is only an estimate, please allow an extra day if your order hasn't arrived when expected. We try to offer tracking numbers wherever possible, so you can stay on top of the order status. International orders may be subject to customs checks, which can slow the process down slightly. </p>",
-						"page": "",
-						"icon": "flower",
-						"padding_bottom": 0
-					}
-				},
-				"collapsible-tab-3": {
-					"type": "collapsible-tab",
-					"settings": {
-						"heading": "Directions",
-						"font_size": "h7",
-						"content": "<p>All shipping methods are shown in checkout with a delivery time estimate. As this is only an estimate, please allow an extra day if your order hasn't arrived when expected. We try to offer tracking numbers wherever possible, so you can stay on top of the order status. International orders may be subject to customs checks, which can slow the process down slightly. </p>",
-						"page": "",
-						"icon": "wayfinding",
-						"padding_bottom": 0
-					}
-				},
-				"collapsible_tab-4": {
-					"type": "collapsible-tab",
-					"settings": {
-						"heading": "Legal Disclaimer",
-						"font_size": "h7",
-						"content": "<p>Use collapsible tabs for more detailed information that will help customers make a purchasing decision.</p><p>Ex: Shipping and return policies, size guides, and other common questions.</p>",
-						"page": "",
-						"icon": "warning",
-						"padding_bottom": 0
-					}
-				},
-				"complementary-1": {
-					"type": "complementary",
-					"settings": {
-						"heading": "Pair well with",
-						"product_list_limit": 10,
-						"padding_bottom": 0
-					}
-				}
-			},
-			"block_order": [
-				"information-1",
-				"title",
-				"price",
-				"variant-picker",
-				"description",
-				"availability_hfntLN",
-				"add-to-cart",
-				"pickup_availability-1",
-				"share-1",
-				"collapsible_tab-1",
-				"collapsible-tab-2",
-				"collapsible-tab-3",
-				"collapsible_tab-4",
-				"complementary-1"
-			],
-			"settings": {
-				"color_scheme": "",
-				"full": false,
-				"space": 64,
-				"sticky_add_to_cart": "hidden",
-				"width": 64,
-				"layout": "layout-1",
-				"lightbox": true,
-				"video_looping": false,
-				"alignment": "left",
-				"padding_top": 24,
-				"padding_bottom": 80,
-				"padding_top_mobile": 24,
-				"padding_bottom_mobile": 60
-			}
-		},
-		"scrolling_promotion": {
-			"type": "scrolling-promotion",
-			"blocks": {
-				"text-1": {
-					"type": "text",
-					"settings": {
-						"text": "BESTSELLERS",
-						"icon": false
-					}
-				},
-				"text-2": {
-					"type": "product",
-					"settings": {
-						"product": "astaxanthin-12mg",
-						"icon": false
-					}
-				},
-				"text-3": {
-					"type": "text",
-					"settings": {
-						"text": "BESTSELLERS",
-						"icon": false
-					}
-				},
-				"text-4": {
-					"type": "product",
-					"settings": {
-						"product": "coq10-100mg",
-						"icon": false
-					}
-				}
-			},
-			"block_order": [
-				"text-1",
-				"text-2",
-				"text-3",
-				"text-4"
-			],
-			"name": "t:sections.scrolling-promotion.name",
-			"settings": {
-				"color_scheme": "",
-				"full": true,
-				"hover_pause": true,
-				"direction": "rtl",
-				"time": 40,
-				"space": 80,
-				"scale": 400,
-				"mobile_text_scale": 200,
-				"image_scale": 100,
-				"product_color_scheme": "",
-				"padding_top": 0,
-				"padding_bottom": 80,
-				"padding_top_mobile": 0,
-				"padding_bottom_mobile": 60
-			}
-		},
-		"feature_box": {
-			"type": "feature-box",
-			"blocks": {
-				"item-1": {
-					"type": "item",
-					"settings": {
-						"icon_img": "shopify://shop_images/image_3.png",
-						"text": "<h3>Certified Vegan</h3>",
-						"description": "<p>To be approved for Vegan Certification, a product must not contain meat, fish, fowl, animal by-products, eggs or egg products, milk or milk products, honey or honey bee products, insects or products from insects.</p>",
-						"button_label": "View certificate",
-						"button_link": "",
-						"popup_image": "shopify://shop_images/vegan-certificate-for-beauvoir-brand.jpg",
-						"popup_content": ""
-					}
-				},
-				"item-2": {
-					"type": "item",
-					"settings": {
-						"icon_img": "shopify://shop_images/image_1_ba353319-3c16-4e97-946a-a9d1cc035a9a.png",
-						"text": "<h3>Non-GMO Verified</h3>",
-						"description": "<p>The Non-GMO Project works with four independent technical administrators (TAs) to ensure unbiased product evaluations.</p>",
-						"button_label": "View certificate",
-						"button_link": "",
-						"popup_image": "shopify://shop_images/non-gmo-verified-certificate-for-beauvoir-brand.jpg",
-						"popup_content": ""
-					}
-				},
-				"item-3": {
-					"type": "item",
-					"settings": {
-						"icon_img": "shopify://shop_images/image_2.png",
-						"text": "<h3>cGMP Compliant</h3>",
-						"description": "<p>To be compliant with the cGMP regulations, companies must meet the latest quality standards. These apply to buildings and facilities, equipment, production, process controls, laboratory controls, packaging and labeling, and salvaged drug products.</p>",
-						"button_label": "View certificate",
-						"button_link": "",
-						"popup_image": "shopify://shop_images/cgmp-compliant-certificate-for-beauvoir-brand.jpg",
-						"popup_content": ""
-					}
-				}
-			},
-			"block_order": [
-				"item-1",
-				"item-2",
-				"item-3"
-			],
-			"name": "t:sections.feature-box.name",
-			"settings": {
-				"full": false,
-				"color_scheme": "scheme-1",
-				"layout": "carousel",
-				"columns": 3,
-				"item_scheme": "scheme-be293f48-285a-4399-9036-8e0fac37561a",
-				"caption": "( WHY CHOOSE US )",
-				"heading_text": "Dedicate to quality",
-				"heading_size": "h2",
-				"text": "<p>We believe in using the best ingredients so you can have total peace of mind in the supplements you are taking.</p>",
-				"title_color_scheme": "scheme-249bc96c-a978-4bba-a5bc-70409aeabb75",
-				"padding_top": 0,
-				"padding_bottom": 80,
-				"padding_top_mobile": 0,
-				"padding_bottom_mobile": 60
-			}
-		},
-		"image_with_text": {
-			"type": "image-with-text",
-			"name": "t:sections.image-with-text.presets.name",
-			"settings": {
-				"color_scheme": "",
-				"full": false,
-				"image": "shopify://shop_images/image_d287bea2-c843-47b5-b8ce-6d28331cfab4.png",
-				"layout": "image",
-				"height": "medium",
-				"width": "medium",
-				"content_color_scheme": "",
-				"desktop_position": "center",
-				"desktop_align": "left",
-				"mobile_align": "left",
-				"caption": "",
-				"heading_text": "Supplement your sunshine",
-				"heading_size": "h4",
-				"text": "<p>Vitamin D is naturally created by sunlight to help your body process calcium, but it can be all too easy to miss out on consuming this essential nutrient naturally. This daily supplement can help you pick up the slack. Ideal for supplying your body with what it needs for stronger, healthier bones and immune support.</p><ul><li>Support bone & immune health</li><li>With coconut MCT oil</li><li>Gluten-free & non-GMO</li></ul>",
-				"button_label": "",
-				"button_link": "",
-				"padding_top": 0,
-				"padding_bottom": 80,
-				"padding_top_mobile": 0,
-				"padding_bottom_mobile": 0
-			}
-		},
-		"image_spotlight": {
-			"type": "image-spotlight",
-			"blocks": {
-				"product-1": {
-					"type": "product",
-					"settings": {
-						"color": "#ffffff",
-						"heading": "Friendly & Approachable:",
-						"heading_size": "h4",
-						"description": "<p>Our Vitamin D3 delivers essential daily support for strong bones, a balanced mood, and a resilient immune system—all in eco-conscious packaging. Sourced responsibly and packaged using recyclable, minimal-waste materials, this supplement is designed to help you feel your best while reducing your impact on the earth.</p><p><br/>Because true wellness means caring for yourself <em>and</em> the world around you.</p>",
-						"horizontal": 40,
-						"vertical": 27
-					}
-				},
-				"product-2": {
-					"type": "product",
-					"settings": {
-						"color": "#ffffff",
-						"heading": "Daily Sunshine in a Capsule",
-						"heading_size": "h4",
-						"description": "<p>Vitamin D3 formula delivers the exact same biologically active form of vitamin D produced in the body from direct sunlight.</p><p><br/>And because D3 is best taken with a fat, we added coconut MCT oil to our softgels so you can get more of what your body needs.</p>",
-						"horizontal": 44,
-						"vertical": 44
-					}
-				},
-				"product-3": {
-					"type": "product",
-					"settings": {
-						"color": "#ffffff",
-						"heading": "Certified high-quality supplements",
-						"heading_size": "h4",
-						"description": "<p>we are endlessly dedicated to bringing you the latest innovations in health and wellness paired with our mission of providing superior products.</p><p><br/>That means only sourcing the highest quality ingredients from around the world and closely partnering with trusted manufacturers to bring you truly exceptional products.</p>",
-						"horizontal": 57,
-						"vertical": 32
-					}
-				}
-			},
-			"block_order": [
-				"product-1",
-				"product-2",
-				"product-3"
-			],
-			"name": "t:sections.image_spotlight.name",
-			"settings": {
-				"full": true,
-				"color_scheme": "scheme-2",
-				"image": "shopify://shop_images/Group_1-Photoroom_1.png",
-				"padding_top": 0,
-				"padding_bottom": 0,
-				"padding_top_mobile": 0,
-				"padding_bottom_mobile": 0
-			}
-		},
-		"video_with_text": {
-			"type": "video-with-text",
-			"name": "t:sections.video-with-text.name",
-			"settings": {
-				"color_scheme": "",
-				"full": false,
-				"source": "native",
-				"url": "https://www.youtube.com/watch?v=_9VUPq3SxOc",
-				"image": "shopify://shop_images/Rectangle_4.png",
-				"height": "small",
-				"height_mobile": "auto",
-				"layout": "text",
-				"caption": "",
-				"heading_text": "Essential to optimize your daily wellness",
-				"heading_size": "h2",
-				"text": "<p>With over 40 years of innovation in sports nutrition, we are dedicated to helping you perform your best — day in and day out. Our research-backed vitamins, supplements and performance essentials are designed to support all of your wellness goals in finding both your balance and your edge.</p>",
-				"button_label": "",
-				"button_link": "",
-				"desktop_align": "left",
-				"mobile_align": "left",
-				"content_color_scheme": "",
-				"padding_top": 80,
-				"padding_bottom": 80,
-				"padding_top_mobile": 60,
-				"padding_bottom_mobile": 20
-			}
-		},
-		"testimonial": {
-			"type": "testimonial",
-			"blocks": {
-				"testimonial-1": {
-					"type": "testimonial",
-					"settings": {
-						"star_reviews": "5",
-						"body_text": "I take these Vitamin D3 soft gels daily. Sometimes my vitamin D gets low and this helps out a lot. They are easy to swallow and don’t leave a bad taste after. I take all my vitamins with something on my stomach.",
-						"author_image": "shopify://shop_images/image_4.png",
-						"author_name": "<strong>Sarah T.</strong>",
-						"author_comment": "I recommend this product.",
-						"author_verified": true,
-						"product": "vitamin-d3-with-oil",
-						"product_color_scheme": ""
-					}
-				},
-				"testimonial-2": {
-					"type": "testimonial",
-					"settings": {
-						"star_reviews": "5",
-						"body_text": "I can generally tell when I need this one, especially in the fall and winter months. I got these to try and get a head start and overall feel well, including these in my daily routine. I've tried and like this brand.",
-						"author_image": "shopify://shop_images/image.png",
-						"author_name": "<strong>James L.</strong>",
-						"author_comment": "I recommend this product.",
-						"author_verified": true,
-						"product": "garlic-with-parsley",
-						"product_color_scheme": ""
-					}
-				},
-				"testimonial-3": {
-					"type": "testimonial",
-					"settings": {
-						"star_reviews": "5",
-						"body_text": "Around the three week mark of starting I noticed my back pain was diminishing. I haven't changed any other factors. My back pain is now reduced by roughly 70-80%. Really remarkable. I'm beyond impressed.",
-						"author_image": "shopify://shop_images/product_image_2.png",
-						"author_name": "<strong>Susan G.</strong>",
-						"author_comment": "I recommend this product.",
-						"author_verified": true,
-						"product": "collagen-peptides",
-						"product_color_scheme": ""
-					}
-				}
-			},
-			"block_order": [
-				"testimonial-1",
-				"testimonial-2",
-				"testimonial-3"
-			],
-			"name": "t:sections.testimonial.name",
-			"settings": {
-				"color_scheme": "scheme-3",
-				"full": false,
-				"caption": "( 4.9/5.0 BASED ON +10,000 CUSTOMERS )",
-				"heading": "What customers say about us",
-				"heading_size": "h2",
-				"padding_top": 100,
-				"padding_bottom": 100,
-				"padding_top_mobile": 60,
-				"padding_bottom_mobile": 60
-			}
-		},
-		"faqs": {
-			"type": "faqs",
-			"blocks": {
-				"category-1": {
-					"type": "category",
-					"settings": {
-						"category": "Product"
-					}
-				},
-				"tab-1": {
-					"type": "tab",
-					"settings": {
-						"question": "Are over-ear headphones comfortable for extended periods of listening?",
-						"answer": "<p><strong>Yes, over-ear headphones are generally comfortable for extended periods of listening</strong>, especially when they are well-designed. They fully enclose your ears, which helps distribute pressure more evenly around the head and reduces ear fatigue compared to on-ear or in-ear options.</p><p>However, comfort can vary depending on head shape, weight of the headphones, and how tight the clamping force is. Trying them on or reading user reviews can help you find a pair suited for long sessions.</p>"
-					}
-				},
-				"tab-2": {
-					"type": "tab",
-					"settings": {
-						"question": "Do over-ear headphones offer better sound quality compared to in-ear models?",
-						"answer": "<p><strong>Yes, over-ear headphones often offer better sound quality compared to in-ear models</strong>, especially in terms of soundstage, clarity, and bass response.</p><p>Here’s why:</p><ul><li><strong>Larger drivers</strong> in over-ear headphones can produce richer, more dynamic sound.</li><li><strong>Better soundstage</strong> gives you a more immersive, \"live\" experience, with clearer separation between instruments.</li><li><strong>Improved bass response</strong> due to more space for air movement.</li><li><strong>Noise isolation or cancellation</strong> tends to be more effective in premium over-ear designs<br/></li></ul><p>However, high-end in-ear monitors (IEMs) can also deliver excellent sound quality, especially for studio use or travel, and are often more portable. So while over-ears generally have the edge for audiophile or home listening, the best choice depends on your use case.</p>"
-					}
-				},
-				"tab-3": {
-					"type": "tab",
-					"settings": {
-						"question": "Are over-ear headphones suitable for sports or gym activities?",
-						"answer": "<p>Over-ear headphones are generally not ideal for sports or gym activities. While they can offer excellent sound and comfort, they come with a few drawbacks for active use:<br/><br/><strong>Why they may not be suitable:</strong></p><ul><li>Bulky and heavier than in-ear models, which can feel cumbersome during movement.</li><li>Less stable fit, making them more likely to shift or fall off during intense activity.</li><li>Limited sweat resistance — most over-ear headphones aren’t designed to handle moisture or heat buildup.</li></ul><p><strong>Better alternatives:</strong></p><ul><li>In-ear (true wireless or wired) earbuds with secure fit options (ear hooks, wings).</li><li>Sweatproof or waterproof ratings (IPX4 and above) are recommended.</li><li>If you really prefer over-ears for the gym, look for sport-specific models designed for durability and moisture resistance — but for most people, in-ears are the more practical choice.</li></ul>"
-					}
-				},
-				"tab-4": {
-					"type": "tab",
-					"settings": {
-						"question": "How do I maintain and clean my over-ear headphones?",
-						"answer": "<ol><li><strong>Unplug or turn off the headphones</strong><br/>Always disconnect them from your device before cleaning to avoid damage.<br/><br/></li><li><strong>Wipe down surfaces</strong><br/>Use a soft, dry or slightly damp microfiber cloth to clean the headband, ear cups, and exterior. Avoid harsh cleaners or alcohol.<br/><br/></li><li><strong>Clean the ear cushions<br/></strong>If they’re removable, take them off and gently wipe with a damp cloth.<br/><br/>For deeper cleaning, use a mild soap solution and let them air dry completely before reattaching.<br/><br/>Leather or faux leather pads benefit from a light application of conditioner.<br/><br/></li><li><strong>Clean the mesh/grill (speaker area)</strong><br/>Use a dry, soft-bristled brush or cotton swab to remove dust or debris gently—don’t press too hard.<br/><br/></li><li><strong>Check for sweat or moisture buildup</strong><br/>After workouts or long sessions, wipe down immediately to prevent material breakdown or odor.</li></ol>"
-					}
-				},
-				"category-2": {
-					"type": "category",
-					"settings": {
-						"category": "Shipping"
-					}
-				},
-				"tab-5": {
-					"type": "tab",
-					"settings": {
-						"question": "Do you ship to other countries?",
-						"answer": "<p><strong>Yes, we offer international shipping!</strong><br/><br/>We’re happy to deliver our products to customers around the world. Shipping costs and delivery times may vary depending on your location. You can view available countries and rates during checkout, or feel free to contact our support team if you need help with a specific destination.</p>"
-					}
-				},
-				"tab-6": {
-					"type": "tab",
-					"settings": {
-						"question": "How do I track my order?",
-						"answer": "<p><strong>You can track your order easily!</strong><br/><br/>Once your order ships, you’ll receive a confirmation email with a tracking number and a link to follow its progress. Just click the link or enter the tracking number on the carrier’s website to see the latest updates.</p><p>If you didn’t receive the email or need help, feel free to reach out to our customer support team—we’re happy to assist!</p>"
-					}
-				},
-				"tab-7": {
-					"type": "tab",
-					"settings": {
-						"question": "What if I receive a damaged or incorrect item?",
-						"answer": "<p>If you receive a damaged or incorrect item, please contact us within [X] days of delivery. Send us a photo of the item along with your order number, and we’ll arrange a replacement or refund as quickly as possible.</p><p>Your satisfaction is important to us, and we’ll do our best to resolve the issue promptly.</p>"
-					}
-				}
-			},
-			"block_order": [
-				"category-1",
-				"tab-1",
-				"tab-2",
-				"tab-3",
-				"tab-4",
-				"category-2",
-				"tab-5",
-				"tab-6",
-				"tab-7"
-			],
-			"name": "t:sections.faqs.name",
-			"settings": {
-				"color_scheme": "scheme-2",
-				"sub_heading_text": "",
-				"heading_text": "FAQs",
-				"heading_size": "h2",
-				"text": "<p>Please read our <a href=\"/pages/faqs\" target=\"_blank\" title=\"FAQs\">FAQs</a> page to find out more.</p>",
-				"enable_contact": true,
-				"contact_color_scheme": "scheme-1",
-				"contact_heading": "Didn’t find your answer?",
-				"contact_heading_size": "h4",
-				"contact_text": "<p>Do not hesitate to contact us.</p>",
-				"padding_top": 80,
-				"padding_bottom": 80,
-				"padding_top_mobile": 60,
-				"padding_bottom_mobile": 60
-			}
-		},
-		"product_recommendations": {
-			"type": "product-recommendations",
-			"name": "t:sections.product-recommendations.name",
-			"settings": {
-				"color_scheme": "scheme-1",
-				"full": false,
-				"heading": "You may also like...",
-				"heading_size": "h2",
-				"layout": "slider",
-				"rows": 2,
-				"columns": 4,
-				"show_arrows": true,
-				"autoplay": false,
-				"delay": 2,
-				"padding_top": 80,
-				"padding_bottom": 80,
-				"padding_top_mobile": 60,
-				"padding_bottom_mobile": 60
-			}
-		}
-	},
-	"order": [
-		"breadcrumb",
-		"main",
-		"scrolling_promotion",
-		"feature_box",
-		"image_with_text",
-		"image_spotlight",
-		"video_with_text",
-		"testimonial",
-		"faqs",
-		"product_recommendations"
-	]
+  "sections": {
+    "breadcrumb": {
+      "type": "breadcrumb",
+      "name": "t:sections.breadcrumb.presets.name",
+      "settings": {
+        "full": false,
+        "overlay": 50,
+        "separator_line": true,
+        "color_scheme": "",
+        "show_title": false,
+        "show_scrolling": false,
+        "font_scale": 100,
+        "description": "",
+        "description_position": "below",
+        "right_description": false,
+        "padding_top": 16,
+        "padding_bottom": 16,
+        "padding_top_mobile": 16,
+        "padding_bottom_mobile": 16
+      }
+    },
+    "main": {
+      "type": "main-product",
+      "blocks": {
+        "information-1": {
+          "type": "information",
+          "settings": {
+            "vendor": true,
+            "collections": false,
+            "tags": false,
+            "type": false,
+            "sku": false,
+            "barcode": false,
+            "padding_bottom": 18
+          }
+        },
+        "title": {
+          "type": "title",
+          "settings": {
+            "font_size": "h4",
+            "padding_bottom": 8
+          }
+        },
+        "price": {
+          "type": "price",
+          "settings": {
+            "font_size": "h6",
+            "padding_bottom": 20
+          }
+        },
+        "variant-picker": {
+          "type": "variant-picker",
+          "settings": {
+            "picker_type": "swatch",
+            "padding_bottom": 24
+          }
+        },
+        "description": {
+          "type": "description",
+          "settings": {
+            "padding_bottom": 24
+          }
+        },
+        "availability_hfntLN": {
+          "type": "availability",
+          "settings": {
+            "low_stock": 0,
+            "padding_bottom": 24
+          }
+        },
+        "add-to-cart": {
+          "type": "add-to-cart",
+          "settings": {
+            "text_transform": "uppercase",
+            "quantity_selector": true,
+            "dynamic_checkout": true,
+            "show_gift_card": true,
+            "padding_bottom": 24
+          }
+        },
+        "pickup_availability-1": {
+          "type": "pickup-availability",
+          "settings": {
+            "padding_bottom": 24
+          }
+        },
+        "share-1": {
+          "type": "share",
+          "settings": {
+            "share_label": "Share",
+            "type": "social",
+            "padding_bottom": 24
+          }
+        },
+        "collapsible_tab-1": {
+          "type": "collapsible-tab",
+          "settings": {
+            "heading": "Description",
+            "font_size": "h7",
+            "content": "<p>Use collapsible tabs for more detailed information that will help customers make a purchasing decision.</p><p>Ex: Shipping and return policies, size guides, and other common questions.</p>",
+            "page": "",
+            "icon": "information",
+            "padding_bottom": 0
+          }
+        },
+        "collapsible-tab-2": {
+          "type": "collapsible-tab",
+          "settings": {
+            "heading": "Ingredients",
+            "font_size": "h7",
+            "content": "<p>All shipping methods are shown in checkout with a delivery time estimate. As this is only an estimate, please allow an extra day if your order hasn't arrived when expected. We try to offer tracking numbers wherever possible, so you can stay on top of the order status. International orders may be subject to customs checks, which can slow the process down slightly. </p>",
+            "page": "",
+            "icon": "flower",
+            "padding_bottom": 0
+          }
+        },
+        "collapsible-tab-3": {
+          "type": "collapsible-tab",
+          "settings": {
+            "heading": "Directions",
+            "font_size": "h7",
+            "content": "<p>All shipping methods are shown in checkout with a delivery time estimate. As this is only an estimate, please allow an extra day if your order hasn't arrived when expected. We try to offer tracking numbers wherever possible, so you can stay on top of the order status. International orders may be subject to customs checks, which can slow the process down slightly. </p>",
+            "page": "",
+            "icon": "wayfinding",
+            "padding_bottom": 0
+          }
+        },
+        "collapsible_tab-4": {
+          "type": "collapsible-tab",
+          "settings": {
+            "heading": "Legal Disclaimer",
+            "font_size": "h7",
+            "content": "<p>Use collapsible tabs for more detailed information that will help customers make a purchasing decision.</p><p>Ex: Shipping and return policies, size guides, and other common questions.</p>",
+            "page": "",
+            "icon": "warning",
+            "padding_bottom": 0
+          }
+        },
+        "complementary-1": {
+          "type": "complementary",
+          "settings": {
+            "heading": "Pair well with",
+            "product_list_limit": 10,
+            "padding_bottom": 0
+          }
+        }
+      },
+      "block_order": [
+        "information-1",
+        "title",
+        "price",
+        "variant-picker",
+        "description",
+        "availability_hfntLN",
+        "add-to-cart",
+        "pickup_availability-1",
+        "share-1",
+        "collapsible_tab-1",
+        "collapsible-tab-2",
+        "collapsible-tab-3",
+        "collapsible_tab-4",
+        "complementary-1"
+      ],
+      "settings": {
+        "color_scheme": "",
+        "full": false,
+        "space": 64,
+        "sticky_add_to_cart": "hidden",
+        "width": 64,
+        "layout": "layout-1",
+        "lightbox": true,
+        "video_looping": false,
+        "alignment": "left",
+        "padding_top": 24,
+        "padding_bottom": 80,
+        "padding_top_mobile": 24,
+        "padding_bottom_mobile": 60
+      }
+    },
+    "scrolling_promotion": {
+      "type": "scrolling-promotion",
+      "blocks": {
+        "text-1": {
+          "type": "text",
+          "settings": {
+            "text": "BESTSELLERS",
+            "icon": false
+          }
+        },
+        "text-2": {
+          "type": "product",
+          "settings": {
+            "product": "astaxanthin-12mg",
+            "icon": false
+          }
+        },
+        "text-3": {
+          "type": "text",
+          "settings": {
+            "text": "BESTSELLERS",
+            "icon": false
+          }
+        },
+        "text-4": {
+          "type": "product",
+          "settings": {
+            "product": "coq10-100mg",
+            "icon": false
+          }
+        }
+      },
+      "block_order": [
+        "text-1",
+        "text-2",
+        "text-3",
+        "text-4"
+      ],
+      "name": "t:sections.scrolling-promotion.name",
+      "settings": {
+        "color_scheme": "",
+        "full": true,
+        "hover_pause": true,
+        "direction": "rtl",
+        "time": 40,
+        "space": 80,
+        "scale": 400,
+        "mobile_text_scale": 200,
+        "image_scale": 100,
+        "product_color_scheme": "",
+        "padding_top": 0,
+        "padding_bottom": 80,
+        "padding_top_mobile": 0,
+        "padding_bottom_mobile": 60
+      }
+    },
+    "feature_box": {
+      "type": "feature-box",
+      "blocks": {
+        "item-1": {
+          "type": "item",
+          "settings": {
+            "icon_img": "shopify://shop_images/image_3.png",
+            "text": "<h3>Certified Vegan</h3>",
+            "description": "<p>To be approved for Vegan Certification, a product must not contain meat, fish, fowl, animal by-products, eggs or egg products, milk or milk products, honey or honey bee products, insects or products from insects.</p>",
+            "button_label": "View certificate",
+            "button_link": "",
+            "popup_image": "shopify://shop_images/vegan-certificate-for-beauvoir-brand.jpg",
+            "popup_content": ""
+          }
+        },
+        "item-2": {
+          "type": "item",
+          "settings": {
+            "icon_img": "shopify://shop_images/image_1_ba353319-3c16-4e97-946a-a9d1cc035a9a.png",
+            "text": "<h3>Non-GMO Verified</h3>",
+            "description": "<p>The Non-GMO Project works with four independent technical administrators (TAs) to ensure unbiased product evaluations.</p>",
+            "button_label": "View certificate",
+            "button_link": "",
+            "popup_image": "shopify://shop_images/non-gmo-verified-certificate-for-beauvoir-brand.jpg",
+            "popup_content": ""
+          }
+        },
+        "item-3": {
+          "type": "item",
+          "settings": {
+            "icon_img": "shopify://shop_images/image_2.png",
+            "text": "<h3>cGMP Compliant</h3>",
+            "description": "<p>To be compliant with the cGMP regulations, companies must meet the latest quality standards. These apply to buildings and facilities, equipment, production, process controls, laboratory controls, packaging and labeling, and salvaged drug products.</p>",
+            "button_label": "View certificate",
+            "button_link": "",
+            "popup_image": "shopify://shop_images/cgmp-compliant-certificate-for-beauvoir-brand.jpg",
+            "popup_content": ""
+          }
+        }
+      },
+      "block_order": [
+        "item-1",
+        "item-2",
+        "item-3"
+      ],
+      "name": "t:sections.feature-box.name",
+      "settings": {
+        "full": false,
+        "color_scheme": "scheme-1",
+        "layout": "carousel",
+        "columns": 3,
+        "item_scheme": "scheme-be293f48-285a-4399-9036-8e0fac37561a",
+        "caption": "( WHY CHOOSE US )",
+        "heading_text": "Dedicate to quality",
+        "heading_size": "h2",
+        "text": "<p>We believe in using the best ingredients so you can have total peace of mind in the supplements you are taking.</p>",
+        "title_color_scheme": "scheme-249bc96c-a978-4bba-a5bc-70409aeabb75",
+        "padding_top": 0,
+        "padding_bottom": 80,
+        "padding_top_mobile": 0,
+        "padding_bottom_mobile": 60
+      }
+    },
+    "image_with_text": {
+      "type": "image-with-text",
+      "name": "t:sections.image-with-text.presets.name",
+      "settings": {
+        "color_scheme": "",
+        "full": false,
+        "image": "shopify://shop_images/image_d287bea2-c843-47b5-b8ce-6d28331cfab4.png",
+        "layout": "image",
+        "height": "medium",
+        "width": "medium",
+        "content_color_scheme": "",
+        "desktop_position": "center",
+        "desktop_align": "left",
+        "mobile_align": "left",
+        "caption": "",
+        "heading_text": "Supplement your sunshine",
+        "heading_size": "h4",
+        "text": "<p>Vitamin D is naturally created by sunlight to help your body process calcium, but it can be all too easy to miss out on consuming this essential nutrient naturally. This daily supplement can help you pick up the slack. Ideal for supplying your body with what it needs for stronger, healthier bones and immune support.</p><ul><li>Support bone & immune health</li><li>With coconut MCT oil</li><li>Gluten-free & non-GMO</li></ul>",
+        "button_label": "",
+        "button_link": "",
+        "padding_top": 0,
+        "padding_bottom": 80,
+        "padding_top_mobile": 0,
+        "padding_bottom_mobile": 0
+      }
+    },
+    "image_spotlight": {
+      "type": "image-spotlight",
+      "blocks": {
+        "product-1": {
+          "type": "product",
+          "settings": {
+            "color": "#ffffff",
+            "heading": "Friendly & Approachable:",
+            "heading_size": "h4",
+            "description": "<p>Our Vitamin D3 delivers essential daily support for strong bones, a balanced mood, and a resilient immune system—all in eco-conscious packaging. Sourced responsibly and packaged using recyclable, minimal-waste materials, this supplement is designed to help you feel your best while reducing your impact on the earth.</p><p><br/>Because true wellness means caring for yourself <em>and</em> the world around you.</p>",
+            "horizontal": 40,
+            "vertical": 27
+          }
+        },
+        "product-2": {
+          "type": "product",
+          "settings": {
+            "color": "#ffffff",
+            "heading": "Daily Sunshine in a Capsule",
+            "heading_size": "h4",
+            "description": "<p>Vitamin D3 formula delivers the exact same biologically active form of vitamin D produced in the body from direct sunlight.</p><p><br/>And because D3 is best taken with a fat, we added coconut MCT oil to our softgels so you can get more of what your body needs.</p>",
+            "horizontal": 44,
+            "vertical": 44
+          }
+        },
+        "product-3": {
+          "type": "product",
+          "settings": {
+            "color": "#ffffff",
+            "heading": "Certified high-quality supplements",
+            "heading_size": "h4",
+            "description": "<p>we are endlessly dedicated to bringing you the latest innovations in health and wellness paired with our mission of providing superior products.</p><p><br/>That means only sourcing the highest quality ingredients from around the world and closely partnering with trusted manufacturers to bring you truly exceptional products.</p>",
+            "horizontal": 57,
+            "vertical": 32
+          }
+        }
+      },
+      "block_order": [
+        "product-1",
+        "product-2",
+        "product-3"
+      ],
+      "name": "t:sections.image_spotlight.name",
+      "settings": {
+        "full": true,
+        "color_scheme": "scheme-2",
+        "image": "shopify://shop_images/Group_1-Photoroom_1.png",
+        "padding_top": 0,
+        "padding_bottom": 0,
+        "padding_top_mobile": 0,
+        "padding_bottom_mobile": 0
+      }
+    },
+    "video_with_text": {
+      "type": "video-with-text",
+      "name": "t:sections.video-with-text.name",
+      "settings": {
+        "color_scheme": "",
+        "full": false,
+        "source": "native",
+        "url": "https://www.youtube.com/watch?v=_9VUPq3SxOc",
+        "image": "shopify://shop_images/Rectangle_4.png",
+        "height": "small",
+        "layout": "text",
+        "caption": "",
+        "heading_text": "Essential to optimize your daily wellness",
+        "heading_size": "h2",
+        "text": "<p>With over 40 years of innovation in sports nutrition, we are dedicated to helping you perform your best — day in and day out. Our research-backed vitamins, supplements and performance essentials are designed to support all of your wellness goals in finding both your balance and your edge.</p>",
+        "button_label": "",
+        "button_link": "",
+        "desktop_align": "left",
+        "mobile_align": "left",
+        "content_color_scheme": "",
+        "padding_top": 80,
+        "padding_bottom": 80,
+        "padding_top_mobile": 60,
+        "padding_bottom_mobile": 20
+      }
+    },
+    "testimonial": {
+      "type": "testimonial",
+      "blocks": {
+        "testimonial-1": {
+          "type": "testimonial",
+          "settings": {
+            "star_reviews": "5",
+            "body_text": "I take these Vitamin D3 soft gels daily. Sometimes my vitamin D gets low and this helps out a lot. They are easy to swallow and don’t leave a bad taste after. I take all my vitamins with something on my stomach.",
+            "author_image": "shopify://shop_images/image_4.png",
+            "author_name": "<strong>Sarah T.</strong>",
+            "author_comment": "I recommend this product.",
+            "author_verified": true,
+            "product": "vitamin-d3-with-oil",
+            "product_color_scheme": ""
+          }
+        },
+        "testimonial-2": {
+          "type": "testimonial",
+          "settings": {
+            "star_reviews": "5",
+            "body_text": "I can generally tell when I need this one, especially in the fall and winter months. I got these to try and get a head start and overall feel well, including these in my daily routine. I've tried and like this brand.",
+            "author_image": "shopify://shop_images/image.png",
+            "author_name": "<strong>James L.</strong>",
+            "author_comment": "I recommend this product.",
+            "author_verified": true,
+            "product": "garlic-with-parsley",
+            "product_color_scheme": ""
+          }
+        },
+        "testimonial-3": {
+          "type": "testimonial",
+          "settings": {
+            "star_reviews": "5",
+            "body_text": "Around the three week mark of starting I noticed my back pain was diminishing. I haven't changed any other factors. My back pain is now reduced by roughly 70-80%. Really remarkable. I'm beyond impressed.",
+            "author_image": "shopify://shop_images/product_image_2.png",
+            "author_name": "<strong>Susan G.</strong>",
+            "author_comment": "I recommend this product.",
+            "author_verified": true,
+            "product": "collagen-peptides",
+            "product_color_scheme": ""
+          }
+        }
+      },
+      "block_order": [
+        "testimonial-1",
+        "testimonial-2",
+        "testimonial-3"
+      ],
+      "name": "t:sections.testimonial.name",
+      "settings": {
+        "color_scheme": "scheme-3",
+        "full": false,
+        "caption": "( 4.9/5.0 BASED ON +10,000 CUSTOMERS )",
+        "heading": "What customers say about us",
+        "heading_size": "h2",
+        "padding_top": 100,
+        "padding_bottom": 100,
+        "padding_top_mobile": 60,
+        "padding_bottom_mobile": 60
+      }
+    },
+    "faqs": {
+      "type": "faqs",
+      "blocks": {
+        "category-1": {
+          "type": "category",
+          "settings": {
+            "category": "Product"
+          }
+        },
+        "tab-1": {
+          "type": "tab",
+          "settings": {
+            "question": "Are over-ear headphones comfortable for extended periods of listening?",
+            "answer": "<p><strong>Yes, over-ear headphones are generally comfortable for extended periods of listening</strong>, especially when they are well-designed. They fully enclose your ears, which helps distribute pressure more evenly around the head and reduces ear fatigue compared to on-ear or in-ear options.</p><p>However, comfort can vary depending on head shape, weight of the headphones, and how tight the clamping force is. Trying them on or reading user reviews can help you find a pair suited for long sessions.</p>"
+          }
+        },
+        "tab-2": {
+          "type": "tab",
+          "settings": {
+            "question": "Do over-ear headphones offer better sound quality compared to in-ear models?",
+            "answer": "<p><strong>Yes, over-ear headphones often offer better sound quality compared to in-ear models</strong>, especially in terms of soundstage, clarity, and bass response.</p><p>Here’s why:</p><ul><li><strong>Larger drivers</strong> in over-ear headphones can produce richer, more dynamic sound.</li><li><strong>Better soundstage</strong> gives you a more immersive, \"live\" experience, with clearer separation between instruments.</li><li><strong>Improved bass response</strong> due to more space for air movement.</li><li><strong>Noise isolation or cancellation</strong> tends to be more effective in premium over-ear designs<br/></li></ul><p>However, high-end in-ear monitors (IEMs) can also deliver excellent sound quality, especially for studio use or travel, and are often more portable. So while over-ears generally have the edge for audiophile or home listening, the best choice depends on your use case.</p>"
+          }
+        },
+        "tab-3": {
+          "type": "tab",
+          "settings": {
+            "question": "Are over-ear headphones suitable for sports or gym activities?",
+            "answer": "<p>Over-ear headphones are generally not ideal for sports or gym activities. While they can offer excellent sound and comfort, they come with a few drawbacks for active use:<br/><br/><strong>Why they may not be suitable:</strong></p><ul><li>Bulky and heavier than in-ear models, which can feel cumbersome during movement.</li><li>Less stable fit, making them more likely to shift or fall off during intense activity.</li><li>Limited sweat resistance — most over-ear headphones aren’t designed to handle moisture or heat buildup.</li></ul><p><strong>Better alternatives:</strong></p><ul><li>In-ear (true wireless or wired) earbuds with secure fit options (ear hooks, wings).</li><li>Sweatproof or waterproof ratings (IPX4 and above) are recommended.</li><li>If you really prefer over-ears for the gym, look for sport-specific models designed for durability and moisture resistance — but for most people, in-ears are the more practical choice.</li></ul>"
+          }
+        },
+        "tab-4": {
+          "type": "tab",
+          "settings": {
+            "question": "How do I maintain and clean my over-ear headphones?",
+            "answer": "<ol><li><strong>Unplug or turn off the headphones</strong><br/>Always disconnect them from your device before cleaning to avoid damage.<br/><br/></li><li><strong>Wipe down surfaces</strong><br/>Use a soft, dry or slightly damp microfiber cloth to clean the headband, ear cups, and exterior. Avoid harsh cleaners or alcohol.<br/><br/></li><li><strong>Clean the ear cushions<br/></strong>If they’re removable, take them off and gently wipe with a damp cloth.<br/><br/>For deeper cleaning, use a mild soap solution and let them air dry completely before reattaching.<br/><br/>Leather or faux leather pads benefit from a light application of conditioner.<br/><br/></li><li><strong>Clean the mesh/grill (speaker area)</strong><br/>Use a dry, soft-bristled brush or cotton swab to remove dust or debris gently—don’t press too hard.<br/><br/></li><li><strong>Check for sweat or moisture buildup</strong><br/>After workouts or long sessions, wipe down immediately to prevent material breakdown or odor.</li></ol>"
+          }
+        },
+        "category-2": {
+          "type": "category",
+          "settings": {
+            "category": "Shipping"
+          }
+        },
+        "tab-5": {
+          "type": "tab",
+          "settings": {
+            "question": "Do you ship to other countries?",
+            "answer": "<p><strong>Yes, we offer international shipping!</strong><br/><br/>We’re happy to deliver our products to customers around the world. Shipping costs and delivery times may vary depending on your location. You can view available countries and rates during checkout, or feel free to contact our support team if you need help with a specific destination.</p>"
+          }
+        },
+        "tab-6": {
+          "type": "tab",
+          "settings": {
+            "question": "How do I track my order?",
+            "answer": "<p><strong>You can track your order easily!</strong><br/><br/>Once your order ships, you’ll receive a confirmation email with a tracking number and a link to follow its progress. Just click the link or enter the tracking number on the carrier’s website to see the latest updates.</p><p>If you didn’t receive the email or need help, feel free to reach out to our customer support team—we’re happy to assist!</p>"
+          }
+        },
+        "tab-7": {
+          "type": "tab",
+          "settings": {
+            "question": "What if I receive a damaged or incorrect item?",
+            "answer": "<p>If you receive a damaged or incorrect item, please contact us within [X] days of delivery. Send us a photo of the item along with your order number, and we’ll arrange a replacement or refund as quickly as possible.</p><p>Your satisfaction is important to us, and we’ll do our best to resolve the issue promptly.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "category-1",
+        "tab-1",
+        "tab-2",
+        "tab-3",
+        "tab-4",
+        "category-2",
+        "tab-5",
+        "tab-6",
+        "tab-7"
+      ],
+      "name": "t:sections.faqs.name",
+      "settings": {
+        "color_scheme": "scheme-2",
+        "sub_heading_text": "",
+        "heading_text": "FAQs",
+        "heading_size": "h2",
+        "text": "<p>Please read our <a href=\"/pages/faqs\" target=\"_blank\" title=\"FAQs\">FAQs</a> page to find out more.</p>",
+        "enable_contact": true,
+        "contact_color_scheme": "scheme-1",
+        "contact_heading": "Didn’t find your answer?",
+        "contact_heading_size": "h4",
+        "contact_text": "<p>Do not hesitate to contact us.</p>",
+        "padding_top": 80,
+        "padding_bottom": 80,
+        "padding_top_mobile": 60,
+        "padding_bottom_mobile": 60
+      }
+    },
+    "product_recommendations": {
+      "type": "product-recommendations",
+      "name": "t:sections.product-recommendations.name",
+      "settings": {
+        "color_scheme": "scheme-1",
+        "full": false,
+        "heading": "You may also like...",
+        "heading_size": "h2",
+        "layout": "slider",
+        "rows": 2,
+        "columns": 4,
+        "show_arrows": true,
+        "autoplay": false,
+        "delay": 2,
+        "padding_top": 80,
+        "padding_bottom": 80,
+        "padding_top_mobile": 60,
+        "padding_bottom_mobile": 60
+      }
+    }
+  },
+  "order": [
+    "breadcrumb",
+    "main",
+    "scrolling_promotion",
+    "feature_box",
+    "image_with_text",
+    "image_spotlight",
+    "video_with_text",
+    "testimonial",
+    "faqs",
+    "product_recommendations"
+  ]
 }

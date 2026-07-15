@@ -8,328 +8,306 @@
  * ------------------------------------------------------------
  */
 {
-	"current": {
-		"logo_image": "shopify://shop_images/vrworld-logo.svg",
-		"body_font": "open_sans_n5",
-		"heading_font": "michroma_n4",
-		"third_font": "michroma_n4",
-		"enable_search": true,
-		"enable_predictive_search": true,
-		"screen_lg": 1318,
-		"swatch_style": "circle",
-		"social_facebook_link": "https://facebook.com/shopify",
-		"social_twitter_link": "https://x.com/shopify",
-		"social_pinterest_link": "https://pinterest.com/shopify",
-		"social_instagram_link": "",
-		"social_tiktok_link": "",
-		"cart_recommendations_heading": "YOU MAY ALSO LIKE THESE...",
-		"card_product_recommendations": [
-			"collagen-peptides",
-			"garlic-with-parsley",
-			"evening-primrose-oil",
-			"daily-womens-probiotics-65-billion-cfu",
-			"beef-gelatin-16oz"
-		],
-		"cart_collection_list": [
-			"herbal-supplements",
-			"vitamins-collagens",
-			"immune-antioxidants",
-			"digestive-support"
-		],
-		"card_background": "#f8f8f8",
-		"sections": {
-			"breadcrumb": {
-				"type": "breadcrumb",
-				"settings": {
-					"full": false,
-					"color_scheme": "",
-					"show_title": false,
-					"description": "",
-					"padding_top": 20,
-					"padding_bottom": 20,
-					"padding_top_mobile": 20,
-					"padding_bottom_mobile": 20
-				}
-			},
-			"main-password-header": {
-				"type": "main-password-header",
-				"settings": {
-					"color_scheme": "scheme-3",
-					"transparent_header": true,
-					"overlay_logo": "shopify://shop_images/light-vrworld-logo.svg",
-					"separator_line": true
-				}
-			},
-			"main-password-footer": {
-				"type": "main-password-footer",
-				"settings": {
-					"color_scheme": "scheme-3",
-					"transparent_footer": true,
-					"separator_line": true
-				}
-			}
-		},
-		"content_for_index": [],
-		"color_schemes": {
-			"scheme-1": {
-				"settings": {
-					"background_color": "#ffffff",
-					"background_gradient": "",
-					"text_color": "#000000",
-					"heading_color": "#000000",
-					"subheading_color": "#737373",
-					"link_color": "#000000",
-					"success_color": "#198252",
-					"error_color": "#c5452e",
-					"loading_color": "#2b2b2b",
-					"button_bg_color": "#000000",
-					"button_bg_gradient": "linear-gradient(136deg, rgba(188, 8, 207, 1) 11%, rgba(44, 187, 224, 1) 84%)",
-					"button_text_color": "#ffffff",
-					"button_outline_color": "#000000",
-					"sale_label": "#000000",
-					"sale_price": "#999999",
-					"in_stock": "#1e9458",
-					"low_stock": "#ee0000",
-					"out_stock": "#c5452e",
-					"rating_star": "#f5c567"
-				}
-			},
-			"scheme-2": {
-				"settings": {
-					"background_color": "#eaeaea",
-					"background_gradient": "",
-					"text_color": "#000000",
-					"heading_color": "#000000",
-					"subheading_color": "#000000",
-					"link_color": "#000000",
-					"success_color": "#198252",
-					"error_color": "#c5452e",
-					"loading_color": "#2b2b2b",
-					"button_bg_color": "#000000",
-					"button_bg_gradient": "linear-gradient(136deg, rgba(188, 8, 207, 1) 11%, rgba(44, 187, 224, 1) 84%)",
-					"button_text_color": "#ffffff",
-					"button_outline_color": "#eaeaea",
-					"sale_label": "#000000",
-					"sale_price": "#999999",
-					"in_stock": "#1e9458",
-					"low_stock": "#ee0000",
-					"out_stock": "#c5452e",
-					"rating_star": "#f5c567"
-				}
-			},
-			"scheme-3": {
-				"settings": {
-					"background_color": "#000000",
-					"background_gradient": "",
-					"text_color": "#ffffff",
-					"heading_color": "#ffffff",
-					"subheading_color": "#ffffff",
-					"link_color": "#ffffff",
-					"success_color": "#198252",
-					"error_color": "#198252",
-					"loading_color": "#2b2b2b",
-					"button_bg_color": "#ffffff",
-					"button_bg_gradient": "linear-gradient(136deg, rgba(188, 8, 207, 1) 11%, rgba(44, 187, 224, 1) 84%)",
-					"button_text_color": "#000000",
-					"button_outline_color": "#000000",
-					"sale_label": "#f04d24",
-					"sale_price": "#999999",
-					"in_stock": "#1e9458",
-					"low_stock": "#ee0000",
-					"out_stock": "#c5452e",
-					"rating_star": "#f5c567"
-				}
-			},
-			"scheme-4": {
-				"settings": {
-					"background_color": "#000000",
-					"background_gradient": "",
-					"text_color": "#ffffff",
-					"heading_color": "#ffffff",
-					"subheading_color": "#ffffff",
-					"link_color": "#ffffff",
-					"success_color": "#198252",
-					"error_color": "#198252",
-					"loading_color": "#2b2b2b",
-					"button_bg_color": "#ffffff",
-					"button_bg_gradient": "linear-gradient(136deg, rgba(188, 8, 207, 1) 11%, rgba(44, 187, 224, 1) 84%)",
-					"button_text_color": "#000000",
-					"button_outline_color": "#000000",
-					"sale_label": "#f04d24",
-					"sale_price": "#999999",
-					"in_stock": "#1e9458",
-					"low_stock": "#ee0000",
-					"out_stock": "#c5452e",
-					"rating_star": "#f5c567"
-				}
-			},
-			"scheme-5": {
-				"settings": {
-					"background_color": "#ffffff",
-					"background_gradient": "linear-gradient(136deg, rgba(188, 8, 207, 1) 11%, rgba(44, 187, 224, 1) 84%)",
-					"text_color": "#ffffff",
-					"heading_color": "#ffffff",
-					"subheading_color": "#1C1B1B",
-					"link_color": "#ffffff",
-					"success_color": "#198252",
-					"error_color": "#c5452e",
-					"loading_color": "#2b2b2b",
-					"button_bg_color": "#FFFFFF",
-					"button_bg_gradient": "linear-gradient(136deg, rgba(188, 8, 207, 1) 11%, rgba(44, 187, 224, 1) 84%)",
-					"button_text_color": "#FFFFFF",
-					"button_outline_color": "#FFFFFF",
-					"sale_label": "#000000",
-					"sale_price": "#999999",
-					"in_stock": "#1e9458",
-					"low_stock": "#ee0000",
-					"out_stock": "#c5452e",
-					"rating_star": "#f5c567"
-				}
-			},
-			"scheme-6": {
-				"settings": {
-					"background_color": "#ffffff",
-					"background_gradient": "linear-gradient(136deg, rgba(188, 8, 207, 1) 11%, rgba(44, 187, 224, 1) 84%)",
-					"text_color": "#656565",
-					"heading_color": "#000000",
-					"subheading_color": "#000000",
-					"link_color": "#000000",
-					"success_color": "#198252",
-					"error_color": "#c5452e",
-					"loading_color": "#2b2b2b",
-					"button_bg_color": "#000000",
-					"button_bg_gradient": "linear-gradient(136deg, rgba(188, 8, 207, 1) 11%, rgba(44, 187, 224, 1) 84%)",
-					"button_text_color": "#ffffff",
-					"button_outline_color": "#eaeaea",
-					"sale_label": "#000000",
-					"sale_price": "#999999",
-					"in_stock": "#1e9458",
-					"low_stock": "#ee0000",
-					"out_stock": "#c5452e",
-					"rating_star": "#f5c567"
-				}
-			},
-			"scheme-7": {
-				"settings": {
-					"background_color": "#f8f8f8",
-					"background_gradient": "",
-					"text_color": "#000000",
-					"heading_color": "#000000",
-					"subheading_color": "#737373",
-					"link_color": "#000000",
-					"success_color": "#198252",
-					"error_color": "#c5452e",
-					"loading_color": "#2b2b2b",
-					"button_bg_color": "#000000",
-					"button_bg_gradient": "linear-gradient(136deg, rgba(188, 8, 207, 1) 11%, rgba(44, 187, 224, 1) 84%)",
-					"button_text_color": "#ffffff",
-					"button_outline_color": "#000000",
-					"sale_label": "#000000",
-					"sale_price": "#999999",
-					"in_stock": "#1e9458",
-					"low_stock": "#ee0000",
-					"out_stock": "#c5452e",
-					"rating_star": "#f5c567"
-				}
-			},
-			"scheme-7": {
-				"settings": {
-					"background_color": "#000000",
-					"background_gradient": "",
-					"text_color": "#cccccc",
-					"heading_color": "#ffffff",
-					"subheading_color": "#ffffff",
-					"link_color": "#000000",
-					"success_color": "#198252",
-					"error_color": "#c5452e",
-					"loading_color": "#2b2b2b",
-					"button_bg_color": "#ffffff",
-					"button_bg_gradient": "linear-gradient(136deg, rgba(188, 8, 207, 1) 11%, rgba(44, 187, 224, 1) 84%)",
-					"button_text_color": "#000000",
-					"button_outline_color": "#000000",
-					"sale_label": "#f04d24",
-					"sale_price": "#999999",
-					"in_stock": "#1e9458",
-					"low_stock": "#ee0000",
-					"out_stock": "#c5452e",
-					"rating_star": "#f5c567"
-				}
-			}
-		}
-	},
-	"presets": {
-		"Default": {
-			"screen_lg": 1318,
-			"color_schemes": {
-				"scheme-1": {
-					"settings": {
-						"background_color": "#FFFFFF",
-						"background_gradient": "",
-						"text_color": "#000000",
-						"heading_color": "#000000",
-						"subheading_color": "#999999",
-						"link_color": "#000000",
-						"button_bg_color": "#000000",
-						"button_text_color": "#FFFFFF",
-						"button_outline_color": "#000000"
-					}
-				},
-				"scheme-2": {
-					"settings": {
-						"background_color": "#EAEAEA",
-						"background_gradient": "",
-						"text_color": "#000000",
-						"heading_color": "#000000",
-						"subheading_color": "#999999",
-						"link_color": "#000000",
-						"button_bg_color": "#000000",
-						"button_text_color": "#FFFFFF",
-						"button_outline_color": "#000000"
-					}
-				}
-			},
-			"sections": {
-				"breadcrumb": {
-					"type": "breadcrumb",
-					"settings": {}
-				},
-				"sticky-toolbar-mobile": {
-					"type": "sticky-toolbar-mobile",
-					"blocks": {
-						"0b26eb0d-b23d-4adf-9845-92acd3165fd6": {
-							"type": "link",
-							"settings": {}
-						},
-						"sticky-toolbar-mobile-1": {
-							"type": "cart",
-							"settings": {}
-						},
-						"sticky-toolbar-mobile-2": {
-							"type": "account",
-							"settings": {}
-						},
-						"sticky-toolbar-mobile-3": {
-							"type": "search",
-							"settings": {}
-						}
-					},
-					"block_order": [
-						"0b26eb0d-b23d-4adf-9845-92acd3165fd6",
-						"sticky-toolbar-mobile-1",
-						"sticky-toolbar-mobile-2",
-						"sticky-toolbar-mobile-3"
-					],
-					"settings": {}
-				},
-				"side-cart": {
-					"type": "side-cart",
-					"settings": {}
-				},
-				"quick-search": {
-					"type": "quick-search",
-					"settings": {}
-				}
-			}
-		}
-	}
+  "current": {
+    "logo_image": "shopify://shop_images/vrworld-logo.svg",
+    "body_font": "open_sans_n5",
+    "heading_font": "michroma_n4",
+    "third_font": "michroma_n4",
+    "enable_search": true,
+    "enable_predictive_search": true,
+    "screen_lg": 1318,
+    "button_style": "primary",
+    "swatch_style": "circle",
+    "social_facebook_link": "https://facebook.com/shopify",
+    "social_twitter_link": "https://x.com/shopify",
+    "social_pinterest_link": "https://pinterest.com/shopify",
+    "social_instagram_link": "",
+    "social_tiktok_link": "",
+    "cart_recommendations_heading": "YOU MAY ALSO LIKE THESE...",
+    "card_product_recommendations": [
+      "collagen-peptides",
+      "garlic-with-parsley",
+      "evening-primrose-oil",
+      "daily-womens-probiotics-65-billion-cfu",
+      "beef-gelatin-16oz"
+    ],
+    "cart_collection_list": [
+      "herbal-supplements",
+      "vitamins-collagens",
+      "immune-antioxidants",
+      "digestive-support"
+    ],
+    "card_background": "#f8f8f8",
+    "sections": {
+      "breadcrumb": {
+        "type": "breadcrumb",
+        "settings": {
+          "full": false,
+          "color_scheme": "",
+          "show_title": false,
+          "description": "",
+          "padding_top": 20,
+          "padding_bottom": 20,
+          "padding_top_mobile": 20,
+          "padding_bottom_mobile": 20
+        }
+      },
+      "main-password-header": {
+        "type": "main-password-header",
+        "settings": {
+          "color_scheme": "scheme-3",
+          "transparent_header": true,
+          "overlay_logo": "shopify://shop_images/light-vrworld-logo.svg",
+          "separator_line": true
+        }
+      },
+      "main-password-footer": {
+        "type": "main-password-footer",
+        "settings": {
+          "color_scheme": "scheme-3",
+          "transparent_footer": true,
+          "separator_line": true
+        }
+      }
+    },
+    "content_for_index": [],
+    "color_schemes": {
+      "scheme-1": {
+        "settings": {
+          "background_color": "#ffffff",
+          "background_gradient": "",
+          "text_color": "#000000",
+          "heading_color": "#000000",
+          "subheading_color": "#737373",
+          "link_color": "#000000",
+          "success_color": "#198252",
+          "error_color": "#c5452e",
+          "loading_color": "#2b2b2b",
+          "button_bg_color": "#000000",
+          "button_bg_gradient": "linear-gradient(136deg, rgba(188, 8, 207, 1) 11%, rgba(44, 187, 224, 1) 84%)",
+          "button_text_color": "#ffffff",
+          "button_outline_color": "#000000",
+          "sale_label": "#000000",
+          "sale_price": "#999999",
+          "in_stock": "#1e9458",
+          "low_stock": "#ee0000",
+          "out_stock": "#c5452e",
+          "rating_star": "#f5c567"
+        }
+      },
+      "scheme-2": {
+        "settings": {
+          "background_color": "#eaeaea",
+          "background_gradient": "",
+          "text_color": "#000000",
+          "heading_color": "#000000",
+          "subheading_color": "#000000",
+          "link_color": "#000000",
+          "success_color": "#198252",
+          "error_color": "#c5452e",
+          "loading_color": "#2b2b2b",
+          "button_bg_color": "#000000",
+          "button_bg_gradient": "linear-gradient(136deg, rgba(188, 8, 207, 1) 11%, rgba(44, 187, 224, 1) 84%)",
+          "button_text_color": "#ffffff",
+          "button_outline_color": "#eaeaea",
+          "sale_label": "#000000",
+          "sale_price": "#999999",
+          "in_stock": "#1e9458",
+          "low_stock": "#ee0000",
+          "out_stock": "#c5452e",
+          "rating_star": "#f5c567"
+        }
+      },
+      "scheme-3": {
+        "settings": {
+          "background_color": "#000000",
+          "background_gradient": "",
+          "text_color": "#ffffff",
+          "heading_color": "#ffffff",
+          "subheading_color": "#ffffff",
+          "link_color": "#ffffff",
+          "success_color": "#198252",
+          "error_color": "#198252",
+          "loading_color": "#2b2b2b",
+          "button_bg_color": "#ffffff",
+          "button_bg_gradient": "linear-gradient(136deg, rgba(188, 8, 207, 1) 11%, rgba(44, 187, 224, 1) 84%)",
+          "button_text_color": "#000000",
+          "button_outline_color": "#000000",
+          "sale_label": "#f04d24",
+          "sale_price": "#999999",
+          "in_stock": "#1e9458",
+          "low_stock": "#ee0000",
+          "out_stock": "#c5452e",
+          "rating_star": "#f5c567"
+        }
+      },
+      "scheme-4": {
+        "settings": {
+          "background_color": "#000000",
+          "background_gradient": "",
+          "text_color": "#ffffff",
+          "heading_color": "#ffffff",
+          "subheading_color": "#ffffff",
+          "link_color": "#ffffff",
+          "success_color": "#198252",
+          "error_color": "#198252",
+          "loading_color": "#2b2b2b",
+          "button_bg_color": "#ffffff",
+          "button_bg_gradient": "linear-gradient(136deg, rgba(188, 8, 207, 1) 11%, rgba(44, 187, 224, 1) 84%)",
+          "button_text_color": "#000000",
+          "button_outline_color": "#000000",
+          "sale_label": "#f04d24",
+          "sale_price": "#999999",
+          "in_stock": "#1e9458",
+          "low_stock": "#ee0000",
+          "out_stock": "#c5452e",
+          "rating_star": "#f5c567"
+        }
+      },
+      "scheme-5": {
+        "settings": {
+          "background_color": "#ffffff",
+          "background_gradient": "linear-gradient(136deg, rgba(188, 8, 207, 1) 11%, rgba(44, 187, 224, 1) 84%)",
+          "text_color": "#ffffff",
+          "heading_color": "#ffffff",
+          "subheading_color": "#1c1b1b",
+          "link_color": "#ffffff",
+          "success_color": "#198252",
+          "error_color": "#c5452e",
+          "loading_color": "#2b2b2b",
+          "button_bg_color": "#ffffff",
+          "button_bg_gradient": "linear-gradient(136deg, rgba(188, 8, 207, 1) 11%, rgba(44, 187, 224, 1) 84%)",
+          "button_text_color": "#ffffff",
+          "button_outline_color": "#ffffff",
+          "sale_label": "#000000",
+          "sale_price": "#999999",
+          "in_stock": "#1e9458",
+          "low_stock": "#ee0000",
+          "out_stock": "#c5452e",
+          "rating_star": "#f5c567"
+        }
+      },
+      "scheme-6": {
+        "settings": {
+          "background_color": "#ffffff",
+          "background_gradient": "linear-gradient(136deg, rgba(188, 8, 207, 1) 11%, rgba(44, 187, 224, 1) 84%)",
+          "text_color": "#656565",
+          "heading_color": "#000000",
+          "subheading_color": "#000000",
+          "link_color": "#000000",
+          "success_color": "#198252",
+          "error_color": "#c5452e",
+          "loading_color": "#2b2b2b",
+          "button_bg_color": "#000000",
+          "button_bg_gradient": "linear-gradient(136deg, rgba(188, 8, 207, 1) 11%, rgba(44, 187, 224, 1) 84%)",
+          "button_text_color": "#ffffff",
+          "button_outline_color": "#eaeaea",
+          "sale_label": "#000000",
+          "sale_price": "#999999",
+          "in_stock": "#1e9458",
+          "low_stock": "#ee0000",
+          "out_stock": "#c5452e",
+          "rating_star": "#f5c567"
+        }
+      },
+      "scheme-7": {
+        "settings": {
+          "background_color": "#000000",
+          "background_gradient": "",
+          "text_color": "#cccccc",
+          "heading_color": "#ffffff",
+          "subheading_color": "#ffffff",
+          "link_color": "#000000",
+          "success_color": "#198252",
+          "error_color": "#c5452e",
+          "loading_color": "#2b2b2b",
+          "button_bg_color": "#ffffff",
+          "button_bg_gradient": "linear-gradient(136deg, rgba(188, 8, 207, 1) 11%, rgba(44, 187, 224, 1) 84%)",
+          "button_text_color": "#000000",
+          "button_outline_color": "#000000",
+          "sale_label": "#f04d24",
+          "sale_price": "#999999",
+          "in_stock": "#1e9458",
+          "low_stock": "#ee0000",
+          "out_stock": "#c5452e",
+          "rating_star": "#f5c567"
+        }
+      }
+    }
+  },
+  "presets": {
+    "Default": {
+      "screen_lg": 1318,
+      "color_schemes": {
+        "scheme-1": {
+          "settings": {
+            "background_color": "#FFFFFF",
+            "background_gradient": "",
+            "text_color": "#000000",
+            "heading_color": "#000000",
+            "subheading_color": "#999999",
+            "link_color": "#000000",
+            "button_bg_color": "#000000",
+            "button_text_color": "#FFFFFF",
+            "button_outline_color": "#000000"
+          }
+        },
+        "scheme-2": {
+          "settings": {
+            "background_color": "#EAEAEA",
+            "background_gradient": "",
+            "text_color": "#000000",
+            "heading_color": "#000000",
+            "subheading_color": "#999999",
+            "link_color": "#000000",
+            "button_bg_color": "#000000",
+            "button_text_color": "#FFFFFF",
+            "button_outline_color": "#000000"
+          }
+        }
+      },
+      "sections": {
+        "breadcrumb": {
+          "type": "breadcrumb",
+          "settings": {}
+        },
+        "sticky-toolbar-mobile": {
+          "type": "sticky-toolbar-mobile",
+          "blocks": {
+            "0b26eb0d-b23d-4adf-9845-92acd3165fd6": {
+              "type": "link",
+              "settings": {}
+            },
+            "sticky-toolbar-mobile-1": {
+              "type": "cart",
+              "settings": {}
+            },
+            "sticky-toolbar-mobile-2": {
+              "type": "account",
+              "settings": {}
+            },
+            "sticky-toolbar-mobile-3": {
+              "type": "search",
+              "settings": {}
+            }
+          },
+          "block_order": [
+            "0b26eb0d-b23d-4adf-9845-92acd3165fd6",
+            "sticky-toolbar-mobile-1",
+            "sticky-toolbar-mobile-2",
+            "sticky-toolbar-mobile-3"
+          ],
+          "settings": {}
+        },
+        "side-cart": {
+          "type": "side-cart",
+          "settings": {}
+        },
+        "quick-search": {
+          "type": "quick-search",
+          "settings": {}
+        }
+      }
+    }
+  }
 }
