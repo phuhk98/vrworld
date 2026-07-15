@@ -261,7 +261,7 @@
       font-family: var(--subheading-font-family);
       font-weight: var(--subheading-font-weight);
       margin: 0;
-      position: absolute;
+      position: absolute !important;
       right: 0.4rem;
       top: 0.4rem;
 
