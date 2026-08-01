@@ -262,7 +262,7 @@
         "button_text": "Explore Products",
         "button_link": "",
         "button_style": "gradient",
-        "collection": "automated-collection",
+        "collection": "full-body-suits",
         "columns": 4,
         "total_items": 4,
         "dots": false,
