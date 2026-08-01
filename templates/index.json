@@ -75,10 +75,10 @@
     "vr_collection_EFpBQW": {
       "type": "vr-collection",
       "blocks": {
-        "collection_item_p3Mw3m": {
+        "collection_item_j7pT9A": {
           "type": "collection_item",
           "settings": {
-            "collection": "automated-collection",
+            "collection": "vr-headsets",
             "title_override": "",
             "custom_text": ""
           }
@@ -86,7 +86,8 @@
         "collection_item_zDfBdd": {
           "type": "collection_item",
           "settings": {
-            "collection": "",
+            "collection": "full-body-suits",
+            "image": "shopify://shop_images/Full-body_Suits.png",
             "title_override": "",
             "custom_text": ""
           }
@@ -94,7 +95,8 @@
         "collection_item_wj9fyJ": {
           "type": "collection_item",
           "settings": {
-            "collection": "",
+            "collection": "haptic-gloves",
+            "image": "shopify://shop_images/pngegg_1.png",
             "title_override": "",
             "custom_text": ""
           }
@@ -102,7 +104,8 @@
         "collection_item_ciBGTD": {
           "type": "collection_item",
           "settings": {
-            "collection": "",
+            "collection": "hydrogen",
+            "image": "shopify://shop_images/pngkey.com-controller-png-336330.png",
             "title_override": "",
             "custom_text": ""
           }
@@ -110,14 +113,14 @@
         "collection_item_ePAPpz": {
           "type": "collection_item",
           "settings": {
-            "collection": "",
+            "collection": "vr-controllers",
             "title_override": "",
             "custom_text": ""
           }
         }
       },
       "block_order": [
-        "collection_item_p3Mw3m",
+        "collection_item_j7pT9A",
         "collection_item_zDfBdd",
         "collection_item_wj9fyJ",
         "collection_item_ciBGTD",
