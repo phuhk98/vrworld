@@ -213,7 +213,7 @@
         "button_style": "gradient",
         "enable_slider": false,
         "columns": 4,
-        "total": 8,
+        "total": 4,
         "dots": false,
         "loop": false,
         "autoplay": false,
