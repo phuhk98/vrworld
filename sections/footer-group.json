@@ -13,6 +13,7 @@
   "sections": {
     "newsletter_popup_GxLzU8": {
       "type": "newsletter-popup",
+      "disabled": true,
       "name": "t:sections.newsletter-popup.name",
       "settings": {
         "color_scheme": "scheme-249bc96c-a978-4bba-a5bc-70409aeabb75",
@@ -76,7 +77,6 @@
         "separator_line": false,
         "ft_logo": "shopify://shop_images/logo-footer.svg",
         "overlay": 20,
-        "newsletter_bgimage": "shopify://shop_images/bkg-footer-newsletter.png",
         "content": "Newsletter",
         "text": "Sign up for VR accessories ‘s mailing list to stay updated on new arrivals, special offers, and exclusive discounts!",
         "show_form": true,
