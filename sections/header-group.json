@@ -75,7 +75,7 @@
         "drawer_menu": "customer-account-main-menu",
         "uppercase_menu": false,
         "menu_color_scheme": "scheme-1",
-        "enable_transparent_header": true,
+        "enable_transparent_header": false,
         "enable_transparent_header_article": true,
         "transparent_custom": "",
         "transparent_color_scheme": "scheme-3",
@@ -86,7 +86,7 @@
       "type": "quick-search",
       "settings": {
         "heading": "POPULAR PRODUCT",
-        "collection": "all-wellness-essentials"
+        "collection": ""
       }
     }
   },
