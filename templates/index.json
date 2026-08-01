@@ -177,21 +177,21 @@
           "type": "tab",
           "settings": {
             "name": "New Arrival",
-            "collection": "full-body-suits"
+            "collection": "hydrogen"
           }
         },
         "tab_AxxeEj": {
           "type": "tab",
           "settings": {
             "name": "Bestseller",
-            "collection": "hydrogen"
+            "collection": "vr-controllers"
           }
         },
         "tab_RrXhMj": {
           "type": "tab",
           "settings": {
             "name": "Offer sale",
-            "collection": "hydrogen"
+            "collection": "vr-headphones"
           }
         }
       },
