@@ -2,13 +2,13 @@
 
 * [README](README.md)
 
-## Header
+## General settings
 
-* [Page 1](header/page-1.md)
+* [Fonts, colors](general-settings/fonts-colors.md)
 
-## Header
+## Section
 
-* [Header](header-1/header.md)
+* [Header](section/header.md)
 
 ***
 
