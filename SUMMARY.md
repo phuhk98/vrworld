@@ -6,9 +6,9 @@
 
 * [Fonts, colors](general-settings/fonts-colors.md)
 
-## Section
+## Pages Global Sections
 
-* [Header](section/header.md)
+* [Header](pages-global-sections/header.md)
 
 ***
 
