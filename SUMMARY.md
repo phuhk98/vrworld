@@ -12,6 +12,9 @@
 * [Header](pages-global-sections/header.md)
 * [Footer](pages-global-sections/footer.md)
 
+## Theme Section
+
 ***
 
+* [Banner](banner.md)
 * [release-notes](release-notes.md)
