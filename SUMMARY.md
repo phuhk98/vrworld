@@ -16,5 +16,6 @@
 
 ***
 
+* [Collection List](collection-list.md)
 * [Banner](banner.md)
 * [release-notes](release-notes.md)
