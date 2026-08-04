@@ -8,7 +8,9 @@
 
 ## Pages Global Sections
 
+* [Announcement bar](pages-global-sections/announcement-bar.md)
 * [Header](pages-global-sections/header.md)
+* [Footer](pages-global-sections/footer.md)
 
 ***
 
