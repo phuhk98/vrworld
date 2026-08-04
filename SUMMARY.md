@@ -19,4 +19,7 @@
 * [Banner](banner.md)
 * [Collection List](collection-list.md)
 * [Blog Post](blog-post.md)
+* [Featured collection](featured-collection.md)
+* [Featured product](featured-product.md)
+* [Partner](partner.md)
 * [release-notes](release-notes.md)
