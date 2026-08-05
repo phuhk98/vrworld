@@ -6,7 +6,7 @@ The Header is one of the most important parts of your store—it’s the first e
 
 **Enable sticky header**: Select/deselect to show/hide the sticky header. This sticky header appears when users scroll the page from bottom to top.
 
-<figure><img src="../.gitbook/assets/image.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (1).png" alt=""><figcaption></figcaption></figure>
 
 ### Navigation
 
@@ -16,7 +16,7 @@ The Header is one of the most important parts of your store—it’s the first e
 
 Active **Uppercase first-level menu items** to capitalize the main menu
 
-<figure><img src="../.gitbook/assets/image (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (1) (1).png" alt=""><figcaption></figcaption></figure>
 
 ### Overlay header
 

@@ -22,4 +22,5 @@
 * [Featured collection](featured-collection.md)
 * [Featured product](featured-product.md)
 * [Partner](partner.md)
+* [Video with text](video-with-text.md)
 * [release-notes](release-notes.md)
