@@ -24,5 +24,5 @@
 * [Partner](partner.md)
 * [Video with text](video-with-text.md)
 * [Multicolumn](multicolumn.md)
-* [Page 1](page-1.md)
+* [Features](features.md)
 * [release-notes](release-notes.md)
