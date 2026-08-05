@@ -23,4 +23,6 @@
 * [Featured product](featured-product.md)
 * [Partner](partner.md)
 * [Video with text](video-with-text.md)
+* [Multicolumn](multicolumn.md)
+* [Page 1](page-1.md)
 * [release-notes](release-notes.md)
