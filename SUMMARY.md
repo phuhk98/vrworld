@@ -5,6 +5,8 @@
 ## General settings
 
 * [Fonts, colors](general-settings/fonts-colors.md)
+* [How can I create my own custom pages with sections?](general-settings/how-can-i-create-my-own-custom-pages-with-sections.md)
+* [How can I create my own custom product pages with sections?](general-settings/how-can-i-create-my-own-custom-product-pages-with-sections.md)
 
 ## Pages Global Sections
 
