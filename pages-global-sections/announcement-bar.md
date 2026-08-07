@@ -10,4 +10,4 @@ Customize the section by utilizing the settings on the right side of the theme e
 
 The block can add any promotional text. The text blocks will auto-set the scrolling text to move from Right to left. These blocks have general settings on the right side, like color, padding…
 
-<figure><img src="../.gitbook/assets/image (4).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (4) (1).png" alt=""><figcaption></figcaption></figure>

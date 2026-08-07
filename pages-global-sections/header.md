@@ -6,7 +6,7 @@ The Header is one of the most important parts of your store—it’s the first e
 
 **Enable sticky header**: Select/deselect to show/hide the sticky header. This sticky header appears when users scroll the page from bottom to top.
 
-<figure><img src="../.gitbook/assets/image (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (1) (1).png" alt=""><figcaption></figcaption></figure>
 
 ### Navigation
 
@@ -16,7 +16,7 @@ The Header is one of the most important parts of your store—it’s the first e
 
 Active **Uppercase first-level menu items** to capitalize the main menu
 
-<figure><img src="../.gitbook/assets/image (1) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
 
 ### Overlay header
 
@@ -30,10 +30,10 @@ The overlay header can be enabled on the **Homepage**, **Blog post** page, and a
 
 With the Custom page option, you need to create a menu, then pick a menu containing items linked to the pages you want to apply the transparent header.
 
-<figure><img src="../.gitbook/assets/image (2).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (2) (1).png" alt=""><figcaption></figcaption></figure>
 
 ### Language and currency
 
-<figure><img src="../.gitbook/assets/image (3).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (3) (1).png" alt=""><figcaption></figcaption></figure>
 
 **Enable language/currency selector**: Option to enable/disable the Language and currency form in the header section.
