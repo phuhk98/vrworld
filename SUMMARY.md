@@ -21,6 +21,12 @@
 * [What is lazy loading?](general-settings/what-is-lazy-loading.md)
 * [How do i set collection info?](general-settings/how-do-i-set-collection-info.md)
 
+## Advance Settings
+
+* [How do I remove the shopping cart?](advance-settings/how-do-i-remove-the-shopping-cart.md)
+* [How can I improve my Online Store speed score?](advance-settings/how-can-i-improve-my-online-store-speed-score.md)
+* [How can I customize my checkout and cart?](advance-settings/how-can-i-customize-my-checkout-and-cart.md)
+
 ## Pages Global Sections
 
 * [Announcement bar](pages-global-sections/announcement-bar.md)
