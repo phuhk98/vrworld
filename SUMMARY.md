@@ -28,6 +28,8 @@
 * [How can I customize my checkout and cart?](advance-settings/how-can-i-customize-my-checkout-and-cart.md)
 * [How do I update my theme?](advance-settings/how-do-i-update-my-theme.md)
 * [How to set up Mega menu](advance-settings/how-to-set-up-mega-menu.md)
+* [How can I enable product filtering?](advance-settings/how-can-i-enable-product-filtering.md)
+* [Customize product recommendations with Shopify Search & Discovery](advance-settings/customize-product-recommendations-with-shopify-search-and-discovery.md)
 
 ## Pages Global Sections
 
