@@ -26,6 +26,8 @@
 * [How do I remove the shopping cart?](advance-settings/how-do-i-remove-the-shopping-cart.md)
 * [How can I improve my Online Store speed score?](advance-settings/how-can-i-improve-my-online-store-speed-score.md)
 * [How can I customize my checkout and cart?](advance-settings/how-can-i-customize-my-checkout-and-cart.md)
+* [How do I update my theme?](advance-settings/how-do-i-update-my-theme.md)
+* [How to set up Mega menu](advance-settings/how-to-set-up-mega-menu.md)
 
 ## Pages Global Sections
 
