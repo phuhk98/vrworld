@@ -19,7 +19,7 @@
           "settings": {
             "mega_item": "shop",
             "data": "menu",
-            "data_menu": "customer-account-main-menu",
+            "data_menu": "shop",
             "data_products": [],
             "data_collections": [],
             "card_color_scheme": "scheme-1",
