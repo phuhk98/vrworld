@@ -63,7 +63,7 @@
       ],
       "name": "t:sections.vr-slideshow.name",
       "settings": {
-        "color_scheme": "",
+        "color_scheme": "scheme-5",
         "full": true,
         "height": "large",
         "padding_top": 0,
@@ -228,7 +228,7 @@
       "type": "vr-video-with-text",
       "name": "t:sections.vr-video-with-text.name",
       "settings": {
-        "color_scheme": "",
+        "color_scheme": "scheme-5",
         "full": true,
         "source": "host",
         "url": "https://www.youtube.com/watch?v=_9VUPq3SxOc",
@@ -419,7 +419,7 @@
       "name": "t:sections.vr-multicolumn.name",
       "settings": {
         "full": false,
-        "color_scheme": "",
+        "color_scheme": "scheme-5",
         "caption": "",
         "heading_text": "",
         "heading_size": "h3",
