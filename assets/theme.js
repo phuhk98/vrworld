@@ -3231,6 +3231,20 @@ function btyToggleDropdown( doc = document ) {
 				document.removeEventListener( 'click', clickAnyWhere );
 			}
 
+			el.addEventListener( 'keydown', function( e ) {
+				if ( el.getAttribute( 'role' ) !== 'button' ) {
+					return;
+				}
+
+				if ( e.key === 'Enter' || e.key === ' ' ) {
+					e.preventDefault();
+					el.click();
+				} else if ( e.key === 'Escape' && parent.hasAttribute( 'open' ) ) {
+					parent.removeAttribute( 'open' );
+					el.setAttribute( 'aria-expanded', 'false' );
+				}
+			} );
+
 			el.onclick = function( e ) {
 				document.addEventListener( 'click', clickAnyWhere );
 
@@ -6005,6 +6019,20 @@ function btyProductTabs(doc = document, event = {}) {
 			if (currentTab) currentTab.click();
 		}
 
+		// Arrow keys move between tabs (WAI-ARIA tabs pattern).
+		el.addEventListener('keydown', function (e) {
+			let keys = { ArrowRight: 1, ArrowLeft: -1, Home: 'first', End: 'last' };
+			if (!(e.key in keys)) return;
+
+			let tabs = Array.from(wrap.querySelectorAll('.tabs-head-desktop .tab-head')),
+				pos  = tabs.indexOf(el),
+				next = keys[e.key] === 'first' ? 0 : keys[e.key] === 'last' ? tabs.length - 1 : (pos + keys[e.key] + tabs.length) % tabs.length;
+
+			e.preventDefault();
+			tabs[next].focus();
+			tabs[next].click();
+		});
+
 		el.addEventListener('click', function () {
 
 			if (el.classList.contains('active')) return;
@@ -6015,6 +6043,10 @@ function btyProductTabs(doc = document, event = {}) {
 				arrowsActived = wrap.querySelector('.vrworld-arrows.active');
 
 			// Remove active
+			if (navActived) {
+				navActived.setAttribute('aria-selected', 'false');
+				navActived.setAttribute('tabindex', '-1');
+			}
 			if (navActived) navActived.classList.remove('active');
 			if (tabActived) tabActived.classList.remove('active');
 			if (slideActived) slideActived.classList.remove('active');
@@ -6022,6 +6054,11 @@ function btyProductTabs(doc = document, event = {}) {
 
 			// Add active
 			el.classList.add('active');
+			el.setAttribute('aria-selected', 'true');
+			el.setAttribute('tabindex', '0');
+			wrap.querySelectorAll('.dropdown-item').forEach(function (li) {
+				li.setAttribute('aria-selected', li.getAttribute('data-index') === index ? 'true' : 'false');
+			});
 			tab.classList.add('active');
 			if (slide) slide.classList.add('active');
 			if (arrows) arrows.classList.add('active');
@@ -6038,6 +6075,24 @@ function btyProductTabs(doc = document, event = {}) {
 				if (!current) return;
 
 				current.click();
+
+				// Close the mobile dropdown and return focus to its trigger.
+				let drop = el.closest('.toggle-dropdown'),
+					summary = drop ? drop.querySelector('.dropdown-summary') : null;
+				if (drop && drop.hasAttribute('open')) {
+					drop.removeAttribute('open');
+					if (summary) {
+						summary.setAttribute('aria-expanded', 'false');
+						summary.focus();
+					}
+				}
+			});
+
+			el.addEventListener('keydown', function (e) {
+				if (e.key === 'Enter' || e.key === ' ') {
+					e.preventDefault();
+					el.click();
+				}
 			});
 		});
 	}
