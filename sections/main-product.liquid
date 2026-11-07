@@ -196,7 +196,7 @@
 			<div class="product-content">
 				{%- if featured_image != blank -%}
 					<div class="product-image-wrapper">
-						<a href="{{ product.url | split: '?' | first }}" class="product-image-link {{ settings.card_image_ratio }}-media{% if settings.image_lazy %} lazy-image{% endif %}" arial-label="{{ product.title }}">
+						<a href="{{ product.url | split: '?' | first }}" class="product-image-link {{ settings.card_image_ratio }}-media{% if settings.image_lazy %} lazy-image{% endif %}" aria-label="{{ product.title }}">
 							{%- render 'lazy-image', image: featured_image, width: 500, class: 'sticky-product-image' -%}
 						</a>
 					</div>

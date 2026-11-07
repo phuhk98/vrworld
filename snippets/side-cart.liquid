@@ -238,11 +238,9 @@
 															{% comment %} Media {% endcomment %}
 															{%- if featured_image != blank -%}
 																<div class="product-media-wrap">
-																	<a href="{{ product.url | split: '?' | first }}"{% if settings.image_lazy %} class="product-image lazy-image border-large"{% endif %} arial-label="{{ product.title }}">
+																	<a href="{{ product.url | split: '?' | first }}"{% if settings.image_lazy %} class="product-image lazy-image border-large"{% endif %} aria-label="{{ product.title }}">
 																		{%- liquid
-																			assign image_key = featured_image.src | handle
-
-																			render 'lazy-image', image: featured_image, width: 200, height: 200, class: 'product-first-image', data-key: image_key
+																			render 'lazy-image', image: featured_image, width: 200, height: 200, class: 'product-first-image'
 																		-%}
 																	</a>
 																</div>
@@ -300,11 +298,9 @@
 															{% comment %} Media {% endcomment %}
 															{%- if featured_image != blank -%}
 																<div class="product-media-wrap">
-																	<a href="{{ product.url | split: '?' | first }}"{% if settings.image_lazy %} class="product-image lazy-image border-large"{% endif %} arial-label="{{ product.title }}">
+																	<a href="{{ product.url | split: '?' | first }}"{% if settings.image_lazy %} class="product-image lazy-image border-large"{% endif %} aria-label="{{ product.title }}">
 																		{%- liquid
-																			assign image_key = featured_image.src | handle
-
-																			render 'lazy-image', image: featured_image, width: 200, height: 200, class: 'product-first-image', data-key: image_key
+																			render 'lazy-image', image: featured_image, width: 200, height: 200, class: 'product-first-image'
 																		-%}
 																	</a>
 																</div>

@@ -205,7 +205,7 @@
 											<div class="vrworld-slider-container">
 												{%- for i in (1..3) -%}
 													<div class="gallery-item vrworld-slide" data-id="{{ section.id }}-{{ product.media[0].id }}" data-{{ product.media[0].media_type | escape }}>
-														{%- render 'product-media', media: product.media[0], position: 0, loop: false, modal_id: section.id, role: 'main' -%}
+														{%- render 'product-media', media: product.media[0], position: 0, loop: false, role: 'main' -%}
 													</div>
 												{%- endfor -%}
 											</div>
@@ -216,7 +216,7 @@
 												<div class="vrworld-thumbs-slider-container">
 													{%- for i in (1..3) -%}
 														<div class="thumbs-item vrworld-thumbs-slide" data-id="{{ section.id }}-{{ product.media[0].id }}" data-{{ product.media[0].media_type | escape }}>
-															{%- render 'product-media', media: product.media[0], position: 0, loop: false, modal_id: section.id, role: 'main' -%}
+															{%- render 'product-media', media: product.media[0], position: 0, loop: false, role: 'main' -%}
 														</div>
 													{%- endfor -%}
 												</div>
