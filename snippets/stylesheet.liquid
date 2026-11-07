@@ -25,6 +25,7 @@
 
 		{% if forloop.index == 1 %}:root, {% endif %}.color-{{ scheme.id }} {
 			--section-bg-image: {% if scheme.settings.background_gradient != blank and text_bg_contrast < 3 %}{{ scheme.settings.background_gradient }}{% else %}none{% endif %};
+			--active-text-gradient: {% if scheme.settings.background_gradient != blank and text_bg_contrast < 3 %}linear-gradient(rgb(255, 255, 255), rgb(255, 255, 255)){% else %}var(--gradient-background){% endif %};
 			--section-btn-ring: {% if scheme.settings.background_gradient != blank and text_bg_contrast < 3 %}0 0 0 0.2rem rgba(255, 255, 255, 0.85){% else %}none{% endif %};
 			--gradient-background: {% if scheme.settings.background_gradient != blank %}{{ scheme.settings.background_gradient }}{% else %}linear-gradient(rgb(var(--heading-color)), rgb(var(--heading-color))){% endif %};
 			--background-color: {% if scheme.settings.background_gradient != blank and text_bg_contrast < 3 %}20, 18, 36{% else %}{{ scheme.settings.background_color.red }}, {{ scheme.settings.background_color.green }}, {{ scheme.settings.background_color.blue }}{% endif %};
