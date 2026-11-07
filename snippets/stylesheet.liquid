@@ -21,7 +21,10 @@
 			assign svg_color      = scheme.settings.text_color | replace: '#', '%23'
 		-%}
 
+		{%- assign text_bg_contrast = scheme.settings.text_color | color_contrast: scheme.settings.background_color -%}
+
 		{% if forloop.index == 1 %}:root, {% endif %}.color-{{ scheme.id }} {
+			--section-bg-image: {% if scheme.settings.background_gradient != blank and text_bg_contrast < 3 %}{{ scheme.settings.background_gradient }}{% else %}none{% endif %};
 			--gradient-background: {% if scheme.settings.background_gradient != blank %}{{ scheme.settings.background_gradient }}{% else %}linear-gradient(rgb(var(--heading-color)), rgb(var(--heading-color))){% endif %};
 			--background-color: {{ scheme.settings.background_color.red }}, {{ scheme.settings.background_color.green }}, {{ scheme.settings.background_color.blue }};
 			--text-color: {{ scheme.settings.text_color.red }}, {{ scheme.settings.text_color.green }}, {{ scheme.settings.text_color.blue }};
