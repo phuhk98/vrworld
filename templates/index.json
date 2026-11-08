@@ -33,37 +33,14 @@
             "mobile_text_align": "left",
             "description_line": "2"
           }
-        },
-        "slide_4MnHnc": {
-          "type": "slide",
-          "settings": {
-            "image": "shopify://shop_images/2148932811.jpg",
-            "overlay_opacity": 0,
-            "caption": "",
-            "heading": "Upgrade Your VR <strong>Experience</strong> Today",
-            "heading_size": "h1",
-            "text": "<p>Discover cutting-edge VR accessories to elevate your gaming experience—immerse yourself in the future of virtual reality.</p>",
-            "description_size": "has-small-text",
-            "button": "Shop Now",
-            "link": "",
-            "button_2": "Explore Products",
-            "link_2": "",
-            "content_width": 42,
-            "position_x": "start",
-            "position_y": "center",
-            "text_align": "left",
-            "mobile_text_align": "left",
-            "description_line": "2"
-          }
         }
       },
       "block_order": [
-        "slide_g4azDt",
-        "slide_4MnHnc"
+        "slide_g4azDt"
       ],
       "name": "t:sections.vr-slideshow.name",
       "settings": {
-        "color_scheme": "scheme-5",
+        "color_scheme": "scheme-3",
         "full": true,
         "height": "large",
         "padding_top": 0,
@@ -75,10 +52,10 @@
     "vr_collection_EFpBQW": {
       "type": "vr-collection",
       "blocks": {
-        "collection_item_j7pT9A": {
+        "collection_item_p3Mw3m": {
           "type": "collection_item",
           "settings": {
-            "collection": "vr-headsets",
+            "collection": "automated-collection",
             "title_override": "",
             "custom_text": ""
           }
@@ -86,8 +63,7 @@
         "collection_item_zDfBdd": {
           "type": "collection_item",
           "settings": {
-            "collection": "full-body-suits",
-            "image": "shopify://shop_images/Full-body_Suits.png",
+            "collection": "",
             "title_override": "",
             "custom_text": ""
           }
@@ -95,8 +71,7 @@
         "collection_item_wj9fyJ": {
           "type": "collection_item",
           "settings": {
-            "collection": "haptic-gloves",
-            "image": "shopify://shop_images/pngegg_1.png",
+            "collection": "",
             "title_override": "",
             "custom_text": ""
           }
@@ -104,8 +79,7 @@
         "collection_item_ciBGTD": {
           "type": "collection_item",
           "settings": {
-            "collection": "hydrogen",
-            "image": "shopify://shop_images/pngkey.com-controller-png-336330.png",
+            "collection": "",
             "title_override": "",
             "custom_text": ""
           }
@@ -113,14 +87,14 @@
         "collection_item_ePAPpz": {
           "type": "collection_item",
           "settings": {
-            "collection": "vr-controllers",
+            "collection": "",
             "title_override": "",
             "custom_text": ""
           }
         }
       },
       "block_order": [
-        "collection_item_j7pT9A",
+        "collection_item_p3Mw3m",
         "collection_item_zDfBdd",
         "collection_item_wj9fyJ",
         "collection_item_ciBGTD",
@@ -147,14 +121,13 @@
         "full": false,
         "color_scheme": "",
         "blog": "news",
-        "column": 4,
+        "column": 3,
         "total": 5,
         "align": "left",
         "caption": "Explore the many options tailored to your space's unique features, making sure you find the perfect furniture for your Spaces",
         "heading_text": "Explore Your Needs by Category",
         "heading_size": "h4",
         "button_text": "Explore Products",
-        "button_type": "gradient-button",
         "card_layout": "standard",
         "image_ratio": "square",
         "heading_line": "2",
@@ -177,21 +150,21 @@
           "type": "tab",
           "settings": {
             "name": "New Arrival",
-            "collection": "hydrogen"
+            "collection": "automated-collection"
           }
         },
         "tab_AxxeEj": {
           "type": "tab",
           "settings": {
             "name": "Bestseller",
-            "collection": "vr-controllers"
+            "collection": "hydrogen"
           }
         },
         "tab_RrXhMj": {
           "type": "tab",
           "settings": {
             "name": "Offer sale",
-            "collection": "vr-headphones"
+            "collection": "hydrogen"
           }
         }
       },
@@ -210,10 +183,9 @@
         "text_align": "center",
         "button_text": "Explore Products",
         "button_link": "",
-        "button_style": "gradient",
         "enable_slider": false,
         "columns": 4,
-        "total": 4,
+        "total": 8,
         "dots": false,
         "loop": false,
         "autoplay": false,
@@ -228,7 +200,7 @@
       "type": "vr-video-with-text",
       "name": "t:sections.vr-video-with-text.name",
       "settings": {
-        "color_scheme": "scheme-5",
+        "color_scheme": "scheme-1",
         "full": true,
         "source": "host",
         "url": "https://www.youtube.com/watch?v=_9VUPq3SxOc",
@@ -261,8 +233,7 @@
         "text_align": "left",
         "button_text": "Explore Products",
         "button_link": "",
-        "button_style": "gradient",
-        "collection": "full-body-suits",
+        "collection": "automated-collection",
         "columns": 4,
         "total_items": 4,
         "dots": false,
@@ -419,7 +390,7 @@
       "name": "t:sections.vr-multicolumn.name",
       "settings": {
         "full": false,
-        "color_scheme": "scheme-5",
+        "color_scheme": "scheme-3",
         "caption": "",
         "heading_text": "",
         "heading_size": "h3",

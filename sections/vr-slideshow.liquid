@@ -103,7 +103,7 @@
 												assign image_load = 'lazy'
 											endif
 										-%}
-										{% if has_button %}<div class="slide-element-inner">{% else %}<a href="{{ block.settings.link | default: '#' }}" aria-label="{{- 'general.text.link' | t -}}" class="slide-element-inner">{% endif %}
+										<{% if has_button %}div{% else %}a href="{{ block.settings.link | default: '#' }}" aria-label="{{- 'general.text.link' | t -}}" tabindex="0"{% endif %} class="slide-element-inner">
 											<div class="slider-image">
 												<div class="image{% if mobile_image != blank %} hidden-tablet hidden-mobile{% endif %}{% if settings.image_lazy and slide_image %} lazy-image{% endif %}">
 													{%- liquid
@@ -144,14 +144,15 @@
 														{%- endif -%}
 
 														{%- if has_button -%}
+															{%- assign global_btn_style = settings.button_style | default: 'primary' -%}
 														    <div class="slider-element slider-button" style="display: inline-flex; gap: 15px; flex-wrap: wrap;">
 																{%- if button != blank -%}
-																	<a href="{{ block.settings.link | default: '#' }}" class="button {{ settings.button_style }}-button slide-element-inner">
+																	<a href="{{ block.settings.link | default: '#' }}" class="button {% if global_btn_style == 'primary' %}primary-button{% elsif global_btn_style == 'secondary' %}secondary-button{% elsif global_btn_style == 'gradient' %}gradient-button{% else %}{{ global_btn_style }}-button{% endif %} slide-element-inner" tabindex="0">
 																		{{- button | escape -}}
 																	</a>
 																{%- endif -%}
 																{%- if button_2 != blank -%}
-																	<a href="{{ block.settings.link_2 | default: '#' }}" class="button {{ settings.button_style }}-button slide-element-inner">
+																	<a href="{{ block.settings.link_2 | default: '#' }}" class="button {% if global_btn_style == 'primary' %}primary-button{% elsif global_btn_style == 'secondary' %}secondary-button{% elsif global_btn_style == 'gradient' %}gradient-button{% else %}{{ global_btn_style }}-button{% endif %} slide-element-inner" tabindex="0">
 																		{{- button_2 | escape -}}
 																	</a>
 																{%- endif -%}
@@ -160,7 +161,7 @@
 													</div>
 												</div>
 											</div>
-										{% if has_button %}</div>{% else %}</a>{% endif %}
+										</{% if has_button %}div{% else %}a{% endif %}>
 								{%- endcase -%}
 							</div>
 						{%- endfor -%}
@@ -201,7 +202,7 @@
 			"type": "color_scheme",
 			"id": "color_scheme",
 			"label": "t:settings_schema.colors.label",
-			"default": "scheme-6"
+			"default": "scheme-5"
 		},
 		{
 			"type": "checkbox",

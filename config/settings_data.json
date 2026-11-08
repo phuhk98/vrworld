@@ -9,14 +9,14 @@
  */
 {
   "current": {
-    "logo_image": "shopify://shop_images/logo-footer.svg",
-    "logo_width": 230,
+    "logo_image": "shopify://shop_images/vrworld-logo.svg",
     "body_font": "open_sans_n5",
     "heading_font": "michroma_n4",
     "third_font": "michroma_n4",
     "enable_search": true,
     "enable_predictive_search": true,
     "screen_lg": 1318,
+    "button_style": "gradient",
     "swatch_style": "circle",
     "social_facebook_link": "https://facebook.com/shopify",
     "social_twitter_link": "https://x.com/shopify",

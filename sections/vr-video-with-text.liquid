@@ -115,7 +115,8 @@
 
 							{%- if button_label != blank -%}
 								<div class="button-wrapper  {% if animation %} scroll-trigger{% endif %}">
-									<a class="button gradient-button" href="{{ section.settings.button_link | default: '#' }}" aria-label="play-{{- 'general.text.button' | t -}}">
+									{%- assign global_btn_style = settings.button_style | default: 'primary' -%}
+									<a class="button {% if global_btn_style == 'primary' %}primary-button{% elsif global_btn_style == 'secondary' %}secondary-button{% elsif global_btn_style == 'gradient' %}gradient-button{% else %}{{ global_btn_style }}-button{% endif %}" href="{{ section.settings.button_link | default: '#' }}" aria-label="play-{{- 'general.text.button' | t -}}">
 										{{- button_label -}}
 									</a>
 								</div>
@@ -141,7 +142,7 @@
 			"type": "color_scheme",
 			"id": "color_scheme",
 			"label": "t:settings_schema.colors.label",
-			"default": "scheme-6"
+			"default": "scheme-5"
 		},
 		{
 			"type": "checkbox",

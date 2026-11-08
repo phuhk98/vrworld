@@ -1,5 +1,6 @@
 {%- liquid
 	assign section_id             = '#shopify-section-' | append: section.id
+	assign animation              = settings.section_animation
 	assign columns                = section.settings.columns | default: 4
 -%}
 
@@ -42,7 +43,8 @@
 
 			{%- if section.settings.button_text != blank -%}
 				<div class="section-button-wrapper">
-					<a href="{{ section.settings.button_link | default: '#' }}" class="button {% if section.settings.button_style == 'gradient' %}gradient-button{% else %}{{ section.settings.button_style }}-button{% endif %}">
+					{%- assign global_btn_style = settings.button_style | default: 'primary' -%}
+					<a href="{{ section.settings.button_link | default: '#' }}" class="button {% if global_btn_style == 'primary' %}primary-button{% elsif global_btn_style == 'secondary' %}secondary-button{% elsif global_btn_style == 'gradient' %}gradient-button{% else %}{{ global_btn_style }}-button{% endif %}">
 						{{ section.settings.button_text | escape }}
 					</a>
 				</div>
@@ -71,11 +73,11 @@
 			</template>
 
 			<div class="vrworld-arrows active" data-index="1">
-				<button class="vrworld-button vrworld-button-prev" aria-label="{{ 'general.vrworld.prev' | t }}" disabled>
+				<button class="vrworld-button vrworld-button-prev" title ="{{ 'general.vrworld.prev' | t }}-feature-prd" aria-label="{{ 'general.vrworld.prev' | t }}-feature-prd" id="{{ 'general.vrworld.prev' | t }}-feature-prd" aria-labelledby="{{ 'general.vrworld.prev' | t }}-feature-prd" disabled>
 					{%- render 'icon', code: 'chevron-left' -%}
 				</button>
 
-				<button class="vrworld-button vrworld-button-next" aria-label="{{ 'general.vrworld.next' | t }}" disabled>
+				<button class="vrworld-button vrworld-button-next" title ="{{ 'general.vrworld.next' | t }}-feature-prd" aria-label="{{ 'general.vrworld.next' | t }}-feature-prd" id="{{ 'general.vrworld.next' | t }}-feature-prd" aria-labelledby="{{ 'general.vrworld.next' | t }}-feature-prd" disabled>
 					{%- render 'icon', code: 'chevron-right' -%}
 				</button>
 			</div>
@@ -195,26 +197,6 @@
 			"type": "url",
 			"id": "button_link",
 			"label": "Button Link"
-		},
-		{
-			"type": "select",
-			"id": "button_style",
-			"options": [
-				{
-					"value": "primary",
-					"label": "t:general.typography.style.option_1.label"
-				},
-				{
-					"value": "secondary",
-					"label": "t:general.typography.style.option_2.label"
-				},
-				{
-					"value": "gradient",
-					"label": "Gradient button"
-				}
-			],
-			"default": "primary",
-			"label": "Button Style"
 		},
 		{
 			"type": "collection",

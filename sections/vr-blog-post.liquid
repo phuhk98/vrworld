@@ -8,6 +8,7 @@
 	assign heading_size       = section.settings.heading_size
 	assign total              = section.settings.total
 	assign column             = section.settings.column
+	assign alignment          = section.settings.align
 -%}
 
 <style>
@@ -59,7 +60,8 @@
                 </div>
                 {%- if section.settings.button_text != blank -%}
                     <div class="header-right">
-                        <a class="button {{ section.settings.button_type }} view-all-btn" href="{{ section.settings.blog.url | default: '#' }}" aria-label="{{- 'general.text.link' | t -}}">
+						{%- assign global_btn_style = settings.button_style | default: 'primary' -%}
+                        <a class="button {% if global_btn_style == 'primary' %}primary-button{% elsif global_btn_style == 'secondary' %}secondary-button{% elsif global_btn_style == 'gradient' %}gradient-button{% else %}{{ global_btn_style }}-button{% endif %} view-all-btn" href="{{ section.settings.blog.url | default: '#' }}" aria-label="{{- 'general.text.link' | t -}}">
                             {{- section.settings.button_text -}}
                         </a>
                     </div>
@@ -351,26 +353,6 @@
 			"id": "button_text",
 			"default": "ALL POSTS",
 			"label": "t:general.typography.button_text.label"
-		},
-		{
-			"type": "select",
-			"id": "button_type",
-			"options": [
-				{
-					"value": "primary-button",
-					"label": "Primary"
-				},
-				{
-					"value": "secondary-button",
-					"label": "Secondary"
-				},
-				{
-					"value": "gradient-button",
-					"label": "Gradient"
-				}
-			],
-			"default": "gradient-button",
-			"label": "Button Type"
 		},
 		{
 			"type": "header",
