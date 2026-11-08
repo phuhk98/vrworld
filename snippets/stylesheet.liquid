@@ -21,9 +21,14 @@
 			assign svg_color      = scheme.settings.text_color | replace: '#', '%23'
 		-%}
 
+		{%- assign text_bg_contrast = scheme.settings.text_color | color_contrast: scheme.settings.background_color -%}
+
 		{% if forloop.index == 1 %}:root, {% endif %}.color-{{ scheme.id }} {
-			--gradient-background: {{ scheme.settings.background_gradient }};
-			--background-color: {{ scheme.settings.background_color.red }}, {{ scheme.settings.background_color.green }}, {{ scheme.settings.background_color.blue }};
+			--section-bg-image: {% if scheme.settings.background_gradient != blank and text_bg_contrast < 3 %}{{ scheme.settings.background_gradient }}{% else %}none{% endif %};
+			--active-text-gradient: {% if scheme.settings.background_gradient != blank and text_bg_contrast < 3 %}linear-gradient(rgb(255, 255, 255), rgb(255, 255, 255)){% else %}var(--gradient-background){% endif %};
+			--section-btn-ring: {% if scheme.settings.background_gradient != blank and text_bg_contrast < 3 %}0 0 0 0.2rem rgba(255, 255, 255, 0.85){% else %}none{% endif %};
+			--gradient-background: {% if scheme.settings.background_gradient != blank %}{{ scheme.settings.background_gradient }}{% else %}linear-gradient(rgb(var(--heading-color)), rgb(var(--heading-color))){% endif %};
+			--background-color: {% if scheme.settings.background_gradient != blank and text_bg_contrast < 3 %}20, 18, 36{% else %}{{ scheme.settings.background_color.red }}, {{ scheme.settings.background_color.green }}, {{ scheme.settings.background_color.blue }}{% endif %};
 			--text-color: {{ scheme.settings.text_color.red }}, {{ scheme.settings.text_color.green }}, {{ scheme.settings.text_color.blue }};
 			--heading-color: {{ scheme.settings.heading_color.red }}, {{ scheme.settings.heading_color.green }}, {{ scheme.settings.heading_color.blue }};
 
@@ -34,7 +39,7 @@
 			--loading-color: {{ scheme.settings.loading_color.red }}, {{ scheme.settings.loading_color.green }}, {{ scheme.settings.loading_color.blue }};
 
 			--button-bg-color: {{ scheme.settings.button_bg_color.red }}, {{ scheme.settings.button_bg_color.green }}, {{ scheme.settings.button_bg_color.blue }};
-			--button-bg-gradient: {{ scheme.settings.button_bg_gradient }}, {{ scheme.settings.button_bg_gradient }}, {{ scheme.settings.button_bg_gradient }};
+			--button-bg-gradient: {% if scheme.settings.button_bg_gradient != blank %}{{ scheme.settings.button_bg_gradient }}{% else %}linear-gradient(rgb(var(--button-bg-color)), rgb(var(--button-bg-color))){% endif %};
 			--button-text-color: {{ scheme.settings.button_text_color.red }}, {{ scheme.settings.button_text_color.green }}, {{ scheme.settings.button_text_color.blue }};
 			--button-outline-color: {{ scheme.settings.button_outline_color.red }}, {{ scheme.settings.button_outline_color.green }}, {{ scheme.settings.button_outline_color.blue }};
 
@@ -128,17 +133,9 @@
 		--product-card-scrolling-speed: {{ settings.card_scrolling_speed }}s;
 		--product-card-space: {{ settings.card_padding }}px;
 
-		--duration-short: 100ms;
-		--duration-default: 300ms;
-		--duration-long: 500ms;
-
 		{% comment %} Tick {% endcomment %}
 		--tick-white: url("data:image/svg+xml, %3Csvg width='10' height='8' viewBox='0 0 10 8' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M8.33332 1.5L3.74999 6.08333L1.66666 4' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
 		--tick-black: url("data:image/svg+xml, %3Csvg width='10' height='8' viewBox='0 0 10 8' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M8.33332 1.5L3.74999 6.08333L1.66666 4' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
-
-		{% comment %} Checkbox {% endcomment %}
-		--checkbox-black: url("data:image/svg+xml,%3Csvg width='14' height='10' viewBox='0 0 14 10' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M12.3334 1L5.00008 8.33333L1.66675 5' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
-		--checkbox-white: url("data:image/svg+xml,%3Csvg width='14' height='10' viewBox='0 0 14 10' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M12.3334 1L5.00008 8.33333L1.66675 5' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
 	}
 
 	{%- liquid

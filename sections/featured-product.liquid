@@ -150,11 +150,11 @@
 															</div>
 														</div>
 														<div class="vrworld-arrows">
-															<button class="vrworld-button vrworld-button-prev vrworld-thumb-prev" title ="{{ 'general.vrworld.prev' | t }}-feature-prd" aria-label="{{ 'general.vrworld.prev' | t }}-feature-prd" id="{{ 'general.vrworld.prev' | t }}-feature-prd" aria-labelledby="{{ 'general.vrworld.prev' | t }}-feature-prd" disabled>
+															<button class="vrworld-button vrworld-button-prev vrworld-thumb-prev" aria-label="{{ 'general.vrworld.prev' | t }}" disabled>
 																{%- render 'icon', code: 'arrow-up' -%}
 															</button>
 
-															<button class="vrworld-button vrworld-button-next vrworld-thumb-next" title ="{{ 'general.vrworld.next' | t }}-feature-prd" aria-label="{{ 'general.vrworld.next' | t }}-feature-prd" id="{{ 'general.vrworld.next' | t }}-feature-prd" aria-labelledby="{{ 'general.vrworld.next' | t }}-feature-prd" disabled>
+															<button class="vrworld-button vrworld-button-next vrworld-thumb-next" aria-label="{{ 'general.vrworld.next' | t }}" disabled>
 																{%- render 'icon', code: 'arrow-up' -%}
 															</button>
 														</div>
@@ -205,7 +205,7 @@
 											<div class="vrworld-slider-container">
 												{%- for i in (1..3) -%}
 													<div class="gallery-item vrworld-slide" data-id="{{ section.id }}-{{ product.media[0].id }}" data-{{ product.media[0].media_type | escape }}>
-														{%- render 'product-media', media: product.media[0], position: 0, loop: false, modal_id: section.id, role: 'main' -%}
+														{%- render 'product-media', media: product.media[0], position: 0, loop: false, role: 'main' -%}
 													</div>
 												{%- endfor -%}
 											</div>
@@ -216,7 +216,7 @@
 												<div class="vrworld-thumbs-slider-container">
 													{%- for i in (1..3) -%}
 														<div class="thumbs-item vrworld-thumbs-slide" data-id="{{ section.id }}-{{ product.media[0].id }}" data-{{ product.media[0].media_type | escape }}>
-															{%- render 'product-media', media: product.media[0], position: 0, loop: false, modal_id: section.id, role: 'main' -%}
+															{%- render 'product-media', media: product.media[0], position: 0, loop: false, role: 'main' -%}
 														</div>
 													{%- endfor -%}
 												</div>

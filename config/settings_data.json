@@ -9,7 +9,8 @@
  */
 {
   "current": {
-    "logo_image": "shopify://shop_images/vrworld-logo.svg",
+    "logo_image": "shopify://shop_images/logo-footer.svg",
+    "logo_width": 230,
     "body_font": "open_sans_n5",
     "heading_font": "michroma_n4",
     "third_font": "michroma_n4",

@@ -79,7 +79,7 @@
 									{% comment %} Media {% endcomment %}
 									{%- if featured_image != blank -%}
 										<div class="product-media-wrap">
-											<a href="{{ product.url | split: '?' | first }}" class="product-image{% if settings.image_lazy and featured_image %} lazy-image{% endif %}" arial-label="{{ product.title }}">
+											<a href="{{ product.url | split: '?' | first }}" class="product-image{% if settings.image_lazy and featured_image %} lazy-image{% endif %}" aria-label="{{ product.title }}">
 												{%- liquid
 													assign image_load = 'eager'
 

@@ -286,7 +286,7 @@
 					{%- endcapture -%}
 
 					{%- if settings.card_show_quickview == true -%}
-						<a class="button {{ settings.button_style }}-button product-action product-quick-view{% if product.selling_plan_groups.size > 0 %} selling-plan-error{% endif %}" href="{{ product.url | split: '?' | first }}" arial-label="{{ 'products.product.quick_view' | t }}">
+						<a class="button {{ settings.button_style }}-button product-action product-quick-view{% if product.selling_plan_groups.size > 0 %} selling-plan-error{% endif %}" href="{{ product.url | split: '?' | first }}" aria-label="{{ 'products.product.quick_view' | t }}">
 							{%- render 'icon', code: 'product-add-to-cart' -%}
 							{{ 'products.product.view_options' | t }}
 						</a>
@@ -345,7 +345,7 @@
 	<div class="product-media-wrap {{ card_image_ratio }}-media{{ image_effect }}{% if hover_media != nil and settings.card_image_hover_effect != 'none' %} has-second-image{% endif %}{% unless featured_image %} no-media{% endunless %}{% if settings.card_image_overlay %} has-overlay{% endif %}{% if scrolling_text != blank and product_sale %} scrolling-wrapper scrolling-{{ settings.card_scrolling_position }} scrolling-{{ settings.card_scrolling_direction }}{% endif %}">
 		{% comment %} Image {% endcomment %}
 		{%- if featured_image -%}
-			<a href="{{ product.url | split: '?' | first }}" class="product-image{% if settings.image_lazy and featured_image %} lazy-image{% endif %}" arial-label="{{ product.title }}">
+			<a href="{{ product.url | split: '?' | first }}" class="product-image{% if settings.image_lazy and featured_image %} lazy-image{% endif %}" aria-label="{{ product.title }}">
 				{%- liquid
 					assign image_load = 'eager'
 
@@ -417,7 +417,7 @@
 
 		{% comment %} Actions {% endcomment %}
 		<div class="product-actions" data-handle="{{ product.handle }}" data-id="{{ product.id }}">
-			<a class="product-action product-quick-view hidden" href="{{ product.url | split: '?' | first }}" arial-label="{{ 'products.product.quick_view' | t }}">
+			<a class="product-action product-quick-view hidden" href="{{ product.url | split: '?' | first }}" aria-label="{{ 'products.product.quick_view' | t }}">
 				<span class="tooltip">{{- 'products.product.quick_view' | t -}}</span>
 				<span class="hidden-mobile hidden-tablet">{%- render 'icon', code: 'eye' -%}</span>
 				<span class="hidden-desktop">{%- render 'icon', code: 'cart' -%}</span>
