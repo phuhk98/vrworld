@@ -132,7 +132,7 @@
 
   .vr-blog-post-item {
     position: relative;
-    border: 1px solid rgba(241, 237, 235, 1);
+    border: 1px solid rgba(var(--text-color), 0.12);
     background-color: rgb(var(--background-color));
     border-radius: 3rem;
     z-index: 1;
@@ -166,8 +166,8 @@
     }
 
     .article-card {
-      background: transparent !important;
-      border: none !important;
+      background: transparent;
+      border: 0;
       padding: 0;
     }
 

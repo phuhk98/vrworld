@@ -1,6 +1,5 @@
 .vr-collection-section {
   overflow: hidden;
-  background: transparent !important;
 
   .vrworld-slider {
     width: 100%;
@@ -110,7 +109,7 @@
 
     &__count {
       font-family: var(--body-font-family);
-      color: var(--heading-color);
+      color: rgb(var(--text-color));
       margin: 0;
       transition: color 0.3s ease, filter 0.3s ease;
     }

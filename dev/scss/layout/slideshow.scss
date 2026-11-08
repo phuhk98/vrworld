@@ -180,14 +180,11 @@
 
         b,
         strong {
-          background: transparent !important;
-          border-color: transparent !important;
-          background-image: linear-gradient(rgba(var(--text-color), 1), rgba(var(--text-color), 1)) !important;
-          -webkit-background-clip: text !important;
-          background-clip: text !important;
-          -webkit-text-fill-color: transparent !important;
-          color: transparent !important;
-          background-image: var(--gradient-background) !important;
+          background-image: var(--gradient-background);
+          -webkit-background-clip: text;
+          background-clip: text;
+          -webkit-text-fill-color: transparent;
+          color: transparent;
         }
       }
 

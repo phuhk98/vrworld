@@ -294,96 +294,49 @@
     .tabs-head {
 
       .tab-head {
-        background: transparent !important;
-        border-color: transparent !important;
-        background-image: linear-gradient(rgba(var(--text-color), 1), rgba(var(--text-color), 1)) !important;
-        -webkit-background-clip: text !important;
-        background-clip: text !important;
-        -webkit-text-fill-color: transparent !important;
-        color: transparent !important;
+        background: transparent;
+        border-color: transparent;
+        background-image: linear-gradient(rgba(var(--text-color), 1), rgba(var(--text-color), 1));
+        -webkit-background-clip: text;
+        background-clip: text;
+        -webkit-text-fill-color: transparent;
+        color: transparent;
       }
 
       .tab-head.active,
       .tab-head:hover {
-        background-image: var(--gradient-background) !important;
+        background-image: var(--active-text-gradient, var(--gradient-background));
+        -webkit-background-clip: text;
+        background-clip: text;
       }
 
       &.justify-left {
-        justify-content: flex-start !important;
+        justify-content: flex-start;
 
         .tabs-head-desktop {
-          justify-content: flex-start !important;
+          justify-content: flex-start;
         }
       }
 
       &.justify-center {
-        justify-content: center !important;
+        justify-content: center;
 
         .tabs-head-desktop {
-          justify-content: center !important;
+          justify-content: center;
         }
       }
 
       &.justify-right {
-        justify-content: flex-end !important;
+        justify-content: flex-end;
 
         .tabs-head-desktop {
-          justify-content: flex-end !important;
+          justify-content: flex-end;
         }
       }
     }
 
-    .grid-item,
-    .vrworld-slide {
-      position: relative;
-      border: 1px solid rgba(241, 237, 235, 1);
-      background-color: rgb(var(--background-color));
-      border-radius: 1.2rem;
-      z-index: 1;
-      overflow: hidden;
-      transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-      cursor: pointer;
-
-      &::before {
-        content: '';
-        position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        background: var(--gradient-background);
-        opacity: 0.1;
-        z-index: -1;
-        border-radius: 1.2rem;
-        transition: opacity 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-        pointer-events: none;
-      }
-
-      &:hover {
-        border: 1px solid rgba(0, 0, 0, 0);
-        background-image: linear-gradient(rgb(var(--background-color)), rgb(var(--background-color))), var(--gradient-background, linear-gradient(rgba(var(--text-color), .08), rgba(var(--text-color), .08)));
-        background-clip: padding-box, border-box;
-        background-origin: border-box;
-      }
-
-      .product-card {
-        background: transparent !important;
-        border: 0 !important;
-        margin-bottom: 0 !important;
-        border-radius: 0 !important;
-        box-shadow: none !important;
-
-        .product-media-wrap {
-          background-color: transparent !important;
-          background: transparent !important;
-
-          img {
-            background-color: transparent !important;
-            background: transparent !important;
-            mix-blend-mode: multiply;
-          }
-        }
-      }
+    .product-card {
+      margin-bottom: 0;
     }
   }
 

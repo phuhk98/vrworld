@@ -1,0 +1,20 @@
+// Scheme có chữ sáng trên nền sáng (vd: scheme-5) dùng gradient của scheme làm nền section
+// để chữ không bị chìm. Biến --section-bg-image / --section-btn-ring được tạo trong snippets/stylesheet.liquid.
+.shopify-section > .section-wrapper[class*='color-scheme-'],
+.shopify-section[id*='__vr_'] > [class*='color-scheme-'] {
+  background-image: var(--section-bg-image, none);
+
+  // Nút gradient trùng màu với nền gradient -> thêm viền sáng để nút không bị chìm.
+  .gradient-button {
+    box-shadow: var(--section-btn-ring, none);
+  }
+}
+
+// multicolumn / vr-multicolumn / video-with-text: không dùng nền section (trong suốt).
+.shopify-section.multicolumn-section,
+.shopify-section.video-with-text-section {
+  > .section-wrapper {
+    background: none;
+    background-color: transparent;
+  }
+}
