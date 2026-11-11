@@ -16,7 +16,7 @@
 				"background_image": "shopify://shop_images/pageHeading.png",
 				"overlay": 70,
 				"separator_line": true,
-				"color_scheme": "scheme-3",
+				"color_scheme": "scheme-4",
 				"show_title": true,
 				"show_scrolling": true,
 				"font_scale": 530,
@@ -95,10 +95,9 @@
 			"name": "t:sections.video-banner.presets.name",
 			"settings": {
 				"full": true,
-				"color_scheme": "scheme-3",
-				"source": "native",
+				"color_scheme": "scheme-4",
+				"source": "host",
 				"url": "https://www.youtube.com/watch?v=_9VUPq3SxOc",
-				"native_url": "shopify://files/videos/945fc3a3315640a18d6a8f825f4a210e.mp4",
 				"overlay": 50,
 				"height": "450px",
 				"mobile_height": "400px",
@@ -123,7 +122,7 @@
 				"item-1": {
 					"type": "item",
 					"settings": {
-						"color_scheme_item": "scheme-1",
+						"color_scheme_item": "scheme-6",
 						"image": "shopify://shop_images/Frame_569_d177e476-ff8c-417d-905b-e5330893edb7.png",
 						"heading_item": "The new era of Unity",
 						"year": 2010,
@@ -133,7 +132,7 @@
 				"item-2": {
 					"type": "item",
 					"settings": {
-						"color_scheme_item": "scheme-1",
+						"color_scheme_item": "scheme-6",
 						"image": "shopify://shop_images/Frame_569_32e980a1-600e-4d61-8557-e3135c29d062.png",
 						"heading_item": "Expansion of product range",
 						"year": 2012,
@@ -143,7 +142,7 @@
 				"item-3": {
 					"type": "item",
 					"settings": {
-						"color_scheme_item": "scheme-1",
+						"color_scheme_item": "scheme-6",
 						"image": "shopify://shop_images/Frame_569_cb8492c7-a23b-4939-bfdb-ae28d4d95f45.png",
 						"heading_item": "Launch of online store",
 						"year": 2015,
@@ -153,7 +152,7 @@
 				"item-4": {
 					"type": "item",
 					"settings": {
-						"color_scheme_item": "scheme-1",
+						"color_scheme_item": "scheme-6",
 						"image": "shopify://shop_images/Frame_569_003a542d-4a0d-4783-b5a1-90f10f6ff776.png",
 						"heading_item": "Opening of a second location",
 						"year": 2019,
@@ -163,7 +162,7 @@
 				"item-5": {
 					"type": "item",
 					"settings": {
-						"color_scheme_item": "scheme-1",
+						"color_scheme_item": "scheme-6",
 						"image": "shopify://shop_images/Frame_569_32e980a1-600e-4d61-8557-e3135c29d062.png",
 						"heading_item": "Launch of private label supplements",
 						"year": 2022,
@@ -173,7 +172,7 @@
 				"item-6": {
 					"type": "item",
 					"settings": {
-						"color_scheme_item": "scheme-1",
+						"color_scheme_item": "scheme-6",
 						"image": "shopify://shop_images/Frame_569_17094592-9e8d-4c0b-823e-db6b14f878f4.png",
 						"heading_item": "Commvrworld events and workshops",
 						"year": 2023,
@@ -192,7 +191,7 @@
 			"name": "t:sections.timeline.name",
 			"settings": {
 				"full": false,
-				"color_scheme": "scheme-2",
+				"color_scheme": "scheme-6",
 				"sub_heading": "( OUR JOURNEY )",
 				"heading": "History of Unity",
 				"heading_size": "h3",
@@ -250,7 +249,7 @@
 				"heading_size": "h3",
 				"button_label": "",
 				"button_link": "",
-				"columns_color_scheme": "scheme-1",
+				"columns_color_scheme": "scheme-6",
 				"align": "center",
 				"image_width": "adapt",
 				"image_ratio": "adapt",
